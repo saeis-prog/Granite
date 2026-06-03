@@ -15,10 +15,18 @@ Create a key at console.anthropic.com. You'll set it on Vercel as `ANTHROPIC_API
 2. **Project Settings → API**: copy the **Project URL** and **anon/public key**.
 3. **Authentication → Providers**: ensure **Email** is enabled.
 4. **Authentication → URL Configuration**: set Site URL to your Vercel URL once you have it.
-5. **SQL Editor**: run the scripts in `/sql` to create the approvals, learn-progress and logging
-   tables (run `setup_auto_approval.sql`, `setup_activity_logs.sql`, the `champions_and_emails`,
-   `trial_invites`, `fix_module_progress_rls` and `diagnose_and_fix_learn_progress` scripts).
-   The `bhr_domain_gate.sql` from the original is intentionally **not** included.
+5. **SQL Editor**: run the scripts in `/sql` **in this order** (order matters — the base schema
+   must exist before the others):
+   1. `00_base_schema.sql` — creates `profiles`, the new-user trigger and `get_my_profile` (run first)
+   2. `setup_auto_approval.sql` — approved-email/domain table + auto-approve trigger
+   3. `setup_activity_logs.sql` — activity logging
+   4. `fix_module_progress_rls.sql` — creates the Learn `module_progress` table + policies
+   5. `seed_approved_users.sql` — loads the approved CRASH/JMK staff emails (edit as needed)
+
+   Optional/legacy (not needed for the two-component prototype): `trial_invites.sql`,
+   `champions_and_emails.sql`, `diagnose_and_fix_learn_progress.sql`, the per-case `2026-*.sql`
+   inserts, and the supplier/template scripts. `bhr_domain_gate.sql` is intentionally **not**
+   included (rebuttal programme walled off).
 
 ### Approved users (email-gated access)
 

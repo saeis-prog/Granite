@@ -21,22 +21,23 @@
       name: 'CRASH Services',
       product: 'Ask the Oracle',
       logoHtml: 'Ask the <span>Oracle</span>',
+      logoImg: 'assets/crash-logo.png',   // white-background CRASH logo
       vars: {
         '--navy': '#003175',        // CRASH primary blue
         '--navy-light': '#1a4a8f',
-        '--gold': '#4a90e2',        // accent (provisional — pending CRASH brand confirmation)
+        '--gold': '#4a90e2',        // accent (provisional — pending CRASH marketing guidance)
         '--gold-light': '#7db4ee',
         '--sidebar': '#002457',
       },
-      // CRASH wordmark font is still to be confirmed (see brief §11);
-      // until then we use a clean sans fallback.
-      font: "'Arial', 'Helvetica Neue', sans-serif",
+      // CRASH wordmark is Helvetica / Arial sans-serif (confirmed).
+      font: "'Helvetica Neue', Helvetica, Arial, sans-serif",
     },
     jmk: {
       key: 'jmk',
       name: 'JMK Solicitors',
       product: 'Ask the Oracle',
       logoHtml: 'Ask the <span>Oracle</span>',
+      logoImg: 'assets/jmk-logo.png',     // white-background JMK logo
       vars: {
         '--navy': '#3f0b03',        // JMK burgundy
         '--navy-light': '#5c1206',
@@ -75,9 +76,21 @@
     Object.entries(brand.vars).forEach(([k, v]) => root.style.setProperty(k, v));
     if (brand.font) document.body && (document.body.style.fontFamily = brand.font);
 
-    // Product / logo text
+    // Product / logo: prefer the real logo image, fall back to text wordmark.
     const logo = document.getElementById('brand-logo');
-    if (logo) logo.innerHTML = brand.logoHtml;
+    if (logo) {
+      if (brand.logoImg) {
+        const img = new Image();
+        img.alt = brand.name;
+        // white pill so a white-background logo reads on the dark top bar
+        img.style.cssText = 'height:30px;display:block;background:#fff;padding:3px 8px;border-radius:6px;';
+        img.onerror = function () { logo.innerHTML = brand.logoHtml; }; // file not present yet
+        img.onload = function () { logo.innerHTML = ''; logo.appendChild(img); };
+        img.src = brand.logoImg;
+      } else {
+        logo.innerHTML = brand.logoHtml;
+      }
+    }
     document.title = brand.product + (brand.key !== 'neutral' ? ' — ' + brand.name : '');
 
     // Remember for snappier paint on next load (no PII beyond the brand key)
