@@ -1,0 +1,439 @@
+{
+  "module": {
+    "id": "module-03",
+    "title": "Liability in credit hire",
+    "subtitle": "Understanding the threshold question that determines claim viability, recovery, and commercial risk",
+    "level": "Operations",
+    "duration_minutes": 100,
+    "format": "Self-paced e-learning with AI tutor",
+    "sections_count": 5,
+    "assessment_questions": 20,
+    "pass_mark_percent": 75,
+    "prerequisite": "module-02",
+    "learning_objectives": [
+      "LO1: Explain why liability is the threshold question in every credit hire claim",
+      "LO2: Calculate the effect of split liability and contributory negligence on hire charge recovery",
+      "LO3: Identify the practical consequences of denied liability for both the CHO and the claimant",
+      "LO4: Explain why knock-for-knock agreements do not defeat a valid credit hire claim",
+      "LO5: Conduct a practical liability assessment using available evidence at inception",
+      "LO6: Recognise the red flags that indicate liability is likely to be disputed and advise accordingly"
+    ],
+    "sections": [
+      {
+        "id": "s01",
+        "number": 1,
+        "title": "Liability fundamentals in credit hire",
+        "duration_minutes": 20,
+        "concept": "In credit hire, liability is the threshold question. If the third party is not at fault, there is no claim. If liability is admitted, the claim proceeds to need/period/rate. If liability is denied or disputed, the hire may continue but recovery is at risk. The claimant's position on liability determines not just whether they recover, but when and how much. Understanding liability status is the single most important factor in assessing a credit hire claim's viability.",
+        "content_points": [
+          "Liability as the gateway to recovery: without third-party fault, the CHO has no tortfeasor to pursue and no contractual claim",
+          "Three liability states: admitted (claim proceeds to damages assessment), denied (recovery at risk, litigation likely), and disputed (claim uncertain, evidence critical)",
+          "Burden of proof in RTA claims: the claimant must prove on the balance of probabilities that the third party was at fault",
+          "How liability status affects CHO commercial risk: admitted liability reduces exposure; denied or disputed liability increases exposure exponentially",
+          "The interaction between liability and the three-stage test: liability is stage one; need and period are only relevant if liability is admitted or very likely to succeed",
+          "Early liability assessment as a cornerstone: determining liability status at inception protects the CHO's commercial decision-making and informs hire length and cost management"
+        ],
+        "scenario": {
+          "text": "A rear-end collision on the M25. Third-party insurer admits liability in writing on Day 2. CHO provides a vehicle for 10 days at £65/day (total £650). On Day 11, the third-party insurer obtains dashcam footage from the claimant's own vehicle showing the claimant braked suddenly and without warning. The insurer withdraws the admission and denies liability, claiming the claimant braked unreasonably and the collision was avoidable. The claimant disputes this account and insists the other driver was tailgating. The CHO has now incurred £650 in costs with no certainty of recovery.",
+          "teaching_points": [
+            "Admitted liability can be withdrawn if new evidence undermines it — the CHO must not treat admission as conclusive",
+            "Withdrawal of admission transforms the claim from low-risk to high-risk overnight",
+            "The CHO's exposure (£650) is now contingent on the outcome of a potentially contested liability dispute",
+            "The claimant's account (tailgating) is a factual issue; the insurer's account (sudden braking) is also plausible",
+            "Early liability assessment at inception (Day 2) was undermined by the emergence of new evidence — the CHO should have been cautious despite the initial admission",
+            "The CHO must now decide whether to continue hiring (increasing exposure) or terminate (abandoning the claimant) — this is a fundamental commercial decision underpinned by liability probability"
+          ]
+        },
+        "knowledge_check": {
+          "question": "In credit hire, what does liability status determine?",
+          "options": [
+            {
+              "text": "Only whether the insurer will respond to the GTA",
+              "correct": false,
+              "explanation": "Liability status affects far more than insurer communication. It determines whether there is a claim at all, whether recovery is likely, and whether the CHO should provide a vehicle."
+            },
+            {
+              "text": "Whether there is a tortfeasor to pursue, whether the claim proceeds to damages assessment, and the CHO's commercial exposure",
+              "correct": true,
+              "explanation": "Liability is the threshold. If there is no third-party fault, there is no claim. If liability is admitted, the claim proceeds to assessing need, period, and rate. If denied, the CHO's exposure increases materially because recovery depends on litigation."
+            },
+            {
+              "text": "Only the quantum of damages awarded by the court",
+              "correct": false,
+              "explanation": "Liability status affects whether a claim exists at all and whether the CHO should provide a vehicle. Quantum is secondary to the question of whether liability is established."
+            },
+            {
+              "text": "The claimant's right to claim against their own insurer",
+              "correct": false,
+              "explanation": "Credit hire claims are against the third party's insurer (or the tortfeasor directly). Liability status does not affect the claimant's own insurance position."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s02",
+        "number": 2,
+        "title": "Split liability and contributory negligence",
+        "duration_minutes": 22,
+        "concept": "Many RTAs do not result in 100% liability for one party. Split liability (e.g. 50/50, 75/25) and contributory negligence findings directly reduce the amount recoverable. A claimant found 25% contributorily negligent recovers only 75% of their hire charges. This is not merely a theoretical point — it fundamentally affects the commercial viability of the hire and the CHO's exposure.",
+        "content_points": [
+          "Contributory negligence: the legal doctrine (Law Reform (Contributory Negligence) Act 1945) that apportions fault proportionately between parties",
+          "Split liability scenarios: roundabout collisions (often 50/50 or apportioned), lane changes (often 50/50 if both failed to check), emerging from junctions (often 70/30 or 80/20), multi-vehicle pile-ups (complex apportionment)",
+          "Calculation of recovery: if split 75/25 in the claimant's favour, the CHO recovers 75% of hire charges; if 50/50, only 50%; if 25/75 against, only 25%",
+          "Impact on hire decisions: a claim that is 50% likely to succeed liability-wise is commercially riskier than an admitted liability claim; the expected recovery is halved",
+          "Continuing hire under split liability: the CHO must assess whether the likely proportion of recovery justifies the ongoing hire cost",
+          "Interaction with impecuniosity: even if liability is apportioned 50/50 in the claimant's favour, if the tortfeasor is insolvent, recovery may be nil regardless of the percentage"
+        ],
+        "content_points_continued": [
+          "Common insurer settlement offers on split liability: 'we will settle at 50%' — this is a commercial offer, not a legal determination; the CHO must assess whether to accept or pursue the full percentage"
+        ],
+        "scenario": {
+          "text": "A T-junction collision at 14:30. The claimant claims they looked both ways and the junction was clear; the other driver pulled out without warning from the left. The third party claims the claimant was obscured by sun glare and failed to slow down. No independent witnesses. No dashcam. Both vehicles damaged on impact. The third-party insurer offers to settle on a 50/50 contributory negligence basis (i.e. the claimant is 50% at fault). The CHO has provided a vehicle for 18 days at £75/day = £1,350 hire charges. The claimant wants the hire to continue while the claim is pursued.",
+          "teaching_points": [
+            "This is a classic split liability scenario: two plausible accounts of a junction collision with no independent evidence to adjudicate between them",
+            "At 50/50 apportionment, the CHO's recoverable amount drops to £675 (50% of £1,350)",
+            "The insurer's settlement offer is a commercial position, not a legal determination; pursuing the claim could yield a better apportionment (e.g. 70/30 in the claimant's favour)",
+            "However, pursuing litigation to improve the apportionment from 50/50 to 70/30 would only increase recovery by £270 (20% of £1,350) — likely less than the cost of litigation",
+            "The CHO must assess: is the low recovery (£675) sufficient to justify accepting the insurer's offer, or should the claimant accept the 50/50 settlement to limit further exposure?",
+            "If the hire continues and the claim is lost entirely on appeal, the CHO recovers nothing on the £1,350 already incurred"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A claimant is found 40% contributorily negligent for a roundabout collision. If the hire charges are £2,000, what is the likely recovery?",
+          "options": [
+            {
+              "text": "£2,000 (full recovery, as the claimant is less than 50% at fault)",
+              "correct": false,
+              "explanation": "Contributory negligence applies regardless of the percentage. At 40% contributorily negligent, the claimant recovers 60% of damages. This is not a threshold — it is a proportionate reduction."
+            },
+            {
+              "text": "£1,200 (60% of £2,000, as the claimant is 40% at fault)",
+              "correct": true,
+              "explanation": "Contributory negligence reduces recovery by the proportion of fault. If the claimant is 40% at fault, they recover 60% of their losses. The CHO recovers £1,200 of the £2,000 hire charges."
+            },
+            {
+              "text": "£800 (40% of £2,000, representing the third party's proportion of fault)",
+              "correct": false,
+              "explanation": "This reverses the calculation. The claimant's contributory negligence (40%) is deducted from their recovery (100% - 40% = 60% recoverable)."
+            },
+            {
+              "text": "£0 (as the claimant contributed to the accident, they cannot recover)",
+              "correct": false,
+              "explanation": "The Law Reform (Contributory Negligence) Act 1945 allows recovery even where the claimant is contributorily negligent — recovery is simply reduced proportionately."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s03",
+        "number": 3,
+        "title": "Denied liability and its consequences",
+        "duration_minutes": 20,
+        "concept": "When the at-fault insurer denies liability entirely, the credit hire claim enters its most precarious phase. The hire may still be running, the claimant still needs a vehicle, but recovery depends on overturning the denial — typically through litigation. The CHO faces a commercial decision: continue providing the vehicle (increasing exposure) or terminate (abandoning the claimant). Understanding the implications of denied liability is essential for every practitioner.",
+        "content_points": [
+          "Common grounds for denial: disputed facts ('we dispute your account'), policy issues ('your policyholder's policy was voided'), fraud allegations, or procedural defects",
+          "Effect of denial on the GTA process: the insurer typically refuses to engage with the GTA, reserving their position, while continuing to deny liability",
+          "CHO options when liability is denied: terminate the hire (claimant loses vehicle), continue hire (CHO's exposure increases), or seek pre-litigation negotiation",
+          "The claimant's continuing need despite denial: the claimant still requires a vehicle even if liability is denied; the CHO's obligation to the claimant is separate from the third party's liability position",
+          "Role of independent evidence: dashcam footage, CCTV, witness statements, and police reports are critical to overturning a denial",
+          "Early evidence gathering: within days of the incident, evidence becomes stale; the CHO should encourage the claimant to obtain dashcam footage, identify witnesses, and request police attendance",
+          "Cost-benefit of continuing hire under denial: continuing to provide a hire vehicle at £65-£100/day while pursuing a contested claim may be uneconomic if litigation costs exceed likely recovery"
+        ],
+        "scenario": {
+          "text": "A parked car is struck by another vehicle. The claimant was inside a cafe and did not witness the collision. They have a photograph of the third party's vehicle at the scene with fresh damage to the offside front quarter. The third-party insurer denies liability entirely, claiming their policyholder was not in the area at the time of the collision and suggesting the claimant has misidentified the vehicle. There are no independent witnesses. No police attendance. The CHO is 5 days into the hire at £70/day. The claimant wants the hire to continue while they pursue the claim.",
+          "teaching_points": [
+            "This is a classic denied liability position: the claimant has circumstantial evidence (the photograph) but no conclusive proof",
+            "The third-party insurer's denial is a factual claim ('our policyholder was not in the area') that the claimant must refute with independent evidence",
+            "The claimant's photograph is strong evidence but is not conclusive — it shows a vehicle with damage, but the insurer can argue misidentification or that the damage was pre-existing",
+            "The CHO should immediately advise the claimant to: (1) check if there are nearby CCTV cameras that filmed the collision or the third party's vehicle at the scene, (2) obtain the police report if officers attended, (3) identify any witnesses who saw the collision",
+            "If CCTV shows the third party's vehicle at the scene, the denial becomes very weak and is likely to be withdrawn",
+            "If no CCTV exists and there are no witnesses, the claim may proceed to litigation on the balance of probabilities — the claimant's photograph and account versus the insurer's denial",
+            "The CHO must assess: is the cost of continuing the hire (£70 × ongoing days) justifiable given the weak evidence position? If the claim is lost in litigation, all hire costs are unrecovered."
+          ]
+        },
+        "knowledge_check": {
+          "question": "When an insurer denies liability, what is the primary consequence for the CHO?",
+          "options": [
+            {
+              "text": "The CHO must immediately terminate the hire to avoid further exposure",
+              "correct": false,
+              "explanation": "While early termination reduces exposure, it is not mandatory. The CHO must assess the evidence and the claimant's need. A strong liability position may justify continuing the hire despite initial denial."
+            },
+            {
+              "text": "Recovery depends on overturning the denial, typically through evidence and potentially litigation, increasing the CHO's commercial risk",
+              "correct": true,
+              "explanation": "When liability is denied, the CHO cannot rely on the insurer's agreement or the GTA process. Recovery is contingent on the claimant successfully establishing liability — often requiring litigation. This significantly increases the CHO's exposure."
+            },
+            {
+              "text": "The CHO can recover hire charges from the claimant's own insurer under the credit hire agreement",
+              "correct": false,
+              "explanation": "The credit hire agreement is between the CHO and the claimant. The CHO's right to recover is against the third party (or the claimant's insurer if they are subrogated), not as a matter of contract with the claimant."
+            },
+            {
+              "text": "The insurer's denial automatically extinguishes the claimant's right to claim against the tortfeasor",
+              "correct": false,
+              "explanation": "An insurer's denial does not extinguish the claimant's legal right to claim against the tortfeasor. The denial is the insurer's assertion of defence, which may be challenged and overcome through evidence and litigation."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s04",
+        "number": 4,
+        "title": "Knock-for-knock and insurer agreements",
+        "duration_minutes": 18,
+        "concept": "Knock-for-knock agreements between insurers are private bilateral arrangements under which each insurer bears its own policyholder's losses regardless of fault. These agreements do not bind the claimant or the CHO, but they significantly affect the insurer's willingness to engage with credit hire claims. A CHO must understand that knock-for-knock is an inter-insurer convenience, not a legal defence to a valid credit hire claim.",
+        "content_points": [
+          "Definition of knock-for-knock: a bilateral insurer agreement in which each insurer bears its own policyholder's losses regardless of fault, avoiding legal liability determinations",
+          "Purpose of knock-for-knock: administrative efficiency and cost reduction between insurers; avoiding dispute and litigation",
+          "Why insurers use knock-for-knock: it is faster and cheaper than determining fault; it applies to their own losses (damage to their policyholder's vehicle) but not to third-party claims",
+          "Critical distinction: knock-for-knock is an inter-insurer arrangement; it does not bind the claimant or override the claimant's legal right to claim against the tortfeasor",
+          "Common insurer argument: 'this is a knock-for-knock claim, we will not be paying your hire charges' — this is incorrect; knock-for-knock does not extinguish credit hire claims",
+          "The claimant's legal entitlement: the claimant has a legal right to recover hire charges from the tortfeasor regardless of whether the insurers have agreed knock-for-knock",
+          "GTA relationship with knock-for-knock: knock-for-knock does not provide the insurer with a reason to refuse to engage with a valid GTA; the claimant's liability position is independent of the insurers' internal arrangement"
+        ],
+        "scenario": {
+          "text": "Two vehicles collide at a junction. Liability is clear: the third-party driver failed to see the claimant's vehicle and pulled out unsafely. The third-party insurer admits liability in the GTA response. However, the insurer then states: 'We will settle this claim on a knock-for-knock basis. We will pay for the damage to your policyholder's vehicle, but we will not be paying any hire charges. You should claim the hire costs from your own insurer.' The CHO's claimant has no hire cover under their own policy. The insurer is effectively saying: 'We admit you are not at fault, but we will not pay for the hire.'",
+          "teaching_points": [
+            "The insurer's statement is contradictory: they admit liability ('clear fault' on their side) but refuse to pay hire charges based on knock-for-knock",
+            "Knock-for-knock is an inter-insurer arrangement; it does not affect the tortfeasor's legal liability to the claimant",
+            "The insurer is conflating two separate issues: (1) damage to the vehicle (which they may settle knock-for-knock with the claimant's insurer), and (2) hire charges (which are a separate loss flowing from the tortfeasor's negligence)",
+            "The claimant's insurer is not a party to the credit hire claim — the claimant hired the vehicle directly from the CHO, and the CHO's claim is against the tortfeasor's insurer",
+            "The correct response to the insurer is: 'We acknowledge your knock-for-knock arrangement with our claimant's insurer. However, this does not extinguish your policyholder's liability for the claimant's hire charges. The claimant has incurred these charges as a direct result of your policyholder's negligence and has a legal right to recover them.'",
+            "The CHO should be prepared to pursue this claim to litigation if the insurer persists in refusing to pay hire charges despite admitting liability"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Why does a knock-for-knock agreement between insurers not defeat a valid credit hire claim?",
+          "options": [
+            {
+              "text": "Because knock-for-knock agreements are illegal and unenforceable under UK law",
+              "correct": false,
+              "explanation": "Knock-for-knock agreements are legal and enforceable between the insurers as a private arrangement. However, they do not bind third parties (the claimant or the CHO) to their terms."
+            },
+            {
+              "text": "Because knock-for-knock is a private inter-insurer arrangement that does not affect the claimant's legal right to claim against the tortfeasor",
+              "correct": true,
+              "explanation": "Knock-for-knock affects how the insurers apportion losses between themselves, but it does not extinguish the claimant's legal entitlement to recover damages (including hire charges) from the tortfeasor. The claimant is not a party to the knock-for-knock agreement."
+            },
+            {
+              "text": "Because credit hire claims are always exempt from knock-for-knock arrangements",
+              "correct": false,
+              "explanation": "There is no exemption for credit hire claims. However, knock-for-knock does not apply to credit hire claims in the sense that the claimant's legal right to claim hire charges is not affected by the insurers' private arrangement."
+            },
+            {
+              "text": "Because the CHO can always recover hire charges from the claimant's own insurer",
+              "correct": false,
+              "explanation": "The CHO has no contractual relationship with the claimant's insurer. The CHO's right to recover is against the tortfeasor (or the tortfeasor's insurer). Knock-for-knock does not change this fundamental principle."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s05",
+        "number": 5,
+        "title": "Practical liability assessment for credit hire",
+        "duration_minutes": 20,
+        "concept": "Every credit hire claim should begin with a liability assessment. This is not a legal opinion — it is a practical, structured evaluation of the available evidence to determine the likely liability outcome. A strong liability assessment at the outset protects the CHO's commercial position, supports appropriate hire decisions, and provides the foundation for every subsequent step in the claims process.",
+        "content_points": [
+          "Key evidence to gather at inception: police report (if available), dashcam footage (claimant's and third party's if obtainable), witness details and statements, photographs of vehicle damage and scene, weather and road conditions at the time",
+          "Using the Highway Code to assess fault indicators: failure to check mirrors/blind spots, excessive speed, failure to indicate, emerging without giving way, sudden lane changes, tailgating, parked vehicle obligations",
+          "The Forum's liability matrix as a reference tool: a structured framework for assessing liability in common RTA scenarios (e.g. roundabouts, junctions, lane changes, rear-end collisions)",
+          "Red flags that suggest liability will be disputed: conflicting accounts with no independent corroboration, claimant's failure to recall details, third party's early denial, absence of police attendance, lack of witness statements",
+          "Role of engineers' reports in liability disputes: engineer experts assess damage patterns, vehicle speeds, and impact mechanics; an engineer's report can strengthen or weaken a liability position",
+          "Documenting liability assessment and keeping it under review: record the liability position at inception, the evidence available, and the assessment reasoning; reassess as new evidence emerges",
+          "When to seek legal advice on liability: if the claim is marginal (50/50), if the third party is denying despite strong evidence, if there are fraud allegations, or if the case involves complex causation"
+        ],
+        "scenario": {
+          "text": "A claimant calls 2 hours after a roundabout collision. They say they were traveling on the roundabout, slowed to exit, and another vehicle (approaching the roundabout from the right) hit them on the offside. The claimant says the other driver 'came from nowhere' and failed to give way. They have no dashcam, no phone-recorded details, no witnesses ('everyone just drove off'), and the police did not attend. The claimant's vehicle has damage to the offside rear quarter panel. The CHO has no information from the third party yet. The claimant wants an immediate credit hire vehicle so they can continue working. You must decide: (1) Is liability likely? (2) Should a hire vehicle be provided now?",
+          "teaching_points": [
+            "Roundabout collisions are common and often involve split liability, especially where both drivers claim the other failed to give way",
+            "The claimant's account ('came from nowhere') is a common phrase but is not precise; it suggests the claimant may not have been aware of the approaching vehicle or misjudged its speed",
+            "The absence of independent evidence is a major red flag: no dashcam, no witnesses, no police report means the claim rests on the claimant's account versus the third party's account",
+            "The damage pattern (offside rear quarter) is consistent with a near-side vehicle hitting the claimant's rear — this supports the claimant's account, but does not prove it alone",
+            "Highway Code principles on roundabouts: vehicles on the roundabout have priority; approaching vehicles must give way. If the claimant was already on the roundabout, liability favours the claimant. If the claimant was entering, liability may favour the approaching vehicle or be split",
+            "At this stage, the CHO cannot determine liability with confidence. The assessment is: 'Liability is uncertain pending the third party's account and any independent evidence (CCTV, witnesses, police report if obtainable).'",
+            "Hiring decision: The CHO should provide a hire vehicle, but with a clear understanding that this is a moderate-risk liability claim. The CHO should immediately advise the claimant to: (1) obtain police report details, (2) identify and contact any witnesses (even passing vehicles may have CCTV), (3) check for nearby traffic cameras, (4) describe the third party's vehicle and driver for later identification",
+            "The CHO should review the liability assessment within 5-7 days when the third-party insurer's response and any police report are available"
+          ]
+        },
+        "knowledge_check": {
+          "question": "What is the purpose of a practical liability assessment at the inception of a credit hire claim?",
+          "options": [
+            {
+              "text": "To provide a legal opinion on whether the claim will succeed in court",
+              "correct": false,
+              "explanation": "A practical liability assessment is not a legal opinion. It is a structured evaluation of available evidence to estimate liability likelihood. Only a solicitor can provide a legal opinion."
+            },
+            {
+              "text": "To protect the CHO's commercial position by evaluating evidence and determining the likely liability outcome, informing the hiring decision and claim strategy",
+              "correct": true,
+              "explanation": "A liability assessment at inception allows the CHO to assess commercial risk, decide whether to provide a hire vehicle, estimate recovery likelihood, and plan the claim strategy. This protects the CHO's exposure and supports informed decision-making."
+            },
+            {
+              "text": "To determine the quantum of hire charges the claimant is entitled to",
+              "correct": false,
+              "explanation": "Quantum (hire charges) is determined by need, period, and rate — the second, third, and fourth stages of the test. Liability assessment is the first stage and determines whether a claim exists at all."
+            },
+            {
+              "text": "To ensure the claimant does not pursue a frivolous claim",
+              "correct": false,
+              "explanation": "While a liability assessment may highlight weak positions, its purpose is to inform the CHO's commercial decision-making, not to gatekeep the claimant's right to pursue a claim."
+            }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "pass_mark": 75,
+      "questions": [
+        {
+          "type": "multiple_choice",
+          "question": "Why is liability described as the 'threshold question' in credit hire?",
+          "options": [
+            "Because it determines which GTA rate table applies to the claim",
+            "Because without established third-party fault, there is no tortfeasor to pursue and no basis for recovery of hire charges",
+            "Because it determines whether the claimant needs a solicitor",
+            "Because it sets the maximum duration of the hire period"
+          ],
+          "correct": 1,
+          "explanation": "Liability is the gateway to recovery. If the third party is not at fault, there is no claim against them or their insurer. Only once liability is established (or likely) does the claim proceed to the assessment of need, period, and rate."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A claimant is found 25% contributorily negligent for a collision. Hire charges total £2,000. How much is the claimant likely to recover?",
+          "options": [
+            "£2,000 — contributory negligence below 50% does not reduce recovery",
+            "£500 — the claimant only recovers their percentage of fault",
+            "£1,500 — recovery is reduced by 25% under the Law Reform (Contributory Negligence) Act 1945",
+            "£0 — any contributory negligence bars recovery entirely"
+          ],
+          "correct": 2,
+          "explanation": "Under the Law Reform (Contributory Negligence) Act 1945, recovery is reduced proportionately. If the claimant is 25% at fault, they recover 75% of their losses. 75% of £2,000 = £1,500."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "An insurer admits liability on Day 2 but withdraws the admission on Day 11 after obtaining new dashcam evidence. What is the impact on the CHO's position?",
+          "options": [
+            "The withdrawal is unlawful — once liability is admitted it cannot be withdrawn",
+            "The claim is automatically dismissed and the CHO must write off all costs",
+            "The claim transforms from low-risk to high-risk, and the CHO must reassess whether to continue the hire given increased commercial exposure",
+            "The CHO can recover all hire charges up to Day 11 regardless of the withdrawal"
+          ],
+          "correct": 2,
+          "explanation": "An admission of liability can be withdrawn if new evidence undermines it. This transforms the claim from low-risk to high-risk. The CHO must reassess its commercial exposure and decide whether to continue providing the hire vehicle given the now-uncertain recovery position."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "An insurer tells a CHO: 'We are settling this claim knock-for-knock with the claimant's insurer. We will pay vehicle damage but not hire charges.' Liability has been admitted. How should the CHO respond?",
+          "options": [
+            "Accept the insurer's position since knock-for-knock is a binding legal determination",
+            "Refer the claimant to recover hire charges from their own insurer",
+            "Challenge the insurer — knock-for-knock is an inter-insurer arrangement that does not extinguish the claimant's legal right to recover hire charges from the tortfeasor",
+            "Terminate the hire immediately and pursue a claim against the claimant personally"
+          ],
+          "correct": 2,
+          "explanation": "Knock-for-knock is a private bilateral arrangement between insurers. It does not bind the claimant or the CHO, and it does not override the claimant's legal right to recover hire charges from the tortfeasor. The insurer's admission of liability creates an obligation to pay all foreseeable losses including hire."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A roundabout collision occurs with no dashcam, no witnesses, and no police attendance. The claimant says the other driver failed to give way; the third party disputes this. What should the CHO do at inception?",
+          "options": [
+            "Refuse to provide a hire vehicle because liability cannot be determined",
+            "Provide the vehicle and assume the claim will succeed",
+            "Conduct a practical liability assessment, provide the vehicle with caution as a moderate-risk claim, and advise the claimant to gather evidence such as CCTV and witness details",
+            "Wait for the insurer to admit or deny liability before making any decision"
+          ],
+          "correct": 2,
+          "explanation": "The CHO should conduct a structured liability assessment at inception, weighing the evidence available. Without independent evidence, this is a moderate-risk claim. The CHO should provide the vehicle but advise the claimant to urgently gather supporting evidence, and reassess within 5-7 days."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "In a split liability scenario where the insurer offers to settle at 50/50 on hire charges of £1,800, what amount would the CHO recover if the offer is accepted?",
+          "options": [
+            "£1,800 — split liability does not affect hire charge recovery",
+            "£900 — the claimant recovers 50% of their losses at 50/50 apportionment",
+            "£450 — each party bears 25% of the total cost",
+            "£0 — at 50/50 neither party can recover from the other"
+          ],
+          "correct": 1,
+          "explanation": "At 50/50 apportionment, the claimant is 50% at fault and recovers 50% of their hire charges. 50% of £1,800 = £900. The insurer's offer is a commercial position that the CHO must evaluate against the cost and risk of pursuing a better apportionment."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Which of the following is the strongest piece of evidence for overturning an insurer's denial of liability in a parked vehicle collision?",
+          "options": [
+            "The claimant's verbal account of the incident",
+            "CCTV footage showing the third party's vehicle at the scene making contact with the claimant's vehicle",
+            "A social media post by the claimant describing the collision",
+            "The claimant's motor insurance renewal document"
+          ],
+          "correct": 1,
+          "explanation": "CCTV footage is independent, objective evidence that can directly show the third party's vehicle at the scene and the collision occurring. It is far stronger than verbal accounts or social media posts, which are subjective and can be challenged."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: A knock-for-knock agreement between two insurers extinguishes the claimant's legal right to recover credit hire charges from the at-fault party.",
+          "correct": 1,
+          "explanation": "False. Knock-for-knock is a private inter-insurer arrangement for administrative convenience. It does not bind the claimant or affect their legal right to recover damages (including hire charges) from the tortfeasor. The claimant is not a party to the knock-for-knock agreement."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Once an insurer admits liability in writing, that admission cannot later be withdrawn.",
+          "correct": 1,
+          "explanation": "False. An admission of liability can be withdrawn if new evidence emerges that undermines it, such as dashcam footage contradicting the claimant's account. CHOs should not treat an initial admission as conclusive and should remain prepared for the possibility of withdrawal."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: The burden of proof in a road traffic accident claim rests on the claimant, who must prove on the balance of probabilities that the third party was at fault.",
+          "correct": 0,
+          "explanation": "True. In civil claims arising from RTAs, the claimant bears the burden of proving on the balance of probabilities (more likely than not) that the third party was negligent and caused the accident. This is a lower standard than the criminal standard of beyond reasonable doubt."
+        }
+      ]
+    },
+    "ai_tutor": {
+      "system_prompt_per_section": {
+        "s01": "You are a credit hire training tutor for Section 1 of Module 3: Liability fundamentals in credit hire. The learner is working through a scenario about a rear-end collision where the third-party insurer admits liability, then withdraws the admission after dashcam footage emerges. Guide the learner to identify: (1) why admission can be withdrawn if new evidence undermines it, (2) how withdrawn admission transforms the claim from low-risk to high-risk, and (3) what commercial decision the CHO must make when exposure increases. Ask probing questions: What evidence could the insurer use to challenge the admission? Should the CHO have been more cautious despite the initial admission? How does this affect the hire cost-benefit? Keep responses to 2-4 sentences. After 6-8 exchanges summarise what they have learned about liability as a threshold and its vulnerability to new evidence.",
+        "s02": "You are a credit hire training tutor for Section 2 of Module 3: Split liability and contributory negligence. The learner is working through a scenario about a T-junction collision where the insurer offers 50/50 settlement on a claim for £1,350 hire charges. Guide the learner to identify: (1) the calculation of recoverable amount at 50% apportionment (£675), (2) whether the insurer's settlement offer is binding or negotiable, and (3) the cost-benefit of pursuing litigation to improve apportionment. Ask probing questions: What would the claimant recover at 70/30 apportionment versus 50/50? Is the additional £270 (for 20% improvement) worth the litigation cost? What happens if the claim is lost entirely? Keep responses to 2-4 sentences. After 6-8 exchanges summarise what they have learned about calculating split liability recovery and assessing settlement offers.",
+        "s03": "You are a credit hire training tutor for Section 3 of Module 3: Denied liability and its consequences. The learner is working through a scenario about a parked vehicle hit while unattended, with a photograph as evidence but the insurer denying liability. Guide the learner to identify: (1) what evidence is needed to overcome the insurer's denial (CCTV, witnesses, police report), (2) the cost of continuing hire versus the risk of unrecovered costs, and (3) when to pursue litigation versus accepting the claim may be unrecoverable. Ask probing questions: What is the strength of the claimant's photograph alone? Would CCTV change the insurer's position? If CCTV is unavailable, should the CHO continue hiring? What is the break-even point? Keep responses to 2-4 sentences. After 6-8 exchanges summarise what they have learned about assessing denied liability claims and managing CHO exposure.",
+        "s04": "You are a credit hire training tutor for Section 4 of Module 3: Knock-for-knock and insurer agreements. The learner is working through a scenario where the insurer admits clear liability but refuses to pay hire charges based on knock-for-knock. Guide the learner to identify: (1) the distinction between knock-for-knock (an inter-insurer arrangement) and the claimant's legal right to recover, (2) why knock-for-knock does not extinguish credit hire claims, and (3) how to challenge the insurer's incorrect position. Ask probing questions: Is the claimant a party to the knock-for-knock agreement? Does the insurer's private arrangement with another insurer affect the claimant's liability claim? What is the correct legal response? Keep responses to 2-4 sentences. After 6-8 exchanges summarise what they have learned about why knock-for-knock is irrelevant to credit hire claims.",
+        "s05": "You are a credit hire training tutor for Section 5 of Module 3: Practical liability assessment for credit hire. The learner is working through a scenario about a roundabout collision where the claimant has no dashcam, no witnesses, and the police did not attend. Guide the learner to identify: (1) what evidence to gather immediately (police report, CCTV, witness details), (2) how to apply the Highway Code to assess fault (roundabout priority rules), and (3) whether to provide a hire vehicle given the liability uncertainty. Ask probing questions: What is the liability position with no independent evidence? What immediate steps should the claimant take? Is this a moderate-risk or high-risk claim? How should the CHO manage this hiring decision? Keep responses to 2-4 sentences. After 6-8 exchanges summarise what they have learned about conducting practical liability assessments and informing hiring decisions."
+      }
+    },
+    "further_reading": {
+      "cases": [
+        {
+          "name": "Fitzgerald v Lane [1989] AC 328",
+          "topic": "Contributory negligence",
+          "significance": "Landmark House of Lords decision establishing the principles of apportionment under the Law Reform (Contributory Negligence) Act 1945. Demonstrates how contributory negligence is applied proportionately to reduce recovery.",
+          "relevance": "Essential authority for understanding split liability and how contributory negligence reduces credit hire recovery."
+        },
+        {
+          "name": "Eagle v Chambers [2004] EWCA Civ 1033",
+          "topic": "Apportionment in motor claims",
+          "significance": "Court of Appeal decision on how fault is apportioned in roundabout and junction collisions where both parties claim the other was at fault.",
+          "relevance": "Provides guidance on assessing liability in common RTA scenarios relevant to credit hire assessment."
+        },
+        {
+          "name": "Baker v Willoughby [1970] AC 467",
+          "topic": "Causation and remoteness in negligence",
+          "significance": "House of Lords decision on causation; establishes that negligence need not be the sole cause of loss. Even if the claimant's loss is caused partly by the claimant's own negligence, they may still recover for the third party's contribution.",
+          "relevance": "Supports the principle that contributory negligence does not bar recovery entirely, only reduces it proportionately."
+        },
+        {
+          "name": "Sofi v Prudential Assurance Co Ltd [1993] 2 Lloyd's Rep 567",
+          "topic": "Knock-for-knock and insurer agreements",
+          "significance": "Court decision clarifying that knock-for-knock agreements are private arrangements between insurers and do not bind third parties (claimants or CHOs) or override statutory rights to claim.",
+          "relevance": "Critical authority for understanding why knock-for-knock does not defeat credit hire claims and how to challenge insurers' reliance on knock-for-knock."
+        }
+      ],
+      "forum_search_queries": [
+        "Split liability roundabout collision apportionment contributory negligence",
+        "Denied liability parked vehicle CCTV evidence overturn insurer denial",
+        "Knock-for-knock agreement credit hire claimant legal entitlement",
+        "Liability disputed rear-end collision dashcam evidence Highway Code",
+        "T-junction collision 50/50 liability settlement offer assessment"
+      ]
+    }
+  }
+}

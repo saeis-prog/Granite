@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask the Oracle — Admin</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="brand.js"></script>
+  <style>
+    :root {
+      --navy: #0f1e3c;
+      --navy-light: #1a2f5e;
+      --gold: #c9a84c;
+      --white: #ffffff;
+      --off-white: #f5f6f8;
+      --text: #2d3748;
+      --text-light: #718096;
+      --border: #e2e8f0;
+      --green: #15803d;
+      --green-bg: #dcfce7;
+      --red: #b91c1c;
+      --red-bg: #fee2e2;
+      --amber: #92400e;
+      --amber-bg: #fef3c7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Arial', sans-serif; background: var(--off-white); color: var(--text); }
+
+    /* LOGIN */
+    #login-screen {
+      min-height: 100vh; display: flex;
+      align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3a6e 100%);
+      padding: 2rem;
+    }
+    .login-card {
+      background: var(--white); border-radius: 14px;
+      padding: 2.5rem; width: 100%; max-width: 380px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .login-logo {
+      font-family: 'Georgia', serif; font-size: 1.3rem;
+      color: var(--navy); text-align: center; margin-bottom: 0.3rem;
+    }
+    .login-logo span { color: var(--gold); }
+    .login-sub {
+      text-align: center; font-size: 0.78rem;
+      color: var(--text-light); margin-bottom: 2rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block; font-size: 0.78rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.35rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .form-group input {
+      width: 100%; padding: 0.65rem 0.85rem;
+      border: 1.5px solid var(--border); border-radius: 7px;
+      font-size: 0.9rem; outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus { border-color: var(--navy); }
+    .btn-login {
+      width: 100%; padding: 0.75rem; background: var(--navy);
+      color: var(--white); border: none; border-radius: 7px;
+      font-size: 0.95rem; font-weight: 700; cursor: pointer;
+      transition: background 0.2s; margin-top: 0.25rem;
+    }
+    .btn-login:hover { background: var(--navy-light); }
+
+    /* ALERT BADGES */
+    .alert-badge {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    }
+    .badge-modified { background: var(--red-bg); color: var(--red); }
+    .badge-missing  { background: var(--amber-bg); color: var(--amber); }
+    .badge-new      { background: #dbeafe; color: #1e40af; }
+    .badge-resolved { background: var(--green-bg); color: var(--green); }
+    .alert-detail { font-size: 0.75rem; color: var(--text-light); max-width: 220px; word-break: break-word; }
+    .btn-resolve {
+      background: var(--green); color: var(--white); border: none;
+      padding: 4px 10px; border-radius: 5px; font-size: 0.75rem;
+      cursor: pointer; font-weight: 600;
+    }
+    .btn-resolve:hover { background: #16a34a; }
+    .login-msg {
+      margin-top: 0.75rem; padding: 0.6rem; border-radius: 6px;
+      font-size: 0.82rem; text-align: center; display: none;
+    }
+    .login-msg.error { background: var(--red-bg); color: var(--red); display: block; }
+
+    /* ADMIN LAYOUT */
+    #admin-screen { display: none; min-height: 100vh; flex-direction: column; }
+    #admin-screen.visible { display: flex; }
+
+    .admin-topbar {
+      background: var(--navy); height: 56px;
+      display: flex; align-items: center;
+      padding: 0 1.5rem; gap: 1rem;
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+      flex-shrink: 0;
+    }
+    .admin-logo { font-family: 'Georgia', serif; font-size: 1.1rem; color: var(--white); }
+    .admin-logo span { color: var(--gold); }
+    .admin-badge {
+      background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.35);
+      color: var(--gold); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.25rem 0.7rem; border-radius: 4px;
+    }
+    .admin-topbar-right {
+      margin-left: auto; display: flex; align-items: center; gap: 0.75rem;
+    }
+    .admin-user { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .btn-signout {
+      background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.15); padding: 0.3rem 0.75rem;
+      border-radius: 5px; font-size: 0.78rem; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-signout:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+
+    .admin-body { flex: 1; overflow: auto; padding: 2rem; }
+    .admin-wrap { max-width: 900px; margin: 0 auto; }
+
+    /* STATS ROW */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .stat-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .stat-icon.pending-icon { background: var(--amber-bg); }
+    .stat-icon.approved-icon { background: var(--green-bg); }
+    .stat-icon.total-icon { background: #eff6ff; }
+    .stat-num { font-size: 1.75rem; font-weight: 700; color: var(--navy); line-height: 1; }
+    .stat-label { font-size: 0.75rem; color: var(--text-light); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* SECTION */
+    .section { background: var(--white); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 1.5rem; overflow: hidden; }
+    .section-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--off-white);
+      cursor: pointer;
+      user-select: none;
+    }
+    .section-header:hover { background: #e8ecf0; }
+    .section-header h2 { font-size: 0.95rem; color: var(--navy); font-weight: 700; }
+    .section-header h2::before { content: '▾ '; font-size: 0.8rem; color: var(--text-light); }
+    .section.collapsed .section-header h2::before { content: '▸ '; }
+    .section.collapsed .section-body { display: none; }
+    .section.collapsed .section-header { border-bottom: none; }
+    .section-header p { font-size: 0.78rem; color: var(--text-light); margin-top: 0.15rem; }
+    .refresh-btn {
+      background: none; border: 1px solid var(--border);
+      color: var(--text-light); padding: 0.35rem 0.75rem;
+      border-radius: 6px; font-size: 0.8rem; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .refresh-btn:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* USER TABLE */
+    .user-table { width: 100%; border-collapse: collapse; }
+    .user-table th {
+      text-align: left; padding: 0.7rem 1.25rem;
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-light);
+      border-bottom: 1px solid var(--border); background: var(--off-white);
+    }
+    .user-table td {
+      padding: 0.85rem 1.25rem;
+      font-size: 0.875rem; color: var(--text);
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .user-table tr:last-child td { border-bottom: none; }
+    .user-table tr:hover td { background: #fafafa; }
+    .user-name { font-weight: 600; color: var(--navy); }
+    .user-email { font-size: 0.8rem; color: var(--text-light); }
+    .user-date { font-size: 0.8rem; color: var(--text-light); white-space: nowrap; }
+
+    .btn-approve {
+      background: var(--green-bg); color: var(--green);
+      border: 1px solid #86efac; padding: 0.35rem 0.9rem;
+      border-radius: 6px; font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; transition: all 0.15s; white-space: nowrap;
+    }
+    .btn-approve:hover { background: #bbf7d0; }
+    .btn-approve:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .btn-revoke {
+      background: var(--red-bg); color: var(--red);
+      border: 1px solid #fca5a5; padding: 0.35rem 0.9rem;
+      border-radius: 6px; font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; transition: all 0.15s; white-space: nowrap;
+    }
+    .btn-revoke:hover { background: #fecaca; }
+    .btn-revoke:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .btn-delete {
+      background: #fff1f2; color: #9f1239;
+      border: 1px solid #fda4af; padding: 0.35rem 0.9rem;
+      border-radius: 6px; font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; transition: all 0.15s; white-space: nowrap;
+      margin-left: 0.4rem;
+    }
+    .btn-delete:hover { background: #ffe4e6; }
+    .btn-delete:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .empty-row td {
+      text-align: center; padding: 2rem;
+      color: var(--text-light); font-style: italic;
+    }
+
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: var(--navy); color: var(--white);
+      padding: 0.75rem 1.25rem; border-radius: 8px;
+      font-size: 0.875rem; opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 999;
+    }
+    .toast.show { opacity: 1; }
+
+    /* AUTO-APPROVAL */
+    .aa-form {
+      display: flex; gap: 0.6rem; flex-wrap: wrap;
+      padding: 1rem 1.25rem; border-bottom: 1px solid var(--border);
+      background: var(--off-white);
+    }
+    .aa-form select, .aa-form input {
+      padding: 0.5rem 0.75rem; border: 1.5px solid var(--border);
+      border-radius: 7px; font-size: 0.875rem; background: var(--white);
+    }
+    .aa-form input { flex: 1; min-width: 180px; }
+    .aa-form input:focus, .aa-form select:focus { outline: none; border-color: var(--navy); }
+    .btn-add {
+      background: var(--navy); color: var(--white);
+      border: none; border-radius: 7px; padding: 0.5rem 1.1rem;
+      font-size: 0.875rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+    }
+    .btn-add:hover { background: var(--navy-light); }
+    .btn-remove {
+      background: var(--red-bg); color: var(--red);
+      border: 1px solid #fca5a5; padding: 0.3rem 0.75rem;
+      border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer;
+    }
+    .btn-remove:hover { background: #fecaca; }
+    .tag-domain { background: #dbeafe; color: #1d4ed8; }
+    .tag-email  { background: #dcfce7; color: #15803d; }
+    .aa-tag {
+      display: inline-block; padding: 0.18rem 0.55rem;
+      border-radius: 4px; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 600px) {
+      .stats-row { grid-template-columns: 1fr; }
+      .admin-body { padding: 1rem; }
+      .user-table th:nth-child(3), .user-table td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">Ask the <span>Oracle</span></div>
+    <div class="login-sub">Administrator Access</div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="admin-email" placeholder="sae@credithire.org.uk" autocomplete="email" />
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="admin-password" placeholder="Your password" autocomplete="current-password" />
+    </div>
+    <button class="btn-login" onclick="adminLogin()">Sign In</button>
+    <div id="login-msg" class="login-msg"></div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-screen">
+  <div class="admin-topbar">
+    <div class="admin-logo">Ask the <span>Oracle</span></div>
+    <div class="admin-badge">Admin</div>
+    <div class="admin-topbar-right">
+      <a href="dashboard.html" style="color:rgba(255,255,255,0.6);font-size:0.8rem;text-decoration:none;padding:0.3rem 0.75rem;border:1px solid rgba(255,255,255,0.15);border-radius:5px;">📊 Usage Dashboard</a>
+      <span class="admin-user" id="admin-user-display"></span>
+      <button class="btn-signout" onclick="adminSignOut()">Sign out</button>
+    </div>
+  </div>
+
+  <div class="admin-body">
+    <div class="admin-wrap">
+
+      <!-- STATS -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon pending-icon">⏳</div>
+          <div>
+            <div class="stat-num" id="count-pending">—</div>
+            <div class="stat-label">Awaiting Approval</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon approved-icon">✅</div>
+          <div>
+            <div class="stat-num" id="count-approved">—</div>
+            <div class="stat-label">Approved Users</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon total-icon">👥</div>
+          <div>
+            <div class="stat-num" id="count-total">—</div>
+            <div class="stat-label">Total Registered</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PENDING USERS -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div>
+            <h2>⏳ Pending Approval</h2>
+            <p>These users have registered and are waiting for access</p>
+          </div>
+          <button class="refresh-btn" onclick="event.stopPropagation();loadUsers()">↻ Refresh</button>
+        </div>
+        <div class="section-body">
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Registered</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="pending-tbody">
+            <tr class="empty-row"><td colspan="4">Loading…</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- APPROVED USERS -->
+      <div class="section collapsed">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div>
+            <h2>✅ Approved Users</h2>
+            <p>These users have full access to the site</p>
+          </div>
+        </div>
+        <div class="section-body">
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Registered</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="approved-tbody">
+            <tr class="empty-row"><td colspan="4">Loading…</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- AUTO-APPROVAL LIST -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div>
+            <h2>⚡ Auto-Approval List</h2>
+            <p>Users who register with a matching email or domain are approved instantly — no manual step needed</p>
+          </div>
+          <button class="refresh-btn" onclick="event.stopPropagation();loadAutoApproved()">↻ Refresh</button>
+        </div>
+        <div class="section-body">
+
+        <!-- Add form -->
+        <div class="aa-form">
+          <select id="aa-type">
+            <option value="domain">Domain (whole firm)</option>
+            <option value="email">Email (individual)</option>
+          </select>
+          <input type="text" id="aa-value" placeholder="e.g. lawfirm.co.uk  or  jane@insurer.com" />
+          <input type="text" id="aa-note" placeholder="Label (optional — e.g. firm name)" style="max-width:220px;" />
+          <button class="btn-add" onclick="addAutoApproved()">+ Add</button>
+        </div>
+
+        <!-- List -->
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Email / Domain</th>
+              <th>Label</th>
+              <th>Added</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="aa-tbody">
+            <tr class="empty-row"><td colspan="5">Loading…</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- TEMPLATE ALERTS -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div>
+            <h2>🔔 Template Change Alerts</h2>
+            <p>Detected mismatches between ingested BHR statements and expected templates</p>
+          </div>
+          <button class="refresh-btn" onclick="event.stopPropagation();loadAlerts()">↻ Refresh</button>
+        </div>
+        <div class="section-body">
+
+        <div style="padding:0 1rem 0.75rem;">
+          <label style="font-size:0.78rem;color:var(--text-light);cursor:pointer;">
+            <input type="checkbox" id="show-resolved" onchange="loadAlerts()" /> Show resolved alerts
+          </label>
+        </div>
+
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Type</th>
+              <th>Para</th>
+              <th>Mismatch</th>
+              <th>File</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="alerts-tbody">
+            <tr class="empty-row"><td colspan="7">Loading…</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- BHR APPROVED DOMAINS -->
+      <div class="section collapsed">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div>
+            <h2>🔑 BHR Approved Domains</h2>
+            <p>Manage which organisations can access the BHR Rebuttal tool</p>
+          </div>
+          <button class="refresh-btn" onclick="event.stopPropagation();loadDomains()">↻ Refresh</button>
+        </div>
+        <div class="section-body">
+
+        <!-- Add domain form -->
+        <div style="padding:0.75rem 1rem;border-bottom:1px solid var(--border);display:flex;gap:0.5rem;flex-wrap:wrap;align-items:end;">
+          <div style="flex:1;min-width:140px;">
+            <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Domain</label>
+            <input type="text" id="new-domain" placeholder="smithlaw.co.uk" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;">
+          </div>
+          <div style="flex:1;min-width:140px;">
+            <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Company Name</label>
+            <input type="text" id="new-company" placeholder="Smith & Partners" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;">
+          </div>
+          <div style="flex:1;min-width:160px;">
+            <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Champion #1 Email</label>
+            <input type="email" id="new-champion-email" placeholder="jane@smithlaw.co.uk" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;">
+          </div>
+          <div style="flex:0.7;min-width:120px;">
+            <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Champion #1 Name</label>
+            <input type="text" id="new-champion-name" placeholder="Jane Smith" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;">
+          </div>
+          <div style="flex:1;min-width:160px;">
+            <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Champion #2 Email (optional)</label>
+            <input type="email" id="new-champion-email-2" placeholder="paul@smithlaw.co.uk" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;">
+          </div>
+          <div style="flex:0.7;min-width:120px;">
+            <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Champion #2 Name (optional)</label>
+            <input type="text" id="new-champion-name-2" placeholder="Paul Jones" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;">
+          </div>
+          <div style="display:flex;gap:0.5rem;align-items:center;">
+            <label style="font-size:0.72rem;cursor:pointer;"><input type="checkbox" id="new-chf-member"> CHF</label>
+            <label style="font-size:0.72rem;cursor:pointer;"><input type="checkbox" id="new-training"> Trained</label>
+            <label style="font-size:0.72rem;cursor:pointer;"><input type="checkbox" id="new-active"> Active</label>
+          </div>
+          <button onclick="addDomain()" style="padding:5px 14px;background:var(--navy);color:#fff;border:none;border-radius:4px;font-size:0.82rem;cursor:pointer;">+ Add</button>
+        </div>
+
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Company</th>
+              <th>Champion</th>
+              <th>CHF</th>
+              <th>Trained</th>
+              <th>Active</th>
+              <th>Added</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="domains-tbody">
+            <tr class="empty-row"><td colspan="8">Loading…</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- BHR APPROVED INDIVIDUALS -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div>
+            <h2>👤 BHR Approved Individuals</h2>
+            <p>Per-person BHR Rebuttal access — use for firms that have nominated a subset of users rather than approving the whole domain. At least one individual per organisation should be flagged as Champion so the firm receives changelog notifications.</p>
+          </div>
+          <button class="refresh-btn" onclick="event.stopPropagation();loadApprovedEmails()">↻ Refresh</button>
+        </div>
+        <div class="section-body">
+
+        <!-- Add individual form -->
+        <div style="padding:0.75rem 1rem;border-bottom:1px solid var(--border);display:flex;gap:0.5rem;flex-wrap:wrap;align-items:end;">
+          <div style="flex:1;min-width:180px;">
+            <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Email</label>
+            <input type="email" id="new-ae-email" placeholder="alice@megafirm.co.uk" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;">
+          </div>
+          <div style="flex:1;min-width:140px;">
+            <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Full name</label>
+            <input type="text" id="new-ae-name" placeholder="Alice Smith" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;">
+          </div>
+          <div style="flex:1;min-width:140px;">
+            <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Company name</label>
+            <input type="text" id="new-ae-company" placeholder="Megafirm LLP" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;">
+          </div>
+          <div style="display:flex;gap:0.6rem;align-items:center;">
+            <label style="font-size:0.72rem;cursor:pointer;"><input type="checkbox" id="new-ae-champion"> Champion</label>
+            <label style="font-size:0.72rem;cursor:pointer;"><input type="checkbox" id="new-ae-training"> Trained</label>
+            <label style="font-size:0.72rem;cursor:pointer;"><input type="checkbox" id="new-ae-active" checked> Active</label>
+          </div>
+          <button onclick="addApprovedEmail()" style="padding:5px 14px;background:var(--navy);color:#fff;border:none;border-radius:4px;font-size:0.82rem;cursor:pointer;">+ Add</button>
+        </div>
+
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Name</th>
+              <th>Company</th>
+              <th>Champion</th>
+              <th>Trained</th>
+              <th>Active</th>
+              <th>Added</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="approved-emails-tbody">
+            <tr class="empty-row"><td colspan="8">Loading…</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- ACCESS REQUESTS -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div>
+            <h2>🔔 Access Requests</h2>
+            <p>Users from unapproved domains who attempted to access BHR Rebuttal</p>
+          </div>
+          <button class="refresh-btn" onclick="event.stopPropagation();loadAccessRequests()">↻ Refresh</button>
+        </div>
+        <div class="section-body">
+        <table>
+          <thead><tr>
+            <th>Email</th>
+            <th>Domain</th>
+            <th>Requested</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr></thead>
+          <tbody id="requests-tbody">
+            <tr class="empty-row"><td colspan="5">Loading…</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- CHANGELOG -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div>
+            <h2>📋 Changelog & Notifications</h2>
+            <p>Post template updates and notify BHR Champions</p>
+          </div>
+          <button class="refresh-btn" onclick="event.stopPropagation();loadChangelogEntries()">↻ Refresh</button>
+        </div>
+        <div class="section-body">
+
+        <!-- New changelog entry form -->
+        <div style="padding:0.75rem 1rem;border-bottom:1px solid var(--border);">
+          <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem;">
+            <div style="flex:0 0 120px;">
+              <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Version</label>
+              <input type="text" id="cl-version" placeholder="2026.05.19" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;">
+            </div>
+            <div style="flex:1;">
+              <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Summary (shown in-app)</label>
+              <input type="text" id="cl-summary" placeholder="Updated Arbitrate templates with editorial improvements" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;">
+            </div>
+          </div>
+          <div style="margin-bottom:0.5rem;">
+            <label style="font-size:0.72rem;color:var(--text-light);display:block;margin-bottom:2px;">Detail (included in email to champions)</label>
+            <textarea id="cl-detail" rows="8" placeholder="Use • for bullet points and indent with tab+o for sub-items. Line breaks are preserved.&#10;&#10;• First main point&#10;&#10;• Second main point&#10;&#9;o Sub-item one&#10;&#9;o Sub-item two" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem;resize:vertical;"></textarea>
+          </div>
+          <div style="display:flex;gap:0.5rem;align-items:center;">
+            <label style="font-size:0.78rem;cursor:pointer;"><input type="checkbox" id="cl-send-email" checked> Send email notification to all active champions</label>
+            <button onclick="postChangelog()" style="padding:5px 14px;background:var(--navy);color:#fff;border:none;border-radius:4px;font-size:0.82rem;cursor:pointer;margin-left:auto;">📢 Post & Notify</button>
+          </div>
+        </div>
+
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Summary</th>
+              <th>Posted</th>
+              <th>Notified</th>
+            </tr>
+          </thead>
+          <tbody id="changelog-tbody">
+            <tr class="empty-row"><td colspan="4">Loading…</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const ADMIN_EMAIL = 'sae@credithire.org.uk';
+let sb = null;
+
+function initSB() {
+  try {
+    sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    return true;
+  } catch(e) { return false; }
+}
+
+// ── LOGIN ──
+async function adminLogin() {
+  const email = document.getElementById('admin-email').value.trim();
+  const password = document.getElementById('admin-password').value;
+  const msg = document.getElementById('login-msg');
+  msg.className = 'login-msg'; msg.textContent = '';
+
+  if (!email || !password) { showLoginError('Please enter your email and password.'); return; }
+
+  if (email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
+    showLoginError('Access denied. This panel is for administrators only.');
+    return;
+  }
+
+  if (!sb) { showLoginError('Supabase is not configured.'); return; }
+
+  try {
+    const { data, error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) { showLoginError(error.message); return; }
+    enterAdmin(data.user);
+  } catch(e) {
+    showLoginError('Login failed. Please try again.');
+  }
+}
+
+function showLoginError(msg) {
+  const el = document.getElementById('login-msg');
+  el.textContent = msg;
+  el.className = 'login-msg error';
+}
+
+async function adminSignOut() {
+  if (sb) await sb.auth.signOut();
+  document.getElementById('admin-screen').classList.remove('visible');
+  document.getElementById('login-screen').style.display = 'flex';
+}
+
+function enterAdmin(user) {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-screen').classList.add('visible');
+  document.getElementById('admin-user-display').textContent = user.email;
+  loadUsers();
+  loadAutoApproved();
+  loadAlerts();
+  loadDomains();
+  loadApprovedEmails();
+  loadAccessRequests();
+  loadChangelogEntries();
+}
+
+// ── LOAD USERS ──
+async function loadUsers() {
+  document.getElementById('pending-tbody').innerHTML = '<tr class="empty-row"><td colspan="4">Loading…</td></tr>';
+  document.getElementById('approved-tbody').innerHTML = '<tr class="empty-row"><td colspan="4">Loading…</td></tr>';
+
+  try {
+    const { data, error } = await sb
+      .from('profiles')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    const pending = (data || []).filter(u => !u.approved && !u.rejected && u.email !== ADMIN_EMAIL);
+    const approved = (data || []).filter(u => u.approved && u.email !== ADMIN_EMAIL);
+    const total = (data || []).filter(u => u.email !== ADMIN_EMAIL);
+
+    document.getElementById('count-pending').textContent = pending.length;
+    document.getElementById('count-approved').textContent = approved.length;
+    document.getElementById('count-total').textContent = total.length;
+
+    renderUsers('pending-tbody', pending, true);
+    renderUsers('approved-tbody', approved, false);
+
+  } catch(e) {
+    document.getElementById('pending-tbody').innerHTML = `<tr class="empty-row"><td colspan="4">Error loading users: ${e.message}</td></tr>`;
+    document.getElementById('approved-tbody').innerHTML = '<tr class="empty-row"><td colspan="4">—</td></tr>';
+  }
+}
+
+function renderUsers(tbodyId, users, isPending) {
+  const tbody = document.getElementById(tbodyId);
+  if (!users.length) {
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="4">${isPending ? 'No users awaiting approval' : 'No approved users yet'}</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = users.map(u => `
+    <tr>
+      <td>
+        <div class="user-name">${esc(u.full_name || '—')}</div>
+      </td>
+      <td><div class="user-email">${esc(u.email || '—')}</div></td>
+      <td><div class="user-date">${formatDate(u.created_at)}</div></td>
+      <td>
+        ${isPending
+          ? `<button class="btn-approve" onclick="approveUser('${u.id}', this)">✓ Approve</button>
+             <button class="btn-delete" onclick="deleteUser('${u.id}', '${esc(u.email||'')}', this)">✕ Delete</button>`
+          : `<button class="btn-revoke" onclick="revokeUser('${u.id}', this)">✕ Revoke</button>`
+        }
+      </td>
+    </tr>`).join('');
+}
+
+// ── APPROVE / REVOKE ──
+async function approveUser(id, btn) {
+  btn.disabled = true; btn.textContent = 'Approving…';
+  try {
+    const { error } = await sb
+      .from('profiles')
+      .update({ approved: true })
+      .eq('id', id);
+    if (error) throw error;
+    showToast('User approved ✓');
+    await loadUsers();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+    btn.disabled = false; btn.textContent = '✓ Approve';
+  }
+}
+
+async function revokeUser(id, btn) {
+  if (!confirm('Revoke access for this user? They will see the "awaiting approval" screen on next login.')) return;
+  btn.disabled = true; btn.textContent = 'Revoking…';
+  try {
+    const { error } = await sb
+      .from('profiles')
+      .update({ approved: false })
+      .eq('id', id);
+    if (error) throw error;
+    showToast('Access revoked');
+    await loadUsers();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+    btn.disabled = false; btn.textContent = '✕ Revoke';
+  }
+}
+
+async function deleteUser(id, email, btn) {
+  if (!confirm(`Reject the application from ${email}?\n\nThis removes them from the pending list permanently. They will not be able to register again with the same email address.`)) return;
+  btn.disabled = true; btn.textContent = 'Rejecting…';
+  try {
+    const { error } = await sb
+      .from('profiles')
+      .update({ rejected: true })
+      .eq('id', id);
+    if (error) throw error;
+    showToast('Application rejected ✓');
+    await loadUsers();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+    btn.disabled = false; btn.textContent = '✕ Delete';
+  }
+}
+
+// ── COLLAPSIBLE SECTIONS ──
+function toggleSection(headerEl) {
+  headerEl.closest('.section').classList.toggle('collapsed');
+}
+
+// ── HELPERS ──
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function formatDate(iso) {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── AUTO-APPROVAL ──
+async function loadAutoApproved() {
+  document.getElementById('aa-tbody').innerHTML =
+    '<tr class="empty-row"><td colspan="5">Loading…</td></tr>';
+  try {
+    const { data, error } = await sb
+      .from('auto_approved')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    renderAutoApproved(data || []);
+  } catch(e) {
+    document.getElementById('aa-tbody').innerHTML =
+      `<tr class="empty-row"><td colspan="5">Error: ${esc(e.message)}</td></tr>`;
+  }
+}
+
+function renderAutoApproved(rows) {
+  const tbody = document.getElementById('aa-tbody');
+  if (!rows.length) {
+    tbody.innerHTML = '<tr class="empty-row"><td colspan="5">No entries yet. Add a domain or email above to enable auto-approval.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = rows.map(r => `
+    <tr>
+      <td><span class="aa-tag ${r.type === 'domain' ? 'tag-domain' : 'tag-email'}">${esc(r.type)}</span></td>
+      <td><strong>${esc(r.value)}</strong></td>
+      <td>${esc(r.note || '—')}</td>
+      <td class="user-date">${formatDate(r.created_at)}</td>
+      <td><button class="btn-remove" onclick="removeAutoApproved('${r.id}', this)">Remove</button></td>
+    </tr>`).join('');
+}
+
+async function addAutoApproved() {
+  const type  = document.getElementById('aa-type').value;
+  const value = document.getElementById('aa-value').value.trim().toLowerCase();
+  const note  = document.getElementById('aa-note').value.trim();
+
+  if (!value) { showToast('Please enter an email address or domain.'); return; }
+
+  // Basic validation
+  if (type === 'domain' && value.includes('@')) {
+    showToast('For a domain, enter just the domain part — e.g. lawfirm.co.uk'); return;
+  }
+  if (type === 'email' && !value.includes('@')) {
+    showToast('That does not look like a valid email address.'); return;
+  }
+
+  try {
+    const { error } = await sb.from('auto_approved').insert({ type, value, note: note || null });
+    if (error) throw error;
+    document.getElementById('aa-value').value = '';
+    document.getElementById('aa-note').value  = '';
+    showToast('Added ✓');
+    await loadAutoApproved();
+
+    // Also immediately approve any existing pending users who match
+    if (type === 'domain') {
+      await sb.from('profiles').update({ approved: true })
+        .eq('approved', false)
+        .like('email', `%@${value}`);
+    } else {
+      await sb.from('profiles').update({ approved: true })
+        .eq('approved', false)
+        .eq('email', value);
+    }
+  } catch(e) {
+    showToast('Error: ' + e.message);
+  }
+}
+
+async function removeAutoApproved(id, btn) {
+  if (!confirm('Remove this entry? New registrations from this address or domain will no longer be auto-approved.')) return;
+  btn.disabled = true;
+  try {
+    const { error } = await sb.from('auto_approved').delete().eq('id', id);
+    if (error) throw error;
+    showToast('Removed');
+    await loadAutoApproved();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+    btn.disabled = false;
+  }
+}
+
+// ── TEMPLATE ALERTS ──
+const PROVIDER_LABELS = { verirate: 'VeriRate', whichrate: 'WhichRate', arbitrate: 'Arbitrate', bhrcompare: 'BHR Compare' };
+const MISMATCH_LABELS = { modified_paragraph: 'Modified', missing_paragraph: 'Missing', new_paragraph: 'New', extra_text: 'Extra' };
+const MISMATCH_BADGES = { modified_paragraph: 'badge-modified', missing_paragraph: 'badge-missing', new_paragraph: 'badge-new', extra_text: 'badge-missing' };
+
+async function loadAlerts() {
+  const tbody = document.getElementById('alerts-tbody');
+  if (!tbody) return;
+  tbody.innerHTML = '<tr class="empty-row"><td colspan="7">Loading…</td></tr>';
+
+  const showResolved = document.getElementById('show-resolved')?.checked || false;
+
+  try {
+    let query = sb.from('template_alerts').select('*').order('created_at', { ascending: false }).limit(50);
+    if (!showResolved) {
+      query = query.eq('resolved', false);
+    }
+
+    const { data, error } = await query;
+    if (error) throw error;
+
+    if (!data || data.length === 0) {
+      tbody.innerHTML = '<tr class="empty-row"><td colspan="7">No template alerts found</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = data.map(a => {
+      const provLabel = PROVIDER_LABELS[a.provider] || a.provider;
+      const vType = a.vehicle_type === 'motorcycle' ? 'MC' : 'Car';
+      const mLabel = MISMATCH_LABELS[a.mismatch_type] || a.mismatch_type;
+      const mBadge = MISMATCH_BADGES[a.mismatch_type] || 'badge-missing';
+      const paraLabel = a.section_id ? `${a.section_id}.${a.paragraph_id}` : (a.paragraph_id || '—');
+      const detail = a.mismatch_type === 'modified_paragraph'
+        ? `Expected: "${esc((a.expected_text||'').substring(0,60))}…"<br/>Found: "${esc((a.actual_text||'').substring(0,60))}…"`
+        : a.mismatch_type === 'missing_paragraph'
+          ? `Pattern: "${esc((a.expected_text||'').substring(0,80))}…"`
+          : esc((a.actual_text||'').substring(0, 80));
+      const fileLabel = a.source_file ? esc(a.source_file.length > 25 ? '…' + a.source_file.slice(-22) : a.source_file) : '—';
+
+      const resolvedTag = a.resolved
+        ? `<span class="alert-badge badge-resolved">Resolved</span>`
+        : `<button class="btn-resolve" onclick="resolveAlert('${a.id}', this)">Resolve</button>`;
+
+      return `<tr${a.resolved ? ' style="opacity:0.55;"' : ''}>
+        <td>${esc(provLabel)}<br/><span style="font-size:0.72rem;color:var(--text-light);">${vType}</span></td>
+        <td><span class="alert-badge ${mBadge}">${mLabel}</span></td>
+        <td style="font-weight:600;">${paraLabel}</td>
+        <td class="alert-detail">${detail}</td>
+        <td style="font-size:0.75rem;">${fileLabel}</td>
+        <td class="user-date">${formatDate(a.created_at)}</td>
+        <td>${resolvedTag}</td>
+      </tr>`;
+    }).join('');
+
+  } catch(e) {
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="7">Error: ${esc(e.message)}</td></tr>`;
+  }
+}
+
+async function resolveAlert(id, btn) {
+  const note = prompt('Resolution note (optional):');
+  if (note === null) return; // cancelled
+  btn.disabled = true; btn.textContent = 'Saving…';
+
+  try {
+    const { error } = await sb.from('template_alerts').update({
+      resolved: true,
+      resolved_at: new Date().toISOString(),
+      resolved_by: ADMIN_EMAIL,
+      resolved_notes: note || null
+    }).eq('id', id);
+
+    if (error) throw error;
+    showToast('Alert resolved ✓');
+    await loadAlerts();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+    btn.disabled = false; btn.textContent = 'Resolve';
+  }
+}
+
+// ── BHR APPROVED DOMAINS ──
+async function loadDomains() {
+  const tbody = document.getElementById('domains-tbody');
+  tbody.innerHTML = '<tr class="empty-row"><td colspan="8">Loading…</td></tr>';
+  try {
+    const { data, error } = await sb.from('bhr_approved_domains')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    if (!data || data.length === 0) {
+      tbody.innerHTML = '<tr class="empty-row"><td colspan="8">No approved domains yet</td></tr>';
+      return;
+    }
+    tbody.innerHTML = data.map(d => `<tr>
+      <td><strong>${d.domain}</strong></td>
+      <td>${d.company_name || '—'}</td>
+      <td>${d.champion_name || '—'}<br><span style="font-size:0.75rem;color:var(--text-light);">${d.champion_email || ''}</span>${d.champion_email_2 ? `<br><span style="font-size:0.78rem;margin-top:4px;display:inline-block;">${esc(d.champion_name_2 || '—')}</span><br><span style="font-size:0.75rem;color:var(--text-light);">${esc(d.champion_email_2)}</span>` : ''}</td>
+      <td>${d.chf_member ? '✅' : '❌'}</td>
+      <td>${d.training_completed ? '✅' : '❌'}${d.training_date ? '<br><span style="font-size:0.72rem;color:var(--text-light);">' + d.training_date + '</span>' : ''}</td>
+      <td>${d.is_active ? '<span style="color:#276749;font-weight:700;">ACTIVE</span>' : '<span style="color:#c53030;">INACTIVE</span>'}</td>
+      <td style="font-size:0.75rem;">${new Date(d.created_at).toLocaleDateString('en-GB')}</td>
+      <td>
+        ${d.is_active
+          ? `<button onclick="toggleDomain(${d.id}, false)" style="font-size:0.75rem;padding:3px 8px;background:#fed7d7;color:#c53030;border:1px solid #c53030;border-radius:4px;cursor:pointer;">Deactivate</button>`
+          : `<button onclick="toggleDomain(${d.id}, true)" style="font-size:0.75rem;padding:3px 8px;background:#c6f6d5;color:#276749;border:1px solid #276749;border-radius:4px;cursor:pointer;">Activate</button>`}
+      </td>
+    </tr>`).join('');
+  } catch(e) {
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="8">Error: ${e.message}</td></tr>`;
+  }
+}
+
+async function addDomain() {
+  const domain = document.getElementById('new-domain').value.trim().toLowerCase();
+  const company = document.getElementById('new-company').value.trim();
+  const champEmail = document.getElementById('new-champion-email').value.trim().toLowerCase();
+  const champName = document.getElementById('new-champion-name').value.trim();
+  const champEmail2 = document.getElementById('new-champion-email-2').value.trim().toLowerCase();
+  const champName2 = document.getElementById('new-champion-name-2').value.trim();
+  const chf = document.getElementById('new-chf-member').checked;
+  const trained = document.getElementById('new-training').checked;
+  const active = document.getElementById('new-active').checked;
+
+  if (!domain) { showToast('Domain is required'); return; }
+
+  try {
+    const { error } = await sb.from('bhr_approved_domains').insert({
+      domain,
+      company_name: company || null,
+      champion_email: champEmail || null,
+      champion_name: champName || null,
+      champion_email_2: champEmail2 || null,
+      champion_name_2: champName2 || null,
+      chf_member: chf,
+      training_completed: trained,
+      training_date: trained ? new Date().toISOString().split('T')[0] : null,
+      is_active: active
+    });
+    if (error) throw error;
+    showToast('Domain added ✓');
+    document.getElementById('new-domain').value = '';
+    document.getElementById('new-company').value = '';
+    document.getElementById('new-champion-email').value = '';
+    document.getElementById('new-champion-name').value = '';
+    document.getElementById('new-champion-email-2').value = '';
+    document.getElementById('new-champion-name-2').value = '';
+    document.getElementById('new-chf-member').checked = false;
+    document.getElementById('new-training').checked = false;
+    document.getElementById('new-active').checked = false;
+    loadDomains();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+  }
+}
+
+async function toggleDomain(id, activate) {
+  try {
+    const { error } = await sb.from('bhr_approved_domains')
+      .update({ is_active: activate })
+      .eq('id', id);
+    if (error) throw error;
+    showToast(activate ? 'Domain activated ✓' : 'Domain deactivated ✓');
+    loadDomains();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+  }
+}
+
+// ── BHR APPROVED INDIVIDUALS ────────────────────────────────────────────────
+async function loadApprovedEmails() {
+  const tbody = document.getElementById('approved-emails-tbody');
+  if (!tbody) return;
+  tbody.innerHTML = '<tr class="empty-row"><td colspan="8">Loading…</td></tr>';
+  try {
+    const { data, error } = await sb.from('bhr_approved_emails')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    if (!data || data.length === 0) {
+      tbody.innerHTML = '<tr class="empty-row"><td colspan="8">No approved individuals yet</td></tr>';
+      return;
+    }
+    tbody.innerHTML = data.map(r => `<tr>
+      <td><strong>${esc(r.email)}</strong></td>
+      <td>${esc(r.full_name || '—')}</td>
+      <td>${esc(r.company_name || '—')}</td>
+      <td>${r.is_champion ? '<span title="Receives changelog notifications" style="color:#276749;font-weight:700;">★ Champion</span>' : '—'}</td>
+      <td>${r.training_completed ? '✅' : '❌'}${r.training_date ? '<br><span style="font-size:0.72rem;color:var(--text-light);">' + r.training_date + '</span>' : ''}</td>
+      <td>${r.is_active ? '<span style="color:#276749;font-weight:700;">ACTIVE</span>' : '<span style="color:#c53030;">INACTIVE</span>'}</td>
+      <td style="font-size:0.75rem;">${new Date(r.created_at).toLocaleDateString('en-GB')}</td>
+      <td>
+        ${r.is_active
+          ? `<button onclick="toggleApprovedEmail(${r.id}, false)" style="font-size:0.75rem;padding:3px 8px;background:#fed7d7;color:#c53030;border:1px solid #c53030;border-radius:4px;cursor:pointer;">Deactivate</button>`
+          : `<button onclick="toggleApprovedEmail(${r.id}, true)" style="font-size:0.75rem;padding:3px 8px;background:#c6f6d5;color:#276749;border:1px solid #276749;border-radius:4px;cursor:pointer;">Activate</button>`}
+        <button onclick="toggleChampion(${r.id}, ${!r.is_champion})" style="font-size:0.75rem;padding:3px 8px;background:#fffbeb;color:#92400e;border:1px solid #fde68a;border-radius:4px;cursor:pointer;margin-left:4px;">${r.is_champion ? 'Un-champion' : 'Make champion'}</button>
+        <button onclick="deleteApprovedEmail(${r.id}, '${esc(r.email)}')" style="font-size:0.75rem;padding:3px 8px;background:#f5f5f5;color:#666;border:1px solid #ccc;border-radius:4px;cursor:pointer;margin-left:4px;">🗑</button>
+      </td>
+    </tr>`).join('');
+  } catch(e) {
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="8">Error: ${e.message}</td></tr>`;
+  }
+}
+
+async function addApprovedEmail() {
+  const email   = document.getElementById('new-ae-email').value.trim().toLowerCase();
+  const name    = document.getElementById('new-ae-name').value.trim();
+  const company = document.getElementById('new-ae-company').value.trim();
+  const champ   = document.getElementById('new-ae-champion').checked;
+  const trained = document.getElementById('new-ae-training').checked;
+  const active  = document.getElementById('new-ae-active').checked;
+
+  if (!email) { showToast('Email is required'); return; }
+  if (!email.includes('@')) { showToast('That does not look like an email address'); return; }
+
+  const domain = email.split('@')[1];
+
+  try {
+    const { error } = await sb.from('bhr_approved_emails').insert({
+      email,
+      full_name: name || null,
+      company_name: company || null,
+      domain: domain || null,
+      is_champion: champ,
+      training_completed: trained,
+      training_date: trained ? new Date().toISOString().split('T')[0] : null,
+      is_active: active,
+    });
+    if (error) throw error;
+    showToast('Individual added ✓');
+    document.getElementById('new-ae-email').value = '';
+    document.getElementById('new-ae-name').value = '';
+    document.getElementById('new-ae-company').value = '';
+    document.getElementById('new-ae-champion').checked = false;
+    document.getElementById('new-ae-training').checked = false;
+    document.getElementById('new-ae-active').checked = true;
+    loadApprovedEmails();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+  }
+}
+
+async function toggleApprovedEmail(id, activate) {
+  try {
+    const { error } = await sb.from('bhr_approved_emails').update({ is_active: activate }).eq('id', id);
+    if (error) throw error;
+    showToast(activate ? 'Activated ✓' : 'Deactivated ✓');
+    loadApprovedEmails();
+  } catch(e) { showToast('Error: ' + e.message); }
+}
+
+async function toggleChampion(id, makeChampion) {
+  try {
+    const { error } = await sb.from('bhr_approved_emails').update({ is_champion: makeChampion }).eq('id', id);
+    if (error) throw error;
+    showToast(makeChampion ? 'Set as champion ✓' : 'Champion flag removed ✓');
+    loadApprovedEmails();
+  } catch(e) { showToast('Error: ' + e.message); }
+}
+
+async function deleteApprovedEmail(id, email) {
+  if (!confirm('Remove ' + email + ' from the approved individuals list? They will lose BHR access on next page load.')) return;
+  try {
+    const { error } = await sb.from('bhr_approved_emails').delete().eq('id', id);
+    if (error) throw error;
+    showToast('Removed ✓');
+    loadApprovedEmails();
+  } catch(e) { showToast('Error: ' + e.message); }
+}
+
+// ── ACCESS REQUESTS ──
+async function loadAccessRequests() {
+  const tbody = document.getElementById('requests-tbody');
+  tbody.innerHTML = '<tr class="empty-row"><td colspan="5">Loading…</td></tr>';
+  try {
+    const { data, error } = await sb.from('bhr_access_requests')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(50);
+    if (error) throw error;
+    if (!data || data.length === 0) {
+      tbody.innerHTML = '<tr class="empty-row"><td colspan="5">No access requests yet</td></tr>';
+      return;
+    }
+
+    // Check which domains are already approved
+    const { data: approvedDomains } = await sb.from('bhr_approved_domains')
+      .select('domain')
+      .eq('is_active', true);
+    const approvedSet = new Set((approvedDomains || []).map(d => d.domain));
+
+    tbody.innerHTML = data.map(r => {
+      const isApproved = approvedSet.has(r.domain);
+      const statusBadge = isApproved
+        ? '<span style="color:#276749;font-weight:700;font-size:0.8rem;">APPROVED</span>'
+        : '<span style="color:#c05621;font-weight:700;font-size:0.8rem;">PENDING</span>';
+      return `<tr>
+        <td>${r.email}</td>
+        <td><strong>${r.domain}</strong></td>
+        <td style="font-size:0.8rem;">${new Date(r.created_at).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })}</td>
+        <td>${statusBadge}</td>
+        <td>${!isApproved ? `<button onclick="prefillDomain('${r.domain}')" style="font-size:0.75rem;padding:3px 8px;background:#ebf8ff;color:#2b6cb0;border:1px solid #2b6cb0;border-radius:4px;cursor:pointer;">Add Domain</button>` : '—'}</td>
+      </tr>`;
+    }).join('');
+  } catch(e) {
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="5">Error: ${e.message}</td></tr>`;
+  }
+}
+
+function prefillDomain(domain) {
+  // Scroll to and prefill the domain input in the Approved Domains section
+  const el = document.getElementById('new-domain');
+  if (el) {
+    el.value = domain;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    el.focus();
+    showToast('Domain prefilled — complete the details and save');
+  }
+}
+
+// ── CHANGELOG ──
+async function loadChangelogEntries() {
+  const tbody = document.getElementById('changelog-tbody');
+  tbody.innerHTML = '<tr class="empty-row"><td colspan="4">Loading…</td></tr>';
+  try {
+    const { data, error } = await sb.from('bhr_changelog')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(20);
+    if (error) throw error;
+    if (!data || data.length === 0) {
+      tbody.innerHTML = '<tr class="empty-row"><td colspan="4">No changelog entries yet</td></tr>';
+      return;
+    }
+    tbody.innerHTML = data.map(c => `<tr>
+      <td><strong>${c.version}</strong></td>
+      <td>${c.summary}</td>
+      <td style="font-size:0.75rem;">${new Date(c.created_at).toLocaleDateString('en-GB')}</td>
+      <td style="font-size:0.75rem;">${c.notified_at ? new Date(c.notified_at).toLocaleDateString('en-GB') : '<span style="color:var(--text-light);">—</span>'}</td>
+    </tr>`).join('');
+  } catch(e) {
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="4">Error: ${e.message}</td></tr>`;
+  }
+}
+
+async function postChangelog() {
+  const version = document.getElementById('cl-version').value.trim();
+  const summary = document.getElementById('cl-summary').value.trim();
+  const detail = document.getElementById('cl-detail').value.trim();
+  const sendEmail = document.getElementById('cl-send-email').checked;
+
+  if (!version || !summary) { showToast('Version and summary are required'); return; }
+
+  try {
+    const res = await fetch('/api/changelog-notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ version, summary, detail: detail || summary, sendEmail })
+    });
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.error || result.detail || 'API error');
+    if (sendEmail) {
+      showToast(`Posted ✓ — ${result.emails_sent} email(s) sent to ${result.champions_found} champion(s)`);
+    } else {
+      showToast('Changelog posted ✓ (no email sent)');
+    }
+  } catch(e) {
+    showToast('Error: ' + e.message);
+  }
+
+  document.getElementById('cl-version').value = '';
+  document.getElementById('cl-summary').value = '';
+  document.getElementById('cl-detail').value = '';
+  loadChangelogEntries();
+}
+
+// ── INIT ──
+(function() {
+  if (!initSB()) return;
+  sb.auth.getSession().then(({ data: { session } }) => {
+    if (session && session.user.email === ADMIN_EMAIL) {
+      enterAdmin(session.user);
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,3096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask the Oracle — Case Law Research</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="brand.js"></script>
+  <style>
+    :root {
+      --navy: #0f1e3c;
+      --navy-light: #1a2f5e;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --white: #ffffff;
+      --off-white: #f5f6f8;
+      --text: #2d3748;
+      --text-light: #718096;
+      --border: #e2e8f0;
+      --sidebar: #0d1a30;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Arial', sans-serif; background: var(--off-white); color: var(--text); }
+
+    /* ── AUTH SCREENS ── */
+    #auth-screen {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3a6e 100%);
+      padding: 2rem;
+    }
+    .auth-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .auth-logo {
+      font-family: 'Georgia', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 0.4rem;
+    }
+    .auth-logo span { color: var(--gold); }
+    .auth-tagline {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+    }
+    .auth-tabs {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .auth-tab {
+      flex: 1; padding: 0.6rem;
+      font-size: 0.875rem; font-weight: 600;
+      text-align: center; cursor: pointer;
+      background: transparent; color: var(--text-light);
+      border: none; transition: all 0.2s;
+    }
+    .auth-tab.active {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .form-group input {
+      width: 100%; padding: 0.7rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus { border-color: var(--navy); }
+    .btn-auth {
+      width: 100%; padding: 0.8rem;
+      background: var(--navy);
+      color: var(--white);
+      border: none; border-radius: 8px;
+      font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+    .btn-auth:hover { background: var(--navy-light); }
+    .auth-msg {
+      text-align: center;
+      font-size: 0.825rem;
+      margin-top: 1rem;
+      padding: 0.6rem;
+      border-radius: 6px;
+      display: none;
+    }
+    .auth-msg.error { background: #fee2e2; color: #b91c1c; display: block; }
+    .auth-msg.success { background: #dcfce7; color: #15803d; display: block; }
+    .auth-note {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 1.25rem;
+      line-height: 1.5;
+    }
+
+    /* ── PENDING APPROVAL SCREEN ── */
+    #pending-screen {
+      display: none; min-height: 100vh;
+      align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3a6e 100%);
+      padding: 2rem;
+    }
+    #pending-screen.visible { display: flex; }
+    #trial-expired-screen {
+      display: none; min-height: 100vh;
+      align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3a6e 100%);
+      padding: 2rem;
+    }
+    #trial-expired-screen.visible { display: flex; }
+    .pending-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 100%; max-width: 460px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      text-align: center;
+    }
+    .pending-icon {
+      font-size: 3rem; margin-bottom: 1rem;
+    }
+    .pending-card h2 {
+      font-size: 1.3rem; color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .pending-card p {
+      font-size: 0.9rem; color: var(--text-light);
+      line-height: 1.7; margin-bottom: 0.75rem;
+    }
+    .pending-card .pending-email {
+      display: inline-block;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.85rem;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+    .btn-pending-signout {
+      background: none; border: 1.5px solid var(--border);
+      color: var(--text-light); border-radius: 7px;
+      padding: 0.55rem 1.25rem; font-size: 0.85rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-pending-signout:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* ── APP LAYOUT ── */
+    #app-screen { display: none; min-height: 100vh; flex-direction: column; }
+    #app-screen.visible { display: flex; }
+
+    /* TOP BAR */
+    .topbar {
+      background: var(--navy);
+      height: 56px;
+      display: flex; align-items: center;
+      padding: 0 1.5rem;
+      gap: 1rem;
+      flex-shrink: 0;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .topbar-logo {
+      font-family: 'Georgia', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+    .topbar-logo span { color: var(--gold); }
+    .topbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.15); margin: 0 0.5rem; }
+    .topbar-tabs { display: flex; gap: 0.25rem; flex: 1; }
+    .topbar-tab {
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+      background: none; border: none;
+    }
+    .topbar-tab.active {
+      background: rgba(201,168,76,0.15);
+      color: var(--gold);
+    }
+    .topbar-tab:hover:not(.active) { color: rgba(255,255,255,0.85); }
+
+
+    .beta-badge {
+      display: inline-block;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background: #b45309;
+      color: #fff;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      margin-left: 0.3rem;
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+    /* BHR Rebuttal pane — no padding so iframe fills the space */
+    #pane-bhr-rebuttal {
+      padding: 0 !important;
+      overflow: hidden;
+    }
+    #pane-bhr-rebuttal iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .topbar-user {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-signout {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.3rem 0.75rem;
+      border-radius: 5px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-signout:hover { background: rgba(255,255,255,0.14); color: var(--white); }
+
+    /* MAIN CONTENT */
+    .app-body { flex: 1; overflow: hidden; display: flex; }
+    .tab-pane { display: none; flex: 1; overflow: auto; padding: 1.75rem; }
+    .tab-pane.active { display: block; }
+
+    /* ── AI QUERY TAB ── */
+    .query-wrap { max-width: 860px; margin: 0 auto; }
+    .query-header { margin-bottom: 1.25rem; }
+    .query-header h1 { font-size: 1.5rem; color: var(--navy); font-family: 'Georgia', serif; }
+    .query-header p { font-size: 0.875rem; color: var(--text-light); margin-top: 0.3rem; }
+
+    /* ── SCOPE SELECTOR ── */
+    .scope-selector {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 1.25rem; flex-wrap: wrap;
+    }
+    .scope-label {
+      font-size: 0.78rem; font-weight: 700; color: var(--text-light);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .scope-btn {
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer; transition: all 0.15s;
+    }
+    .scope-btn:hover { border-color: var(--navy); color: var(--navy); }
+    .scope-btn.active {
+      background: var(--navy); color: var(--white);
+      border-color: var(--navy);
+    }
+    .scope-btn.active.liability { background: #7c3aed; border-color: #7c3aed; }
+    .scope-btn.active.both { background: #0369a1; border-color: #0369a1; }
+    .scope-btn.active.bhr  { background: #b45309; border-color: #b45309; }
+    .scope-unavailable {
+      font-size: 0.75rem; color: var(--text-light);
+      font-style: italic; margin-left: 0.25rem;
+    }
+
+    /* ── BROWSER SCOPE ── */
+    .browser-scope {
+      display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1rem;
+    }
+    .db-toggle {
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px; border: 1.5px solid var(--border);
+      background: var(--white); font-size: 0.82rem; font-weight: 600;
+      color: var(--text-light); cursor: pointer; transition: all 0.15s;
+    }
+    .db-toggle.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .db-toggle.active.liability { background: #7c3aed; border-color: #7c3aed; }
+
+    .query-box {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .query-box textarea {
+      width: 100%;
+      min-height: 90px;
+      padding: 1rem 1.25rem;
+      font-size: 0.975rem;
+      font-family: 'Georgia', serif;
+      color: var(--text);
+      border: none; outline: none;
+      resize: vertical;
+      background: transparent;
+      line-height: 1.6;
+    }
+    .query-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 1rem;
+      border-top: 1px solid var(--border);
+      background: var(--off-white);
+    }
+    .query-hint { font-size: 0.78rem; color: var(--text-light); }
+    .query-hint a {
+      color: #c1272d; text-decoration: none;
+      font-weight: 700;
+      border-bottom: 1.5px solid #c1272d;
+      margin-left: 0.75rem; padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .query-hint a:hover {
+      color: #8b1a1f; border-bottom-color: #8b1a1f;
+    }
+    .btn-ask {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0.6rem 1.5rem;
+      border-radius: 7px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-ask:hover { background: var(--navy-light); }
+    .btn-ask:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    .suggestions-row {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .chip {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.8rem;
+      color: var(--navy);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .chip:hover { border-color: var(--gold); background: #fffbf0; }
+
+    /* GTA/ACRISS RATE CHECKER */
+    .acriss-checker {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 10px; margin-bottom: 1.5rem; overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .acriss-checker.bhr-active {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+    }
+    .acriss-checker-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.7rem 1rem; cursor: pointer; user-select: none;
+      background: #fafbfc; gap: 0.5rem;
+    }
+    .acriss-checker-header:hover { background: #f7f5ed; }
+    .acriss-checker-title { display: flex; align-items: center; gap: 0.6rem; }
+    .acriss-checker-title strong { color: var(--navy); font-size: 0.88rem; }
+    .acriss-checker-sub { font-size: 0.73rem; color: var(--text-light); display: block; margin-top: 0.05rem; }
+    .acriss-toggle-icon { color: var(--text-light); font-size: 0.72rem; flex-shrink: 0; }
+    .acriss-checker-body { padding: 0.9rem 1rem; border-top: 1px solid var(--border); }
+    .acriss-search-row { display: flex; gap: 0.5rem; margin-bottom: 0.85rem; }
+    .acriss-search-row input {
+      flex: 1; border: 1.5px solid var(--border); border-radius: 7px;
+      padding: 0.5rem 0.75rem; font-size: 0.83rem; color: var(--text); outline: none;
+    }
+    .acriss-search-row input:focus { border-color: var(--navy); }
+    .acriss-search-row button {
+      border: 1px solid var(--border); background: var(--white); border-radius: 7px;
+      padding: 0 0.65rem; cursor: pointer; color: var(--text-light); font-size: 0.85rem;
+    }
+    .acriss-search-row button:hover { background: var(--off-white); }
+    .acriss-tabs { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .acriss-tab-btn {
+      padding: 0.28rem 0.7rem; border: 1px solid var(--border); border-radius: 12px;
+      font-size: 0.76rem; background: var(--white); color: var(--navy); cursor: pointer;
+    }
+    .acriss-tab-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .acriss-result-card {
+      background: var(--off-white); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.8rem 0.95rem; margin-bottom: 0.55rem;
+    }
+    .acriss-result-card:last-child { margin-bottom: 0; }
+    .acriss-result-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.45rem; flex-wrap: wrap; }
+    .acriss-group-badge {
+      background: var(--navy); color: var(--white); border-radius: 5px;
+      padding: 0.12rem 0.48rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
+    }
+    .acriss-series-badge {
+      background: #eef2f7; color: var(--navy); border-radius: 5px;
+      padding: 0.12rem 0.48rem; font-size: 0.75rem;
+    }
+    .acriss-rate { font-weight: 700; color: var(--navy); font-size: 0.86rem; }
+    .acriss-result-row { font-size: 0.79rem; color: var(--text); margin-bottom: 0.22rem; line-height: 1.45; }
+    .acriss-result-row .lbl { color: var(--text-light); margin-right: 0.25rem; }
+    .acriss-code-pill {
+      display: inline-block; background: var(--white); border: 1px solid var(--border);
+      border-radius: 4px; padding: 0.05rem 0.38rem; font-size: 0.75rem;
+      font-family: monospace; color: var(--navy); margin-right: 0.2rem;
+    }
+    .acriss-challenge {
+      background: #fff8e6; border-left: 3px solid var(--gold);
+      border-radius: 0 6px 6px 0; padding: 0.42rem 0.65rem;
+      font-size: 0.77rem; color: var(--text); margin-top: 0.5rem;
+    }
+    .acriss-no-result { font-size: 0.82rem; color: var(--text-light); text-align: center; padding: 1rem 0; }
+    .acriss-guide-toggle { margin-top: 0.7rem; padding-top: 0.55rem; border-top: 1px solid var(--border); }
+    .acriss-guide-toggle a { font-size: 0.78rem; color: var(--navy); cursor: pointer; text-decoration: underline; }
+    .bhr-guide-step {
+      background: var(--white); border: 1px solid var(--border); border-radius: 7px;
+      padding: 0.6rem 0.8rem; margin-top: 0.45rem; font-size: 0.78rem; line-height: 1.5;
+    }
+    .bhr-guide-step strong { color: var(--navy); display: block; margin-bottom: 0.15rem; }
+    .bhr-guide-limit {
+      background: #fff8e6; border-left: 3px solid var(--gold);
+      border-radius: 0 6px 6px 0; padding: 0.42rem 0.65rem;
+      font-size: 0.77rem; color: var(--text); margin-top: 0.45rem;
+    }
+    .acriss-ref-table {
+      width: 100%; border-collapse: collapse; font-size: 0.77rem; margin-top: 0.4rem;
+    }
+    .acriss-ref-table th {
+      background: #eef2f7; color: var(--navy); font-weight: 700;
+      padding: 0.32rem 0.5rem; text-align: left; border-bottom: 1px solid var(--border);
+    }
+    .acriss-ref-table td {
+      padding: 0.28rem 0.5rem; border-bottom: 1px solid var(--border); color: var(--text);
+    }
+    .acriss-ref-table tr:last-child td { border-bottom: none; }
+    .acriss-ref-table td:first-child { font-weight: 700; color: var(--navy); font-family: monospace; }
+    .acriss-ref-section-head {
+      font-size: 0.75rem; font-weight: 700; color: var(--text-light);
+      text-transform: uppercase; letter-spacing: 0.06em; margin: 0.7rem 0 0.3rem;
+    }
+    .acriss-results-count { font-size: 0.75rem; color: var(--text-light); margin-bottom: 0.5rem; }
+
+    /* ANSWER BOX */
+    .answer-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .answer-header {
+      background: var(--navy);
+      padding: 0.75rem 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .answer-header span { color: var(--gold); font-size: 1rem; }
+    .answer-header h3 { color: var(--white); font-size: 0.9rem; font-weight: 600; }
+    .answer-body {
+      padding: 1.5rem 1.25rem;
+      font-size: 0.925rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .answer-body p { margin-bottom: 1rem; }
+    .answer-body strong { color: var(--navy); }
+
+    /* ── Follow-up thread ── */
+    .followup-area {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .followup-area .fu-prompt {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-bottom: 0.6rem;
+    }
+    .followup-area textarea {
+      width: 100%;
+      min-height: 70px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.6rem 0.75rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    .followup-area textarea:focus { outline: none; border-color: var(--navy); }
+    .followup-controls {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 0.6rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .followup-controls .fu-counter {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      letter-spacing: 0.04em;
+    }
+    .btn-followup {
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-followup:hover:not(:disabled) { background: var(--navy-light, #1a2f5e); }
+    .btn-followup:disabled { opacity: 0.5; cursor: not-allowed; }
+    .followup-exhausted {
+      background: var(--off-white);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1.1rem;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      text-align: center;
+    }
+    .followup-answer .answer-header {
+      background: #2a3d62;
+    }
+    .followup-answer .answer-header h3 { font-size: 0.82rem; }
+
+    .cited-cases {
+      background: var(--off-white);
+      border-top: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+    }
+    .cited-cases h4 {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+    .cited-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .cited-chip {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      color: var(--navy);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .cited-chip:hover { border-color: var(--gold); }
+
+    /* KNOWLEDGE BASE ARTICLES */
+    .cited-articles {
+      background: #fffbf0;
+      border-top: 1px solid #e8ddb8;
+      padding: 1rem 1.25rem;
+    }
+    .cited-articles h4 {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #92763a;
+      margin-bottom: 0.75rem;
+    }
+    .article-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .article-chip {
+      background: #fffdf5;
+      border: 1px solid #d4b96a;
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      color: var(--navy);
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      transition: all 0.15s;
+    }
+    .article-chip:hover { border-color: var(--gold); background: #fef9e7; }
+
+    /* LOADING */
+    .loading-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .spinner {
+      width: 32px; height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-box p { font-size: 0.875rem; color: var(--text-light); }
+
+    /* ── CASE BROWSER TAB ── */
+    .browser-wrap { max-width: 1100px; margin: 0 auto; }
+    .browser-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .browser-header h1 { font-size: 1.4rem; color: var(--navy); font-family: 'Georgia', serif; }
+    .browser-header p { font-size: 0.8rem; color: var(--text-light); margin-top: 0.2rem; }
+
+    .filters-bar {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+      display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;
+    }
+    .filter-input {
+      flex: 1; min-width: 200px;
+      padding: 0.55rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      font-size: 0.875rem;
+      outline: none;
+    }
+    .filter-input:focus { border-color: var(--navy); }
+    .filter-select {
+      padding: 0.55rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      font-size: 0.875rem;
+      background: var(--white);
+      color: var(--text);
+      cursor: pointer;
+      outline: none;
+    }
+    .filter-select:focus { border-color: var(--navy); }
+    .results-count {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      white-space: nowrap;
+      align-self: center;
+    }
+
+    /* CASE CARDS */
+    .cases-grid {
+      display: flex; flex-direction: column; gap: 0.875rem;
+    }
+    .case-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .case-card:hover { border-color: var(--gold); box-shadow: 0 2px 16px rgba(201,168,76,0.15); }
+    .case-card-header {
+      padding: 1rem 1.25rem;
+      display: flex; align-items: flex-start;
+      gap: 0.875rem;
+      justify-content: space-between;
+    }
+    .case-left { display: flex; gap: 0.875rem; flex: 1; min-width: 0; }
+    .court-dot {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .dot-sc { background: #1a1a2e; color: #e8c96a; }
+    .dot-ca { background: #2d1b69; color: #a78bfa; }
+    .dot-hc { background: #1e3a5f; color: #60a5fa; }
+    .dot-cc { background: #1e4d3a; color: #4ade80; }
+    .dot-other { background: #3f3f3f; color: #d1d5db; }
+    .case-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      font-family: 'Georgia', serif;
+      margin-bottom: 0.2rem;
+    }
+    .case-meta {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+    }
+    .case-meta span { display: flex; align-items: center; gap: 0.25rem; }
+    .outcome-pill {
+      font-size: 0.7rem; font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+      flex-shrink: 0;
+      align-self: flex-start;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .pill-claimant { background: #dcfce7; color: #15803d; }
+    .pill-defendant { background: #fee2e2; color: #b91c1c; }
+    .pill-mixed { background: #fef3c7; color: #92400e; }
+    .pill-unknown { background: #f1f5f9; color: var(--text-light); }
+
+    .case-card-body {
+      padding: 0 1.25rem 1rem;
+      display: none;
+    }
+    .case-card-body.open { display: block; }
+    .case-summary {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .topics-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.875rem; }
+    .topic-tag {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.72rem;
+      color: var(--text-light);
+    }
+    .principles-box {
+      background: #fffbf0;
+      border: 1px solid #f0e0a0;
+      border-radius: 7px;
+      padding: 0.875rem 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .principles-box h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #92400e;
+      margin-bottom: 0.5rem;
+    }
+    .principles-box ul {
+      list-style: none;
+      font-size: 0.835rem;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .principles-box li { padding: 0.2rem 0; padding-left: 1.1rem; position: relative; }
+    .principles-box li::before { content: '›'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+    /* PAGINATION */
+    .pagination {
+      display: flex; justify-content: center; gap: 0.4rem;
+      margin-top: 1.5rem;
+    }
+    .page-btn {
+      width: 34px; height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: var(--white);
+      font-size: 0.85rem;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .page-btn:hover { border-color: var(--navy); color: var(--navy); }
+    .page-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .page-btn:disabled { opacity: 0.35; cursor: default; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 200;
+      display: none; align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--white);
+      border-radius: 14px;
+      max-width: 680px; width: 100%;
+      max-height: 85vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .modal-header {
+      background: var(--navy);
+      padding: 1.25rem 1.5rem;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      position: sticky; top: 0;
+    }
+    .modal-title { color: var(--white); font-size: 1rem; font-family: 'Georgia', serif; line-height: 1.4; }
+    .modal-citation { font-size: 0.8rem; color: var(--gold); margin-top: 0.25rem; }
+    .modal-close {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: var(--white);
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.2); }
+    .modal-body { padding: 1.5rem; }
+    .modal-section { margin-bottom: 1.25rem; }
+    .modal-section-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .modal-section p { font-size: 0.9rem; line-height: 1.75; color: var(--text); }
+    .modal-section ul { list-style: none; font-size: 0.875rem; }
+    .modal-section li { padding: 0.3rem 0; padding-left: 1.2rem; position: relative; }
+    .modal-section li::before { content: '›'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+    /* Config notice */
+    .config-notice {
+      background: #fef3c7;
+      border: 1px solid #fcd34d;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-size: 0.85rem;
+      color: #78350f;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+    .config-notice strong { display: block; margin-bottom: 0.3rem; }
+    .config-notice code {
+      background: rgba(0,0,0,0.08);
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 600px) {
+      .topbar-tab:not(.active) { display: none; }
+      .tab-pane { padding: 1rem; }
+    }
+
+    /* ── NEWS ARCHIVE ── */
+    .news-wrap { max-width: 1100px; margin: 0 auto; }
+    .news-header { margin-bottom: 1.25rem; }
+    .news-header h1 { font-size: 1.4rem; color: var(--navy); font-family: 'Georgia', serif; }
+    .news-header p { font-size: 0.875rem; color: var(--text-light); margin-top: 0.25rem; }
+    .news-controls {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+      display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;
+    }
+    .news-search {
+      flex: 1; min-width: 220px;
+      padding: 0.55rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      font-size: 0.875rem;
+      outline: none;
+      font-family: 'Arial', sans-serif;
+    }
+    .news-search:focus { border-color: var(--navy); }
+    .news-year-select {
+      padding: 0.55rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      font-size: 0.875rem;
+      background: var(--white);
+      color: var(--text);
+      cursor: pointer;
+      outline: none;
+      font-family: 'Arial', sans-serif;
+    }
+    .news-year-select:focus { border-color: var(--navy); }
+    .news-count {
+      font-size: 0.8rem; color: var(--text-light);
+      white-space: nowrap; align-self: center;
+      font-family: 'Arial', sans-serif;
+    }
+    .news-grid {
+      display: flex; flex-direction: column; gap: 0.875rem;
+    }
+    .news-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .news-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 2px 16px rgba(201,168,76,0.15);
+    }
+    .news-card-meta {
+      display: flex; align-items: center; gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .news-date {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-family: 'Arial', sans-serif;
+      white-space: nowrap;
+    }
+    .news-year-tag {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.7rem;
+      color: var(--text-light);
+      font-family: 'Arial', sans-serif;
+      font-weight: 600;
+    }
+    .news-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      font-family: 'Georgia', serif;
+      line-height: 1.4;
+    }
+    .news-excerpt {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.65;
+      font-family: 'Arial', sans-serif;
+    }
+    .news-read-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--navy);
+      font-family: 'Arial', sans-serif;
+      margin-top: 0.25rem;
+      transition: color 0.15s;
+    }
+    .news-card:hover .news-read-link { color: var(--gold); }
+    .news-empty {
+      text-align: center; padding: 4rem;
+      color: var(--text-light); font-family: 'Arial', sans-serif;
+    }
+
+    /* ── DIRECTORY ── */
+    .dir-wrap { padding: 1.5rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .dir-controls {
+      display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .dir-search {
+      flex: 1; min-width: 220px;
+      padding: 0.55rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: 'Arial', sans-serif;
+    }
+    .dir-search:focus { outline: none; border-color: var(--navy); }
+    .dir-cats {
+      display: flex; gap: 0.4rem; flex-wrap: wrap;
+    }
+    .dir-cat-btn {
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      font-size: 0.78rem;
+      font-family: 'Arial', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-light);
+      transition: all 0.15s;
+    }
+    .dir-cat-btn:hover { border-color: var(--navy); color: var(--navy); }
+    .dir-cat-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .dir-count {
+      font-size: 0.8rem; color: var(--text-light);
+      font-family: 'Arial', sans-serif;
+      white-space: nowrap; align-self: center;
+    }
+    .dir-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1rem;
+    }
+    .dir-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .dir-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); border-color: #cbd5e0; }
+    .dir-card-top { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .dir-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-family: 'Arial', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-CHO        { background: #dbeafe; color: #1d4ed8; }
+    .badge-Solicitor  { background: #dcfce7; color: #15803d; }
+    .badge-Counsel    { background: #f3e8ff; color: #7e22ce; }
+    .badge-Chambers   { background: #e0e7ff; color: #3730a3; }
+    .badge-BHR        { background: #fef9c3; color: #854d0e; }
+    .badge-Car-Rental { background: #ccfbf1; color: #0f766e; }
+    .badge-Funding    { background: #ffedd5; color: #c2410c; }
+    .badge-Consultant { background: #f1f5f9; color: #475569; }
+    .badge-Engineer   { background: #e0f2fe; color: #0369a1; }
+    .badge-Counter-Fraud { background: #fee2e2; color: #b91c1c; }
+    .badge-Other      { background: #f5f5f5; color: #737373; }
+    .dir-name {
+      font-size: 1rem; font-weight: 700; color: var(--navy);
+      line-height: 1.3;
+    }
+    .dir-desc {
+      font-size: 0.82rem; color: var(--text-light);
+      line-height: 1.55;
+      font-family: 'Arial', sans-serif;
+    }
+    .dir-link {
+      margin-top: auto;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.8rem; font-weight: 700; font-family: 'Arial', sans-serif;
+      color: var(--navy);
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+      width: fit-content;
+      transition: all 0.15s;
+      text-decoration: none;
+    }
+    .dir-link:hover { border-color: var(--gold); color: var(--gold); }
+    .dir-empty {
+      grid-column: 1/-1;
+      text-align: center; padding: 4rem;
+      color: var(--text-light); font-family: 'Arial', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Configuration is loaded from config.js — edit that file to set your Supabase credentials -->
+
+<!-- AUTH SCREEN -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">Ask the <span>Oracle</span></div>
+    <div class="auth-tagline">AI-Powered Credit Hire Case Law Research</div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-signin" onclick="switchTab('signin')">Sign In</button>
+      <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Register</button>
+    </div>
+
+    <!-- SIGN IN FORM -->
+    <div id="form-signin">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="signin-email" placeholder="you@example.com" autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="signin-password" placeholder="Your password" autocomplete="current-password" />
+      </div>
+      <button class="btn-auth" onclick="signIn()">Sign In</button>
+      <div id="signin-msg" class="auth-msg"></div>
+      <p style="margin-top:0.75rem; text-align:center;">
+        <a href="#" onclick="switchTab('reset'); return false;" style="color:var(--gold); font-size:0.85rem;">Forgot your password?</a>
+      </p>
+    </div>
+
+    <!-- RESET PASSWORD FORM -->
+    <div id="form-reset" style="display:none;">
+      <p style="font-size:0.9rem; color:var(--text-light); margin-bottom:1rem;">
+        Enter your email address and we'll send you a link to reset your password.
+      </p>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="reset-email" placeholder="you@example.com" autocomplete="email" />
+      </div>
+      <button class="btn-auth" onclick="resetPassword()">Send Reset Link</button>
+      <div id="reset-msg" class="auth-msg"></div>
+      <p style="margin-top:0.75rem; text-align:center;">
+        <a href="#" onclick="switchTab('signin'); return false;" style="color:var(--gold); font-size:0.85rem;">← Back to Sign In</a>
+      </p>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="form-register" style="display:none;">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="reg-name" placeholder="Your name" autocomplete="name" />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="reg-email" placeholder="you@example.com" autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="reg-password" placeholder="Choose a password (8+ characters)" autocomplete="new-password" />
+      </div>
+      <button class="btn-auth" onclick="register()">Create Free Account</button>
+      <div id="register-msg" class="auth-msg"></div>
+    </div>
+
+    <!-- SET NEW PASSWORD FORM (shown after clicking reset link in email) -->
+    <div id="form-newpassword" style="display:none;">
+      <p style="font-size:0.9rem; color:var(--text-light); margin-bottom:1rem;">
+        Enter your new password below.
+      </p>
+      <div class="form-group">
+        <label>New Password</label>
+        <input type="password" id="new-password" placeholder="New password (8+ characters)" autocomplete="new-password" />
+      </div>
+      <div class="form-group">
+        <label>Confirm New Password</label>
+        <input type="password" id="new-password-confirm" placeholder="Confirm new password" autocomplete="new-password" />
+      </div>
+      <button class="btn-auth" onclick="updatePassword()">Update Password</button>
+      <div id="newpassword-msg" class="auth-msg"></div>
+    </div>
+
+    <p class="auth-note">
+      For professional use only. Your queries are private to your account.<br/>
+      <a href="index.html" style="color: var(--gold);">← Back to homepage</a>
+    </p>
+    <p style="margin-top:1rem; font-size:0.75rem; color:var(--text-light); text-align:center;">
+      By registering you agree to our
+      <a href="privacy.html" target="_blank" style="color:var(--gold);">Privacy Policy</a>.
+      We collect only your name and email. Queries are not stored.
+    </p>
+  </div>
+</div>
+
+<!-- PENDING APPROVAL SCREEN -->
+<div id="pending-screen">
+  <div class="pending-card">
+    <div class="pending-icon">⏳</div>
+    <h2>Your account is awaiting approval</h2>
+    <p>Thank you for registering. Your account has been created and is pending approval by the site administrator.</p>
+    <p>You will be able to sign in as soon as your access has been granted. This is usually done within one working day.</p>
+    <div class="pending-email" id="pending-email-display"></div>
+    <p style="font-size:0.8rem;">If you have any questions, please contact <a href="mailto:sae@credithire.org.uk" style="color:var(--gold);">sae@credithire.org.uk</a></p>
+    <button class="btn-pending-signout" onclick="signOut()">Sign out</button>
+  </div>
+</div>
+
+<!-- TRIAL EXPIRED SCREEN -->
+<div id="trial-expired-screen">
+  <div class="pending-card">
+    <div class="pending-icon">🔒</div>
+    <h2>Your trial access has ended</h2>
+    <p>Thank you for taking the time to explore <strong>Ask the Oracle</strong>. Your complimentary trial period has now expired.</p>
+    <p>Full access to the platform is <strong>free for members of the Credit Hire Forum</strong>. If you would like to continue using the site, please get in touch and I will be happy to arrange ongoing access for you.</p>
+    <div class="pending-email" id="trial-expired-email-display"></div>
+    <div style="margin:1.5rem 0; padding:1rem; background:#f0f4ff; border-radius:8px; text-align:center;">
+      <p style="margin:0 0 0.5rem; font-size:0.95rem; font-weight:600; color:#1a2744;">To subscribe or ask any questions:</p>
+      <a href="mailto:sae@credithire.org.uk?subject=Ask the Oracle%20—%20subscription%20request" style="color:var(--gold); font-size:1rem; font-weight:600;">sae@credithire.org.uk</a>
+    </div>
+    <button class="btn-pending-signout" onclick="signOut()">Sign out</button>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app-screen">
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-logo" id="brand-logo">Ask the <span>Oracle</span></div>
+    <div class="topbar-sep"></div>
+    <div class="topbar-tabs">
+      <button class="topbar-tab active" data-tab="ai-query" onclick="showTab('ai-query')">🤖 AI Query</button>
+      <button class="topbar-tab" data-tab="case-browser" onclick="showTab('case-browser')">📚 Case Browser</button>
+      <button class="topbar-tab" data-tab="directory" onclick="showTab('directory')">🏢 Directory</button>
+      <button class="topbar-tab" data-tab="news" onclick="showTab('news')">📰 News Archive</button>
+      <a href="learn.html" class="topbar-tab" style="text-decoration:none;">📖 Learn</a>
+    </div>
+    <div class="topbar-user">
+      <span id="user-email-display"></span>
+      <button class="btn-signout" onclick="signOut()">Sign out</button>
+    </div>
+  </div>
+
+  <div class="app-body">
+    <!-- AI QUERY TAB -->
+    <div class="tab-pane active" id="pane-ai-query">
+      <div class="query-wrap">
+        <div class="query-header">
+          <h1>AI Research Assistant</h1>
+          <p>Ask anything about credit hire or liability case law — or switch to <strong>BHR Analysis</strong> to query the rental company terms and conditions database: CDW inclusion, age restrictions, additional driver rates, non-waivable excess levels and more. Select your scope below, then ask your question.</p>
+        </div>
+
+        <div id="config-notice" class="config-notice">
+          <strong>⚠️ API not configured</strong>
+          The AI query feature requires a Vercel deployment with your Anthropic API key configured.
+          Case browsing works offline. See <code>SETUP.md</code> for deployment instructions.
+        </div>
+
+        <!-- SCOPE SELECTOR -->
+        <div class="scope-selector">
+          <span class="scope-label">Search:</span>
+          <button class="scope-btn active" id="scope-ch" onclick="setScope('credit_hire')">⚖️ Credit Hire Law</button>
+          <button class="scope-btn liability" id="scope-li" onclick="setScope('liability')" title="Liability cases">🚗 Liability Cases</button>
+          <button class="scope-btn both" id="scope-both" onclick="setScope('both')">🔍 Both Databases</button>
+          <button class="scope-btn bhr" id="scope-bhr" onclick="setScope('bhr')" title="Basic hire rate analysis">📊 BHR Analysis</button>
+          <span class="scope-unavailable" id="liability-notice" style="display:none;">
+            (liability database not yet loaded — see setup)
+          </span>
+        </div>
+
+        <div class="query-box">
+          <textarea id="query-input" placeholder="e.g. What do the cases say about impecuniosity and the burden of proof?" rows="4"></textarea>
+          <div class="query-footer">
+            <span class="query-hint">Press Ctrl+Enter to submit <a href="/how-to-ask" target="_blank" rel="noopener">Tips for better answers &rarr;</a></span>
+            <button class="btn-ask" id="ask-btn" onclick="askQuestion()">
+              <span>Ask</span> <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="suggestions-row" id="suggestions-row">
+          <span style="font-size:0.78rem;color:var(--text-light);align-self:center;">Try:</span>
+          <div class="chip" onclick="fillQuery(this)">Impecuniosity and burden of proof</div>
+          <div class="chip" onclick="fillQuery(this)">Basic hire rate vs credit hire rate</div>
+          <div class="chip" onclick="fillQuery(this)">Storage charges after write-off</div>
+          <div class="chip" onclick="fillQuery(this)">No MOT cases</div>
+          <div class="chip" onclick="fillQuery(this)">Like-for-like vehicle requirement</div>
+          <div class="chip" onclick="fillQuery(this)">Sham transaction arguments</div>
+          <div class="chip" onclick="fillQuery(this)">Non-party costs orders</div>
+          <div class="chip" onclick="fillQuery(this)">Mitigation duty on hire duration</div>
+        </div>
+
+        <!-- GTA / ACRISS RATE CHECKER -->
+        <div class="acriss-checker" id="acriss-checker">
+          <div class="acriss-checker-header" onclick="toggleAcrissChecker()">
+            <div class="acriss-checker-title">
+              <span>🔍</span>
+              <div>
+                <strong>GTA ↔ ACRISS Rate Checker</strong>
+                <span class="acriss-checker-sub">Is the defendant's BHR evidence the right vehicle class? Search by GTA group, ACRISS code or vehicle type.</span>
+              </div>
+            </div>
+            <span class="acriss-toggle-icon" id="acriss-toggle-icon">▶</span>
+          </div>
+          <div class="acriss-checker-body" id="acriss-checker-body" style="display:none">
+            <div class="acriss-search-row">
+              <input type="text" id="acriss-search" placeholder="e.g. S4 · F2 · P3 · SUV · Compact · CDMR · BMW · convertible…" oninput="searchAcriss(this.value)" autocomplete="off" />
+              <button onclick="clearAcrissSearch()" title="Clear">✕</button>
+            </div>
+            <div class="acriss-tabs" id="acriss-series-tabs">
+              <button class="acriss-tab-btn active" onclick="filterAcrissSeries('all',this)">All</button>
+              <button class="acriss-tab-btn" onclick="filterAcrissSeries('Standard',this)">S — Standard</button>
+              <button class="acriss-tab-btn" onclick="filterAcrissSeries('MPV',this)">M — MPV</button>
+              <button class="acriss-tab-btn" onclick="filterAcrissSeries('SUV',this)">F — SUV/4×4</button>
+              <button class="acriss-tab-btn" onclick="filterAcrissSeries('Prestige',this)">P — Prestige</button>
+              <button class="acriss-tab-btn" onclick="filterAcrissSeries('Sports',this)">SP — Sports</button>
+              <button class="acriss-tab-btn" onclick="filterAcrissSeries('acriss-ref',this)">ACRISS Code Reference</button>
+            </div>
+            <div id="acriss-results"></div>
+            <div class="acriss-guide-toggle">
+              <a onclick="toggleBhrGuide()">📋 Show / hide BHR Challenge Guide — 6-step process</a>
+            </div>
+            <div id="bhr-guide" style="display:none;margin-top:0.5rem;"></div>
+          </div>
+        </div>
+
+        <div id="answer-container"></div>
+      </div>
+    </div>
+
+    <!-- CASE BROWSER TAB -->
+    <div class="tab-pane" id="pane-case-browser">
+      <div class="browser-wrap">
+        <div class="browser-header">
+          <div>
+            <h1>Case Browser</h1>
+            <p>Browse and search the case law database</p>
+          </div>
+        </div>
+        <div class="browser-scope">
+          <span class="scope-label" style="font-size:0.78rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.08em;">Database:</span>
+          <button class="db-toggle active" id="db-ch" onclick="setBrowserDb('credit_hire')">⚖️ Credit Hire</button>
+          <button class="db-toggle liability" id="db-li" onclick="setBrowserDb('liability')">🚗 Liability</button>
+        </div>
+
+        <div class="filters-bar">
+          <input class="filter-input" id="search-input" placeholder="🔍  Search cases, citations, keywords..." oninput="applyFilters()" />
+          <select class="filter-select" id="filter-court" onchange="applyFilters()">
+            <option value="">All Courts</option>
+            <option value="Supreme Court">Supreme Court</option>
+            <option value="Court of Appeal">Court of Appeal</option>
+            <option value="High Court">High Court</option>
+            <option value="County Court">County Court</option>
+          </select>
+          <select class="filter-select" id="filter-outcome" onchange="applyFilters()">
+            <option value="">Any Outcome</option>
+            <option value="claimant">Claimant Wins</option>
+            <option value="defendant">Defendant Wins</option>
+            <option value="mixed">Mixed</option>
+          </select>
+          <select class="filter-select" id="filter-year" onchange="applyFilters()">
+            <option value="">Any Year</option>
+          </select>
+          <span class="results-count" id="results-count"></span>
+        </div>
+
+        <div id="cases-container" class="cases-grid">
+          <div style="text-align:center;padding:3rem;color:var(--text-light);">
+            Loading case database…
+          </div>
+        </div>
+
+        <div id="pagination" class="pagination"></div>
+      </div>
+    </div>
+
+    <!-- NEWS ARCHIVE TAB -->
+    <div class="tab-pane" id="pane-news">
+      <div class="news-wrap">
+        <div class="news-header">
+          <h1>📰 News Archive</h1>
+          <p>Search and browse 1,000+ Credit Hire Forum articles from 2020 to present. Click any post to read the full article on credithire.org.uk.</p>
+        </div>
+        <div class="news-controls">
+          <input class="news-search" id="news-search" placeholder="🔍  Search by title or keyword…" oninput="filterNews()" />
+          <select class="news-year-select" id="news-year" onchange="filterNews()">
+            <option value="">All Years</option>
+          </select>
+          <span class="news-count" id="news-count"></span>
+        </div>
+        <div id="news-grid" class="news-grid">
+          <div class="news-empty">Loading news archive…</div>
+        </div>
+        <div id="news-pagination" class="pagination" style="margin-top:1.5rem;"></div>
+      </div>
+    </div>
+
+    <!-- DIRECTORY TAB -->
+    <div class="tab-pane" id="pane-directory">
+      <div class="dir-wrap">
+        <div class="dir-controls">
+          <input class="dir-search" id="dir-search" placeholder="🔍  Search by name or description…" oninput="filterDirectory()" />
+          <span class="dir-count" id="dir-count"></span>
+        </div>
+        <div class="dir-cats" id="dir-cats">
+          <button class="dir-cat-btn active" data-cat="All" onclick="setDirCat('All')">All</button>
+          <button class="dir-cat-btn" data-cat="CHO" onclick="setDirCat('CHO')">CHO</button>
+          <button class="dir-cat-btn" data-cat="Solicitor" onclick="setDirCat('Solicitor')">Solicitors</button>
+          <button class="dir-cat-btn" data-cat="Counsel" onclick="setDirCat('Counsel')">Counsel</button>
+          <button class="dir-cat-btn" data-cat="Chambers" onclick="setDirCat('Chambers')">Chambers</button>
+          <button class="dir-cat-btn" data-cat="BHR" onclick="setDirCat('BHR')">BHR</button>
+          <button class="dir-cat-btn" data-cat="Car Rental" onclick="setDirCat('Car Rental')">Car Rental</button>
+          <button class="dir-cat-btn" data-cat="Funding" onclick="setDirCat('Funding')">Funding</button>
+          <button class="dir-cat-btn" data-cat="Consultant" onclick="setDirCat('Consultant')">Consultants</button>
+          <button class="dir-cat-btn" data-cat="Other" onclick="setDirCat('Other')">Other</button>
+        </div>
+        <div class="dir-grid" id="dir-grid">
+          <div class="dir-empty">Loading directory…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BHR Rebuttal programme tab removed for Granite (out of scope) -->
+
+  </div>
+</div>
+
+<!-- CASE DETAIL MODAL -->
+<div class="modal-overlay" id="case-modal" onclick="closeModalIfOverlay(event)">
+  <div class="modal-box" id="modal-content">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modal-title">Case Title</div>
+        <div class="modal-citation" id="modal-citation"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// ──────────────────────────────────────────────────────────────
+// SUPABASE INIT
+// ──────────────────────────────────────────────────────────────
+let supabaseClient = null;
+let currentUser = null;
+let caseDatabase = [];        // credit hire cases
+let liabilityDatabase = [];   // liability cases
+let resourcesDatabase = [];   // industry directory
+let filteredCases = [];
+let currentQueryScope = 'credit_hire';  // 'credit_hire' | 'liability' | 'both'
+let currentBrowserDb = 'credit_hire';   // 'credit_hire' | 'liability'
+let currentPage = 1;
+const PAGE_SIZE = 20;
+
+function initSupabase() {
+  try {
+    supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    return true;
+  } catch(e) {
+    console.warn('Supabase init failed:', e);
+    return false;
+  }
+}
+
+// ──────────────────────────────────────────────────────────────
+// AUTHENTICATED CORPUS FETCH
+// ──────────────────────────────────────────────────────────────
+async function fetchCorpus(filename) {
+  const headers = {};
+  if (supabaseClient) {
+    try {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (session?.access_token) headers['Authorization'] = 'Bearer ' + session.access_token;
+    } catch (_) {}
+  }
+  return fetch('/api/corpus?file=' + encodeURIComponent(filename), { headers });
+}
+
+// ──────────────────────────────────────────────────────────────
+// AUTH
+// ──────────────────────────────────────────────────────────────
+function switchTab(tab) {
+  document.getElementById('form-signin').style.display = tab === 'signin' ? '' : 'none';
+  document.getElementById('form-register').style.display = tab === 'register' ? '' : 'none';
+  document.getElementById('form-reset').style.display = tab === 'reset' ? '' : 'none';
+  document.getElementById('tab-signin').classList.toggle('active', tab === 'signin');
+  document.getElementById('tab-register').classList.toggle('active', tab === 'register');
+}
+
+async function signIn() {
+  const email = document.getElementById('signin-email').value.trim();
+  const password = document.getElementById('signin-password').value;
+  const msg = document.getElementById('signin-msg');
+  msg.className = 'auth-msg'; msg.textContent = '';
+
+  if (!email || !password) { showMsg(msg, 'Please enter your email and password.', 'error'); return; }
+
+  if (!supabaseClient) { showMsg(msg, 'Service unavailable. Please try again later.', 'error'); return; }
+
+  try {
+    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+    if (error) { showMsg(msg, error.message, 'error'); return; }
+    await checkApprovalAndEnter(data.user);
+  } catch(e) {
+    showMsg(msg, 'Sign in failed. Please try again.', 'error');
+  }
+}
+
+function showNewPasswordForm() {
+  // Hide all other auth forms and tabs, show the new-password form
+  document.getElementById('form-signin').style.display = 'none';
+  document.getElementById('form-register').style.display = 'none';
+  document.getElementById('form-reset').style.display = 'none';
+  document.getElementById('form-newpassword').style.display = '';
+  document.querySelector('.auth-tabs').style.display = 'none';
+  document.getElementById('auth-screen').style.display = 'flex';
+  document.getElementById('app-screen').classList.remove('visible');
+}
+
+async function updatePassword() {
+  const pw = document.getElementById('new-password').value;
+  const pw2 = document.getElementById('new-password-confirm').value;
+  const msg = document.getElementById('newpassword-msg');
+  msg.className = 'auth-msg'; msg.textContent = '';
+
+  if (!pw || !pw2) { showMsg(msg, 'Please fill in both fields.', 'error'); return; }
+  if (pw.length < 8) { showMsg(msg, 'Password must be at least 8 characters.', 'error'); return; }
+  if (pw !== pw2) { showMsg(msg, 'Passwords do not match.', 'error'); return; }
+
+  try {
+    const { error } = await supabaseClient.auth.updateUser({ password: pw });
+    if (error) { showMsg(msg, error.message, 'error'); return; }
+    showMsg(msg, 'Password updated successfully! Redirecting to sign in...', 'success');
+    setTimeout(() => {
+      document.getElementById('form-newpassword').style.display = 'none';
+      document.querySelector('.auth-tabs').style.display = '';
+      switchTab('signin');
+    }, 2000);
+  } catch(e) {
+    showMsg(msg, 'Could not update password. Please try again.', 'error');
+  }
+}
+
+async function resetPassword() {
+  const email = document.getElementById('reset-email').value.trim();
+  const msg = document.getElementById('reset-msg');
+  msg.className = 'auth-msg'; msg.textContent = '';
+
+  if (!email) { showMsg(msg, 'Please enter your email address.', 'error'); return; }
+
+  if (!supabaseClient) {
+    showMsg(msg, 'Service unavailable. Please try again later.', 'error');
+    return;
+  }
+
+  try {
+    const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + '/app.html'
+    });
+    if (error) { showMsg(msg, error.message, 'error'); return; }
+    showMsg(msg, 'If an account exists for that email, a reset link has been sent. Please check your inbox.', 'success');
+  } catch(e) {
+    showMsg(msg, 'Could not send reset link. Please try again.', 'error');
+  }
+}
+
+async function register() {
+  const name = document.getElementById('reg-name').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const password = document.getElementById('reg-password').value;
+  const msg = document.getElementById('register-msg');
+  msg.className = 'auth-msg'; msg.textContent = '';
+
+  if (!name || !email || !password) { showMsg(msg, 'Please fill in all fields.', 'error'); return; }
+  if (password.length < 8) { showMsg(msg, 'Password must be at least 8 characters.', 'error'); return; }
+
+  if (!supabaseClient) {
+    showMsg(msg, 'Supabase is not configured. See SETUP.md to connect authentication.', 'error');
+    return;
+  }
+
+  try {
+    // Registration is open — approved domains are auto-approved via database trigger;
+    // all other registrations go to pending for manual approval in admin.html
+    const { data, error } = await supabaseClient.auth.signUp({
+      email, password,
+      options: { data: { full_name: name } }
+    });
+    if (error) {
+      const errText = (error.message && error.message !== '{}' && error.message !== '[object Object]')
+        ? error.message
+        : 'Registration could not be completed — the confirmation email could not be sent. Please try again shortly or contact the site administrator.';
+      showMsg(msg, errText, 'error'); return;
+    }
+    showMsg(msg, 'Account created! Please check your email to confirm your account, then sign in.', 'success');
+  } catch(e) {
+    showMsg(msg, 'Registration failed. Please try again.', 'error');
+  }
+}
+
+async function signOut() {
+  if (supabaseClient) await supabaseClient.auth.signOut();
+  document.getElementById('app-screen').classList.remove('visible');
+  document.getElementById('pending-screen').classList.remove('visible');
+  document.getElementById('trial-expired-screen').classList.remove('visible');
+  document.getElementById('auth-screen').style.display = 'flex';
+  currentUser = null;
+}
+
+
+async function checkApprovalAndEnter(user) {
+  // Always let the admin straight in
+  if (user.email === 'sae@credithire.org.uk') { enterApp(user); return; }
+
+  if (!supabaseClient) { return; }
+
+  try {
+    // Use RPC function (security definer) to bypass RLS on profiles table
+    let approved = false;
+    const rpcResult = await supabaseClient.rpc('get_my_profile');
+    if (!rpcResult.error && rpcResult.data && rpcResult.data.length > 0) {
+      approved = rpcResult.data[0].approved;
+    } else {
+      console.error('RPC lookup failed:', rpcResult.error?.message || 'no profile row');
+      // Fallback: try direct query in case RPC doesn't exist yet
+      const directResult = await supabaseClient
+        .from('profiles')
+        .select('approved')
+        .eq('id', user.id)
+        .single();
+      if (directResult.error) {
+        console.error('Direct profile query also failed:', directResult.error.message);
+      }
+      approved = directResult.data?.approved || false;
+    }
+
+    if (!approved) {
+      showPendingScreen(user);
+      return;
+    }
+
+    enterApp(user);
+  } catch(e) {
+    console.error('Profile check error:', e);
+    showPendingScreen(user);
+  }
+}
+
+function showPendingScreen(user) {
+  currentUser = user;
+  document.getElementById('auth-screen').style.display = 'none';
+  document.getElementById('pending-email-display').textContent = user.email || '';
+  document.getElementById('pending-screen').classList.add('visible');
+}
+
+function showTrialExpiredScreen(user) {
+  currentUser = user;
+  document.getElementById('auth-screen').style.display = 'none';
+  document.getElementById('pending-screen').classList.remove('visible');
+  document.getElementById('trial-expired-email-display').textContent = user.email || '';
+  document.getElementById('trial-expired-screen').classList.add('visible');
+}
+
+function enterApp(user) {
+  currentUser = user;
+  document.getElementById('auth-screen').style.display = 'none';
+  document.getElementById('pending-screen').classList.remove('visible');
+  const app = document.getElementById('app-screen');
+  app.classList.add('visible');
+  document.getElementById('user-email-display').textContent = user.email || '';
+  loadDatabase();
+  // Check BHR domain approval and gate the tab if not approved
+  checkBhrDomainAccess(user.email);
+}
+
+async function checkBhrDomainAccess(email) {
+  const lowerEmail = (email || '').toLowerCase();
+  const domain = lowerEmail.split('@')[1];
+  if (!lowerEmail || !supabaseClient) return;
+  try {
+    // Step 1 — individual allowlist (the "5 of 700" case). An active row here
+    // grants access regardless of whether the firm's domain is approved.
+    let approved = false;
+    const { data: emailRow } = await supabaseClient.from('bhr_approved_emails')
+      .select('is_active').eq('email', lowerEmail).maybeSingle();
+    if (emailRow && emailRow.is_active === true) {
+      approved = true;
+    } else if (domain) {
+      // Step 2 — domain-wide approval (the standard CHF-member firm flow).
+      const { data, error } = await supabaseClient.from('bhr_approved_domains')
+        .select('is_active').eq('domain', domain).maybeSingle();
+      approved = !error && data && data.is_active === true;
+    }
+    const bhrTab = document.querySelector('.topbar-tab[data-tab="bhr-rebuttal"]');
+    if (bhrTab && !approved) {
+      bhrTab.style.opacity = '0.4';
+      bhrTab.style.cursor = 'not-allowed';
+      bhrTab.style.position = 'relative';
+      bhrTab.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        // Show a tooltip
+        let tip = document.getElementById('bhr-gate-tooltip');
+        if (!tip) {
+          tip = document.createElement('div');
+          tip.id = 'bhr-gate-tooltip';
+          tip.innerHTML = '<strong>BHR Rebuttal is not yet activated for your organisation.</strong><br><br>' +
+            'Access requires: (1) Credit Hire Forum membership, (2) a training session, and (3) a nominated BHR Champion.<br><br>' +
+            '<a href="mailto:sae@credithire.org.uk" style="color:#3b82f6;">Contact us to arrange access</a>';
+          tip.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;color:#333;padding:2rem;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.3);max-width:400px;z-index:10000;font-size:0.9rem;line-height:1.6;text-align:left;';
+          const close = document.createElement('button');
+          close.textContent = '✕';
+          close.style.cssText = 'position:absolute;top:8px;right:12px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:#999;';
+          close.onclick = () => tip.remove();
+          tip.appendChild(close);
+          // Backdrop
+          const backdrop = document.createElement('div');
+          backdrop.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:9999;';
+          backdrop.onclick = () => { tip.remove(); backdrop.remove(); };
+          document.body.appendChild(backdrop);
+          tip.dataset.backdrop = '';
+          tip.addEventListener('remove', () => backdrop.remove());
+          document.body.appendChild(tip);
+        }
+      };
+    }
+  } catch (e) {
+    console.warn('BHR domain check failed:', e);
+  }
+}
+
+function showMsg(el, text, type) {
+  el.textContent = text;
+  el.className = `auth-msg ${type}`;
+}
+
+// ──────────────────────────────────────────────────────────────
+// APP NAVIGATION
+// ──────────────────────────────────────────────────────────────
+function showTab(tab) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.topbar-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(`pane-${tab}`).classList.add('active');
+  const btn = document.querySelector(`.topbar-tab[data-tab="${tab}"]`);
+  if (btn) btn.classList.add('active');
+  logActivity('tab_view', { tab_name: tab });
+}
+
+
+// ──────────────────────────────────────────────────────────────
+// ACTIVITY LOGGING
+// ──────────────────────────────────────────────────────────────
+async function logActivity(type, data) {
+  if (!supabaseClient || !currentUser || !currentUser.id) return;
+  try {
+    await supabaseClient.from('activity_logs').insert({
+      user_id:       currentUser.id,
+      user_email:    currentUser.email,
+      activity_type: type,
+      ...data
+    });
+  } catch(e) { /* silent — never interrupt the user */ }
+}
+
+// ──────────────────────────────────────────────────────────────
+// AI QUERY
+// ──────────────────────────────────────────────────────────────
+function fillQuery(el) {
+  document.getElementById('query-input').value = el.textContent.trim();
+  document.getElementById('query-input').focus();
+}
+
+// Pre-fill from ?q= URL parameter (e.g. from Learn further reading links)
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get('q');
+  if (q) {
+    document.getElementById('query-input').value = q;
+    document.getElementById('query-input').focus();
+  }
+})();
+
+document.addEventListener('keydown', function(e) {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+    if (document.getElementById('pane-ai-query').classList.contains('active')) {
+      askQuestion();
+    }
+  }
+});
+
+// Build the "cases referenced" + "expert commentary" chip blocks.
+// Kept as a helper so both the streaming path and renderAnswer use
+// identical markup.
+function buildCitationsHtml(cases, articles) {
+  const citedChips = (cases && cases.length)
+    ? `<div class="cited-cases">
+        <h4>Cases referenced (${cases.length})</h4>
+        <div class="cited-chips">
+          ${cases.map(c => `<div class="cited-chip" onclick='openCaseByName("${escHtml(c.case_name)}")'>${escHtml(c.case_name)}${c.citation ? ' <span style="color:var(--text-light)">' + escHtml(c.citation) + '</span>' : ''}</div>`).join('')}
+        </div>
+      </div>` : '';
+
+  const articleChips = (articles && articles.length)
+    ? `<div class="cited-articles">
+        <h4>📚 Expert commentary used (${articles.length})</h4>
+        <div class="article-chips">
+          ${articles.map(a => a.pdf_url
+            ? `<a class="article-chip" href="${escHtml(a.pdf_url)}" target="_blank" rel="noopener">📄 ${escHtml(a.title)}${a.date ? ' <span style="color:var(--text-light);font-size:0.75em">(' + escHtml(a.date) + ')</span>' : ''}</a>`
+            : `<span class="article-chip">📄 ${escHtml(a.title)}</span>`
+          ).join('')}
+        </div>
+      </div>` : '';
+
+  return citedChips + articleChips;
+}
+
+// Parse a Server-Sent Events response body from /api/ask.
+// Calls onDelta(fullTextSoFar) each time a text chunk arrives, and
+// onMeta({cases, articles, stop_reason}) once when the metadata event
+// is received (after streaming finishes on the server).
+// Resolves with {fullText, meta}. Rejects if the server emits an
+// `error` event or the stream ends unexpectedly.
+async function readSseAnswer(response, onDelta, onMeta) {
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buf = '';
+  let fullText = '';
+  let meta = null;
+  let errorMsg = null;
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buf += decoder.decode(value, { stream: true });
+
+    // SSE events are separated by a blank line (\n\n).
+    let idx;
+    while ((idx = buf.indexOf('\n\n')) !== -1) {
+      const rawEvent = buf.slice(0, idx);
+      buf = buf.slice(idx + 2);
+
+      let eventName = 'message';
+      let dataStr = '';
+      for (const line of rawEvent.split('\n')) {
+        if (!line || line.startsWith(':')) continue;    // keepalive / comment
+        if (line.startsWith('event:')) eventName = line.slice(6).trim();
+        else if (line.startsWith('data:')) dataStr += line.slice(5).trimStart();
+      }
+      if (!dataStr) continue;
+
+      let data;
+      try { data = JSON.parse(dataStr); } catch { continue; }
+
+      if (eventName === 'delta' && typeof data.text === 'string') {
+        fullText += data.text;
+        try { onDelta(fullText); } catch (_) {}
+      } else if (eventName === 'meta') {
+        meta = data;
+        try { onMeta(data); } catch (_) {}
+      } else if (eventName === 'error') {
+        errorMsg = data.message || 'Stream error';
+      }
+      // 'done' event is a no-op — the reader will finish naturally.
+    }
+  }
+
+  if (errorMsg) throw new Error(errorMsg);
+  return { fullText, meta };
+}
+
+// Issue one POST to /api/ask with the given token and stream the
+// answer into the supplied DOM hooks. Returns the accumulated
+// {fullText, meta} on success; throws on non-200 or stream error.
+async function streamAnswerWithToken(token, question, scope, hooks, extras = {}) {
+  const response = await fetch(API_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ question, database: scope, ...extras })
+  });
+
+  if (response.status === 401) {
+    const err = new Error('Unauthorised');
+    err.status = 401;
+    throw err;
+  }
+  if (!response.ok) {
+    const errBody = await response.json().catch(() => ({}));
+    throw new Error(errBody.error || `Server error ${response.status}`);
+  }
+
+  return readSseAnswer(response, hooks.onDelta, hooks.onMeta);
+}
+
+async function askQuestion() {
+  const question = document.getElementById('query-input').value.trim();
+  if (!question) return;
+
+  const container = document.getElementById('answer-container');
+  const btn = document.getElementById('ask-btn');
+  btn.disabled = true;
+
+  // Reset any in-flight follow-up thread when a new original question
+  // is asked — the screen is about to be wiped and we don't want stale
+  // history bleeding across threads.
+  window._currentThread = null;
+
+  // Render the answer scaffold upfront. The spinner sits inside the
+  // answer body and is removed the moment the first streamed token
+  // arrives, so the user sees a smooth transition from "searching" to
+  // "answering" rather than a long blank wait.
+  container.innerHTML = `
+    <div class="answer-box">
+      <div class="answer-header">
+        <span>⚖️</span>
+        <h3>AI Legal Analysis</h3>
+      </div>
+      <div class="answer-body" id="answer-body-live">
+        <div class="loading-box" id="answer-loading-placeholder">
+          <div class="spinner"></div>
+          <p>Searching the case database and generating your answer…</p>
+        </div>
+      </div>
+      <div id="answer-citations-slot"></div>
+    </div>`;
+
+  const answerBody = document.getElementById('answer-body-live');
+  const citationsSlot = document.getElementById('answer-citations-slot');
+  let firstTokenSeen = false;
+
+  const hooks = {
+    onDelta(fullText) {
+      if (!firstTokenSeen) {
+        const placeholder = document.getElementById('answer-loading-placeholder');
+        if (placeholder) placeholder.remove();
+        firstTokenSeen = true;
+      }
+      answerBody.innerHTML = formatAnswer(fullText);
+    },
+    onMeta(meta) {
+      citationsSlot.innerHTML = buildCitationsHtml(meta.cases || [], meta.articles || []);
+    }
+  };
+
+  const t0 = Date.now();
+  try {
+    // Get the current session token for API authentication
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    let authToken = session?.access_token || '';
+
+    let result;
+    try {
+      result = await streamAnswerWithToken(authToken, question, currentQueryScope, hooks);
+    } catch (e) {
+      // If session expired, try refreshing the token once before giving up.
+      if (e.status === 401) {
+        const { data: refreshData, error: refreshErr } = await supabaseClient.auth.refreshSession();
+        if (!refreshErr && refreshData.session) {
+          result = await streamAnswerWithToken(refreshData.session.access_token, question, currentQueryScope, hooks);
+        } else {
+          container.innerHTML = `
+            <div class="answer-box">
+              <div class="answer-header">
+                <span>🔒</span>
+                <h3>Session expired</h3>
+              </div>
+              <div class="answer-body">
+                <p>Your last session has expired. To continue, please take a copy of the question you have asked, sign in again to Ask the Oracle and then re-submit your question.</p>
+              </div>
+            </div>`;
+          logActivity('query', { query_text: question, scope: currentQueryScope, response_time_ms: Date.now() - t0, cases_returned: 0, success: false });
+          return;
+        }
+      } else {
+        throw e;
+      }
+    }
+
+    const responseTime = Date.now() - t0;
+    logActivity('query', {
+      query_text:       question,
+      scope:            currentQueryScope,
+      response_time_ms: responseTime,
+      cases_returned:   (result?.meta?.cases || []).length,
+      success:          true
+    });
+
+    // Open a new follow-up thread anchored to this Q&A and render the
+    // follow-up textarea below the answer. The stored `originalAnswer`
+    // is the raw streamed text, not the formatted HTML — that's what the
+    // model needs as context.
+    window._currentThread = {
+      originalQuestion: question,
+      originalAnswer:   result?.fullText || '',
+      scope:            currentQueryScope,
+      followUps:        []
+    };
+    appendFollowupArea();
+
+  } catch(e) {
+    logActivity('query', {
+      query_text:       question,
+      scope:            currentQueryScope,
+      response_time_ms: Date.now() - t0,
+      cases_returned:   0,
+      success:          false
+    });
+    container.innerHTML = `
+      <div class="answer-box">
+        <div class="answer-header">
+          <span>⚠️</span>
+          <h3>Unable to generate answer</h3>
+        </div>
+        <div class="answer-body">
+          <p>${e.message}</p>
+          <p>If this problem persists, try signing out and signing back in.</p>
+        </div>
+      </div>`;
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ── Follow-up thread (continuation pattern) ──
+//
+// After an original answer renders, we attach a textarea below it so the
+// user can ask up to 3 supplementary questions that build on the same
+// research. Each follow-up sends the conversation history back to the
+// API, which uses a dedicated prompt template (concise, drafting-friendly,
+// no Republic of Ireland authorities by default) and a lighter retrieval
+// pass — so a follow-up that names a case absent from the first pass can
+// still surface it.
+
+const MAX_FOLLOWUPS = 3;
+
+function appendFollowupArea() {
+  const thread = window._currentThread;
+  if (!thread) return;
+  // Strip any prior follow-up area so we don't end up with duplicates
+  // when this is called after each follow-up answer renders.
+  document.querySelectorAll('#answer-container .followup-area, #answer-container .followup-exhausted')
+    .forEach(el => el.remove());
+
+  const usedCount = thread.followUps.length;
+  const container = document.getElementById('answer-container');
+
+  if (usedCount >= MAX_FOLLOWUPS) {
+    const exhausted = document.createElement('div');
+    exhausted.className = 'followup-exhausted';
+    exhausted.innerHTML = `You've used all ${MAX_FOLLOWUPS} follow-ups for this thread. Submit a new question above to start fresh.`;
+    container.appendChild(exhausted);
+    return;
+  }
+
+  const area = document.createElement('div');
+  area.className = 'followup-area';
+  const nextNum = usedCount + 1;
+  area.innerHTML = `
+    <div class="fu-prompt">
+      Need to ask a follow-up or draft a response based on the answer above?
+    </div>
+    <textarea id="followup-input"
+      placeholder="e.g. Draft a paragraph I can put in my reply to the defendant's letter denying impecuniosity…"></textarea>
+    <div class="followup-controls">
+      <span class="fu-counter">Follow-up ${nextNum} of ${MAX_FOLLOWUPS}</span>
+      <button class="btn-followup" id="followup-btn" onclick="sendFollowup()">Send follow-up</button>
+    </div>
+  `;
+  container.appendChild(area);
+  // Allow Cmd/Ctrl-Enter to submit from the textarea.
+  const ta = area.querySelector('#followup-input');
+  ta.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+      e.preventDefault();
+      sendFollowup();
+    }
+  });
+}
+
+async function sendFollowup() {
+  const thread = window._currentThread;
+  if (!thread) return;
+  if (thread.followUps.length >= MAX_FOLLOWUPS) return;
+
+  const ta = document.getElementById('followup-input');
+  const btn = document.getElementById('followup-btn');
+  if (!ta || !btn) return;
+
+  const question = ta.value.trim();
+  if (!question) return;
+
+  btn.disabled = true;
+  ta.disabled = true;
+
+  // Build the answer scaffold for this follow-up and insert it BEFORE the
+  // current follow-up area so the conversation reads top-to-bottom.
+  const container = document.getElementById('answer-container');
+  const followupArea = container.querySelector('.followup-area');
+
+  const num = thread.followUps.length + 1;
+  const fuBox = document.createElement('div');
+  fuBox.className = 'answer-box followup-answer';
+  fuBox.innerHTML = `
+    <div class="answer-header">
+      <span>↳</span>
+      <h3>Follow-up ${num} — ${escapeHtml(question.slice(0, 90))}${question.length > 90 ? '…' : ''}</h3>
+    </div>
+    <div class="answer-body" id="followup-body-${num}">
+      <div class="loading-box">
+        <div class="spinner"></div>
+        <p>Thinking…</p>
+      </div>
+    </div>
+    <div id="followup-citations-${num}"></div>
+  `;
+  if (followupArea) {
+    container.insertBefore(fuBox, followupArea);
+  } else {
+    container.appendChild(fuBox);
+  }
+
+  const answerBody = document.getElementById(`followup-body-${num}`);
+  const citationsSlot = document.getElementById(`followup-citations-${num}`);
+  let firstTokenSeen = false;
+
+  const hooks = {
+    onDelta(fullText) {
+      if (!firstTokenSeen) {
+        const placeholder = answerBody.querySelector('.loading-box');
+        if (placeholder) placeholder.remove();
+        firstTokenSeen = true;
+      }
+      answerBody.innerHTML = formatAnswer(fullText);
+    },
+    onMeta(meta) {
+      citationsSlot.innerHTML = buildCitationsHtml(meta.cases || [], meta.articles || []);
+    }
+  };
+
+  // history is sent oldest-first: original Q&A, then prior follow-ups.
+  const history = [
+    { question: thread.originalQuestion, answer: thread.originalAnswer },
+    ...thread.followUps
+  ];
+
+  const t0 = Date.now();
+  try {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    let authToken = session?.access_token || '';
+
+    let result;
+    try {
+      result = await streamAnswerWithToken(authToken, question, thread.scope, hooks,
+        { mode: 'followup', history });
+    } catch (e) {
+      if (e.status === 401) {
+        const { data: refreshData, error: refreshErr } = await supabaseClient.auth.refreshSession();
+        if (!refreshErr && refreshData.session) {
+          result = await streamAnswerWithToken(refreshData.session.access_token, question, thread.scope, hooks,
+            { mode: 'followup', history });
+        } else {
+          answerBody.innerHTML = `<p>Your session has expired. Please sign in again to continue.</p>`;
+          return;
+        }
+      } else {
+        throw e;
+      }
+    }
+
+    thread.followUps.push({ question, answer: result?.fullText || '' });
+
+    logActivity('query', {
+      query_text:       `[FOLLOWUP ${num}] ${question}`,
+      scope:            thread.scope,
+      response_time_ms: Date.now() - t0,
+      cases_returned:   (result?.meta?.cases || []).length,
+      success:          true
+    });
+
+    appendFollowupArea(); // re-renders with incremented counter or "exhausted"
+  } catch (e) {
+    answerBody.innerHTML = `<p>Unable to generate the follow-up: ${escapeHtml(e.message || 'unknown error')}.</p>`;
+    logActivity('query', {
+      query_text:       `[FOLLOWUP ${num}] ${question}`,
+      scope:            thread.scope,
+      response_time_ms: Date.now() - t0,
+      cases_returned:   0,
+      success:          false
+    });
+    // Re-enable the existing area so the user can retry without losing their input.
+    if (ta) { ta.disabled = false; ta.focus(); }
+    if (btn) btn.disabled = false;
+  }
+}
+
+// Tiny HTML-escape helper used by the follow-up renderer. Mirrors the
+// behaviour the rest of the app already relies on for safe interpolation.
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+// Retained for non-streaming callers (none currently use it, but kept
+// to avoid breaking any code elsewhere that imports it).
+function renderAnswer(data) {
+  const container = document.getElementById('answer-container');
+  const cases = data.cases || [];
+  const articles = data.articles || [];
+  container.innerHTML = `
+    <div class="answer-box">
+      <div class="answer-header">
+        <span>⚖️</span>
+        <h3>AI Legal Analysis</h3>
+      </div>
+      <div class="answer-body">${formatAnswer(data.answer)}</div>
+      ${buildCitationsHtml(cases, articles)}
+    </div>`;
+}
+
+function formatAnswer(text) {
+  if (!text) return '<p>No answer generated.</p>';
+  return text
+    .split(/\n\n+/)
+    .map(para => `<p>${para.replace(/\n/g, '<br/>')}</p>`)
+    .join('');
+}
+
+// ──────────────────────────────────────────────────────────────
+// CASE DATABASE & BROWSER
+// ──────────────────────────────────────────────────────────────
+// ── SCOPE & DATABASE SELECTION ──
+const SCOPE_SUGGESTIONS = {
+  credit_hire: [
+    'Impecuniosity and burden of proof',
+    'Basic hire rate vs credit hire rate',
+    'Storage charges after write-off',
+    'No MOT cases',
+    'Like-for-like vehicle requirement',
+    'Sham transaction arguments',
+    'Non-party costs orders',
+    'Mitigation duty on hire duration',
+  ],
+  liability: [
+    'Contributory negligence at junctions',
+    'Rear-end collision — presumption of negligence',
+    'Pedestrian stepping into road without warning',
+    'Overtaking on blind bends',
+    'Emerging from minor road — duty of care',
+    'Apportionment between drivers',
+    'Traffic light disputes — conflicting evidence',
+    'Cyclist filtering on the left',
+  ],
+  both: [
+    'Fundamental dishonesty and credit hire fraud',
+    'Contributory negligence reducing hire entitlement',
+    'Causation — accident to hire chain',
+    'Impecuniosity and contributory negligence',
+    'Liability split — what hire rate applies?',
+    'Pedestrian accidents and credit hire claims',
+    'Rear-end collision — liability and hire duration',
+    'Mitigation duty after disputed liability',
+  ],
+  bhr: [
+    'How should I challenge a BHR survey under Stevens?',
+    'What makes a BHR report admissible evidence?',
+    'Niche market argument — when does it apply?',
+    'Bunting and Diriye — what rate is recoverable?',
+    'How is BHR assessed in Scotland?',
+    'Can I challenge the vehicles used in a BHR survey?',
+    'ACRISS codes and GTA groups — are they comparable?',
+    'Burden of proof on BHR — who must produce the evidence?',
+  ]
+};
+
+function updateSuggestions(scope) {
+  const chips = SCOPE_SUGGESTIONS[scope] || SCOPE_SUGGESTIONS.credit_hire;
+  const row = document.getElementById('suggestions-row');
+  row.innerHTML = `<span style="font-size:0.78rem;color:var(--text-light);align-self:center;">Try:</span>`
+    + chips.map(c => `<div class="chip" onclick="fillQuery(this)">${c}</div>`).join('');
+}
+
+function setScope(scope) {
+  currentQueryScope = scope;
+  document.getElementById('scope-ch').classList.toggle('active', scope === 'credit_hire');
+  document.getElementById('scope-li').classList.toggle('active', scope === 'liability');
+  document.getElementById('scope-both').classList.toggle('active', scope === 'both');
+  document.getElementById('scope-bhr').classList.toggle('active', scope === 'bhr');
+
+  // Update placeholder text
+  const placeholders = {
+    credit_hire: 'e.g. What do the cases say about impecuniosity?',
+    liability:   'e.g. What are the key principles on contributory negligence?',
+    both:        'e.g. Ask anything across credit hire and liability case law…',
+    bhr:         'e.g. How do I challenge the BHR survey evidence under Stevens and McBride?'
+  };
+  document.getElementById('query-input').placeholder = placeholders[scope] || placeholders.credit_hire;
+
+  // Update suggestion chips
+  updateSuggestions(scope);
+
+  // Warn if liability DB not loaded
+  const hasLiability = liabilityDatabase.length > 0;
+  const needsLiability = scope === 'liability' || scope === 'both';
+  document.getElementById('liability-notice').style.display = (needsLiability && !hasLiability) ? '' : 'none';
+  // Highlight the ACRISS checker when BHR scope is active
+  const checker = document.getElementById('acriss-checker');
+  if (checker) checker.classList.toggle('bhr-active', scope === 'bhr');
+}
+
+// ──────────────────────────────────────────────────────────────
+// GTA / ACRISS RATE CHECKER
+// ──────────────────────────────────────────────────────────────
+const GTA_GROUPS = [
+  // STANDARD CARS
+  { g:'S1', series:'Standard', rate:42.75, acrissSize:'M – Mini / E – Economy', acrissBody:'C (hatch), D (saloon)', codes:'ECMR · EDMR · MCMR', notes:'Smallest GTA group; sub-1.0 L engine. ACRISS Mini/Economy. Rental firms may treat as Economy depending on fleet mix.', vehicles:'Citroën C1 1.0, Nissan Micra 1.0, Fiat Seicento 0.9', challenge:'If BHR quotes a higher ACRISS category (e.g. Compact for an Economy vehicle), this is over-category. If it quotes below Mini/Economy, challenge comparability as under-category.' },
+  { g:'S2', series:'Standard', rate:48.47, acrissSize:'E – Economy', acrissBody:'C (hatch)', codes:'ECMR · EDMR', notes:'Small economy cars ~1.0–1.2 L. Firmly ACRISS Economy. Fiat 500 / Panda class.', vehicles:'Fiat 500 Lounge, Fiat Panda 1.2, Seat Ibiza', challenge:'BHR comparator must be ACRISS Economy (E). A Compact (C) rate over-credits the claimant; a Mini (M) rate under-credits. Check category carefully.' },
+  { g:'S3', series:'Standard', rate:51.70, acrissSize:'C – Compact', acrissBody:'C (hatch), D (saloon), W (estate)', codes:'CCMR · CDMR · CWMR', notes:'Core compact hatchback group ~1.0–1.5 L. Ford Fiesta / Focus 1.4 class. Estate variants attract £5/day GTA uplift (CWMR equivalent).', vehicles:'Ford Fiesta 1.0T EcoBoost, Ford Focus 1.4, Honda Jazz 1.5', challenge:'ACRISS Compact (C) expected. Estate body (W) should attract an uplift. If BHR uses Economy (E) codes, challenge as under-category.' },
+  { g:'S4', series:'Standard', rate:55.43, acrissSize:'C – Compact / I – Intermediate', acrissBody:'C, D, T (convertible)', codes:'CDMR · IDMR · CTMR', notes:'Compact–intermediate boundary ~1.4–1.6 L; includes some convertibles. BHR reports may quote C or I for same vehicle — check carefully.', vehicles:'Alfa Romeo Mito 1.4, Citroën DS3 1.36, Chevrolet Cruze 4dr', challenge:'Sits at C/I boundary. If BHR quotes Compact (C) only, argue vehicle is at least Intermediate (I). Convertibles must use T-type body code — a 4-door rate is not equivalent.' },
+  { g:'S5', series:'Standard', rate:58.64, acrissSize:'I – Intermediate / S – Standard', acrissBody:'D (saloon), W (estate), T (convertible)', codes:'IDMR · SDMR · IWMR', notes:'Mid-size saloon/estate ~1.6–1.8 L. Ford Mondeo 1.8 / Honda Civic 1.8 class. Straddles ACRISS Intermediate and Standard.', vehicles:'Ford Mondeo 1.8, Honda Civic 1.8, Honda Accord 2.0', challenge:'If BHR quotes Compact (C) for an S5 vehicle, this is under-category by at least one band — argue Intermediate (I) minimum. Estate (W) requires W-type code.' },
+  { g:'S6', series:'Standard', rate:62.48, acrissSize:'S – Standard / F – Full-size', acrissBody:'D (saloon), W (estate), T (convertible)', codes:'SDMR · FDMR · STMR', notes:'Large saloon/estate ~2.0 L+. Citroën C5 / Ford Mondeo 2.0 class. Some cabriolets push into SP series.', vehicles:'Ford Mondeo 2.0, Citroën C5 2.0, Chrysler Neon 2.0', challenge:'Standard (S) or Full-size (F) ACRISS required. If BHR uses Intermediate (I), challenge as two bands under-category. Convertibles should use T-type.' },
+  { g:'S7', series:'Standard', rate:87.62, acrissSize:'F – Full-size / P – Premium', acrissBody:'D (saloon), S (sport/coupe), T (convertible)', codes:'FDMR · PFMR · FDHN', notes:'Large/specialist standard group — includes hybrid/EVs (Chevrolet Volt), large cabriolets (PT Cruiser) and premium-standard saloons. FDHN for hybrid variants.', vehicles:'Chevrolet Volt 1.4 (hybrid), Chrysler PT Cruiser 2.4 Cabrio, Citroën DS5 2.0', challenge:'Full-size (F) or Premium (P) required. Hybrid variants use FDHN — if BHR ignores hybrid spec, challenge. Rate £87.62 is significantly above S1–S6; under-category BHR would materially understate recovery.' },
+  // MPV
+  { g:'M',  series:'MPV', rate:61.59, acrissSize:'I – Intermediate (Van/MPV)', acrissBody:'X (crossover/special), V (passenger van)', codes:'IXMR · IVMR', notes:'Compact MPV / small crossover (5-seat). Berlingo Multispace / Kia Soul class. ACRISS V-type for MPV seating configurations.', vehicles:'Citroën Berlingo 1.4, Ford B-Max 1.0T, Kia Soul 1.6', challenge:'BHR must quote people-carrier (ACRISS V-type) or crossover (X-type) — a standard saloon D-type is not equivalent. Check seat count and body type.' },
+  { g:'M1', series:'MPV', rate:71.18, acrissSize:'I – Intermediate / S – Standard (Van/MPV)', acrissBody:'V (passenger van/MPV)', codes:'IVMR · SVMR', notes:"Small 5-seat MPV ~1.6–1.9 L. Citroën Picasso / Xsara class. Rental companies list as 'People Carrier' in ACRISS IV or SV.", vehicles:'Citroën Picasso 1.6, Citroën Picasso 1.8, Renault Scénic', challenge:'BHR must quote people-carrier (ACRISS V-type) — a standard saloon is not equivalent. Check seat count.' },
+  { g:'M2', series:'MPV', rate:81.17, acrissSize:'S – Standard / F – Full-size (Van/MPV)', acrissBody:'V (MPV 5–7 seat)', codes:'SVMR · FVMR', notes:'Medium 7-seat MPV ~1.6–2.0 L. Ford S-Max / C4 Grand Picasso class.', vehicles:'Citroën C4 Grand Picasso 7-seat, Ford S-Max 1.6, VW Touran', challenge:'BHR must quote 7-seat people-carrier (ACRISS FV or SV). A 5-seat standard car is not comparable — seat count matters.' },
+  { g:'M3', series:'MPV', rate:95.40, acrissSize:'F – Full-size (Van/MPV)', acrissBody:'V (MPV 7 seat)', codes:'FVMR', notes:"Large 7-seat MPV ~1.9–2.0 L. Ford Galaxy / Citroën C8 class. Most rental 'Large MPV' or '7-seat' categories map here.", vehicles:'Ford Galaxy 1.9, Citroën C8 2.0, Ford S-Max 2.0', challenge:'ACRISS Full-size V-type required. If BHR quotes a smaller MPV group (IV/SV), challenge as under-category for a 7-seat vehicle.' },
+  { g:'M4', series:'MPV', rate:112.59, acrissSize:'F – Full-size / P – Premium (Van/MPV)', acrissBody:'V (MPV/minivan)', codes:'FVMR · PVMR', notes:'Premium 7-seat MPV/minivan ~2.3–2.8 L. Chrysler Voyager / Mercedes Viano 2.0 class.', vehicles:'Chrysler Voyager 2.8, Ford Galaxy 2.3, Mercedes Viano 2.0', challenge:'Premium MPV (PV) expected. If BHR quotes Full-size (FV) only, rate difference of ~£17/day may be in play. Must still use V-type body code.' },
+  { g:'M5', series:'MPV', rate:168.88, acrissSize:'P – Premium / L – Luxury (Van/MPV)', acrissBody:'V (MPV)', codes:'PVMR · LVMR', notes:'Prestige large MPV. Mercedes Viano 2.2 / Renault Grand Espace 3.0. Often not stocked by mainstream rental — specialist.', vehicles:'Mercedes Viano 2.2, Renault Grand Espace 3.0', challenge:'Mainstream BHR survey companies rarely stock this category. Argue that an absence of genuine like-for-like comparators means the BHR cannot properly evidence a lower rate.' },
+  { g:'M6', series:'MPV', rate:213.92, acrissSize:'L – Luxury (Van/MPV)', acrissBody:'V (MPV)', codes:'LVMR', notes:'Luxury people-carrier. Chrysler Grand Voyager 3.3 / Viano 3.5. Rarely available from mainstream BHR survey companies.', vehicles:'Chrysler Grand Voyager 3.3, Mercedes Viano 3.5', challenge:'As with M5 — mainstream survey companies cannot produce genuine LV comparators. The BHR evidence is unreliable for this group.' },
+  // SUV / 4×4
+  { g:'F1', series:'SUV', rate:103.80, acrissSize:'I – Intermediate (SUV)', acrissBody:'F (SUV)', codes:'IFMR · IFOR', notes:'Entry compact SUV ~1.6–2.0 L (non-prestige). Ford Kuga / Hyundai Tucson class. Most common group for mainstream credit hire SUV.', vehicles:'Ford Kuga 2.0, Hyundai Tucson 1.6, Hyundai ix35 2.0', challenge:'BHR must quote SUV/4×4 (ACRISS F-type body). A standard car rate (D-type) is not comparable regardless of engine size. Check body type character (char 2).' },
+  { g:'F2', series:'SUV', rate:103.46, acrissSize:'S – Standard (SUV)', acrissBody:'F (SUV)', codes:'SFMR', notes:'Compact–standard SUV crossover (note: marginally cheaper than F1 — similar vehicles, minor variant differences). Audi Q2 / Honda CR-V class.', vehicles:'Audi Q2 Sport TFSI, Honda CR-V 2.2, Citroën C-Crosser 2.2', challenge:'BHR must quote ACRISS F-type. A standard saloon rate is not a valid comparator. F2 and F1 rates are nearly identical — confirm the correct group from the GTA schedule.' },
+  { g:'F3', series:'SUV', rate:119.87, acrissSize:'S – Standard / F – Full-size (SUV)', acrissBody:'F (SUV)', codes:'SFMR · FFMR', notes:'Standard compact-premium SUV. BMW X1 / BMW X3 2.0 class.', vehicles:'BMW X1 sDrive 2.0, BMW X3 2.0, Audi Q3', challenge:'If BHR quotes F1/F2 (Intermediate SUV) for an F3 vehicle, the daily rate difference is ~£16–17/day — a significant under-credit.' },
+  { g:'F4', series:'SUV', rate:147.06, acrissSize:'F – Full-size / P – Premium (SUV)', acrissBody:'F (SUV)', codes:'FFMR · PFMR', notes:'Mid-size premium SUV. Audi Q5 2.0 / BMW X3 2.5 / Jaguar F-Pace class.', vehicles:'Audi Q5 2.0, BMW X3 2.5, Jaguar F-Pace 2.0', challenge:'If BHR quotes F2 (£103/day) for an F4 vehicle (£147/day), the claimant is under-credited by ~£44/day. Challenge category and demand Full-size/Premium F-type quote.' },
+  { g:'F5', series:'SUV', rate:183.92, acrissSize:'P – Premium (SUV)', acrissBody:'F (SUV)', codes:'PFMR', notes:'Large premium SUV. Audi Q5 3.0 / BMW X6 / BMW X3 3.0 class.', vehicles:'Audi Q5 3.0, BMW X6, BMW X3 3.0', challenge:'Premium SUV (PF) required. Mainstream rental companies may not quote PFMR rates — argue BHR survey is not fit for purpose if it cannot produce genuine comparators.' },
+  { g:'F6', series:'SUV', rate:206.92, acrissSize:'P – Premium / L – Luxury (SUV)', acrissBody:'F (SUV), V (7-seat SUV)', codes:'PFMR · LFMR · PFVR', notes:'Large 7-seat premium SUV. Audi Q5 3.2 / Audi Q7 3.0 class. 7-seat SUVs may use ACRISS V-type.', vehicles:'Audi Q5 3.2, Audi Q7 3.0 TDi (7-seat), Range Rover Sport', challenge:'7-seat variants should use V-type body code — not F-type. If BHR uses F-type for a 7-seat vehicle, challenge body type. If it uses PF rather than LF, challenge size category.' },
+  { g:'F7', series:'SUV', rate:241.40, acrissSize:'L – Luxury (SUV)', acrissBody:'F (SUV)', codes:'LFMR', notes:'Luxury large SUV. Audi Q7 4.2 / BMW X5 V8 / BMW X7 class.', vehicles:'Audi Q7 4.2 Quattro, BMW X5 V8, BMW X7 3.0', challenge:'Luxury SUV (LF) required. Most mainstream BHR surveys will not be able to produce LFMR quotes — argue the BHR methodology is inadequate for this class of vehicle.' },
+  { g:'F8', series:'SUV', rate:258.65, acrissSize:'L – Luxury / O – Oversize (SUV)', acrissBody:'F (SUV)', codes:'LFMR · OFMR', notes:'Performance/oversize luxury SUV. Audi SQ7 / BMW X5 M60i class.', vehicles:'Audi SQ7 TDI 4.0, BMW X5 M60i, BMW X5 4.8', challenge:'As with F7 — a BHR survey from mainstream companies is unlikely to produce genuine OF/LF comparators. Challenge survey methodology and availability of like-for-like vehicles.' },
+  { g:'F9', series:'SUV', rate:316.12, acrissSize:'O – Oversize / X – Special (SUV)', acrissBody:'F (SUV)', codes:'OFMR · XFMR', notes:'Exotic/ultra-luxury SUV. BMW X5 M50 Competition / Cadillac Escalade 6.1 / Mercedes ML63 AMG class. Unlikely to appear in standard BHR surveys.', vehicles:'BMW X5 M50 Sport Competition, Cadillac Escalade 6.1, Mercedes ML 63 AMG', challenge:'No genuine BHR comparator is available from mainstream rental companies. The niche market argument (Pattni) may support the CHO rate as the only available market.' },
+  // PRESTIGE
+  { g:'P1',  series:'Prestige', rate:83.77,  acrissSize:'P – Premium', acrissBody:'C (hatch), D (saloon)', codes:'PCMR · PDMR', notes:'Entry prestige ~1.6 L. Alfa 147 1.6 / Audi A1 1.6 class. Note: rates overlap with top Standard group.', vehicles:'Alfa Romeo 147 Lusso 1.6, Audi A1 1.6 TDI, BMW 116', challenge:'BHR must quote ACRISS Premium (P) category. A Standard (S/F) rate is not equivalent for a prestige vehicle.' },
+  { g:'P2',  series:'Prestige', rate:100.35, acrissSize:'P – Premium', acrissBody:'C, D', codes:'PCMR · PDMR', notes:'Entry prestige ~1.8–2.0 L. Alfa 147 2.0 / Audi A3 1.8 class.', vehicles:'Alfa Romeo 147 2.0, Audi A3 1.8, BMW 118', challenge:'BHR must quote equivalent prestige category. A standard/compact rate is inadequate for a P-group vehicle.' },
+  { g:'P3',  series:'Prestige', rate:106.77, acrissSize:'P – Premium', acrissBody:'C, D', codes:'PDMR · PCAR', notes:'Compact prestige ~1.9–2.4 L. Alfa 156 2.4 / Audi A3 1.9 class.', vehicles:'Alfa Romeo 156 2.4, Audi A3 1.9, BMW 120', challenge:'BHR must quote equivalent prestige category. A standard/compact rate is inadequate for a P-group vehicle.' },
+  { g:'P4',  series:'Prestige', rate:129.92, acrissSize:'P – Premium / U – Premium Elite', acrissBody:'D, T (convertible), W (estate)', codes:'PDMR · UDMR · PTMR', notes:'Mid prestige. Audi A3 Cabrio / Audi A4 2.0 class. Convertibles common in this group.', vehicles:'Audi A4 2.0, Audi A3 Cabriolet 2.0, BMW 320', challenge:'Convertibles (T-type) must be quoted as PTMR or UTMR — not standard 4-door. Check body type carefully in BHR report.' },
+  { g:'P5',  series:'Prestige', rate:150.79, acrissSize:'U – Premium Elite', acrissBody:'D, W (estate)', codes:'UDMR · UWMR', notes:'Upper-mid prestige ~2.4–2.5 L. Alfa 159 2.4 / Audi A4 2.5 / Audi A4 Avant class.', vehicles:'Alfa Romeo 159 Auto 2.4, Audi A4 2.5, Audi A4 Avant diesel', challenge:'Premium Elite (U) required. If BHR quotes Premium (P) only, there may be a meaningful rate gap — check the survey comparators against actual U-category vehicles.' },
+  { g:'P6',  series:'Prestige', rate:170.55, acrissSize:'U – Premium Elite / L – Luxury', acrissBody:'D, W', codes:'UDMR · LDMR', notes:'Upper prestige ~3.0–3.2 L. Alfa 159 3.2 V6 / Audi A4 3.2 class.', vehicles:'Alfa Romeo 159 3.2 V6, Audi A4 3.2, BMW 325', challenge:'BHR must quote equivalent prestige category. A standard/compact rate is inadequate for a P-group vehicle.' },
+  { g:'P7',  series:'Prestige', rate:198.94, acrissSize:'L – Luxury', acrissBody:'D, W (estate)', codes:'LDMR · LWMR', notes:'Luxury exec saloon ~3.0–3.5 L. Audi A6 3.2–3.5 / BMW 5-series class.', vehicles:'Audi A6 3.2 Quattro, Audi A6 S-Line TDi 3.0, BMW 520', challenge:'Luxury (L) ACRISS required. Mainstream survey companies may not carry LD stock — argue BHR methodology is inadequate at this level.' },
+  { g:'P8',  series:'Prestige', rate:227.35, acrissSize:'L – Luxury', acrissBody:'D, W', codes:'LDMR', notes:'Large luxury ~4.2 L. Audi A6 4.2 / Audi A7 3.0 Sportback class.', vehicles:'Audi A6 4.2, Audi A7 3.0 TFSi, BMW 530', challenge:'BHR must quote equivalent prestige category. A standard/compact rate is inadequate for a P-group vehicle.' },
+  { g:'P9',  series:'Prestige', rate:261.48, acrissSize:'L – Luxury / W – Luxury Elite', acrissBody:'D, W', codes:'LDMR · LWMR', notes:'High luxury. Audi A8 3.7–4.2 / Audi RS saloon 4.2 class.', vehicles:'Audi A8 3.7–4.2, Audi RS saloon 4.2, BMW 730', challenge:'Luxury/Luxury Elite required. Niche vehicle — mainstream BHR surveyors almost certainly cannot produce genuine LW comparators.' },
+  { g:'P10', series:'Prestige', rate:321.74, acrissSize:'W – Luxury Elite', acrissBody:'D, W', codes:'LWMR', notes:'Top luxury saloon. Audi A8 6.0 / Audi RS7 / Audi RS6 Avant class.', vehicles:'Audi A8 6.0 W12, Audi RS7 4.0 Bi-Turbo, Mercedes S500', challenge:'Luxury Elite (W) — essentially unavailable in standard BHR surveys. Niche market argument applies strongly. The CHO rate is likely the only genuine market evidence.' },
+  { g:'P11', series:'Prestige', rate:451.90, acrissSize:'W – Luxury Elite', acrissBody:'D', codes:'LWMR · LDMR', notes:'Ultra-luxury. Bentley Continental / BMW 760 class.', vehicles:'Bentley Continental 6.0, BMW 760, Rolls-Royce Ghost', challenge:'No mainstream BHR comparator exists. Niche market argument (Pattni/Dimond) supports full CHO rate recovery without standard BHR rate evidence.' },
+  { g:'P12', series:'Prestige', rate:676.44, acrissSize:'W – Luxury Elite / X – Special', acrissBody:'D, S (coupe)', codes:'LWMR · XDMR', notes:'Exotic luxury. Aston Martin Rapide / Bentley Arnage / Bentley Bentayga 6.0 class.', vehicles:'Aston Martin Rapide 6.0, Bentley Arnage 6.0, Bentley Bentayga 6.0', challenge:'No mainstream BHR comparator exists. Niche market argument applies without qualification.' },
+  { g:'P13', series:'Prestige', rate:980.84, acrissSize:'X – Special', acrissBody:'D (limousine)', codes:'XDMR · XLMR', notes:'Pinnacle luxury. Rolls-Royce Phantom only. Effectively uncategorised by mainstream ACRISS — no rental equivalent.', vehicles:'Rolls-Royce Phantom', challenge:'Unique vehicle — no BHR survey possible. Niche market argument is overwhelming. CHO rate is the only evidence of market.' },
+  // SPORTS
+  { g:'SP1',  series:'Sports', rate:82.48,  acrissSize:'P – Premium', acrissBody:'C (hot hatch), S (sport coupe)', codes:'PCMR · PSMR', notes:"Entry sports/hot hatch. Mini Cooper 1.6 / MG ZR 1.4 class. Rental firms often list as 'Sport' in Premium category.", vehicles:'Mini Cooper 1.6, MG ZR 1.4, Ford Fiesta ST', challenge:'BHR must quote ACRISS S-type (sport/coupe) or C-type. A standard 4-door D-type rate does not match a sports/hot hatch vehicle.' },
+  { g:'SP2',  series:'Sports', rate:89.67,  acrissSize:'P – Premium', acrissBody:'C, S, T (convertible)', codes:'PCMR · PSMR · PTMR', notes:'Small sport/convertible. Alfa Giulietta 1.4 2-dr / Audi A3 Convertible 1.6 class.', vehicles:'Alfa Giulietta 1.4 2-dr, Audi A3 Conv. 1.6, Ford Fiesta ST 1.6T', challenge:'Convertibles must use T-type ACRISS code. If BHR quotes a 4-door (D-type) rate for a convertible, challenge on body type.' },
+  { g:'SP3',  series:'Sports', rate:107.71, acrissSize:'P – Premium / U – Premium Elite', acrissBody:'C, S, T', codes:'PSMR · PTMR · USMR', notes:'Sport coupe/cabriolet. BMW 118 coupe / Audi A3 Sportback 1.6 / Citroën DS3 Cabriolet class.', vehicles:'BMW 118 Coupe, Audi A3 Sportback 1.6, Citroën DS3 Cabriolet Racing', challenge:'BHR must quote ACRISS S or T type (sport/convertible). A standard 4-door rate does not match.' },
+  { g:'SP4',  series:'Sports', rate:122.98, acrissSize:'U – Premium Elite', acrissBody:'S (coupe), T (convertible)', codes:'USMR · UTMR', notes:'Sports coupe ~1.8–2.0 L. Audi TT Coupe 1.8T / Audi A3 Sportback 2.0 class.', vehicles:'Audi TT Coupe 1.8T, Audi A3 Sportback 2.0, BMW 120 Coupe', challenge:'Premium Elite (U) required. If BHR quotes Premium (P) only, there is a rate gap. Sports body type (S/T) is non-negotiable.' },
+  { g:'SP5',  series:'Sports', rate:134.36, acrissSize:'U – Premium Elite', acrissBody:'T (convertible), S (coupe)', codes:'UTMR · USMR', notes:'Sports convertible/coupe ~1.8 L. Audi TT Quattro / Audi A3 Convertible 1.8 class.', vehicles:'Audi A3 1.8 TFSI Conv., Audi TT Coupe 1.8T Quattro, BMW Z4 2.0', challenge:'BHR must quote ACRISS S or T type (sport/convertible). A standard 4-door rate does not match.' },
+  { g:'SP6',  series:'Sports', rate:178.48, acrissSize:'L – Luxury', acrissBody:'S (coupe), T (convertible)', codes:'LSMR · LTMR', notes:'Mid-range sports/cabriolet ~2.0–2.4 L. Alfa Brera 2.4 / Audi A4 Cabriolet / Audi A5 class.', vehicles:'Alfa Brera 2.4 JTDm, Audi A4 Cabriolet 1.8T, Audi A5 180 TFSi', challenge:'Luxury (L) with S/T body type required. Mainstream rental companies may not carry LS/LT stock at this level — argue BHR methodology is inadequate.' },
+  { g:'SP7',  series:'Sports', rate:200.12, acrissSize:'L – Luxury', acrissBody:'T (convertible), S (coupe)', codes:'LTMR · LSMR', notes:'Luxury sports/cabriolet ~3.0–3.2 L. Alfa Brera 3.2 V6 / Audi A4 Cabriolet 2.4 class.', vehicles:'Alfa Brera 3.2 V6, Alfa GT 3.2 V6, Audi A4 Cabriolet 2.4', challenge:'BHR must quote ACRISS S or T type (sport/convertible). A standard 4-door rate does not match.' },
+  { g:'SP8',  series:'Sports', rate:221.75, acrissSize:'L – Luxury / W – Luxury Elite', acrissBody:'T (convertible), S (coupe)', codes:'LTMR · WTMR', notes:'High-performance luxury sport ~3.0 L. Audi A5 Cabriolet 3.0 / Audi S4 3.0 / Audi S5 class.', vehicles:'Audi A5 Cabriolet 3.0 TDI, Audi S4 Sal. 3.0, Audi S5 Sportback 3.0', challenge:'Luxury/Luxury Elite with T/S body type. Niche at this level — mainstream BHR surveys will not produce genuine LT/WT comparators.' },
+  { g:'SP9',  series:'Sports', rate:243.38, acrissSize:'W – Luxury Elite', acrissBody:'T (convertible), S (coupe)', codes:'WTMR · WSMR', notes:'Upper-luxury sports/cabriolet ~3.0–4.2 L. BMW 840D / BMW 630 / Audi S4 Cabriolet class.', vehicles:'Audi S4 Cabriolet 4.2, BMW 840D xDrive 3.0, BMW 630 3.0', challenge:'BHR must quote ACRISS S or T type (sport/convertible). A standard 4-door rate does not match.' },
+  { g:'SP10', series:'Sports', rate:278.53, acrissSize:'W – Luxury Elite', acrissBody:'S (sport saloon/coupe)', codes:'WSMR', notes:'Performance saloon/coupe ~2.9–4.2 L. Alfa Giulia Quadrifoglio / Audi RS5 / Audi S6 class.', vehicles:'Alfa Giulia Quadrifoglio 2.9, Audi RS5 Coupe, Audi S6 Quattro 4.2', challenge:'Luxury Elite performance vehicle — no mainstream BHR comparator likely exists. Niche market argument applies.' },
+  { g:'SP11', series:'Sports', rate:335.32, acrissSize:'X – Special', acrissBody:'S (sport/exotic coupe)', codes:'XSMR', notes:'Exotic sports car. Aston Martin V8 Vantage / BMW M6 5.0 class. No mainstream rental equivalent.', vehicles:'Aston Martin V8 Vantage, Aston Martin Vantage 6.0, BMW M6 5.0', challenge:'No mainstream BHR comparator exists. Niche market argument applies without qualification.' },
+  { g:'SP12', series:'Sports', rate:440.80, acrissSize:'X – Special', acrissBody:'S (exotic coupe)', codes:'XSMR', notes:'Ultra-exotic. Aston Martin DB7 / DB9 class. Effectively unavailable from standard BHR survey companies.', vehicles:'Aston Martin DB7 Coupe, Aston Martin DB9 6.0, Aston Martin V8 Vantage N400', challenge:'No mainstream BHR comparator exists. Niche market argument applies without qualification.' },
+  { g:'SP13', series:'Sports', rate:643.61, acrissSize:'X – Special', acrissBody:'T (exotic convertible), S (exotic coupe)', codes:'XTMR · XSMR', notes:'Top-tier exotic. Aston Martin DB9 Volante / DBS / Vanquish. No BHR comparison possible from standard sources.', vehicles:'Aston Martin DB9 Volante, Aston Martin DBS V12, Aston Martin Vanquish', challenge:'No BHR comparison possible from mainstream rental sources. CHO rate is the only market evidence.' },
+];
+
+const ACRISS_CHAR1 = [
+  { code:'M', cat:'Mini',          desc:'Sub-1.0 L; smallest mainstream cars',          gta:'S1' },
+  { code:'E', cat:'Economy',       desc:'~1.0–1.2 L small economy',                      gta:'S1–S2' },
+  { code:'H', cat:'Economy Elite', desc:'Economy with enhanced spec',                    gta:'S2–S3' },
+  { code:'C', cat:'Compact',       desc:'~1.2–1.4 L compact hatch/saloon',              gta:'S2–S3' },
+  { code:'D', cat:'Compact Elite', desc:'Compact with enhanced spec',                   gta:'S3–S4' },
+  { code:'I', cat:'Intermediate',  desc:'~1.4–1.6 L mid-size',                          gta:'S4–S5' },
+  { code:'J', cat:'Interm. Elite', desc:'Intermediate with enhanced spec',              gta:'S4–S5' },
+  { code:'S', cat:'Standard',      desc:'~1.6–2.0 L standard saloon',                   gta:'S5–S6' },
+  { code:'R', cat:'Standard Elite',desc:'Standard with enhanced spec',                  gta:'S5–S6' },
+  { code:'F', cat:'Full-size',     desc:'~2.0 L+ full-size saloon',                     gta:'S6–S7' },
+  { code:'G', cat:'Full-size Elite',desc:'Full-size enhanced spec',                     gta:'S7' },
+  { code:'P', cat:'Premium',       desc:'Entry prestige; ~1.6–2.4 L',                   gta:'P1–P4 / SP1–SP3' },
+  { code:'U', cat:'Premium Elite', desc:'Mid prestige; ~2.4–3.2 L',                     gta:'P4–P6 / SP3–SP5' },
+  { code:'L', cat:'Luxury',        desc:'Exec luxury; ~3.0–4.2 L',                      gta:'P7–P9 / SP6–SP8 / F7' },
+  { code:'W', cat:'Luxury Elite',  desc:'Top luxury; ~4.0 L+',                          gta:'P10–P11 / SP9–SP10 / F8' },
+  { code:'O', cat:'Oversize',      desc:'Large/oversized; 4×4 or exec',                 gta:'F8–F9' },
+  { code:'X', cat:'Special',       desc:'Exotic / non-standard',                        gta:'P12–P13 / SP11–SP13 / F9' },
+];
+
+const ACRISS_CHAR2 = [
+  { code:'B', body:'2-door',                note:'Small coupe or hatch' },
+  { code:'C', body:'2/4-door',              note:'Standard hatchback (most common)' },
+  { code:'D', body:'4-door saloon',         note:'Traditional saloon' },
+  { code:'W', body:'Estate / Wagon',        note:'+£5/day GTA uplift applies' },
+  { code:'V', body:'Passenger Van / MPV',   note:'7-seat people carrier' },
+  { code:'L', body:'Limousine',             note:'Extended wheelbase' },
+  { code:'S', body:'Sport / Coupe',         note:'2-door sport' },
+  { code:'T', body:'Convertible/Cabriolet', note:'Open-top' },
+  { code:'F', body:'SUV / 4×4',             note:'Sport Utility Vehicle' },
+  { code:'J', body:'Open-Air All-Terrain',  note:'Off-road open top' },
+  { code:'X', body:'Special / Crossover',   note:'Specialist or crossover' },
+  { code:'P', body:'Pick-up 2-door',        note:'Light commercial' },
+  { code:'Q', body:'Pick-up 4-door',        note:'Light commercial crew' },
+];
+
+const ACRISS_CHAR3 = [
+  { code:'M', val:'Manual' }, { code:'A', val:'Automatic' }, { code:'B', val:'Automatic 4WD' },
+  { code:'N', val:'Manual 4WD' }, { code:'C', val:'Manual AWD' }, { code:'D', val:'Automatic AWD' },
+];
+
+const ACRISS_CHAR4 = [
+  { code:'R', val:'Unspecified fuel / AC' }, { code:'N', val:'Unspecified fuel / No AC (also Electric)' },
+  { code:'D', val:'Diesel / AC' }, { code:'Q', val:'Diesel / No AC' },
+  { code:'H', val:'Hybrid / AC' }, { code:'I', val:'Hybrid / No AC' },
+  { code:'E', val:'Electric / AC' }, { code:'C', val:'Electric / No AC' },
+  { code:'V', val:'Petrol / AC' }, { code:'Z', val:'Petrol / No AC' },
+];
+
+const BHR_GUIDE_STEPS = [
+  { title:'Step 1 — Identify the GTA group', text:"Find the claimant's damaged vehicle in the GTA 'by manufacturer model and group' schedule. Note the GTA group (e.g. S4, P3, F2) and the corresponding daily rate. If not listed, use the closest model/engine size equivalent." },
+  { title:'Step 2 — Find the ACRISS equivalents', text:"Look up the GTA group in this checker. Note the primary ACRISS size category (character 1) and body type (character 2). For example, S4 maps to ACRISS C/I, 4-door (CDMR or IDMR). F3 maps to ACRISS S/F SUV (SFMR or FFMR)." },
+  { title:'Step 3 — Review the BHR report', text:"Examine the defendant's BHR report. For each comparator rate quoted, identify: (a) the rental company; (b) the vehicle or ACRISS code listed; (c) the daily rate. Many BHR reports quote specific vehicles — check these against the GTA list to verify category." },
+  { title:'Step 4 — Check size category match', text:'Compare the ACRISS size category (character 1) in the BHR against the GTA group mapping. If the BHR quotes a Compact (C) vehicle for a claimant whose vehicle is GTA S5 (Intermediate/Standard IDMR/SDMR), the comparator is under-category — argue the BHR understates the true replacement cost.' },
+  { title:'Step 5 — Check body type match', text:"The ACRISS second character must match the claimant's vehicle type: SUV claimant (F-type) → BHR must quote F-type. MPV/7-seat (V-type) → BHR must quote V-type. Convertible (T-type) → BHR must quote T-type. A standard 4-door (D/C) rate is not a valid comparator for an SUV, MPV or convertible regardless of engine size." },
+  { title:'Step 6 — Check the GTA rate vs BHR rate', text:"If the BHR rate is higher than the GTA maximum for that group, the CHO can in principle charge up to the GTA cap (if the parties are GTA signatories). If the BHR rate is lower than GTA, this does not automatically cap recovery — the GTA sets maximum settlement rates, not the measure of reasonable BHR." },
+];
+
+const BHR_KEY_LIMITS = [
+  { title:'Engine size', text:"GTA groups are engine-size-driven; ACRISS is engine-agnostic. Within any ACRISS category a rental company may offer a range of engine sizes. A BHR for a Compact Ford Focus 1.0T EcoBoost is technically valid even if the claimant's vehicle was a 1.4L Focus (S4) — categories overlap at boundaries. Body-type challenges are stronger than engine-size challenges." },
+  { title:'ACRISS not universal', text:"Not all rental companies publish ACRISS codes explicitly. Some local/regional operators use their own category names. When challenging a BHR, ask for the ACRISS code for each quoted vehicle so comparability can be verified." },
+  { title:'Prestige & Sports niche', text:"Prestige (P) and Sports (SP) groups use ACRISS Premium/Luxury/Special categories rarely stocked by mainstream rental companies in BHR surveys. Where no genuine like-for-like comparator exists, the BHR cannot properly evidence a lower rate — argue it accordingly (Pattni/Dimond)." },
+  { title:'Geographic variation', text:"BHR rates vary by location and date. The ACRISS/GTA mapping does not address geographic or temporal variation — that remains a separate challenge. The survey must reflect rates available in the claimant's locality at the time of hire." },
+];
+
+let _acrissSeriesFilter = 'all';
+let _acrissGuideOpen = false;
+let _acrissCheckerOpen = false;
+
+function toggleAcrissChecker() {
+  _acrissCheckerOpen = !_acrissCheckerOpen;
+  document.getElementById('acriss-checker-body').style.display = _acrissCheckerOpen ? '' : 'none';
+  document.getElementById('acriss-toggle-icon').textContent = _acrissCheckerOpen ? '▼' : '▶';
+  if (_acrissCheckerOpen && !document.getElementById('acriss-search').value) {
+    renderAcrissDefault();
+  }
+}
+
+function filterAcrissSeries(series, btn) {
+  _acrissSeriesFilter = series;
+  document.querySelectorAll('.acriss-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const q = document.getElementById('acriss-search').value.trim();
+  if (series === 'acriss-ref') {
+    renderAcrissCodeRef();
+  } else if (q) {
+    searchAcriss(q);
+  } else {
+    renderAcrissDefault();
+  }
+}
+
+function clearAcrissSearch() {
+  document.getElementById('acriss-search').value = '';
+  _acrissSeriesFilter = 'all';
+  document.querySelectorAll('.acriss-tab-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  renderAcrissDefault();
+}
+
+function searchAcriss(q) {
+  if (_acrissSeriesFilter === 'acriss-ref') { renderAcrissCodeRef(); return; }
+  q = (q||'').trim().toUpperCase();
+  const container = document.getElementById('acriss-results');
+  if (!q && _acrissSeriesFilter === 'all') { renderAcrissDefault(); return; }
+
+  let matches = GTA_GROUPS;
+  if (_acrissSeriesFilter !== 'all') {
+    matches = matches.filter(g => g.series === _acrissSeriesFilter);
+  }
+  if (q) {
+    const ql = q.toLowerCase();
+    matches = matches.filter(g =>
+      g.g.toLowerCase().startsWith(ql) ||
+      g.series.toLowerCase().includes(ql) ||
+      g.acrissSize.toLowerCase().includes(ql) ||
+      g.acrissBody.toLowerCase().includes(ql) ||
+      g.codes.toLowerCase().includes(ql) ||
+      g.notes.toLowerCase().includes(ql) ||
+      g.vehicles.toLowerCase().includes(ql) ||
+      g.challenge.toLowerCase().includes(ql) ||
+      // Parse ACRISS code (e.g. CDMR → C=compact, D=4-door)
+      parseAcrissQuery(q, g)
+    );
+  }
+
+  if (!matches.length) {
+    container.innerHTML = `<p class="acriss-no-result">No GTA group matches found for "<strong>${escHtml(q)}</strong>". Try a group code (S4), ACRISS size letter (C, I, F), body type (SUV, MPV, convertible) or vehicle name (Mondeo, Q5).</p>`;
+    return;
+  }
+  container.innerHTML = `<p class="acriss-results-count">${matches.length} group${matches.length>1?'s':''} matched</p>`
+    + matches.map(renderAcrissCard).join('');
+}
+
+function parseAcrissQuery(q, group) {
+  if (q.length < 2 || q.length > 4) return false;
+  const char1 = ACRISS_CHAR1.find(c => c.code === q[0]);
+  if (!char1) return false;
+  return group.acrissSize.toLowerCase().includes(char1.cat.toLowerCase()) ||
+         group.codes.toLowerCase().includes(q[0].toLowerCase());
+}
+
+function renderAcrissDefault() {
+  let groups = GTA_GROUPS;
+  if (_acrissSeriesFilter !== 'all' && _acrissSeriesFilter !== 'acriss-ref') {
+    groups = groups.filter(g => g.series === _acrissSeriesFilter);
+  }
+  const container = document.getElementById('acriss-results');
+  container.innerHTML = `<p class="acriss-results-count">${groups.length} GTA groups — search above to filter, or click a series tab</p>`
+    + groups.map(renderAcrissCard).join('');
+}
+
+function renderAcrissCard(g) {
+  const codes = g.codes.split('·').map(c => `<span class="acriss-code-pill">${c.trim()}</span>`).join('');
+  return `<div class="acriss-result-card">
+    <div class="acriss-result-header">
+      <span class="acriss-group-badge">${escHtml(g.g)}</span>
+      <span class="acriss-series-badge">${escHtml(g.series)}</span>
+      <span class="acriss-rate">£${g.rate.toFixed(2)}/day (ex VAT)</span>
+    </div>
+    <div class="acriss-result-row"><span class="lbl">ACRISS size:</span>${escHtml(g.acrissSize)}</div>
+    <div class="acriss-result-row"><span class="lbl">Body type:</span>${escHtml(g.acrissBody)}</div>
+    <div class="acriss-result-row"><span class="lbl">Primary codes:</span>${codes}</div>
+    <div class="acriss-result-row"><span class="lbl">Sample vehicles:</span>${escHtml(g.vehicles)}</div>
+    <div class="acriss-result-row"><span class="lbl">Notes:</span>${escHtml(g.notes)}</div>
+    <div class="acriss-challenge">⚖️ <strong>BHR challenge:</strong> ${escHtml(g.challenge)}</div>
+  </div>`;
+}
+
+function renderAcrissCodeRef() {
+  const container = document.getElementById('acriss-results');
+  container.innerHTML = `
+    <p class="acriss-ref-section-head">Character 1 — Vehicle Size / Category</p>
+    <table class="acriss-ref-table">
+      <thead><tr><th>Code</th><th>Category</th><th>Description</th><th>Nearest GTA Group(s)</th></tr></thead>
+      <tbody>${ACRISS_CHAR1.map(r=>`<tr><td>${r.code}</td><td>${r.cat}</td><td>${r.desc}</td><td>${r.gta}</td></tr>`).join('')}</tbody>
+    </table>
+    <p class="acriss-ref-section-head">Character 2 — Body Type</p>
+    <table class="acriss-ref-table">
+      <thead><tr><th>Code</th><th>Body Type</th><th>Notes</th></tr></thead>
+      <tbody>${ACRISS_CHAR2.map(r=>`<tr><td>${r.code}</td><td>${r.body}</td><td>${r.note}</td></tr>`).join('')}</tbody>
+    </table>
+    <p class="acriss-ref-section-head">Character 3 — Transmission</p>
+    <table class="acriss-ref-table">
+      <thead><tr><th>Code</th><th>Transmission</th></tr></thead>
+      <tbody>${ACRISS_CHAR3.map(r=>`<tr><td>${r.code}</td><td>${r.val}</td></tr>`).join('')}</tbody>
+    </table>
+    <p class="acriss-ref-section-head">Character 4 — Fuel &amp; Air Conditioning</p>
+    <table class="acriss-ref-table">
+      <thead><tr><th>Code</th><th>Fuel &amp; AC</th></tr></thead>
+      <tbody>${ACRISS_CHAR4.map(r=>`<tr><td>${r.code}</td><td>${r.val}</td></tr>`).join('')}</tbody>
+    </table>`;
+}
+
+function toggleBhrGuide() {
+  _acrissGuideOpen = !_acrissGuideOpen;
+  const el = document.getElementById('bhr-guide');
+  if (_acrissGuideOpen) {
+    el.innerHTML = BHR_GUIDE_STEPS.map(s =>
+      `<div class="bhr-guide-step"><strong>${escHtml(s.title)}</strong>${escHtml(s.text)}</div>`
+    ).join('')
+    + '<p class="acriss-ref-section-head" style="margin-top:0.8rem;">Key Limitations</p>'
+    + BHR_KEY_LIMITS.map(l =>
+      `<div class="bhr-guide-limit"><strong>${escHtml(l.title)}:</strong> ${escHtml(l.text)}</div>`
+    ).join('');
+  }
+  el.style.display = _acrissGuideOpen ? '' : 'none';
+}
+
+function setBrowserDb(db) {
+  currentBrowserDb = db;
+  document.getElementById('db-ch').classList.toggle('active', db === 'credit_hire');
+  document.getElementById('db-li').classList.toggle('active', db === 'liability');
+
+  if (db === 'liability' && liabilityDatabase.length === 0) {
+    document.getElementById('cases-container').innerHTML = `
+      <div style="text-align:center;padding:3rem;color:var(--text-light);">
+        <p>The liability database has not been loaded yet.</p>
+        <p style="margin-top:0.5rem;font-size:0.8rem;">Process the liability cases folder and upload <strong>liability_database.json</strong> to deploy it.</p>
+      </div>`;
+    document.getElementById('pagination').innerHTML = '';
+    document.getElementById('results-count').textContent = '';
+    return;
+  }
+
+  // Reset year filter options for the new database
+  const sel = document.getElementById('filter-year');
+  sel.innerHTML = '<option value="">Any Year</option>';
+  populateYearFilter();
+  applyFilters();
+}
+
+async function loadDatabase() {
+  // Load credit hire database
+  try {
+    const res = await fetchCorpus('case_database.json');
+    if (!res.ok) throw new Error('Not found');
+    const parsed = await res.json();
+    const arr = Array.isArray(parsed) ? parsed : (parsed.cases || []);
+    caseDatabase = arr.filter(c => c && c.case_name);
+  } catch(e) {
+    document.getElementById('cases-container').innerHTML = `
+      <div style="text-align:center;padding:3rem;color:var(--text-light);">
+        <p>Credit hire database not found. Ensure <strong>case_database.json</strong> is deployed.</p>
+      </div>`;
+  }
+
+  // Try to load liability database (optional — won't error if missing)
+  try {
+    const res = await fetchCorpus('liability_database.json');
+    if (res.ok) {
+      const parsed = await res.json();
+      const arr = Array.isArray(parsed) ? parsed : (parsed.cases || []);
+      liabilityDatabase = arr.filter(c => c && c.case_name);
+    }
+  } catch(e) { /* Not yet available */ }
+
+  // Try to load resources directory (optional)
+  try {
+    const res = await fetchCorpus('resources_database.json');
+    if (res.ok) {
+      const parsed = await res.json();
+      resourcesDatabase = parsed.entries || [];
+      renderDirectory();
+    }
+  } catch(e) { /* Not yet available */ }
+
+  // Try to load news archive (optional)
+  try {
+    const res = await fetchCorpus('posts_index.json');
+    if (res.ok) {
+      const parsed = await res.json();
+      newsDatabase = (parsed.posts || []).sort((a, b) => {
+        // Sort newest first
+        return (b.date || '').localeCompare(a.date || '');
+      });
+      filteredNews = [...newsDatabase];
+      const cnt = document.getElementById('news-count');
+      if (cnt) cnt.textContent = `${newsDatabase.length} articles`;
+      populateNewsYears();
+      renderNewsCards();
+    }
+  } catch(e) { /* Not yet available */ }
+
+  populateYearFilter();
+  applyFilters();
+}
+
+function populateYearFilter() {
+  const activeDb = currentBrowserDb === 'liability' ? liabilityDatabase : caseDatabase;
+  const years = [...new Set(activeDb.map(c => c.year).filter(Boolean))].sort((a,b) => b - a);
+  const sel = document.getElementById('filter-year');
+  sel.innerHTML = '<option value="">Any Year</option>';
+  years.forEach(y => {
+    const opt = document.createElement('option');
+    opt.value = y; opt.textContent = y;
+    sel.appendChild(opt);
+  });
+}
+
+function applyFilters() {
+  const q = document.getElementById('search-input').value.toLowerCase().trim();
+  const court = document.getElementById('filter-court').value;
+  const outcome = document.getElementById('filter-outcome').value;
+  const year = document.getElementById('filter-year').value;
+
+  const activeDb = currentBrowserDb === 'liability' ? liabilityDatabase : caseDatabase;
+
+  filteredCases = activeDb.filter(c => {
+    if (court && c.court !== court) return false;
+    if (outcome && c.outcome_party !== outcome) return false;
+    if (year && String(c.year) !== year) return false;
+    if (q) {
+      const searchText = [c.case_name, c.citation, c.summary,
+        (c.legal_topics || []).join(' '), (c.key_principles || []).join(' ')
+      ].join(' ').toLowerCase();
+      const words = q.split(/\s+/);
+      if (!words.every(w => searchText.includes(w))) return false;
+    }
+    return true;
+  });
+
+  // Sort by court level then year
+  filteredCases.sort((a, b) => {
+    const la = a.court_level || 5, lb = b.court_level || 5;
+    if (la !== lb) return la - lb;
+    return (b.year || 0) - (a.year || 0);
+  });
+
+  currentPage = 1;
+  document.getElementById('results-count').textContent = `${filteredCases.length} case${filteredCases.length !== 1 ? 's' : ''}`;
+  renderCases();
+}
+
+function renderCases() {
+  const container = document.getElementById('cases-container');
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const page = filteredCases.slice(start, start + PAGE_SIZE);
+
+  if (!page.length) {
+    container.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--text-light);">No cases match your filters.</div>';
+    document.getElementById('pagination').innerHTML = '';
+    return;
+  }
+
+  container.innerHTML = page.map((c, i) => renderCaseCard(c, start + i)).join('');
+  renderPagination();
+}
+
+function renderCaseCard(c, idx) {
+  const dotClass = courtDotClass(c.court);
+  const dotLabel = courtAbbr(c.court);
+  const pillClass = outcomePillClass(c.outcome_party);
+  const pillLabel = outcomePillLabel(c.outcome_party);
+  const topics = (c.legal_topics || []).slice(0, 5).map(t => `<span class="topic-tag">${escHtml(t)}</span>`).join('');
+  const principles = (c.key_principles || []).slice(0, 3);
+
+  const principlesHtml = principles.length ? `
+    <div class="principles-box">
+      <h4>Key Principles</h4>
+      <ul>${principles.map(p => `<li>${escHtml(p)}</li>`).join('')}</ul>
+    </div>` : '';
+
+  const summaryHtml = c.summary
+    ? `<div class="case-summary">${escHtml(c.summary.slice(0, 600))}${c.summary.length > 600 ? '…' : ''}</div>`
+    : '';
+
+  return `
+    <div class="case-card" onclick="openCaseModal(${c.id}, '${currentBrowserDb}')">
+      <div class="case-card-header">
+        <div class="case-left">
+          <div class="court-dot ${dotClass}">${dotLabel}</div>
+          <div>
+            <div class="case-title">${escHtml(c.case_name)}</div>
+            <div class="case-meta">
+              ${c.citation ? `<span>📎 ${escHtml(c.citation)}</span>` : ''}
+              ${c.year ? `<span>📅 ${c.year}</span>` : ''}
+              ${c.court ? `<span>🏛 ${escHtml(c.court)}</span>` : ''}
+              ${c.significance ? `<span>⭐ ${escHtml(c.significance)}</span>` : ''}
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;flex-shrink:0;">
+          <span class="outcome-pill ${pillClass}">${pillLabel}</span>
+          ${c.pdf_url ? `<a href="${escHtml(c.pdf_url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Open judgment PDF" style="font-size:0.72rem;font-weight:600;color:var(--navy);border:1px solid var(--border);border-radius:5px;padding:0.2rem 0.5rem;text-decoration:none;white-space:nowrap;transition:all 0.15s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--navy)'">📄 PDF</a>` : ''}
+          <span style="font-size:0.75rem;color:var(--text-light);">View →</span>
+        </div>
+      </div>
+      ${topics.length ? `<div class="topics-row" style="padding:0 1.25rem 0.75rem;">${topics}</div>` : ''}
+    </div>`;
+}
+
+function renderPagination() {
+  const total = Math.ceil(filteredCases.length / PAGE_SIZE);
+  if (total <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
+
+  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>‹</button>`;
+
+  for (let i = 1; i <= total; i++) {
+    if (i === 1 || i === total || Math.abs(i - currentPage) <= 2) {
+      html += `<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
+    } else if (Math.abs(i - currentPage) === 3) {
+      html += `<span style="align-self:center;color:var(--text-light)">…</span>`;
+    }
+  }
+
+  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===total?'disabled':''}>›</button>`;
+  document.getElementById('pagination').innerHTML = html;
+}
+
+function goPage(n) {
+  currentPage = n;
+  renderCases();
+  document.getElementById('pane-case-browser').scrollTop = 0;
+}
+
+// ──────────────────────────────────────────────────────────────
+// CASE MODAL
+// ──────────────────────────────────────────────────────────────
+function openCaseModal(idOrName, dbHint) {
+  // Support lookup by numeric id (with optional db hint) or by case name across both databases
+  let c;
+  if (typeof idOrName === 'number') {
+    const db = dbHint === 'liability' ? liabilityDatabase : caseDatabase;
+    c = db.find(x => x.id === idOrName);
+  } else {
+    const allCases = [...caseDatabase, ...liabilityDatabase];
+    c = allCases.find(x => x.case_name === idOrName);
+  }
+  if (!c) return;
+
+  document.getElementById('modal-title').textContent = c.case_name;
+  document.getElementById('modal-citation').textContent = [c.citation, c.court, c.year].filter(Boolean).join(' · ');
+
+  const principles = (c.key_principles || []);
+  const topics = (c.legal_topics || []);
+
+  document.getElementById('modal-body').innerHTML = `
+    ${c.outcome ? `<div class="modal-section">
+      <div class="modal-section-label">Outcome</div>
+      <p>${escHtml(c.outcome)}</p>
+    </div>` : ''}
+
+    ${c.summary ? `<div class="modal-section">
+      <div class="modal-section-label">Summary</div>
+      <p>${escHtml(c.summary)}</p>
+    </div>` : ''}
+
+    ${principles.length ? `<div class="modal-section">
+      <div class="modal-section-label">Key Principles</div>
+      <ul>${principles.map(p => `<li>${escHtml(p)}</li>`).join('')}</ul>
+    </div>` : ''}
+
+    ${topics.length ? `<div class="modal-section">
+      <div class="modal-section-label">Legal Topics</div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.25rem;">
+        ${topics.map(t => `<span class="topic-tag">${escHtml(t)}</span>`).join('')}
+      </div>
+    </div>` : ''}
+
+    ${c.judges && c.judges.length ? `<div class="modal-section">
+      <div class="modal-section-label">Judges</div>
+      <p>${c.judges.map(j => escHtml(j)).join(', ')}</p>
+    </div>` : ''}
+
+    ${c.filename ? `<div class="modal-section">
+      <div class="modal-section-label">Source File</div>
+      <p style="font-size:0.8rem;">
+        ${c.pdf_url
+          ? `<a href="${escHtml(c.pdf_url)}" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">📄 ${escHtml(c.filename)} ↗</a>`
+          : `<span style="color:var(--text-light);">${escHtml(c.filename)}</span>`}
+      </p>
+    </div>` : ''}
+  `;
+
+  document.getElementById('case-modal').classList.add('open');
+}
+
+function openCaseByName(name) {
+  // Open modal directly — works from either tab and across both databases
+  openCaseModal(name);
+}
+
+function closeModal() {
+  document.getElementById('case-modal').classList.remove('open');
+}
+
+function closeModalIfOverlay(e) {
+  if (e.target === document.getElementById('case-modal')) closeModal();
+}
+
+// ──────────────────────────────────────────────────────────────
+// HELPERS
+// ──────────────────────────────────────────────────────────────
+function escHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function courtDotClass(court) {
+  if (!court) return 'dot-other';
+  if (court.includes('Supreme') || court.includes('Lords')) return 'dot-sc';
+  if (court.includes('Appeal')) return 'dot-ca';
+  if (court.includes('High')) return 'dot-hc';
+  if (court.includes('County') || court.includes('Crown')) return 'dot-cc';
+  return 'dot-other';
+}
+
+function courtAbbr(court) {
+  if (!court) return '?';
+  if (court.includes('Supreme') || court.includes('Lords')) return 'SC';
+  if (court.includes('Appeal')) return 'CA';
+  if (court.includes('High')) return 'HC';
+  if (court.includes('County')) return 'CC';
+  return court.slice(0,2).toUpperCase();
+}
+
+function outcomePillClass(party) {
+  const map = { claimant: 'pill-claimant', defendant: 'pill-defendant', mixed: 'pill-mixed' };
+  return map[party] || 'pill-unknown';
+}
+
+function outcomePillLabel(party) {
+  const map = { claimant: 'Claimant', defendant: 'Defendant', mixed: 'Mixed', unknown: 'See case' };
+  return map[party] || 'See case';
+}
+
+// ──────────────────────────────────────────────────────────────
+// INIT
+// ──────────────────────────────────────────────────────────────
+(function init() {
+  const configured = (SUPABASE_URL !== 'YOUR_SUPABASE_URL') && initSupabase();
+
+  if (configured && supabaseClient) {
+    // Check for existing session
+    supabaseClient.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        checkApprovalAndEnter(session.user);
+      }
+    });
+    // Listen for auth changes
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        // User arrived via password reset link — show the new-password form
+        showNewPasswordForm();
+        return;
+      }
+      if (event === 'SIGNED_IN' && session) {
+        checkApprovalAndEnter(session.user);
+      }
+    });
+  }
+  // If not configured, auth screen stays visible with error message
+})();
+
+// ──────────────────────────────────────────────────────────────
+// NEWS ARCHIVE
+// ──────────────────────────────────────────────────────────────
+let newsDatabase = [];
+let filteredNews = [];
+let currentNewsPage = 1;
+const NEWS_PAGE_SIZE = 20;
+
+function populateNewsYears() {
+  const years = [...new Set(newsDatabase.map(p => p.date ? p.date.slice(0, 4) : null).filter(Boolean))].sort((a, b) => b - a);
+  const sel = document.getElementById('news-year');
+  if (!sel) return;
+  sel.innerHTML = '<option value="">All Years</option>';
+  years.forEach(y => {
+    const opt = document.createElement('option');
+    opt.value = y; opt.textContent = y;
+    sel.appendChild(opt);
+  });
+}
+
+function filterNews() {
+  const q = (document.getElementById('news-search')?.value || '').toLowerCase().trim();
+  const year = document.getElementById('news-year')?.value || '';
+
+  filteredNews = newsDatabase.filter(p => {
+    if (year && (!p.date || !p.date.startsWith(year))) return false;
+    if (q) {
+      const text = [(p.title || ''), (p.excerpt || '')].join(' ').toLowerCase();
+      const words = q.split(/\s+/);
+      if (!words.every(w => text.includes(w))) return false;
+    }
+    return true;
+  });
+
+  currentNewsPage = 1;
+  const cnt = document.getElementById('news-count');
+  if (cnt) cnt.textContent = `${filteredNews.length} article${filteredNews.length !== 1 ? 's' : ''}`;
+  renderNewsCards();
+}
+
+function renderNewsCards() {
+  const grid = document.getElementById('news-grid');
+  if (!grid) return;
+
+  const start = (currentNewsPage - 1) * NEWS_PAGE_SIZE;
+  const page = filteredNews.slice(start, start + NEWS_PAGE_SIZE);
+
+  if (!page.length) {
+    grid.innerHTML = '<div class="news-empty">No articles match your search.</div>';
+    document.getElementById('news-pagination').innerHTML = '';
+    return;
+  }
+
+  grid.innerHTML = page.map(p => {
+    const dateStr = formatNewsDate(p.date);
+    const yearTag = p.date ? p.date.slice(0, 4) : '';
+    const excerpt = p.excerpt ? (p.excerpt.length > 200 ? p.excerpt.slice(0, 200).trimEnd() + '…' : p.excerpt) : '';
+    const url = p.url || `https://www.credithire.org.uk/post/${p.slug}`;
+    return `
+      <a class="news-card" href="${escHtml(url)}" target="_blank" rel="noopener">
+        <div class="news-card-meta">
+          <span class="news-date">📅 ${escHtml(dateStr)}</span>
+          ${yearTag ? `<span class="news-year-tag">${escHtml(yearTag)}</span>` : ''}
+        </div>
+        <div class="news-title">${escHtml(p.title || 'Untitled')}</div>
+        ${excerpt ? `<div class="news-excerpt">${escHtml(excerpt)}</div>` : ''}
+        <span class="news-read-link">Read full article ↗</span>
+      </a>`;
+  }).join('');
+
+  renderNewsPagination();
+}
+
+function renderNewsPagination() {
+  const total = Math.ceil(filteredNews.length / NEWS_PAGE_SIZE);
+  const container = document.getElementById('news-pagination');
+  if (!container) return;
+  if (total <= 1) { container.innerHTML = ''; return; }
+
+  let html = `<button class="page-btn" onclick="goNewsPage(${currentNewsPage - 1})" ${currentNewsPage === 1 ? 'disabled' : ''}>‹</button>`;
+  for (let i = 1; i <= total; i++) {
+    if (i === 1 || i === total || Math.abs(i - currentNewsPage) <= 2) {
+      html += `<button class="page-btn ${i === currentNewsPage ? 'active' : ''}" onclick="goNewsPage(${i})">${i}</button>`;
+    } else if (Math.abs(i - currentNewsPage) === 3) {
+      html += `<span style="align-self:center;color:var(--text-light)">…</span>`;
+    }
+  }
+  html += `<button class="page-btn" onclick="goNewsPage(${currentNewsPage + 1})" ${currentNewsPage === total ? 'disabled' : ''}>›</button>`;
+  container.innerHTML = html;
+}
+
+function goNewsPage(n) {
+  currentNewsPage = n;
+  renderNewsCards();
+  document.getElementById('pane-news').scrollTop = 0;
+}
+
+function formatNewsDate(dateStr) {
+  if (!dateStr) return '';
+  try {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  } catch(e) { return dateStr; }
+}
+
+// ──────────────────────────────────────────────────────────────
+// DIRECTORY
+// ──────────────────────────────────────────────────────────────
+let currentDirCat = 'All';
+
+const BADGE_CLASS = {
+  'CHO':           'badge-CHO',
+  'Solicitor':     'badge-Solicitor',
+  'Counsel':       'badge-Counsel',
+  'Chambers':      'badge-Chambers',
+  'BHR':           'badge-BHR',
+  'Car Rental':    'badge-Car-Rental',
+  'Funding':       'badge-Funding',
+  'Consultant':    'badge-Consultant',
+  'Engineer':      'badge-Engineer',
+  'Counter-Fraud': 'badge-Counter-Fraud',
+  'Other':         'badge-Other',
+};
+
+function setDirCat(cat) {
+  currentDirCat = cat;
+  document.querySelectorAll('.dir-cat-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.cat === cat);
+  });
+  filterDirectory();
+}
+
+function filterDirectory() {
+  const q = (document.getElementById('dir-search')?.value || '').toLowerCase().trim();
+  const results = resourcesDatabase.filter(e => {
+    const catMatch = currentDirCat === 'All' || e.category === currentDirCat;
+    const textMatch = !q || e.name.toLowerCase().includes(q) || e.description.toLowerCase().includes(q);
+    return catMatch && textMatch;
+  });
+  renderDirectoryCards(results);
+}
+
+function renderDirectory() {
+  filterDirectory();
+}
+
+function renderDirectoryCards(entries) {
+  const grid = document.getElementById('dir-grid');
+  const count = document.getElementById('dir-count');
+  if (!grid) return;
+
+  count.textContent = `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'}`;
+
+  if (!entries.length) {
+    grid.innerHTML = `<div class="dir-empty">No entries found. Try adjusting your search or filter.</div>`;
+    return;
+  }
+
+  grid.innerHTML = entries.map(e => {
+    const badgeClass = BADGE_CLASS[e.category] || 'badge-Other';
+    const desc = e.description.length > 220
+      ? e.description.slice(0, 220).trimEnd() + '…'
+      : e.description;
+    const linkLabel = e.link_type === 'profile' ? '📄 View Profile' : '🌐 Visit Website';
+    return `
+    <div class="dir-card">
+      <div class="dir-card-top">
+        <span class="dir-badge ${badgeClass}">${escHtml(e.category)}</span>
+        <span class="dir-name">${escHtml(e.name)}</span>
+      </div>
+      <div class="dir-desc">${escHtml(desc)}</div>
+      ${e.link ? `<a class="dir-link" href="${escHtml(e.link)}" target="_blank" rel="noopener">${linkLabel}</a>` : ''}
+    </div>`;
+  }).join('');
+}
+</script>
+</body>
+</html>

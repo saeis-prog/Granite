@@ -1,0 +1,407 @@
+{
+  "module": {
+    "id": "module-04",
+    "title": "Qualifying periods and need",
+    "subtitle": "Assessing entitlement to hire: how long, for what vehicle, and on what basis",
+    "level": "Operations",
+    "duration_minutes": 95,
+    "format": "Self-paced e-learning with AI tutor",
+    "sections_count": 5,
+    "assessment_questions": 20,
+    "pass_mark_percent": 75,
+    "prerequisite": "module-03",
+    "learning_objectives": [
+      {
+        "id": "LO1",
+        "text": "Define and distinguish between the qualifying period and the basic hire period in the context of credit hire claims"
+      },
+      {
+        "id": "LO2",
+        "text": "Apply the need test to a range of claimant profiles and vehicle use patterns"
+      },
+      {
+        "id": "LO3",
+        "text": "Identify the key triggers that reduce or end the qualifying period: repair completion, total loss settlement, delayed notification, and failure to mitigate"
+      },
+      {
+        "id": "LO4",
+        "text": "Assess the appropriate vehicle class for replacement hire and recognise when an upgrade or downgrade is justified"
+      },
+      {
+        "id": "LO5",
+        "text": "Explain the specific challenges arising from electric vehicles and prestige vehicles in relation to hire periods and holding costs"
+      },
+      {
+        "id": "LO6",
+        "text": "Recognise the impact of supply chain delays, parts shortages, and bodyshop capacity on hire period justification"
+      }
+    ],
+    "sections": [
+      {
+        "id": "s01",
+        "number": 1,
+        "title": "Establishing need: who qualifies and who does not",
+        "duration_minutes": 18,
+        "concept": "Need is not presumed \u2014 it must be established on the facts. The test is whether a reasonable person in the claimant's position would have hired a replacement vehicle. Courts consider the claimant's use of the vehicle, the availability of alternatives, and whether the hire was a proportionate response. Need can be partial (the claimant needed a vehicle for some purposes but not all) or period-specific (need existed for part but not all of the hire).",
+        "content_points": [
+          "The need test: would a reasonable person in the claimant's position have needed a replacement vehicle?",
+          "High need indicators: daily commuting, professional or business use, sole family vehicle, caring responsibilities, medical needs",
+          "Low need indicators: second vehicle available, regular public transport user, retired with flexible schedule, vehicle used only occasionally",
+          "Need is not binary: a claimant may need a vehicle for some but not all of the hire period",
+          "The 'availability of alternatives' question: a second car must be genuinely suitable and available, not merely theoretically present",
+          "The insurer's burden: challenging need requires the insurer to produce evidence that alternatives were available, not merely assert it",
+          "Common insurer arguments on need: 'claimant could have used public transport', 'second vehicle was available', 'claimant works from home'"
+        ],
+        "scenario": {
+          "text": "Fatima is a 67-year-old retired teacher. She uses her car 3-4 times a week for shopping, visiting her GP, and attending a weekly social group 8 miles away. Her husband has a car but works full time and uses it for his commute. Her car is in for repair for 10 days. The insurer argues she did not need a hire vehicle because she is retired and her husband has a car. Analyse the need argument.",
+          "teaching_points": [
+            "Retirement does not eliminate need \u2014 regular use is established",
+            "Her husband's car is not genuinely available during working hours",
+            "GP visits and medical-adjacent use strengthen the need argument",
+            "The insurer's argument is weak on these facts",
+            "The learner should identify each need indicator and assess the insurer's position as tactical rather than meritorious"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A claimant has a second car available. The insurer argues no hire was needed. Which fact would most strongly support the claimant's position that need existed despite the second car?",
+          "options": [
+            {
+              "text": "The second car is a different colour to the damaged vehicle",
+              "correct": false
+            },
+            {
+              "text": "The second car is a two-seat sports car and the claimant has three children who travel to school daily",
+              "correct": true,
+              "explanation": "The second car must be genuinely suitable. A two-seat vehicle is not a realistic alternative for a family of five."
+            },
+            {
+              "text": "The second car has slightly lower fuel economy",
+              "correct": false
+            },
+            {
+              "text": "The claimant prefers not to drive the second car",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s02",
+        "number": 2,
+        "title": "The qualifying period: calculation and common disputes",
+        "duration_minutes": 20,
+        "concept": "The qualifying period is not a set number of days — it is the number of days which reasonably equate to the period the claimant was unable to use their vehicle, either whilst it was being repaired or whilst awaiting a total loss settlement. The period can extend based on insurer intransigence or delays in establishing liability, neither of which constitutes a break in the chain of causation. In a total loss claim, the period extends beyond the point at which the claimant receives funds — the claimant is entitled to a reasonable period to make enquiries and obtain a suitable replacement vehicle.",
+        "content_points": [
+          "Start of the qualifying period: the date the claimant's vehicle became unusable — either the accident date or the date it was taken off the road for repair",
+          "The qualifying period is not a fixed number of days — it is determined by the reasonable period during which the claimant could not use their own vehicle",
+          "The period can extend where the insurer is intransigent or where there are delays in establishing liability — neither constitutes a break in the chain of causation",
+          "Total loss scenarios: the qualifying period extends beyond the point at which the claimant receives funds. The claimant is entitled to a reasonable period to make enquiries and obtain a suitable replacement vehicle. Under the GTA this is 7 days; in a litigated claim it can be longer, subject to reasonable justification that a vehicle could not be sourced sooner",
+          "Delay caused by the claimant: unreasonable delay in accepting a total loss offer or in purchasing a replacement may reduce the qualifying period",
+          "The repair period: if the repair takes longer than the insurer's engineer estimated, the CHO must be prepared to explain and justify the delay",
+          "Intervening events: illness, bereavement, or other events affecting the claimant's ability to act may extend the qualifying period in appropriate cases"
+        ],
+        "scenario": {
+          "text": "James's car is written off. Liability is admitted on day 3. The insurer makes a total loss offer of \u00a36,500 on day 10. James's solicitor queries the valuation and negotiations continue. A revised offer of \u00a37,200 is accepted on day 28. James hires throughout. He does not purchase a replacement vehicle until day 45. The insurer says the qualifying period ended on day 28 when the offer was accepted. James says it ran to day 45. Who is likely to be correct?",
+          "teaching_points": [
+            "The qualifying period runs until James has sufficient funds to replace the vehicle",
+            "Accepting the offer on day 28 does not mean funds were immediately available",
+            "Reasonable time to search for and purchase a replacement is included in the qualifying period",
+            "17 days to purchase after settlement is likely reasonable",
+            "The insurer's argument that it ended on day 28 is likely too restrictive"
+          ]
+        },
+        "knowledge_check": {
+          "question": "The qualifying period in a total loss claim ends on the date the insurer makes their first total loss offer.",
+          "options": [
+            {
+              "text": "True",
+              "correct": false
+            },
+            {
+              "text": "False \u2014 the qualifying period ends when the claimant has the means and reasonable opportunity to replace the vehicle, not when the offer is first made",
+              "correct": true,
+              "explanation": "A first offer may be disputed, and even an accepted offer needs time to process. The qualifying period accommodates reasonable time to find and purchase a replacement."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s03",
+        "number": 3,
+        "title": "Vehicle class: like-for-like and the upgrade question",
+        "duration_minutes": 18,
+        "concept": "The claimant is entitled to a replacement vehicle that is broadly comparable to their own — a like-for-like replacement. The court's exercise is to establish the rate for a comparable vehicle to the one damaged. They are not entitled to a better vehicle than the one damaged, but they are not required to accept a lesser one. Where the exact vehicle class is unavailable, an upgrade may be provided but the rate for the upgraded vehicle will not be recoverable — only the rate for a comparable vehicle to the one damaged. Where an EV is not supplied to replace an EV, the claimant may have a claim for the incremental cost of fuel and any impact on their PAYE tax code if the vehicle is provided as a company car.",
+        "content_points": [
+          "The like-for-like principle: the replacement should be broadly equivalent in size, type, and specification to the damaged vehicle. The court will establish the rate for a comparable vehicle to the one damaged",
+          "Vehicle classification: vehicles are categorised by ACRISS codes from small compact vehicles through to prestige luxury vehicles; the relevant market rate applies to the class of the damaged vehicle",
+          "Justified upgrades: where the comparable class is unavailable in the local market, an upgrade may be provided — but the rate for the upgraded vehicle will not be recoverable. Only the rate for a vehicle comparable to the one damaged is recoverable",
+          "The insurer's challenge on class: insurers frequently argue a lower class would have met the claimant's needs; the CHO must be prepared to evidence that the vehicle provided was comparable to the one damaged",
+          "Prestige and specialist vehicles: high-value vehicles present particular challenges — local BHR evidence may be thin or non-existent; daily rates may be very high",
+          "Electric vehicles: where an EV is not supplied to replace an EV, the claimant may have a claim to pursue damages for the incremental cost of fuel used and the impact on their PAYE tax code if the vehicle is provided as a company car",
+          "Commercial vehicles: like-for-like applies strictly to commercial vehicles — a tradesperson whose van is written off is entitled to a comparable van, not a family car"
+        ],
+        "scenario": {
+          "text": "Michelle drives a three-year-old Range Rover Sport. It is damaged and taken in for repair. The CHO provides a new-shape Range Rover Sport (one model year newer). The insurer argues Michelle should have been provided with a mid-range SUV at \u00a355/day rather than the Range Rover at \u00a3145/day. The CHO says the Range Rover Sport is the nearest available equivalent. Analyse.",
+          "teaching_points": [
+            "Michelle is entitled to a like-for-like replacement \u2014 a Range Rover Sport class vehicle",
+            "The insurer's argument that a mid-range SUV suffices would require evidence that it is truly comparable",
+            "A Range Rover Sport is not in the same class as a generic mid-range SUV",
+            "The CHO should document their vehicle availability at the time of hire",
+            "The learner should identify that the insurer's rate challenge depends on proving a lower class would have met her needs \u2014 difficult on these facts"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A claimant's vehicle is a Ford Focus estate. The CHO provides a BMW 3 Series estate because no comparable vehicle was available locally. Which of the following best describes the likely outcome on the class/rate issue?",
+          "options": [
+            {
+              "text": "The BMW rate is recoverable because the CHO had no alternative available",
+              "correct": false,
+              "explanation": "Even where an upgrade is justified due to unavailability, the rate recoverable is limited to that of a vehicle comparable to the one damaged — not the rate for the upgraded vehicle."
+            },
+            {
+              "text": "The claimant can recover only the rate for a comparable vehicle to the Ford Focus estate, even though a BMW was provided",
+              "correct": true,
+              "explanation": "The court's exercise is to establish the rate for a comparable vehicle to the one damaged. An upgrade may be provided where the comparable class is unavailable, but the recoverable rate remains that of the damaged vehicle's class."
+            },
+            {
+              "text": "The claimant is entitled to the BMW rate because it was what was provided",
+              "correct": false,
+              "explanation": "The rate recoverable is determined by the class of the damaged vehicle, not the class of the vehicle actually provided."
+            },
+            {
+              "text": "The claimant must pay the difference between the Focus rate and the BMW rate personally",
+              "correct": false,
+              "explanation": "The claimant does not pay the difference — the CHO absorbs the cost of the upgrade. The recoverable rate is simply capped at the comparable vehicle class."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s04",
+        "number": 4,
+        "title": "EV, prestige and specialist vehicles",
+        "duration_minutes": 20,
+        "concept": "Electric vehicles, prestige marques and specialist vehicles present particular challenges in credit hire. Damage to an EV can result in extended repair times, and material delays for parts — particularly battery components — have become common. Likewise with expensive prestige vehicles, parts can be relatively scarce, making repair delays longer. These are justifiable delays provided they are documented and supportable. Hire rates for EV and prestige vehicles can also be higher because of increased holding costs. Practitioners must understand how to justify extended periods and elevated rates in these categories.",
+        "content_points": [
+          "EV repair delays: damage to an EV can result in extended repair times. Material delays for parts — particularly battery components — have become common. The Forum has reported on 10,000+ Jaguar Land Rovers off the road due to parts shortages",
+          "Prestige vehicle parts scarcity: expensive prestige vehicles can suffer from relatively scarce parts supply, making repair delays longer. These delays are justifiable as long as they are documented and supportable",
+          "EV and prestige hire rates: hire rates for EV and prestige vehicles can be higher than standard vehicles because of increased holding costs — the cost to the CHO of maintaining these vehicles in their fleet",
+          "EV repair complexity: many bodyshops lack the infrastructure to repair high-voltage EVs; specialist centres have longer queues",
+          "Prestige vehicle BHR evidence: for a vehicle like a Rolls-Royce or Lamborghini, local BHR evidence may be nil or unreliable. A reputable specialist hire company may provide a comparator, but only if they can offer terms comparable to those provided by the CHO — including excess, mileage limits and insurance cover",
+          "The insurer's challenge on prestige rates: insurers often apply standard rate tables that do not reflect the genuine market for prestige hire; challenging these requires market evidence from comparable specialist providers",
+          "Green parts: insurers have routinely argued that recycled used parts ('green parts') should be used in repairs. This is not supported in case law and constitutes a diminution in value of the vehicle if the parts are not of the same standard as the original fitment",
+          "Thatcham and safety systems: Thatcham Research has flagged that ADAS calibration after repair is mandatory and time-consuming; this legitimately extends repair periods"
+        ],
+        "scenario": {
+          "text": "Priya owns a Tesla Model Y. It is rear-ended and requires a new rear bumper, sensors, and ADAS recalibration. The repair is quoted at 12 days. Due to a parts delay from Tesla's supply chain, the repair takes 31 days. The CHO provides a Tesla Model Y replacement for the full period (Priya says she needs an EV due to her lease terms and home charging setup). The insurer challenges: (a) the 31-day period, (b) the need for an EV specifically, and (c) the rate. Advise on each.",
+          "teaching_points": [
+            "Period: 31 days due to Tesla supply chain delay is documented and justifiable if the CHO has the repair timeline evidence",
+            "Need for EV: Priya's home charging setup and specific requirements may justify an EV replacement but this needs evidencing",
+            "Rate: Tesla Model Y rental rates in the UK are a relatively established market; BHR evidence should be obtainable",
+            "The learner should identify each of the three challenges separately and what evidence is needed for each",
+            "The Forum has reported extensively on EV parts delays as legitimate extensions to repair periods"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Which of the following most clearly justifies an extended hire period for an EV repair?",
+          "options": [
+            {
+              "text": "The claimant prefers to wait for an OEM part rather than an aftermarket alternative",
+              "correct": false
+            },
+            {
+              "text": "The repairer has a documented parts order with a manufacturer-confirmed delay, and there is no faster alternative repair route available",
+              "correct": true,
+              "explanation": "A documented, unavoidable supply chain delay is the strongest justification for an extended period. The key is evidence \u2014 the parts order and the confirmed delay."
+            },
+            {
+              "text": "The vehicle is expensive and deserves more care",
+              "correct": false
+            },
+            {
+              "text": "The insurer has not responded to the hire notification within 5 days",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s05",
+        "number": 5,
+        "title": "Supply chain, repair delays and the insurer's engineer",
+        "duration_minutes": 19,
+        "concept": "The post-COVID supply chain disruption fundamentally altered the landscape of credit hire period disputes. Repair times that were once predictable became highly variable. Parts shortages, bodyshop capacity constraints, and technician availability all legitimately extend repair periods \u2014 but CHOs must document these causes carefully to resist period challenge. The insurer's engineer (and their estimate) is a common battleground: when the actual repair exceeds the engineer's estimate, the CHO must be able to explain why.",
+        "content_points": [
+          "The insurer's engineer estimate: insurers commission desktop or physical estimates of repair time; the claimant is expected to mitigate by completing repair within this period or explaining any excess",
+          "Legitimate excess repair time: parts delays, bodyshop capacity, weather, additional damage found on strip-down \u2014 all can legitimately extend beyond the estimate",
+          "The strip-down issue: hidden damage only visible after the vehicle is stripped can significantly increase both repair cost and time",
+          "Documenting the delay: CHOs should maintain a repair timeline \u2014 when was the vehicle booked in, when did parts arrive, when was work completed, when was QC signed off",
+          "Bodyshop capacity: a claimant is not obliged to transfer their vehicle to a different bodyshop to save days, but an unreasonably long wait at one bodyshop may attract period challenge",
+          "The insurer's notification obligation: where the insurer's own delays (in approving additional repairs, for example) extend the repair period, that period is recoverable",
+          "Total loss declarations: where a vehicle is initially repaired but subsequently declared a total loss (e.g. after structural concerns emerge), the hire period covers the whole period from accident to settlement",
+          "Practical documentation: repair authorisation dates, supplementary estimate approvals, parts order confirmations \u2014 all key documents in a period dispute"
+        ],
+        "scenario": {
+          "text": "Tom's car goes into a bodyshop on day 1. The insurer's engineer estimates a 7-day repair. On day 5 the bodyshop strips the vehicle and finds structural damage not visible in the initial inspection. A supplementary estimate is submitted to the insurer on day 6. The insurer takes 8 days to approve the supplementary estimate. Actual repair completion is day 22. Tom hires throughout. The insurer challenges anything beyond the original 7-day estimate. Advise.",
+          "teaching_points": [
+            "Days 1-5: within the estimate \u2014 no challenge",
+            "Days 6-13: supplementary estimate submitted on day 6; insurer took 8 days to approve \u2014 this delay is the insurer's own and should not be charged to Tom",
+            "Days 14-22: additional repair following approval \u2014 recoverable if the work is reasonable",
+            "The insurer cannot challenge days caused by their own delay in approving the supplementary estimate",
+            "The learner should identify the insurer's approval delay as a key fact and calculate the recoverable period accordingly"
+          ]
+        },
+        "knowledge_check": {
+          "question": "The insurer's engineer estimates a 10-day repair. The actual repair takes 18 days due to: 4 days of parts delay (documented), 2 days for the insurer to approve supplementary damage, and 2 undocumented days. The undocumented days occurred mid-repair whilst the vehicle was stripped down awaiting parts. Are these 2 days irrecoverable?",
+          "options": [
+            {
+              "text": "Yes — any undocumented days are automatically irrecoverable",
+              "correct": false,
+              "explanation": "Days are not automatically irrecoverable simply because they are undocumented. The question is whether there was a break in the chain of causation. If the vehicle was stripped down and awaiting parts, the claimant could not have used it regardless."
+            },
+            {
+              "text": "Not necessarily — if the vehicle was stripped down awaiting parts, those 2 days did not break the chain of causation and may still be recoverable",
+              "correct": true,
+              "explanation": "For days to be irrecoverable, the claimant must be shown to be responsible for a break in the chain of causation. If the vehicle was already dismantled and unusable mid-repair, the 2 days do not represent such a break. The position would be different if, for example, the undocumented days were at the end of hire when the car was ready for collection, or at the start before parts were ordered."
+            },
+            {
+              "text": "All 18 days are recoverable because the repair actually took that long",
+              "correct": false,
+              "explanation": "The total period is not automatically recoverable simply because the repair took that long. Each element must be justifiable."
+            },
+            {
+              "text": "Only the insurer's 2-day approval delay is recoverable beyond day 10",
+              "correct": false,
+              "explanation": "Documented parts delays are also recoverable, and even the undocumented days may be recoverable depending on when they fell in the repair timeline."
+            }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "pass_mark": 75,
+      "questions": [
+        {
+          "type": "multiple_choice",
+          "question": "What is the correct test for establishing whether a claimant 'needed' a replacement vehicle?",
+          "options": [
+            "Whether the claimant used their vehicle for commuting to work",
+            "Whether a reasonable person in the claimant's position would have needed a replacement vehicle, considering all uses and circumstances",
+            "Whether the claimant had no other vehicle registered in their name",
+            "Whether the claimant's insurer confirmed the need in writing"
+          ],
+          "correct": 1,
+          "explanation": "The need test asks whether a reasonable person in the claimant's position would have hired a replacement. Courts consider the totality of the claimant's vehicle use \u2014 including shopping, medical appointments, caring responsibilities, and social activities \u2014 not just commuting."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A claimant has a second car available. The insurer argues no hire was needed. Which fact would most strongly support the claimant's position that need existed despite the second car?",
+          "options": [
+            "The second car is a different colour from the damaged vehicle",
+            "The second car has slightly lower fuel economy",
+            "The second car is a two-seat sports car and the claimant has three children who travel to school daily",
+            "The claimant prefers not to drive the second car"
+          ],
+          "correct": 2,
+          "explanation": "The second car must be genuinely suitable and practically available. A two-seat vehicle cannot accommodate a family of five, so it is not a realistic alternative. Mere preference or minor differences are insufficient."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "In a total loss claim, when does the qualifying period end?",
+          "options": [
+            "On the date the insurer makes their first total loss offer",
+            "On the date the claimant accepts the total loss offer",
+            "When the claimant has the means and a reasonable opportunity to purchase a suitable replacement vehicle",
+            "Exactly 7 days after the insurer pays the settlement, in all circumstances"
+          ],
+          "correct": 2,
+          "explanation": "The qualifying period extends beyond the acceptance of the offer. The claimant is entitled to a reasonable period to receive funds, make enquiries, and purchase a suitable replacement. Under the GTA this is 7 days, but in litigation it can be longer with justification."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A CHO provides a BMW 3 Series estate because no Ford Focus estate (the claimant's vehicle class) was available locally. What rate is recoverable?",
+          "options": [
+            "The full BMW 3 Series hire rate, because the CHO had no alternative",
+            "Only the rate for a vehicle comparable to the Ford Focus estate \u2014 the rate for the claimant's own vehicle class",
+            "The average of the BMW rate and the Ford Focus rate",
+            "No hire charges at all, because a non-comparable vehicle was provided"
+          ],
+          "correct": 1,
+          "explanation": "The court establishes the rate for a vehicle comparable to the one damaged. An upgrade may be provided where the comparable class is unavailable, but the recoverable rate is capped at the damaged vehicle's class rate. The CHO absorbs the cost difference."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A repair takes 22 days instead of the insurer's engineer estimate of 10 days. The delay includes 5 days for a documented parts shortage and 4 days for the insurer to approve supplementary damage. Which days are defensible against a period challenge?",
+          "options": [
+            "Only the original 10 days estimated by the insurer's engineer",
+            "Days 1-10 (original estimate) plus the 5-day parts delay only \u2014 insurer approval delay is the CHO's problem",
+            "Days 1-10 (original estimate) plus 5 days (documented parts delay) plus 4 days (insurer approval delay) = 19 days are defensible; the remaining 3 days require explanation",
+            "All 22 days are automatically defensible because the repair genuinely took that long"
+          ],
+          "correct": 2,
+          "explanation": "Each element of delay must be justified separately. Documented parts delays are defensible with evidence. The insurer's own delay in approving supplementary work is recoverable because the insurer caused it. Any unexplained days are the weakest element."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Which factor most clearly justifies an extended hire period for an electric vehicle repair?",
+          "options": [
+            "The claimant prefers to wait for an OEM part rather than accept an aftermarket alternative",
+            "The vehicle is expensive and deserves extra care during repair",
+            "A documented parts order with a manufacturer-confirmed delay, where no faster alternative repair route is available",
+            "The insurer has not responded to the hire notification within 5 days"
+          ],
+          "correct": 2,
+          "explanation": "A documented, unavoidable supply chain delay with evidence (parts order confirmation and manufacturer delay notification) is the strongest justification for an extended EV repair period. The key is contemporaneous documentation, not preference or assumption."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "The insurer's engineer estimates a 7-day repair. On day 5, the bodyshop discovers hidden structural damage only visible after stripping the vehicle. A supplementary estimate is submitted on day 6. The insurer takes 8 days to approve it. Actual repair completes on day 22. Which period is caused by the insurer's own delay?",
+          "options": [
+            "Days 1-5 only",
+            "Days 6-13 \u2014 the 8 days the insurer took to approve the supplementary estimate",
+            "Days 14-22 only \u2014 the additional repair work",
+            "The entire period from day 1 to day 22"
+          ],
+          "correct": 1,
+          "explanation": "The insurer's 8-day delay in approving the supplementary estimate (days 6-13) is directly attributable to the insurer. This period should not be charged against the claimant's qualifying period. The CHO cannot repair what the insurer has not approved."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: A retired claimant who uses their vehicle 3-4 times a week for shopping, GP visits, and social activities cannot establish need for a replacement vehicle.",
+          "correct": 1,
+          "explanation": "False. Retirement does not eliminate need. Regular use for shopping, medical appointments, and social activities establishes a genuine pattern of vehicle use. Need is assessed on the totality of the claimant's use, not solely on employment-related commuting."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: An EV claimant is always entitled to a replacement EV regardless of cost.",
+          "correct": 1,
+          "explanation": "False. An EV claimant is entitled to a like-for-like replacement where their specific circumstances require an EV (such as home charging setup or company car tax implications), but this must be justified on the facts. The cost must be proportionate and the specific need for an EV must be evidenced."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Undocumented days during a repair period are automatically irrecoverable in a hire period dispute.",
+          "correct": 1,
+          "explanation": "False. Days are not automatically irrecoverable simply because they are undocumented. The question is whether there was a break in the chain of causation. If the vehicle was stripped down and awaiting parts during those days, the claimant could not have used it regardless, and the days may still be recoverable."
+        }
+      ]
+    },
+    "ai_tutor": {
+      "system_prompt_per_section": {
+        "s01": "You are a credit hire training tutor for Section 1 of Module 3: establishing need. The learner is working through Fatima's scenario \u2014 a retired woman whose insurer argues she did not need a hire vehicle. Guide the learner to identify that retirement does not eliminate need, her husband's car is not genuinely available during work hours, and the insurer's argument is tactical. Keep responses to 2-4 sentences.",
+        "s02": "You are a credit hire training tutor for Section 2 of Module 3: the qualifying period. The learner is working through James's total loss scenario \u2014 the insurer argues the qualifying period ended when the offer was accepted, James says it ran until he bought a replacement. Guide the learner to identify that reasonable purchase time is included in the qualifying period. Keep responses to 2-4 sentences.",
+        "s03": "You are a credit hire training tutor for Section 3 of Module 3: vehicle class. The learner is working through Michelle's Range Rover scenario. Guide them to identify that she is entitled to a like-for-like replacement, that the insurer's mid-range SUV argument requires evidence of true comparability, and that the CHO should document availability. Keep responses to 2-4 sentences.",
+        "s04": "You are a credit hire training tutor for Section 4 of Module 3: EV and prestige vehicles. The learner is working through Priya's Tesla scenario with three separate insurer challenges. Guide them to address each challenge separately: period (supply chain documented), need for EV (home charging/circumstances), rate (market evidence). Reference that the Forum has reported on EV parts delays. Keep responses to 2-4 sentences.",
+        "s05": "You are a credit hire training tutor for Section 5 of Module 3: supply chain and repair delays. The learner is working through Tom's scenario where the insurer challenges all days beyond the original 7-day estimate. Guide the learner to identify the insurer's own 8-day delay in approving the supplementary estimate as not chargeable to Tom. Keep responses to 2-4 sentences."
+      }
+    },
+    "further_reading": {
+      "forum_search_queries": [
+        "EV parts shortages and repair delays \u2014 what has the Forum reported?",
+        "Find Forum posts about Jaguar Land Rover parts shortages and holding costs",
+        "What does the Forum say about Thatcham and ADAS calibration adding to repair times?",
+        "Find cases where the qualifying period was disputed in total loss claims",
+        "Forum posts about bodyshop capacity constraints post-COVID"
+      ]
+    }
+  }
+}

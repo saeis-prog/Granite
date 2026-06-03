@@ -1,0 +1,347 @@
+{
+  "module": {
+    "id": "module-02",
+    "title": "The legal framework",
+    "subtitle": "Understanding the case law and statutory basis for credit hire claims",
+    "level": "Foundation",
+    "duration_minutes": 100,
+    "format": "Self-paced e-learning with AI tutor",
+    "sections_count": 5,
+    "assessment_questions": 20,
+    "pass_mark_percent": 75,
+    "prerequisite": "module-01",
+    "learning_objectives": [
+      {
+        "id": "LO1",
+        "text": "Explain the legal basis on which a claimant is entitled to recover hire charges from a negligent third party"
+      },
+      {
+        "id": "LO2",
+        "text": "Describe the significance of Dimond v Lovell and its impact on the recoverability of the credit element in hire charges"
+      },
+      {
+        "id": "LO3",
+        "text": "Apply the Lagden v O'Connor impecuniosity principle to a given set of claimant facts"
+      },
+      {
+        "id": "LO4",
+        "text": "Identify the key tests a court applies when assessing whether hire charges are recoverable: need, period, rate"
+      },
+      {
+        "id": "LO5",
+        "text": "Explain the role and limitations of the General Terms of Agreement (GTA) as an alternative to litigation"
+      },
+      {
+        "id": "LO6",
+        "text": "Recognise the most common legal arguments used by insurers to challenge credit hire claims and explain the response to each"
+      }
+    ],
+    "sections": [
+      {
+        "id": "s01",
+        "number": 1,
+        "title": "The right to recover: tort principles",
+        "duration_minutes": 18,
+        "concept": "A claimant who loses use of their vehicle through another's negligence suffers a recoverable loss. The law of tort — specifically the duty to compensate for foreseeable losses — is the foundation. Hire charges are recoverable as special damages where the claimant had a need for the vehicle and the hire was a reasonable response to that need. The at-fault driver (and their insurer) is liable to put the claimant back in the position they would have been in but for the accident.",
+        "content_points": [
+          "The tortious duty: the defendant must compensate for all foreseeable losses flowing from their negligence",
+          "Loss of use as a head of damage: the inability to use a vehicle is a recognised loss even if the vehicle is not used commercially",
+          "The reasonable response test: the claimant must act reasonably in mitigating their loss — hire must be necessary and proportionate",
+          "Special vs general damages: hire charges are pleaded as special damages — they must be specifically proved",
+          "The duty to mitigate: the claimant cannot run up hire costs unnecessarily; they must take reasonable steps to bring the hire to an end as soon as practicable",
+          "The causation link: hire must be caused by the accident — pre-existing hire or unrelated needs break the chain"
+        ],
+        "scenario": {
+          "text": "David's car is damaged in a rear-end collision. He is a self-employed plumber who uses his van every day for work. His van is taken in for repair on a Monday. By Friday it is repaired but the bodyshop is closed so collection is Monday. He hires a van for 7 days. The insurer argues he should have collected it on Friday. Analyse David's position.",
+          "teaching_points": [
+            "Need is clearly established — he is self-employed and uses the vehicle for work",
+            "The extra weekend days are arguable — was collection on Friday genuinely impossible or just inconvenient?",
+            "The learner should identify the duty to mitigate and probe whether the bodyshop was actually closed",
+            "Reasonable mitigation does not require heroic effort but does require good faith"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Which of the following would most clearly break the causation link between the accident and the hire claim?",
+          "options": [
+            { "text": "The claimant hired a vehicle one grade above their own", "correct": false },
+            { "text": "The claimant had already booked a hire vehicle the week before the accident for a holiday", "correct": true, "explanation": "A pre-existing hire arrangement is not caused by the accident and cannot be recovered as part of the claim." },
+            { "text": "The claimant did not report the accident to police", "correct": false },
+            { "text": "The repair took longer than the insurer's engineer estimated", "correct": false }
+          ]
+        }
+      },
+      {
+        "id": "s02",
+        "number": 2,
+        "title": "Dimond v Lovell: the credit element",
+        "duration_minutes": 22,
+        "concept": "Dimond v Lovell [2002] AC 384 is the House of Lords authority that defines the modern credit hire landscape. The court held that a credit hire agreement is a regulated consumer credit agreement under the Consumer Credit Act 1974, and that the credit element built into the CHO rate is only recoverable where the claimant proves they needed credit — i.e. that they could not have hired at a spot rate. This decision established the two-tier rate structure that underpins every credit hire dispute.",
+        "content_points": [
+          "Facts: Mrs Dimond could not afford to pay upfront; she hired on credit from a CHO at a rate above the spot hire rate",
+          "The CCA 1974 issue: the credit hire agreement was found to be a regulated credit agreement; failure to comply with CCA formalities meant the debt was unenforceable against Mrs Dimond",
+          "The broader principle: even where the agreement is enforceable, the credit element is only recoverable if the claimant proves need for credit",
+          "The 'but for' test: but for the credit element, could the claimant have hired at the basic hire rate (BHR)?",
+          "If yes — only BHR is recoverable. If no (i.e. the claimant is impecunious) — the full CHO rate may be recoverable",
+          "The CCA compliance point: CHOs since Dimond ensure their agreements comply with CCA formalities — this aspect is now largely historical",
+          "The lasting significance: Dimond established that insurers could challenge the rate, not just the period or the need"
+        ],
+        "scenario": {
+          "text": "Emma hires a vehicle from a CHO at £95/day. The spot hire rate in her area for a comparable vehicle is £45/day. Emma is a solicitor earning £65,000/year with a healthy current account. The insurer challenges the rate. Emma's solicitor argues she needed the vehicle urgently and had no time to shop around. Advise on the likely outcome.",
+          "teaching_points": [
+            "Emma is not impecunious — she could have hired at spot rate",
+            "The credit element is not recoverable for a claimant who could afford spot hire",
+            "The insurer will likely succeed in reducing the rate to BHR",
+            "'No time to shop around' is not the same as inability to pay — the learner must distinguish these",
+            "The learner should identify that only BHR is likely recoverable here"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Dimond v Lovell established that the credit element in a CHO rate is only recoverable where:",
+          "options": [
+            { "text": "The claimant hired for more than 7 days", "correct": false },
+            { "text": "The claimant proves they needed credit and could not have hired at the spot rate", "correct": true, "explanation": "This is the core Dimond principle — the claimant must prove genuine need for the credit element, not merely preference or convenience." },
+            { "text": "The CHO is a member of the British Vehicle Rental and Leasing Association", "correct": false },
+            { "text": "The hire agreement is signed before the accident is reported to the insurer", "correct": false }
+          ]
+        }
+      },
+      {
+        "id": "s03",
+        "number": 3,
+        "title": "Lagden v O'Connor: the impecuniosity principle",
+        "duration_minutes": 22,
+        "concept": "Lagden v O'Connor [2003] UKHL 64 refined and extended Dimond, establishing that an impecunious claimant — one who genuinely cannot afford to pay for spot hire upfront — is entitled to recover the full CHO rate. The House of Lords held that the tortfeasor must take their victim as they find them: if the claimant's lack of means is itself a consequence of the defendant's wrong (in the sense that they are left without a vehicle and without the means to pay for conventional hire), the higher rate is recoverable.",
+        "content_points": [
+          "Facts: Mr Lagden was unemployed and receiving benefits; he could not afford spot hire; he hired on credit at the CHO rate",
+          "The decision: the full CHO rate was recoverable because Mr Lagden could not have hired otherwise",
+          "The 'thin skull' analogy: the tortfeasor takes their victim as they find them — including their financial circumstances",
+          "The impecuniosity test: the claimant must show they genuinely could not afford to hire at the spot rate, not merely that they chose not to",
+          "Evidence of impecuniosity: bank statements, payslips, benefit records, credit card limits — the battleground that followed",
+          "The threshold: there is no fixed income or savings threshold; courts look at the full picture of the claimant's financial position",
+          "The insurer's response: post-Lagden, insurers increasingly demanded extensive financial disclosure to rebut impecuniosity claims",
+          "The proportionality issue: courts have criticised oppressive financial disclosure demands as disproportionate in lower-value claims"
+        ],
+        "scenario": {
+          "text": "Marcus works part-time at a supermarket earning £14,000/year. He has £320 in his current account, one credit card with a £200 limit (already at 90% utilisation) and no savings. His car is written off. The spot hire rate for a comparable vehicle is £38/day. The CHO rate is £72/day. The insurer argues Marcus should have hired at spot rate. He says he couldn't afford to. The insurer demands 6 months of bank statements, payslips, credit card statements and a statutory declaration of means. Analyse.",
+          "teaching_points": [
+            "Marcus has a strong impecuniosity argument — £320 in cash and a nearly maxed credit card",
+            "The insurer is entitled to seek evidence but the demand must be proportionate",
+            "6 months of bank statements for a £38/day vs £72/day dispute on a 2-week hire is arguably disproportionate",
+            "The learner should advise cooperating with reasonable disclosure while challenging the scope",
+            "The Forum has reported extensively on disclosure as 'trench warfare' — this connects to current practice"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Under Lagden v O'Connor, which of the following claimants is most likely to recover the full CHO rate rather than BHR?",
+          "options": [
+            { "text": "A company director earning £120,000/year who found the CHO easier to deal with than a rental company", "correct": false },
+            { "text": "A nurse earning £28,000/year with £150 in her account and no credit facility", "correct": true, "explanation": "This claimant is genuinely unable to fund spot hire from her own resources — classic Lagden impecuniosity." },
+            { "text": "A retiree with a pension of £20,000/year and £8,000 in savings", "correct": false },
+            { "text": "A student who preferred not to use their overdraft facility", "correct": false }
+          ]
+        }
+      },
+      {
+        "id": "s04",
+        "number": 4,
+        "title": "The three-stage test: need, period, rate",
+        "duration_minutes": 20,
+        "concept": "Every credit hire claim must satisfy three tests to succeed in full: (1) Need — did the claimant need a replacement vehicle? (2) Period — was the hire period reasonable? (3) Rate — was the rate charged reasonable in the circumstances? Courts and the GTA framework both apply this structure. Failing any one stage reduces or defeats recovery. Understanding this three-stage framework allows practitioners to assess any claim's strengths and vulnerabilities at the outset.",
+        "content_points": [
+          "Stage 1 — Need: the claimant must have had a genuine need for a replacement vehicle; need is not automatic and must be assessed on the facts",
+          "Factors going to need: the claimant's use of their vehicle, availability of alternatives (second car, public transport), purpose of use",
+          "Stage 2 — Period: the hire must not extend beyond what was reasonably necessary; key triggers for period challenge include repair delays, total loss notification delays, and failure to mitigate",
+          "The 'basic hire period' concept: many GTA settlements distinguish between the qualifying period (full CHO rate) and the basic hire period (BHR only)",
+          "Stage 3 — Rate: the applicable rate depends on whether the claimant is impecunious (full CHO rate) or not (BHR); spot rate evidence and BHR surveys are the primary tools for rate challenge",
+          "The BHR survey: insurers frequently obtain evidence of local spot hire rates to argue BHR is lower than the CHO rate claimed",
+          "Interaction of the three stages: a claimant may win on need and rate but lose some days on period — partial recovery is the most common outcome"
+        ],
+        "scenario": {
+          "text": "Claire's car is damaged and taken in for repair. She works from home and her children walk to school. She owns a bicycle. The repair takes 14 days — 10 of which are working days plus two weekends. The CHO provides a vehicle for the full 14 days. The insurer argues: (a) Claire did not need a vehicle given her lifestyle, and (b) weekends should be excluded. Analyse each challenge.",
+          "teaching_points": [
+            "Need challenge: working from home does not eliminate need — she may still need the car for shopping, medical appointments, social activities",
+            "Need is assessed on the totality of her use, not just commuting",
+            "Period challenge: weekends are generally included in the qualifying period if the vehicle would have been used",
+            "The insurer's arguments are not without merit but are not automatically correct",
+            "The learner should identify this as a period/need dispute requiring fact-specific analysis"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A claimant hires for 21 days but the repair is completed after 14 days. She did not collect the vehicle for 7 days because she 'forgot'. What is the most likely outcome on the period challenge?",
+          "options": [
+            { "text": "The full 21 days is recoverable because the hire was on credit and the claimant suffered no out-of-pocket loss", "correct": false },
+            { "text": "The 7-day delay is likely irrecoverable as it breaches the duty to mitigate", "correct": true, "explanation": "Once the repaired vehicle is available, the claimant must collect it promptly. Forgetting for 7 days is not a reasonable basis for continuing the hire." },
+            { "text": "Only the first 7 days is recoverable", "correct": false },
+            { "text": "The insurer must prove actual prejudice from the 7-day delay before it can challenge", "correct": false }
+          ]
+        }
+      },
+      {
+        "id": "s05",
+        "number": 5,
+        "title": "The General Terms of Agreement (GTA)",
+        "duration_minutes": 18,
+        "concept": "The GTA is the industry's voluntary framework for settling credit hire claims between subscribing CHOs and subscribing insurers without litigation. It sets agreed rates, standardised processes and a framework for challenge and settlement. Not all CHOs and insurers are GTA subscribers, and the GTA only applies where both parties subscribe. Parties cannot opt out of the agreement, but where an insurer forces litigation by not settling a claim, the claim moves outside the GTA and the CHO may seek full contractual recovery. Understanding its scope, benefits and limitations is essential for anyone handling credit hire claims.",
+        "content_points": [
+          "What the GTA is: a bilateral agreement between subscribing CHOs and subscribing insurers setting out the terms on which hire claims will be settled",
+          "GTA rates: the GTA sets rate tables that are periodically reviewed; claims settled under the GTA use these agreed rates rather than going to court",
+          "If a claim is not settled within the GTA protocol, the GTA discount falls away. Because the credit hire agreement evidences a contract where the hirer agrees to hire at commercial rates, the CHO may seek full contractual recovery — albeit limited to BHR where the claimant is not impecunious",
+          "Who subscribes: subscription is not limited to major insurers or large CHOs. Many smaller CHOs subscribe. Notably, some major insurers (such as AXA) do not subscribe. CHOs that primarily supply services to impecunious claimants often do not subscribe because they are able to recover a higher rate outside the GTA",
+          "When the GTA does not apply: where one or both parties do not subscribe, or where claims fall outside the GTA's defined scope",
+          "The GTA's advantage: speed and certainty of settlement — avoids the cost and delay of litigation",
+          "The GTA's limitation: insurers may game the system by choosing which claims to settle and which to leave unsettled, effectively forcing litigation. This approach is often championed by defendant solicitors acting on behalf of the insurer who identify an opportunity to reduce their client's outlay. Parties cannot opt out of the agreement — it is only where an insurer forces litigation by not settling that the claim moves outside the GTA",
+          "ADR pilot: the GTA has completed an Alternative Dispute Resolution pilot and is exploring whether arbitration can be added as a final stage in the GTA process to prevent claims from being litigated. As at April 2026, no decision has been reached",
+          "Current tensions: ongoing debate about whether the GTA rates remain fair, whether insurers are using the framework strategically, and whether the ADR initiative will address the litigation problem"
+        ],
+        "scenario": {
+          "text": "A CHO provides a prestige SUV to a claimant for 28 days. Both the CHO and the at-fault insurer are GTA subscribers. The GTA rate for the vehicle class produces a settlement figure of £2,800. The CHO submits the claim under the GTA protocol but the insurer does not settle — it disputes the vehicle class and the hire duration. Three months pass without resolution. The CHO's contractual rate would support a claim of £4,200. What are the key considerations for the CHO?",
+          "teaching_points": [
+            "Both parties are GTA subscribers and cannot opt out — but the insurer's refusal to settle within the protocol means the claim has moved outside the GTA",
+            "Once outside the GTA, the GTA discount falls away and the CHO may pursue the full contractual rate, subject to the BHR cap for non-impecunious claimants",
+            "The insurer's strategy of not settling may be deliberate — defendant solicitors sometimes advise this approach to reduce outlay",
+            "The CHO must weigh the cost and risk of litigation against the £1,400 difference",
+            "The learner should recognise that the GTA ADR pilot aims to address exactly this problem — preventing claims from being forced into litigation"
+          ]
+        },
+        "knowledge_check": {
+          "question": "What happens if a claim between two GTA subscribers is not settled within the GTA protocol?",
+          "options": [
+            { "text": "The claim remains within the GTA indefinitely — parties cannot move outside it", "correct": false, "explanation": "Parties cannot opt out of the GTA, but where an insurer forces litigation by not settling, the claim moves outside the GTA." },
+            { "text": "The GTA discount falls away and the CHO may seek full contractual recovery, subject to BHR for non-impecunious claimants", "correct": true, "explanation": "Because the credit hire agreement evidences a contract at commercial rates, if the GTA protocol does not produce a settlement the discount falls away. The CHO can pursue the full contractual rate, though recovery is limited to BHR where the claimant is not impecunious." },
+            { "text": "The CHO must accept whatever the insurer offers under the GTA", "correct": false, "explanation": "The GTA is a framework for negotiated settlement, not a mechanism for the insurer to impose terms unilaterally." },
+            { "text": "The claim is automatically referred to the FCA for resolution", "correct": false, "explanation": "The FCA does not adjudicate individual credit hire disputes. Claims that are not settled under the GTA may proceed to litigation or, potentially in future, to ADR." }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "pass_mark": 75,
+      "questions": [
+        {
+          "type": "multiple_choice",
+          "question": "Under tort law, what must a claimant prove to recover hire charges as special damages following a road traffic accident?",
+          "options": [
+            "That the hire company held a valid FCA licence at the time of hire",
+            "That they had a need for a replacement vehicle and the hire was a reasonable response to the loss of use caused by the defendant's negligence",
+            "That their own insurer refused to provide a courtesy car",
+            "That the defendant driver was convicted of a criminal offence"
+          ],
+          "correct": 1,
+          "explanation": "Hire charges are recoverable as special damages where the claimant proves they had a genuine need for a replacement vehicle and the hire was a reasonable and proportionate response to the loss caused by the defendant's negligence."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "What did Dimond v Lovell establish about the credit element in a CHO rate?",
+          "options": [
+            "The credit element is always recoverable regardless of the claimant's financial position",
+            "The credit element is only recoverable where the claimant proves they needed credit and could not have hired at the spot rate",
+            "The credit element is never recoverable and must always be deducted",
+            "The credit element is automatically included in GTA rate tables"
+          ],
+          "correct": 1,
+          "explanation": "Dimond v Lovell established the two-tier rate structure: the credit element built into the CHO rate is only recoverable where the claimant proves genuine need for credit — that they could not have afforded to hire at the basic hire rate (BHR)."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Under Lagden v O'Connor, which claimant is most likely to recover the full CHO rate rather than being limited to BHR?",
+          "options": [
+            "A self-employed consultant earning £80,000/year who found the CHO more convenient",
+            "A part-time carer earning £12,000/year with £80 in her account and no credit facility",
+            "A retiree with a pension of £25,000/year and £15,000 in savings",
+            "A graduate earning £35,000/year who preferred not to use their overdraft"
+          ],
+          "correct": 1,
+          "explanation": "The part-time carer with minimal savings and no credit facility is genuinely unable to fund spot hire from her own resources, meeting the Lagden impecuniosity test. Preference or convenience is not sufficient — the claimant must show genuine inability to pay."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A claimant hires for 21 days. Their vehicle was repaired and ready after 14 days, but they did not collect it for 7 days because they forgot. What is the likely outcome on the period element of recovery?",
+          "options": [
+            "The full 21 days are recoverable because the hire was on credit",
+            "Only the first 7 days are recoverable as the insurer's estimate was 7 days",
+            "The 7-day delay is likely irrecoverable as it breaches the duty to mitigate",
+            "The insurer must prove actual financial prejudice before challenging the extra days"
+          ],
+          "correct": 2,
+          "explanation": "Once the repaired vehicle is available, the claimant must collect it promptly. Forgetting for 7 days is not reasonable mitigation. The duty to mitigate requires the claimant to take reasonable steps to end the hire as soon as practicable."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "What happens when a claim between two GTA subscribers is not settled within the GTA protocol?",
+          "options": [
+            "The claim remains indefinitely within the GTA — parties cannot move outside it",
+            "The GTA discount falls away and the CHO may seek full contractual recovery, subject to BHR for non-impecunious claimants",
+            "The CHO must accept whatever the insurer last offered under the GTA",
+            "The claim is automatically referred to the FCA for binding resolution"
+          ],
+          "correct": 1,
+          "explanation": "Parties cannot opt out of the GTA, but where an insurer forces litigation by not settling, the claim moves outside the GTA. The GTA discount falls away, and the CHO may pursue the full contractual rate, though recovery is limited to BHR where the claimant is not impecunious."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Which of the following would most clearly break the causation link between an accident and a credit hire claim?",
+          "options": [
+            "The claimant hired a vehicle one grade above their own",
+            "The claimant had already booked a hire vehicle the week before the accident for a planned holiday",
+            "The repair took longer than the insurer's engineer estimated",
+            "The claimant did not report the accident to the police"
+          ],
+          "correct": 1,
+          "explanation": "A pre-existing hire arrangement was not caused by the accident and cannot be recovered as part of the credit hire claim. The causation link requires the hire to flow directly from the defendant's negligence."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A non-impecunious claimant hires at the CHO rate of £90/day when the local spot rate is £40/day. What rate is the claimant likely to recover?",
+          "options": [
+            "The full CHO rate of £90/day because that is what they agreed to pay",
+            "The basic hire rate (BHR) of approximately £40/day, since the claimant could have afforded to hire at spot rate",
+            "A blended rate halfway between the CHO rate and the spot rate",
+            "Nothing, because the claimant should not have hired on credit if they could afford spot hire"
+          ],
+          "correct": 1,
+          "explanation": "Under Dimond v Lovell, a non-impecunious claimant can only recover the BHR. The credit element above the spot rate is only recoverable where the claimant proves they genuinely could not have afforded to hire at the basic rate."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: A claimant who owns a second vehicle that was available during the repair period will always fail the need test.",
+          "correct": 1,
+          "explanation": "False. Availability of a second vehicle is a relevant factor but not automatically fatal to the need test. Courts examine whether the second vehicle was genuinely suitable and practically available — its type, condition, and whether it met the claimant's actual needs."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Under Lagden v O'Connor, there is no fixed income or savings threshold for determining impecuniosity — courts look at the full picture of the claimant's financial position.",
+          "correct": 0,
+          "explanation": "True. There is no bright-line test for impecuniosity. Courts consider the totality of the claimant's financial circumstances including bank balances, credit availability, income, and savings to determine whether they genuinely could not have afforded to hire at the spot rate."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: The GTA applies to all credit hire claims in the UK regardless of whether the parties subscribe to it.",
+          "correct": 1,
+          "explanation": "False. The GTA is a bilateral voluntary agreement that only applies where both the CHO and the insurer are subscribers. Where one or both parties do not subscribe, the GTA does not apply and the claim proceeds on open market terms."
+        }
+      ]
+    },
+    "ai_tutor": {
+      "system_prompt_per_section": {
+        "s01": "You are a credit hire training tutor for Section 1 of Module 2: tort principles and the right to recover. The learner is working through a scenario about David, a self-employed plumber who hires a van for 7 days including a weekend when the bodyshop was closed. Guide the learner to identify: (1) need is clear given self-employment, (2) the duty to mitigate applies, (3) the extra weekend days depend on whether collection on Friday was genuinely impossible. Ask probing questions. Keep responses to 2-4 sentences. After 6-8 exchanges summarise what they have learned.",
+        "s02": "You are a credit hire training tutor for Section 2 of Module 2: Dimond v Lovell. The learner is working through Emma's scenario — a solicitor earning £65k who hired at £95/day when spot rate was £45/day. Guide the learner to identify that Emma is not impecunious, only BHR is likely recoverable, and that 'no time to shop around' is not the same as inability to pay. Keep responses to 2-4 sentences.",
+        "s03": "You are a credit hire training tutor for Section 3 of Module 2: Lagden v O'Connor. The learner is working through Marcus's scenario — a part-time worker with £320 in his account facing an aggressive disclosure demand from the insurer. Guide the learner to identify his strong impecuniosity argument, cooperate with reasonable disclosure, and challenge disproportionate demands. Reference that the Forum has reported on disclosure as 'trench warfare'. Keep responses to 2-4 sentences.",
+        "s04": "You are a credit hire training tutor for Section 4 of Module 2: the three-stage test. The learner is working through Claire's scenario — a home worker whose insurer challenges both need (she works from home) and period (weekends). Guide the learner to analyse need on the totality of use, not just commuting, and that weekends are generally included if the vehicle would have been used. Keep responses to 2-4 sentences.",
+        "s05": "You are a credit hire training tutor for Section 5 of Module 2: the GTA. The learner is working through a prestige vehicle scenario where GTA settlement is £1,400 less than open market recovery. Guide the learner to weigh certainty vs litigation risk, consider costs recovery limits, and recognise this as a commercial rather than purely legal judgment. Keep responses to 2-4 sentences."
+      }
+    },
+    "further_reading": {
+      "cases": [
+        { "name": "Dimond v Lovell", "citation": "[2002] AC 384", "significance": "Foundation case on the credit element and CCA compliance" },
+        { "name": "Lagden v O'Connor", "citation": "[2003] UKHL 64", "significance": "Impecuniosity principle — full CHO rate for those who cannot afford spot hire" },
+        { "name": "Burdis v Livsey", "citation": "[2002] EWCA Civ 510", "significance": "Court of Appeal consolidation of key credit hire principles pre-Lagden" }
+      ],
+      "forum_search_queries": [
+        "What has the Forum reported about impecuniosity evidence and disclosure demands?",
+        "Find Forum posts discussing whether the GTA rates are fair",
+        "Show me cases where the period of hire was successfully challenged",
+        "What does the Forum say about BHR surveys and rate evidence?"
+      ]
+    }
+  }
+}

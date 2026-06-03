@@ -1,0 +1,852 @@
+{
+  "description": "Versioned index of rental company Terms and Conditions for BHR analysis",
+  "last_updated": "2026-04-14",
+  "schema_version": "1.0",
+  "companies": {
+    "avis": {
+      "company_name": "Avis Budget UK Limited",
+      "company_number": "00802486",
+      "registered_address": "Avis Budget House, Park Road, Bracknell, RG12 2EW",
+      "website": "www.avis.co.uk",
+      "notes": "Principal UK operator. Certain locations operated by regional franchisees (see country conditions s.1). Northern Ireland operated by Flynn Bros. Rent-a-Car Limited (NI023192).",
+      "versions": [
+        {
+          "effective_from": "2026-03",
+          "effective_to": null,
+          "current": true,
+          "documents": [
+            {
+              "type": "general_conditions",
+              "title": "Avis General Conditions of Rental",
+              "filename": "avis/202603-avis-general-conditions.pdf",
+              "version_ref": "GB-EN-03/2026",
+              "pages": 20,
+              "date_retrieved": "2026-03-25"
+            },
+            {
+              "type": "country_conditions_uk",
+              "title": "Avis Country Conditions — United Kingdom",
+              "filename": "avis/202603-avis-uk-country-conditions.pdf",
+              "version_ref": "UK/EN-20/03/2026",
+              "last_updated_by_provider": "2026-03-20",
+              "pages": 15,
+              "date_retrieved": "2026-03-25"
+            }
+          ],
+          "knowledge_base_articles": [
+            73,
+            74
+          ]
+        }
+      ],
+      "locations": {
+        "source_file": "avis/Avis UK Locations.csv",
+        "total_locations": 51,
+        "supabase_table": "car_bhr_locations",
+        "knowledge_base_article": 222,
+        "date_retrieved": "2025-12-26",
+        "notes": "51 open UK branches (2 test kiosks excluded). 29 airport locations. Coordinates included. Data also loaded into Supabase car_bhr_locations table for distance-based lookups."
+      }
+    },
+    "sixt": {
+      "company_name": "Sixt Rent a Car Ltd (Great Britain) / Downeys Rental Ltd t/a Sixt Rent a Car Northern Ireland",
+      "company_number": "00440897 (GB) / NI636209 (NI franchisee)",
+      "registered_address": "Keypoint, 17-23 High Street, Slough, SL1 1DY (GB); 39 Portaferry Road, Newtownards, County Down, BT23 8NN (NI)",
+      "website": "www.sixt.co.uk",
+      "notes": "Great Britain operated by Sixt Rent a Car Ltd (co. 00440897). Northern Ireland operated by Downeys Rental Ltd (NI636209) as a franchisee of Sixt GmbH — entirely separate legal entity with different T&Cs. BVRLA member (GB). CDW included in base rate with excess of £1,600–£3,000. Maximum hire period 84 days. Young driver surcharge applies for under-28s (GB) and under-25s (NI).",
+      "versions": [
+        {
+          "effective_from": "2026-03",
+          "effective_to": null,
+          "current": true,
+          "documents": [
+            {
+              "type": "general_terms_gb",
+              "title": "Sixt General Terms and Conditions of Rental for Great Britain",
+              "filename": "Sixt/202603-sixt-gb-general-terms-and-conditions.pdf",
+              "version_ref": "03/2026",
+              "pages": 38,
+              "date_retrieved": "2026-03-25"
+            },
+            {
+              "type": "general_terms_ni",
+              "title": "Sixt Rent a Car Northern Ireland — General Terms and Conditions of Rental",
+              "filename": "Sixt/202603-sixt-northern-ireland-general-terms-and-conditions.pdf",
+              "version_ref": "Sept2020 (current as at 03/2026)",
+              "pages": 21,
+              "date_retrieved": "2026-03-25"
+            },
+            {
+              "type": "rental_information_uk",
+              "title": "Sixt Rental Information — United Kingdom",
+              "filename": "Sixt/202603-sixt-rental-information-united-kingdom.pdf",
+              "version_ref": "25/03/2026",
+              "pages": 7,
+              "date_retrieved": "2026-03-25"
+            }
+          ],
+          "knowledge_base_articles": [
+            79,
+            80
+          ]
+        }
+      ],
+      "locations": {
+        "source_file": "Sixt/Sixt UK Locations.csv",
+        "total_locations": 52,
+        "supabase_table": "car_bhr_locations",
+        "knowledge_base_article": 227,
+        "date_retrieved": "2024-02-01",
+        "notes": "52 open UK branches across England (37), Scotland (9), Northern Ireland (7). No Welsh locations. 18 airport locations. GB operated by Sixt Rent a Car Ltd; NI operated by Downeys Rental Ltd (franchisee). Coordinates included. Data also loaded into Supabase car_bhr_locations table for distance-based lookups."
+      }
+    },
+    "budget": {
+      "company_name": "Avis Budget UK Limited",
+      "company_number": "00802486",
+      "registered_address": "Avis Budget House, Park Road, Bracknell, RG12 2EW",
+      "website": "www.budget.co.uk",
+      "notes": "Principal UK operator for most locations. Booking agent: AB Group Financial Services Limited (02059740) — party to Booking Agreement only. Sub-operators: Regal Vehicle Rentals Limited (03465480) at Barrow, Blackpool Airport, Bolton, Carlisle, Chester & Warrington; Hewitt Hire Limited (07428136) at Cardiff Downtown, Exeter, Newton Abbot, Torquay, Totnes; Polar Cars Limited at Jersey; Flynn Bros. Rent-a-Car Limited (NI023192) at Belfast International Airport and Belfast City Airport. BVRLA and ECRCS member. CDW and Theft Protection usually included as standard. The 43 UK Country Conditions PDFs are all identical in content (UK/EN-20/03/2026) — distributed per-location for administrative purposes.",
+      "versions": [
+        {
+          "effective_from": "2026-03",
+          "effective_to": null,
+          "current": true,
+          "documents": [
+            {
+              "type": "general_conditions",
+              "title": "Budget General Conditions of Rental",
+              "filename": "Budget/202603-budget-general-conditions.pdf",
+              "version_ref": "GB-EN-03/2026",
+              "pages": 20,
+              "date_retrieved": "2026-03-25"
+            },
+            {
+              "type": "booking_conditions",
+              "title": "Budget Booking Conditions",
+              "filename": "Budget/202511-budget-booking-conditions.pdf",
+              "version_ref": "EN-11/2025",
+              "last_updated_by_provider": "2025-11-24",
+              "pages": 18,
+              "date_retrieved": "2026-03-25"
+            },
+            {
+              "type": "uk_country_conditions",
+              "title": "Budget Country Conditions — United Kingdom",
+              "filename_pattern": "Budget/202603-budget-uk-country-conditions-{location}.pdf",
+              "version_ref": "UK/EN-20/03/2026",
+              "last_updated_by_provider": "2026-03-20",
+              "pages": 15,
+              "location_files_count": 43,
+              "date_retrieved": "2026-03-25",
+              "notes": "Single UK Country Conditions document distributed as 43 separate per-location PDFs — all files are identical in content. Legal entity varies by location as documented in s.1 Rental Provider. Standardised filenames: 202603-budget-uk-country-conditions-{location-slug}.pdf"
+            }
+          ],
+          "knowledge_base_articles": [
+            81,
+            82
+          ]
+        }
+      ]
+    },
+    "hertz": {
+      "company_name": "The Hertz Corporation / Hertz (UK) Limited",
+      "website": "www.hertz.co.uk",
+      "notes": "Global rental company. UK rentals operated by Hertz (UK) Limited or the franchisee named on the Rental Agreement. Post-Brexit: UK rentals may not be taken into EU countries.",
+      "versions": [
+        {
+          "effective_from": "2025-11",
+          "effective_to": null,
+          "current": true,
+          "documents": [
+            {
+              "type": "terms_and_conditions",
+              "title": "Hertz Terms and Conditions — United Kingdom",
+              "filename": "Hertz/202511-hertz-terms-and-conditions-uk.pdf",
+              "version_ref": "November 2025",
+              "pages": 10,
+              "date_retrieved": "2026-03-25"
+            }
+          ],
+          "knowledge_base_articles": [
+            75,
+            76
+          ]
+        }
+      ],
+      "locations": {
+        "source_file": "Hertz/Hertz UK Locations.csv",
+        "total_locations": 368,
+        "supabase_table": "car_bhr_locations",
+        "knowledge_base_article": 223,
+        "date_retrieved": "2025-12-26",
+        "notes": "368 open UK branches. Coordinates included. Data also loaded into Supabase car_bhr_locations table for distance-based lookups."
+      }
+    },
+    "europcar": {
+      "company_name": "Europcar Mobility Group UK Limited",
+      "website": "www.europcar.co.uk",
+      "notes": "Major UK operator. Part of Green Mobility Holdings (Volkswagen Group subsidiary since 2022).",
+      "versions": [
+        {
+          "effective_from": "2026-03",
+          "effective_to": null,
+          "current": true,
+          "documents": [
+            {
+              "type": "terms_and_conditions",
+              "title": "Europcar UK Terms and Conditions of Hire",
+              "filename": "Europcar/202603-europcar-terms-and-conditions.pdf",
+              "version_ref": "03/2026",
+              "pages": 12,
+              "date_retrieved": "2026-03-25"
+            }
+          ],
+          "knowledge_base_articles": [
+            77,
+            78
+          ]
+        }
+      ],
+      "locations": {
+        "source_file": "Europcar/Europcar UK Locations.csv",
+        "total_locations": 146,
+        "supabase_table": "car_bhr_locations",
+        "knowledge_base_article": 224,
+        "date_retrieved": "2025-12-26",
+        "notes": "146 open UK branches. Coordinates included. Data also loaded into Supabase car_bhr_locations table for distance-based lookups."
+      }
+    },
+    "enterprise": {
+      "company_name": "Enterprise Rent-A-Car UK Limited",
+      "website": "www.enterprise.co.uk",
+      "notes": "Part of Enterprise Holdings. Largest UK branch network. Also parent of National Car Rental and Alamo.",
+      "versions": [
+        {
+          "effective_from": "2026-03",
+          "effective_to": null,
+          "current": true,
+          "documents": [
+            {
+              "type": "terms_and_conditions",
+              "title": "Enterprise Rent-A-Car UK Rental Agreement Terms and Conditions",
+              "filename": "Enterprise/202603-enterprise-terms-and-conditions.pdf",
+              "version_ref": "03/2026",
+              "pages": 8,
+              "date_retrieved": "2026-03-25"
+            }
+          ],
+          "knowledge_base_articles": [
+            83,
+            84
+          ]
+        }
+      ],
+      "locations": {
+        "source_file": "Enterprise/Enterprise UK Locations.csv",
+        "total_locations": 441,
+        "supabase_table": "car_bhr_locations",
+        "knowledge_base_article": 225,
+        "date_retrieved": "2025-12-26",
+        "notes": "441 open UK branches. Largest branch network of any rental company in the UK. Coordinates included. Data also loaded into Supabase car_bhr_locations table for distance-based lookups."
+      }
+    },
+    "national": {
+      "company_name": "National Car Rental",
+      "website": "https://www.nationalcar.co.uk",
+      "notes": "National Car Rental is part of Enterprise Holdings (same parent as Enterprise and Alamo). UK FAQ pages are served from nationalcar.co.uk but the published FAQ content primarily reflects US/Canada operational terms — rates quoted in USD; age restriction exceptions reference US states. No UK-specific GBP rates for young driver surcharges or additional driver fees are published in these documents. UK-specific rates should be verified directly from National's UK booking engine.",
+      "versions": [
+        {
+          "effective_from": "2026-03",
+          "effective_to": null,
+          "current": true,
+          "documents": [
+            {
+              "type": "ldw",
+              "title": "Loss Damage Waiver (LDW)",
+              "filename": "National/202603-national-ldw.pdf",
+              "version_ref": "March 2026",
+              "pages": 3,
+              "date_retrieved": "2026-03-26"
+            },
+            {
+              "type": "age_restrictions",
+              "title": "Age Requirements",
+              "filename": "National/202603-national-age-requirements.pdf",
+              "version_ref": "March 2026",
+              "pages": 2,
+              "date_retrieved": "2026-03-26"
+            },
+            {
+              "type": "additional_driver",
+              "title": "Additional Driver Fees",
+              "filename": "National/202603-national-additional-driver.pdf",
+              "version_ref": "March 2026",
+              "pages": 2,
+              "date_retrieved": "2026-03-26"
+            },
+            {
+              "type": "rental_requirements",
+              "title": "Rental Requirements",
+              "filename": "National/202603-national-rental-requirements.pdf",
+              "version_ref": "March 2026",
+              "pages": 2,
+              "date_retrieved": "2026-03-26"
+            },
+            {
+              "type": "payment_methods",
+              "title": "Payment Methods",
+              "filename": "National/202603-national-payment-methods.pdf",
+              "version_ref": "March 2026",
+              "pages": 3,
+              "date_retrieved": "2026-03-26"
+            },
+            {
+              "type": "roadside_assistance",
+              "title": "Roadside Plus (RSP)",
+              "filename": "National/202603-national-roadside-plus.pdf",
+              "version_ref": "March 2026",
+              "pages": 2,
+              "date_retrieved": "2026-03-26"
+            },
+            {
+              "type": "towing_policy",
+              "title": "Towing Policy",
+              "filename": "National/202603-national-towing-policy.pdf",
+              "version_ref": "March 2026",
+              "pages": 1,
+              "date_retrieved": "2026-03-26"
+            },
+            {
+              "type": "pet_policy",
+              "title": "Pet Policy",
+              "filename": "National/202603-national-pet-policy.pdf",
+              "version_ref": "March 2026",
+              "pages": 1,
+              "date_retrieved": "2026-03-26"
+            }
+          ],
+          "knowledge_base_articles": [
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111
+          ]
+        }
+      ],
+      "locations": {
+        "source_file": "National/National UK Locations.csv",
+        "total_locations": 44,
+        "supabase_table": "car_bhr_locations",
+        "knowledge_base_article": 226,
+        "date_retrieved": "2026-04-01",
+        "notes": "44 open UK branches across England (33), Scotland (8), Wales (1), Northern Ireland (2). 21 airport locations. Part of Enterprise Holdings — many branches co-located at Enterprise Rent-A-Car locations. Coordinates included. Data also loaded into Supabase car_bhr_locations table for distance-based lookups."
+      }
+    },
+    "amt": {
+      "company_name": "AMT Vehicle Rental Ltd",
+      "company_number": "03713753",
+      "registered_address": "AMT Vehicle Rental, Bruntcliffe Lane, Morley, Leeds, LS279LR",
+      "website": "https://rent.amtauto.co.uk",
+      "telephone": "0113 387 4240",
+      "vat_number": "GB721712857",
+      "ico_registration": "ZA120651",
+      "parent_company": "AMT Global Investments Ltd (No: 05904790)",
+      "notes": "Trades as AMT Auto-Rent. BVRLA member (No. 1559). FCA authorised credit broker (FRN724010). Operates from Leeds (HQ), London, Birmingham and Edinburgh. Rated 4.8 from 484 reviews. Frequently cited by insurer-appointed BHR experts as a spot hire comparator. Maximum hire period 84 days. Strict driver eligibility criteria (age 25-69, 24-month licence, 6 minor points max, accident history limits). Tiered mileage fair use policy (300 miles/day under 7 days; 1,000 miles/week 7+ days; 2,800 miles/28 days). Towing requires express prior permission. Insurance via AMT's own policy (with reducible excess) or hirer's own fully comprehensive cover. All vehicles fitted with telematics.",
+      "versions": [
+        {
+          "effective_from": "2026-03",
+          "effective_to": null,
+          "current": true,
+          "documents": [
+            {
+              "type": "terms_and_conditions",
+              "title": "AMT Auto-Rent Terms and Conditions of Hire",
+              "filename": "AMT/202603-amt-terms-and-conditions.pdf",
+              "version_ref": "current as at 2026-03-27",
+              "pages": 9,
+              "date_retrieved": "2026-03-27"
+            }
+          ],
+          "knowledge_base_articles": [
+            85
+          ]
+        }
+      ]
+    },
+    "dollar_thrifty": {
+      "company_name": "Dollar Thrifty (Hertz Global Holdings) — Dollar Rent A Car / Thrifty Car & Van Rental",
+      "website": "www.dollar.co.uk / www.thrifty.co.uk",
+      "notes": "Dollar and Thrifty are both brands of Hertz Global Holdings. Many branches are co-located or share premises with Hertz locations. 84 unique physical branches serve 134 advertised service areas across the UK.",
+      "versions": [
+        {
+          "effective_from": "2026-03",
+          "effective_to": null,
+          "current": true,
+          "documents": [
+            {
+              "type": "rental_agreement_terms",
+              "title": "Thrifty Rental Agreement and Terms of Hire",
+              "filename": "Thrifty/202603-thrifty-rental-agreement-terms.pdf",
+              "date_retrieved": "2026-03-25"
+            },
+            {
+              "type": "terms_and_conditions",
+              "title": "Thrifty Rental Terms and Conditions",
+              "filename": "Thrifty/202603-thrifty-rental-terms-and-conditions.pdf",
+              "date_retrieved": "2026-03-25"
+            }
+          ]
+        }
+      ],
+      "knowledge_base_articles": [
+        77,
+        78,
+        132,
+        229
+      ],
+      "locations": {
+        "source_file": "Thrifty/Dollar_Rent_A_Car_UK.csv",
+        "total_locations": 84,
+        "total_service_areas": 134,
+        "supabase_table": "car_bhr_locations",
+        "knowledge_base_article": 229,
+        "date_retrieved": "2026-04-14",
+        "notes": "84 unique physical branches deduplicated from 134 advertised service areas. England 74, Scotland 6, Wales 3, Northern Ireland 1. 3 airport locations. Many branches serve multiple named areas from one location. Dollar and Thrifty are brands of Hertz Global Holdings.",
+        "branches": [
+          {
+            "name": "Aberdeen",
+            "postcode": "AB24 3YJ"
+          },
+          {
+            "name": "Aldershot",
+            "postcode": "GU11 2AE"
+          },
+          {
+            "name": "Ashford",
+            "postcode": "TN27 0JL"
+          },
+          {
+            "name": "Aylesbury",
+            "postcode": "HP19 8BP"
+          },
+          {
+            "name": "Basildon",
+            "postcode": "SS14 3BG"
+          },
+          {
+            "name": "Basingstoke",
+            "postcode": "RG22 6NQ"
+          },
+          {
+            "name": "Beckton",
+            "postcode": "E6 6JF"
+          },
+          {
+            "name": "Belfast",
+            "postcode": "BT12 6HR"
+          },
+          {
+            "name": "Birmingham Airport",
+            "postcode": "B26 3QW"
+          },
+          {
+            "name": "Birmingham City",
+            "postcode": "B7 4AD"
+          },
+          {
+            "name": "Birmingham Stirchley",
+            "postcode": "B30 3AG"
+          },
+          {
+            "name": "Bournemouth",
+            "postcode": "BH1 3SH"
+          },
+          {
+            "name": "Bradford",
+            "postcode": "BD1 2JH"
+          },
+          {
+            "name": "Brighton",
+            "postcode": "BN1 2FB"
+          },
+          {
+            "name": "Bristol Airport",
+            "postcode": "BS48 3DW"
+          },
+          {
+            "name": "Bristol City",
+            "postcode": "BS2 0SU"
+          },
+          {
+            "name": "Bristol North",
+            "postcode": "BS16 1LF"
+          },
+          {
+            "name": "Brize Norton",
+            "postcode": "OX18 3LX"
+          },
+          {
+            "name": "Broxburn",
+            "postcode": "EH52 5AS",
+            "also_serves": [
+              "Edinburgh West"
+            ]
+          },
+          {
+            "name": "Cambridge",
+            "postcode": "CB5 8LN"
+          },
+          {
+            "name": "Cardiff",
+            "postcode": "CF11 8AQ"
+          },
+          {
+            "name": "Carlisle",
+            "postcode": "CA6 4SQ"
+          },
+          {
+            "name": "Chester",
+            "postcode": "CH1 4LT"
+          },
+          {
+            "name": "City Of London",
+            "postcode": "SE1 3LS",
+            "also_serves": [
+              "London - City",
+              "Tower Bridge"
+            ]
+          },
+          {
+            "name": "Coventry",
+            "postcode": "CV1 4LF"
+          },
+          {
+            "name": "Crawley",
+            "postcode": "RH10 3HZ"
+          },
+          {
+            "name": "Croydon",
+            "postcode": "CR0 4TU",
+            "also_serves": [
+              "Coulsdon",
+              "Bromley"
+            ]
+          },
+          {
+            "name": "Darlington",
+            "postcode": "DL1 1XY"
+          },
+          {
+            "name": "Derby",
+            "postcode": "DE21 4BD"
+          },
+          {
+            "name": "Doncaster",
+            "postcode": "DN4 0RG"
+          },
+          {
+            "name": "Dudley",
+            "postcode": "DY2 0RH",
+            "also_serves": [
+              "Birmingham Dudley"
+            ]
+          },
+          {
+            "name": "Dundee",
+            "postcode": "DD2 4US"
+          },
+          {
+            "name": "Exeter",
+            "postcode": "EX2 8LW"
+          },
+          {
+            "name": "Gateshead",
+            "postcode": "NE11 9JW",
+            "also_serves": [
+              "Newcastle Upon Tyne"
+            ]
+          },
+          {
+            "name": "Gerrards Cross",
+            "postcode": "SL1 6JA",
+            "also_serves": [
+              "Ascot",
+              "Maidenhead",
+              "Windsor",
+              "Slough"
+            ]
+          },
+          {
+            "name": "Glasgow City",
+            "postcode": "G3 8HZ"
+          },
+          {
+            "name": "Gloucester",
+            "postcode": "GL1 5SY"
+          },
+          {
+            "name": "Guildford",
+            "postcode": "GU1 1YR"
+          },
+          {
+            "name": "Heathrow Airport",
+            "postcode": "UB7 0HJ"
+          },
+          {
+            "name": "Hereford",
+            "postcode": "HR4 9HN"
+          },
+          {
+            "name": "Huddersfield",
+            "postcode": "HD1 6NA"
+          },
+          {
+            "name": "Hull",
+            "postcode": "HU3 1LU"
+          },
+          {
+            "name": "Inverness",
+            "postcode": "IV1 1UA"
+          },
+          {
+            "name": "Ipswich",
+            "postcode": "IP1 5DL",
+            "also_serves": [
+              "Woodbridge",
+              "Felixstowe",
+              "Stowmarket"
+            ]
+          },
+          {
+            "name": "Kings Lynn",
+            "postcode": "PE34 3AG"
+          },
+          {
+            "name": "Leeds Hunslet",
+            "postcode": "LS10 1JX",
+            "also_serves": [
+              "Wakefield"
+            ]
+          },
+          {
+            "name": "Leicester",
+            "postcode": "LE1 3QD"
+          },
+          {
+            "name": "Leigh",
+            "postcode": "BL3 1RP",
+            "also_serves": [
+              "Bolton",
+              "Wigan",
+              "Bury"
+            ]
+          },
+          {
+            "name": "Lincoln",
+            "postcode": "LN6 7RY"
+          },
+          {
+            "name": "Liverpool",
+            "postcode": "L20 8EH"
+          },
+          {
+            "name": "London - New Cross",
+            "postcode": "SE10 0PA",
+            "also_serves": [
+              "London - Lewisham",
+              "London - Deptford",
+              "London - O2",
+              "Greenwich",
+              "London - Black Heath"
+            ]
+          },
+          {
+            "name": "Luton",
+            "postcode": "LU4 8PZ"
+          },
+          {
+            "name": "Manchester Central",
+            "postcode": "M12 6LL",
+            "also_serves": [
+              "Manchester City Centre"
+            ]
+          },
+          {
+            "name": "Manchester Trafford",
+            "postcode": "M17 1SH",
+            "also_serves": [
+              "Oldham",
+              "Salford"
+            ]
+          },
+          {
+            "name": "Milton Keynes",
+            "postcode": "MK12 5NP",
+            "also_serves": [
+              "Bedford"
+            ]
+          },
+          {
+            "name": "Newport",
+            "postcode": "NP19 4SX"
+          },
+          {
+            "name": "Northampton",
+            "postcode": "NN3 6RX"
+          },
+          {
+            "name": "Norwich",
+            "postcode": "NR1 2JA"
+          },
+          {
+            "name": "Nottingham",
+            "postcode": "NG6 0JU"
+          },
+          {
+            "name": "Oxford",
+            "postcode": "OX2 0BY"
+          },
+          {
+            "name": "Paisley",
+            "postcode": "PA3 2ST",
+            "also_serves": [
+              "Glasgow Airport"
+            ]
+          },
+          {
+            "name": "Park Royal",
+            "postcode": "W3 0RS",
+            "also_serves": [
+              "London - Shepherds Bush",
+              "London - Notting Hill",
+              "Acton",
+              "London - West",
+              "London - Kensington"
+            ]
+          },
+          {
+            "name": "Peterborough",
+            "postcode": "PE1 5XL",
+            "also_serves": [
+              "March",
+              "Spalding",
+              "Huntingdon"
+            ]
+          },
+          {
+            "name": "Plymouth",
+            "postcode": "PL4 0LE"
+          },
+          {
+            "name": "Portsmouth",
+            "postcode": "PO6 1TQ"
+          },
+          {
+            "name": "Preston",
+            "postcode": "PR5 4AR"
+          },
+          {
+            "name": "Reading",
+            "postcode": "RG2 0QX"
+          },
+          {
+            "name": "Salisbury",
+            "postcode": "SP2 7PU"
+          },
+          {
+            "name": "Sheffield",
+            "postcode": "S13 8HT",
+            "also_serves": [
+              "Rotherham",
+              "Barnsley",
+              "Worksop"
+            ]
+          },
+          {
+            "name": "Shrewsbury",
+            "postcode": "SY1 3NJ"
+          },
+          {
+            "name": "Southampton",
+            "postcode": "SO14 3FL"
+          },
+          {
+            "name": "St Albans",
+            "postcode": "AL1 4TB",
+            "also_serves": [
+              "Hatfield"
+            ]
+          },
+          {
+            "name": "Stoke",
+            "postcode": "ST4 2PH"
+          },
+          {
+            "name": "Sudbury",
+            "postcode": "CO2 8JZ",
+            "also_serves": [
+              "Colchester"
+            ]
+          },
+          {
+            "name": "Swansea",
+            "postcode": "SA1 2LE"
+          },
+          {
+            "name": "Swindon",
+            "postcode": "SN3 4TG"
+          },
+          {
+            "name": "Taunton",
+            "postcode": "TA1 5NF"
+          },
+          {
+            "name": "Truro",
+            "postcode": "TR4 9LD"
+          },
+          {
+            "name": "Walthamstow",
+            "postcode": "EN3 7TY",
+            "also_serves": [
+              "Tottenham - White Hart Lane",
+              "Buckhurst Hill",
+              "Wood Green",
+              "Chingford",
+              "Enfield",
+              "Epping Forest"
+            ]
+          },
+          {
+            "name": "Westfield",
+            "postcode": "E3 2PL",
+            "also_serves": [
+              "London - Bow",
+              "Hackney",
+              "London - Stratford"
+            ]
+          },
+          {
+            "name": "Weston Super Mare",
+            "postcode": "BS23 3TP"
+          },
+          {
+            "name": "Wolverhampton",
+            "postcode": "WV13 3SF"
+          },
+          {
+            "name": "Yeovil",
+            "postcode": "BA22 8RT"
+          },
+          {
+            "name": "York",
+            "postcode": "YO10 3JA"
+          }
+        ]
+      }
+    }
+  }
+}

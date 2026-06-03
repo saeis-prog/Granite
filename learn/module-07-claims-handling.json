@@ -1,0 +1,414 @@
+{
+  "module": {
+    "id": "module-07",
+    "title": "Claims handling process",
+    "subtitle": "Managing a credit hire claim from first instruction to settlement",
+    "level": "Operations",
+    "duration_minutes": 100,
+    "format": "Self-paced e-learning with AI tutor",
+    "sections_count": 5,
+    "assessment_questions": 20,
+    "pass_mark_percent": 75,
+    "prerequisite": "module-06",
+    "learning_objectives": [
+      {
+        "id": "LO1",
+        "text": "Describe the end-to-end credit hire claims process from initial referral through to settlement or recovery"
+      },
+      {
+        "id": "LO2",
+        "text": "Identify the documentation that should be obtained at the point of hire and explain why each element matters"
+      },
+      {
+        "id": "LO3",
+        "text": "Explain the CHO's obligations when notifying the at-fault insurer and the consequences of late or inadequate notification"
+      },
+      {
+        "id": "LO4",
+        "text": "Manage the repair monitoring process and identify when intervention is required to protect the hire period"
+      },
+      {
+        "id": "LO5",
+        "text": "Recognise the role of BTE (Before The Event) legal expenses insurance and explain how it affects credit hire entitlement and recovery strategy"
+      },
+      {
+        "id": "LO6",
+        "text": "Assess a settlement offer and advise whether to accept or pursue further recovery"
+      }
+    ],
+    "sections": [
+      {
+        "id": "s01",
+        "number": 1,
+        "title": "From referral to vehicle delivery",
+        "duration_minutes": 18,
+        "concept": "The first hours of a credit hire claim are the most important for protecting the CHO's position. The referral must be properly documented, the claimant's details and needs assessed, the appropriate vehicle identified and delivered, and the hire agreement correctly executed. Errors or omissions at this stage can undermine recovery months later. Speed matters \u2014 a claimant who has been without a vehicle for three days before contacting a CHO will find their need harder to establish for those first days.",
+        "content_points": [
+          "Referral sources: repairers, CMCs, solicitors, direct claimant contact, insurer portals \u2014 each creates different documentation and compliance obligations",
+          "First contact checklist: accident date and circumstances, third party details, liability position, the claimant's vehicle and its current status, the claimant's mobility needs",
+          "Assessing need at point of referral: is the vehicle off the road? What is the claimant's use? Are there alternatives? This assessment is documented and may be used in evidence",
+          "Vehicle selection: matching the replacement to the claimant's needs and vehicle class \u2014 document the rationale where an upgrade is provided",
+          "The hire agreement: must comply with Consumer Credit Act 1974 formalities; incorrect execution can create enforcement problems",
+          "Credit checks and financial assessment: obtaining sufficient information to assess impecuniosity at the point of hire (not weeks later when the insurer challenges)",
+          "Delivery and condition report: the condition of the replacement vehicle must be documented on delivery and return to avoid dispute about damage",
+          "Notifying the at-fault insurer: the insurer should be notified of the hire promptly \u2014 within 24-48 hours is industry practice; late notification weakens the claim"
+        ],
+        "scenario": {
+          "text": "A repairer calls at 4pm on a Friday to say they have a customer whose car is being taken in for repair on Monday. The customer is a GP who does home visits. The GP needs a vehicle over the weekend too. The repairer has already told the GP a car will be delivered on Monday morning. What should the CHO do and what risks does this situation present?",
+          "teaching_points": [
+            "Weekend need: if the GP needs a vehicle over the weekend, the hire should start Friday, not Monday",
+            "The repairer has created an expectation \u2014 the CHO must either honour it or manage it",
+            "GP home visits = strong need, well-documented professional requirement",
+            "The risk: starting hire on Monday when need existed from Friday may mean days 1-3 are not covered",
+            "The learner should identify that the hire should start when need arose and advise on weekend delivery logistics"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A claimant's vehicle is damaged on a Tuesday but they do not contact the CHO until the following Monday. Their vehicle was driveable but they chose not to drive it. When should the hire period start?",
+          "options": [
+            {
+              "text": "The date of the accident",
+              "correct": false
+            },
+            {
+              "text": "The date the vehicle was taken off the road for repair or declared undriveable, whichever is appropriate",
+              "correct": true,
+              "explanation": "A hire period cannot run while the claimant's own vehicle was available and being used (or available to be used). The period starts when the vehicle was genuinely unavailable."
+            },
+            {
+              "text": "The date the claimant contacted the CHO",
+              "correct": false
+            },
+            {
+              "text": "The date the insurer acknowledged liability",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s02",
+        "number": 2,
+        "title": "Insurer notification and credit hire protocols",
+        "duration_minutes": 20,
+        "concept": "Prompt and proper notification of the at-fault insurer is not just good practice \u2014 it is essential to protecting the CHO's recovery position. Late notification gives the insurer grounds to argue they had no opportunity to mitigate (e.g. by offering their own replacement vehicle). It also affects the relationship with the insurer going forward. Understanding the notification protocols \u2014 and the insurer's reciprocal obligations \u2014 is a core operational skill.",
+        "content_points": [
+          "When to notify: as soon as practicable after the hire commences; industry practice is within 24-48 hours of vehicle delivery",
+          "What to include in notification: claimant details, accident circumstances, third party details, vehicle on hire, rate and estimated duration",
+          "The insurer's response window: many insurers have internal targets for responding to hire notifications; the GTA sets out specific obligations for GTA claims",
+          "The mitigation offer: the insurer may respond with an offer of their own replacement vehicle at their own rate; this offer must be assessed and responded to on the facts",
+          "The 'reasonable offer' test: if the insurer's mitigation offer is genuinely like-for-like and the claimant refuses without reason, the excess cost over the insurer's offered rate may not be recoverable",
+          "Liability denial: where the insurer denies liability, the CHO must assess the risk of continuing the hire; recovery becomes uncertain and the CHO carries the risk",
+          "The uninsured driver issue: where there is no third-party insurer, recovery is through the MIB; notification and process obligations differ",
+          "Record keeping: all insurer communications should be logged with dates and content; a contemporaneous record is essential if the claim goes to dispute"
+        ],
+        "scenario": {
+          "text": "A CHO delivers a vehicle on a Monday. They notify the third-party insurer on the following Thursday (3 days late due to an administrative error). The insurer responds saying they would have provided a vehicle at \u00a342/day and that the CHO rate of \u00a385/day is therefore not recoverable in full. The claimant is impecunious. Advise on the notification delay and the insurer's mitigation argument.",
+          "teaching_points": [
+            "3 days late notification is a weakness but not fatal \u2014 many courts take a pragmatic approach",
+            "If the claimant is impecunious, the mitigation offer is relevant only to the extent it was genuinely available to them",
+            "An impecunious claimant cannot be expected to fund spot hire during the 3-day gap before the insurer's offer could have been made",
+            "The insurer's argument has some merit but is likely overstated on these facts",
+            "The learner should identify the notification weakness as real but manageable, and impecuniosity as the key protection"
+          ]
+        },
+        "knowledge_check": {
+          "question": "The at-fault insurer makes a mitigation offer of a replacement vehicle at \u00a340/day. The claimant is not impecunious. The CHO rate is \u00a375/day. The claimant declines the offer because they prefer the CHO's vehicle. What is the likely recovery outcome on rate?",
+          "options": [
+            {
+              "text": "\u00a375/day \u2014 the claimant has freedom of choice",
+              "correct": false
+            },
+            {
+              "text": "\u00a340/day \u2014 the claimant should have accepted the insurer's offer and their refusal means only the offered rate is recoverable",
+              "correct": true,
+              "explanation": "Where a claimant who is not impecunious refuses a genuine, like-for-like mitigation offer on grounds of preference only, the excess over the offered rate is likely irrecoverable. Freedom of choice is not unlimited."
+            },
+            {
+              "text": "\u00a357.50 \u2014 the average of the two rates",
+              "correct": false
+            },
+            {
+              "text": "\u00a30 \u2014 refusal of the offer means the entire claim fails",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s03",
+        "number": 3,
+        "title": "Repair monitoring and period management",
+        "duration_minutes": 20,
+        "concept": "Once the hire is running, the CHO's job is to ensure the hire period does not extend unnecessarily. This means monitoring the repair progress, intervening when delays arise, and ensuring the claimant is informed and responsive. Poor repair monitoring is one of the most common reasons claims settle for less than full value \u2014 unnecessary days that could have been avoided create vulnerability to period challenge.",
+        "content_points": [
+          "Repair booking: ensure the vehicle is booked in promptly; delays in booking after the hire starts create unnecessary days",
+          "Progress monitoring: contact the bodyshop at regular intervals (typically every 2-3 working days) to track progress against the expected completion date",
+          "Parts delays: when parts are delayed, obtain written confirmation from the repairer and notify the insurer promptly",
+          "Supplementary damage: when additional damage is found on strip-down, the CHO should prompt the repairer to submit a supplementary estimate without delay",
+          "Insurer approval delays: where the insurer delays approving additional work, this is documented and forms the basis for extending the recoverable period",
+          "Total loss flags: if the repair estimate approaches the vehicle's value, a total loss declaration may be forthcoming; the CHO should monitor and be prepared to manage the transition",
+          "Vehicle collection: once the repair is complete, the claimant must collect promptly; the CHO should remind the claimant and document contact attempts",
+          "Hire termination: the hire should end on the day the claimant's own vehicle is returned to service; unnecessary additional days are a straightforward challenge target"
+        ],
+        "scenario": {
+          "text": "A vehicle goes in for repair on day 1. The CHO makes no contact with the repairer until day 12, when they call to check on progress. They learn that the vehicle was actually repaired and ready on day 8, but no one told the claimant. The claimant collects on day 14 (after the weekend). The insurer challenges days 8-14. Assess the CHO's exposure.",
+          "teaching_points": [
+            "Days 8-14 are highly vulnerable \u2014 the vehicle was available from day 8",
+            "The CHO's failure to monitor meant they were unaware of completion for 4 days",
+            "Day 8 to Friday close of business: the claimant should have been notified and collected",
+            "The weekend (days 10-11) might be arguable if the bodyshop was closed on Friday evening",
+            "Day 12 onwards (Monday): no justification for delay once the CHO became aware",
+            "The learner should identify this as a monitoring failure and explain what should have happened"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Best practice for repair monitoring is to contact the repairer:",
+          "options": [
+            {
+              "text": "Once, at the start of the repair, to get an estimated completion date",
+              "correct": false
+            },
+            {
+              "text": "Only when the claimant asks for an update",
+              "correct": false
+            },
+            {
+              "text": "Every 2-3 working days, and immediately upon learning of any change to the expected completion date",
+              "correct": true,
+              "explanation": "Regular, documented contact with the repairer protects against period challenge and ensures the CHO can act promptly when the vehicle is ready."
+            },
+            {
+              "text": "On the estimated completion date only",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s04",
+        "number": 4,
+        "title": "BTE insurance and its impact on claims",
+        "duration_minutes": 22,
+        "concept": "Before The Event (BTE) legal expenses insurance \u2014 typically embedded in home or motor policies \u2014 can fund the claimant's legal representation in pursuing their credit hire claim. Where BTE exists, it may affect the overall claims strategy, the relationship with the solicitor, and potentially the basis of recovery. CHOs must understand when BTE is relevant, how to identify it, and how it interacts with credit hire entitlement. The existence of BTE does not defeat a credit hire claim \u2014 but it creates an alternative funding route that is relevant to the overall damages picture.",
+        "content_points": [
+          "What BTE insurance is: legal expenses cover taken out before the accident (often as a motor or home policy add-on) that funds legal representation for a defined range of claims",
+          "How it is relevant to credit hire: BTE may fund a solicitor to pursue the credit hire claim alongside any PI element; it can also affect the CHO's relationship with the claim",
+          "BTE does not defeat credit hire: having BTE does not mean the claimant cannot hire on credit; the two are independent heads of the claim",
+          "The hierarchy question: where BTE exists, some courts have asked whether the claimant should have used BTE-funded solicitors to pursue their claim rather than entering a CFA; this is primarily a costs issue",
+          "Identifying BTE: CHOs should ask about BTE at the point of instruction; failure to identify available BTE can create problems later if a costs opponent raises it",
+          "BTE and the solicitor relationship: where a BTE-appointed solicitor is handling the claim, the CHO should ensure the solicitor is aware of and is managing the credit hire element",
+          "The declining PI feeder: post-whiplash reforms, PI firms have less work from which credit hire was historically referred; BTE-funded claims are an increasing proportion of the remaining market",
+          "The S75 CCA issue: where the CHO's hire agreement is a regulated credit agreement, S75 CCA may be relevant; the Forum has covered this in the context of cardholder protections"
+        ],
+        "scenario": {
+          "text": "A claimant instructs a CHO directly without going through a solicitor. After 3 weeks, the CHO discovers the claimant has BTE legal expenses insurance through their home policy. The BTE insurer nominates a solicitor who says they will now handle the claim including the credit hire element. The CHO has already notified the at-fault insurer and been in correspondence for 3 weeks. What issues does this raise and how should the CHO manage the transition?",
+          "teaching_points": [
+            "The BTE solicitor's involvement is legitimate and the CHO should cooperate",
+            "The CHO must ensure the solicitor understands the credit hire claim in full \u2014 all documentation should be shared",
+            "The 3 weeks of existing correspondence must be transferred to avoid duplication or confusion",
+            "The CHO's interest in the hire charges must be protected \u2014 the solicitor acts for the claimant, not the CHO",
+            "The learner should identify potential conflicts: the solicitor may have different views on settlement strategy"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A claimant has BTE insurance. The BTE insurer nominates a solicitor. The at-fault insurer argues that the credit hire claim should be assessed as if the claimant had used BTE-funded legal representation from the start, making some heads of loss unnecessary. Is this argument correct?",
+          "options": [
+            {
+              "text": "Yes \u2014 the existence of BTE means credit hire is not recoverable",
+              "correct": false
+            },
+            {
+              "text": "No \u2014 BTE affects costs and legal representation but does not defeat entitlement to hire charges as a head of loss",
+              "correct": true,
+              "explanation": "BTE is a funding mechanism for legal costs. It does not affect the separate question of whether the claimant was entitled to a replacement vehicle and can recover the hire charges."
+            },
+            {
+              "text": "Yes \u2014 the claimant should have used BTE to arrange hire through the nominated supplier",
+              "correct": false
+            },
+            {
+              "text": "It depends on the specific terms of the BTE policy",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s05",
+        "number": 5,
+        "title": "Settlement: assessing offers and achieving recovery",
+        "duration_minutes": 20,
+        "concept": "Settlement negotiation is where the technical and commercial aspects of a credit hire claim converge. The CHO must assess each offer against the full value of the claim, the strength of the evidence, the cost and risk of litigation, and the time value of earlier settlement. Understanding when to accept and when to hold out \u2014 and how to structure a counter-offer \u2014 is a core practitioner competence.",
+        "content_points": [
+          "Calculating claim value: total hire charges claimed, less any vulnerabilities (period, rate, need challenges), equals the realistic recoverable range",
+          "The insurer's first offer: invariably below full value; understand what assumptions the insurer has made and where they have discounted",
+          "Deconstructing the offer: what period has the insurer allowed? What rate? Have they addressed impecuniosity? Is the offer GTA or open market?",
+          "Counter-offer strategy: respond with evidence, not simply a higher number; address each point the insurer has discounted",
+          "The litigation risk calculation: what is the cost of litigating vs the uplift achievable? For small claims track cases, costs are not recoverable and the calculation changes significantly",
+          "Full and final settlement: once accepted, 'full and final' means exactly that \u2014 the Forum has reported cases where claimants tried to re-open settled claims and failed",
+          "The Part 36 dynamic: in litigation, Part 36 offers create costs consequences that change the settlement calculus; understanding these is important once a claim reaches the courts",
+          "Portfolio settlement: large CHOs often negotiate portfolio or bulk settlement agreements with insurers; individual claims are settled at agreed rates and the CHO accepts a discount for volume and certainty"
+        ],
+        "scenario": {
+          "text": "A CHO has a claim for 18 days hire at \u00a378/day (\u00a31,404 total). The claimant is borderline impecunious \u2014 income of \u00a322,000, \u00a3450 in savings, a credit card with \u00a3300 available. BHR is \u00a338/day. The insurer offers \u00a3684 (18 days at \u00a338/day \u2014 BHR only). The CHO believes they can recover the full CHO rate in court but the claim is in the Small Claims Track. Advise on settlement strategy.",
+          "teaching_points": [
+            "Small Claims Track: legal costs are not generally recoverable even if the CHO wins",
+            "The impecuniosity argument is not clear-cut \u2014 \u00a3450 savings and \u00a3300 credit means the court could go either way",
+            "If the CHO wins in full: \u00a31,404 recovered, no costs awarded, net gain of \u00a3720 over the insurer's offer",
+            "If the CHO loses on impecuniosity: \u00a3684 awarded (BHR), legal time incurred for no uplift",
+            "A counter-offer at \u00a31,100-\u00a31,200 might be a sensible middle ground",
+            "The learner should work through the costs-benefit of litigating vs negotiating"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A credit hire claim for \u00a31,200 is in the Small Claims Track. The insurer offers \u00a3800. The CHO believes they would win in full at trial. Which factor most changes the settlement calculus compared to a multi-track claim?",
+          "options": [
+            {
+              "text": "The judge in the Small Claims Track is less experienced",
+              "correct": false
+            },
+            {
+              "text": "In the Small Claims Track, legal costs are generally not recoverable even by the winning party, so the CHO bears its own costs of litigation regardless of outcome",
+              "correct": true,
+              "explanation": "The costs of pursuing a Small Claims Track case to trial are typically irrecoverable. The decision to litigate for a \u00a3400 uplift must account for the unrecoverable time and effort involved."
+            },
+            {
+              "text": "The insurer's offer is automatically accepted in the Small Claims Track",
+              "correct": false
+            },
+            {
+              "text": "There is no difference \u2014 the same principles apply in all tracks",
+              "correct": false
+            }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "pass_mark": 75,
+      "questions": [
+        {
+          "type": "multiple_choice",
+          "question": "A claimant's vehicle is damaged on a Tuesday but they do not contact the CHO until the following Monday. The vehicle was driveable throughout. When should the hire period start?",
+          "options": [
+            "The date of the accident, because the claimant was entitled to a replacement from that point",
+            "The date the vehicle was taken off the road for repair or declared undriveable",
+            "The date the claimant contacted the CHO",
+            "The date the insurer acknowledged liability"
+          ],
+          "correct": 1,
+          "explanation": "A hire period cannot run while the claimant's own vehicle was available and being used. The period starts when the vehicle was genuinely unavailable to the claimant, typically when it enters the bodyshop for repair."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Industry practice requires the CHO to notify the at-fault insurer of the hire within what timeframe?",
+          "options": [
+            "Within 7 calendar days of vehicle delivery",
+            "Within 24-48 hours of vehicle delivery",
+            "Before the vehicle is delivered to the claimant",
+            "Within 30 days, as set out in the Pre-Action Protocol"
+          ],
+          "correct": 1,
+          "explanation": "Industry practice is to notify the at-fault insurer within 24-48 hours of vehicle delivery. Late notification gives the insurer grounds to argue they had no opportunity to mitigate, weakening the CHO's recovery position."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "The at-fault insurer offers a replacement vehicle at \u00a340/day. The CHO rate is \u00a375/day. The claimant is not impecunious and declines the insurer's offer purely because they prefer the CHO vehicle. What is the likely recovery outcome on rate?",
+          "options": [
+            "\u00a375/day \u2014 the claimant has freedom of choice",
+            "\u00a340/day \u2014 the claimant's refusal of a genuine like-for-like offer on grounds of preference means only the offered rate is likely recoverable",
+            "\u00a357.50 \u2014 the court will average the two rates",
+            "\u00a30 \u2014 refusal of the offer defeats the entire claim"
+          ],
+          "correct": 1,
+          "explanation": "Where a non-impecunious claimant refuses a genuine, like-for-like mitigation offer on grounds of preference alone, the excess over the offered rate is likely irrecoverable. Freedom of choice is not unlimited under the duty to mitigate."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A CHO makes no contact with the repairer until day 12, when they learn the vehicle was ready on day 8. The claimant collects on day 14. Which days are most vulnerable to challenge by the insurer?",
+          "options": [
+            "Only days 12-14, because the CHO became aware on day 12",
+            "Days 8-14, because the vehicle was available from day 8 and the CHO's monitoring failure meant unnecessary hire days accrued",
+            "No days are vulnerable because the claimant collected within 2 days of being told",
+            "Only day 14, as the collection day itself"
+          ],
+          "correct": 1,
+          "explanation": "Days 8-14 are all vulnerable. The vehicle was ready on day 8, and proper monitoring (every 2-3 working days) would have identified this. The CHO's failure to monitor created unnecessary hire days that are difficult to defend."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A claimant has BTE (Before The Event) legal expenses insurance. The at-fault insurer argues that BTE means the credit hire charges are not recoverable. Is this argument correct?",
+          "options": [
+            "Yes \u2014 BTE replaces credit hire entitlement entirely",
+            "Yes \u2014 the claimant should have used BTE to arrange hire through their own insurer",
+            "No \u2014 BTE affects costs and legal representation but does not defeat entitlement to hire charges as a separate head of loss",
+            "It depends on whether the BTE policy specifically excludes credit hire"
+          ],
+          "correct": 2,
+          "explanation": "BTE insurance is a funding mechanism for legal costs. It does not affect the separate question of whether the claimant was entitled to a replacement vehicle and can recover the hire charges. The two are independent heads of the claim."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A credit hire claim for \u00a31,200 is in the Small Claims Track. The insurer offers \u00a3800. The CHO believes they would win in full at trial. Which factor most significantly changes the settlement calculus compared to a Fast Track claim?",
+          "options": [
+            "The judge in the Small Claims Track is less experienced in credit hire",
+            "In the Small Claims Track, legal costs are generally not recoverable even by the winning party, so the CHO bears its own litigation costs regardless of outcome",
+            "The insurer's offer must be accepted in the Small Claims Track",
+            "Part 36 consequences apply more harshly in the Small Claims Track"
+          ],
+          "correct": 1,
+          "explanation": "Small Claims Track costs rules mean the CHO cannot recover its legal costs even if it wins. The decision to litigate for a \u00a3400 uplift must account for the unrecoverable time and effort involved, fundamentally changing the economics of the dispute."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "When deconstructing an insurer's settlement offer, which of the following is the most important first step?",
+          "options": [
+            "Reject it immediately and counter with the full claim value",
+            "Accept it to avoid litigation costs",
+            "Identify what period and rate the insurer has allowed, whether they have addressed impecuniosity, and where they have discounted",
+            "Refer it to a solicitor without forming any view"
+          ],
+          "correct": 2,
+          "explanation": "Understanding the basis of the insurer's offer is essential before responding. The CHO should deconstruct the offer to identify each assumption and discount, then respond with evidence addressing each point rather than simply countering with a higher number."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Once a claim has been settled as 'full and final', the claimant can re-open it if they later discover additional losses.",
+          "correct": 1,
+          "explanation": "False. Full and final settlement is binding. Courts have consistently refused to allow claimants to re-open settled claims. Settlement should only be accepted when all losses are fully accounted for."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: A CHO should obtain sufficient information to assess impecuniosity at the point of hire rather than waiting until the insurer challenges.",
+          "correct": 0,
+          "explanation": "True. Best practice is to gather financial information at the point of hire. Waiting until the insurer challenges creates delay and risks the evidence being retrospective rather than contemporaneous, which weakens its probative value."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Late notification of the hire to the at-fault insurer automatically defeats the hire charges for the period before notification.",
+          "correct": 1,
+          "explanation": "False. Late notification is a weakness but does not automatically defeat early hire days. Courts consider whether the insurer was genuinely prejudiced by the delay and take a pragmatic approach to the facts."
+        }
+      ]
+    },
+    "ai_tutor": {
+      "system_prompt_per_section": {
+        "s01": "You are a credit hire training tutor for Section 1 of Module 5: referral to delivery. The learner is working through a GP scenario where the repairer has promised a Monday delivery but the GP needs a vehicle from Friday. Guide the learner to identify that hire should start when need arose (Friday) and advise on weekend delivery. Keep responses to 2-4 sentences.",
+        "s02": "You are a credit hire training tutor for Section 2 of Module 5: insurer notification. The learner is working through a scenario where 3-day late notification is used by the insurer to challenge the rate. Guide them to identify notification as a real but manageable weakness, and that impecuniosity is the key protection. Keep responses to 2-4 sentences.",
+        "s03": "You are a credit hire training tutor for Section 3 of Module 5: repair monitoring. The learner is working through a monitoring failure scenario \u2014 the CHO did not call the repairer until day 12, and the car was ready on day 8. Guide the learner to identify the monitoring failure, the exposure on days 8-14, and what should have happened. Keep responses to 2-4 sentences.",
+        "s04": "You are a credit hire training tutor for Section 4 of Module 5: BTE insurance. The learner is working through a scenario where BTE is discovered 3 weeks into a claim and a BTE-nominated solicitor takes over. Guide the learner to manage the transition, protect the CHO's interest, and understand that BTE does not defeat credit hire entitlement. Keep responses to 2-4 sentences.",
+        "s05": "You are a credit hire training tutor for Section 5 of Module 5: settlement. The learner is working through a borderline impecuniosity case in the Small Claims Track. Guide them through the costs-benefit of litigating vs settling, the significance of Small Claims Track cost rules, and a sensible counter-offer strategy. Keep responses to 2-4 sentences."
+      }
+    },
+    "further_reading": {
+      "forum_search_queries": [
+        "What does the Forum say about 'full and final' settlement disputes in credit hire?",
+        "Forum posts about BTE insurance and credit hire claims",
+        "Find Forum coverage of S75 Consumer Credit Act and credit hire",
+        "What has the Forum reported about insurer mitigation offers?",
+        "Forum posts about Small Claims Track and credit hire litigation costs"
+      ]
+    }
+  }
+}

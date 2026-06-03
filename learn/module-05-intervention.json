@@ -1,0 +1,442 @@
+{
+  "module": {
+    "id": "module-05",
+    "title": "Intervention",
+    "subtitle": "Managing at-fault insurer offers and protecting recovery rights",
+    "level": "Operations",
+    "duration_minutes": 100,
+    "format": "Self-paced e-learning with AI tutor",
+    "sections_count": 5,
+    "assessment_questions": 20,
+    "pass_mark_percent": 75,
+    "prerequisite": "module-04",
+    "learning_objectives": [
+      "LO1: Define intervention and explain why it is a critical operational risk for credit hire organisations",
+      "LO2: Apply the Copley v Lawn reasonableness test to assess an insurer's intervention offer",
+      "LO3: Explain the GTA first-to-customer principle and identify when it does and does not apply",
+      "LO4: Recognise the methods of third-party capture and distinguish lawful from unlawful practices",
+      "LO5: Follow a step-by-step protocol for handling intervention when it occurs",
+      "LO6: Advise a claimant on an intervention offer in a way that protects the CHO's right to recover"
+    ],
+    "sections": [
+      {
+        "id": "s01",
+        "number": 1,
+        "title": "What is intervention?",
+        "duration_minutes": 18,
+        "concept": "Intervention in credit hire is the process by which the at-fault insurer (or their agent) contacts the claimant directly to offer an alternative to the credit hire arrangement — typically a replacement vehicle at the insurer's own rate and/or managed repairs through the insurer's approved network. The purpose from the insurer's perspective is to reduce their exposure by substituting a cheaper alternative for the CHO's services. For the CHO, intervention is both a commercial threat and a legal risk: if the insurer's offer was reasonable and the claimant was not told about it, the CHO may lose its right to recover hire charges from the date of the offer.",
+        "content_points": [
+          "Intervention is direct contact by the at-fault insurer with the claimant to offer a replacement vehicle and/or repair management, bypassing the CHO",
+          "The insurer's motivation is cost control: to substitute the insurer's cheaper offer for the CHO's charges",
+          "Typical intervention methods include letters, phone calls, SMS messages, and email — usually within 24-48 hours of notification to the insurer",
+          "A standard intervention offer comprises a replacement vehicle (often lower specification than the claimant's own vehicle) and managed repairs through the insurer's approved network",
+          "Intervention differs from capture: intervention is a direct offer to the claimant; capture is the broader strategy of diverting claimants away from CHOs",
+          "Intervention is the CHO's most persistent operational challenge because it occurs frequently and creates an immediate legal risk if not handled correctly",
+          "The legal consequence of unreasonable rejection of a reasonable insurer offer is that the claimant's hire charges may be limited to the date of the offer (Copley v Lawn)",
+          "Every CHO must have a protocol for identifying, presenting, and recording intervention offers to claimants"
+        ],
+        "scenario": {
+          "text": "A CHO provides a vehicle to Mrs Khan on Day 1 following a rear-end collision in which she was not at fault, but the other driver's insurer has now made an admission. On Day 3, Mrs Khan calls the CHO handler and says: 'The other driver's insurance company rang me this morning and offered to collect my car for repair and give me a courtesy car. They said it would be free. Should I take it?' The handler is unsure what to say and puts Mrs Khan on hold.",
+          "teaching_points": [
+            "This is a textbook intervention: the at-fault insurer contacting the claimant directly with an offer",
+            "The CHO handler must not direct the claimant to refuse the offer (which could be seen as unreasonable advice)",
+            "The handler must present the offer neutrally and help the claimant assess whether it is reasonable",
+            "The handler must gather key information: what is the specification of the offered vehicle, when would it be available, what are the conditions, is the offered repairer acceptable to the claimant",
+            "The handler must record the conversation, the offer details, and the claimant's eventual decision in writing",
+            "The consequences of poor handling: if the offer was reasonable and the handler advised rejection (or failed to present it), the CHO risks losing hire charge recovery"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Which of the following best describes intervention in the credit hire context?",
+          "options": [
+            {
+              "text": "The claimant voluntarily switching from one CHO to another CHO",
+              "correct": false,
+              "explanation": "This is not intervention. Intervention specifically means direct contact by the at-fault insurer with the claimant to offer an alternative to the CHO arrangement."
+            },
+            {
+              "text": "Direct contact by the at-fault insurer with the claimant to offer a replacement vehicle and/or repair management, bypassing the CHO",
+              "correct": true,
+              "explanation": "This is the correct definition. Intervention is the at-fault insurer's attempt to divert the claimant away from the CHO by offering their own services directly."
+            },
+            {
+              "text": "A dispute between the CHO and the insurer over the hire charges claimed",
+              "correct": false,
+              "explanation": "This describes a dispute resolution issue, not intervention. Intervention is about the insurer making an offer directly to the claimant."
+            },
+            {
+              "text": "The claimant deciding to repair their vehicle themselves instead of using the insurer's network",
+              "correct": false,
+              "explanation": "This is a claimant choice, but not intervention in the technical sense. Intervention is specifically when the at-fault insurer makes an offer to the claimant."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s02",
+        "number": 2,
+        "title": "Copley v Lawn and the legal framework",
+        "duration_minutes": 22,
+        "concept": "Copley v Lawn is the leading authority on intervention in credit hire. The case established that where an at-fault insurer makes a reasonable offer to provide a replacement vehicle and/or manage repairs, and the claimant unreasonably refuses that offer, the court may limit the claimant's recovery of hire charges to the date of the offer (or to the cost of the insurer's offer). The test is reasonableness: was the offer genuine, was it communicated clearly, and was the claimant's refusal reasonable in the circumstances? This case fundamentally changed how CHOs must handle intervention.",
+        "content_points": [
+          "Copley v Lawn established that claimants have a duty to mitigate loss, which includes considering reasonable insurer offers",
+          "If an insurer's offer was reasonable and the claimant unreasonably refused it, hire charges may be limited from the date of the offer onwards",
+          "The test for a reasonable offer has three elements: (1) the offer must be genuine (vehicle actually available, comparable specification, no strings attached), (2) it must be clearly communicated to the claimant, and (3) the claimant's refusal must be unreasonable in the circumstances",
+          "Reasonableness of the offer is assessed objectively: was the vehicle specification comparable, was timing realistic, were the conditions acceptable",
+          "Reasonableness of the claimant's refusal is also contextual: a claimant may reasonably refuse an insurer's offer if, for example, they have already committed to a repairer, the offered vehicle is significantly inferior, or the offered timeline is unrealistic",
+          "If the CHO fails to present the insurer's offer to the claimant, the CHO bears the risk in litigation: the court may find the claimant would have unreasonably refused, and the CHO loses recovery",
+          "The CHO's duty is to record all intervention communications contemporaneously: letters, phone calls, text messages, and the claimant's response and reasons",
+          "Copley v Lawn integrates with Module 2's three-stage test by establishing that if the insurer makes a reasonable offer (stage 1 mitigation question), the claimant's failure to accept may break the nexus between accident and loss"
+        ],
+        "scenario": {
+          "text": "An insurer writes to a claimant offering a Group 3 vehicle (the claimant drives a Group 5 BMW 3 Series). The letter says the vehicle will be available 'within 48 hours' and the claimant must call to arrange collection. The CHO has already provided a like-for-like Group 5 BMW to the claimant. The claimant's solicitor, having received the insurer's letter, asks the CHO handler: 'Should my client accept this offer? What are our options?'",
+          "teaching_points": [
+            "The insurer's offer must be assessed for reasonableness using the three-element test: genuineness, clarity, and acceptance of the claimant's refusal",
+            "The offered Group 3 vehicle is likely not comparable to the claimant's Group 5: it is a significant downgrade in specification and may not meet like-for-like repair requirements",
+            "The 48-hour timeline may be reasonable, but the burden on the claimant to arrange collection is relevant to reasonableness",
+            "Because the CHO has already provided a like-for-like Group 5, the claimant has a strong basis for reasonably refusing the insurer's inferior offer",
+            "The handler should present the offer to the claimant and the solicitor, set out the reasonableness analysis (offer is not comparable), and recommend that refusal is reasonable and can be defended in litigation",
+            "The handler must document this analysis in writing to the claimant and solicitor, so if the claim reaches litigation, the court record shows the CHO presented the offer and the refusal was properly reasoned"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Under Copley v Lawn, which of the following would most likely result in the claimant losing the right to recover hire charges from the date of the insurer's offer?",
+          "options": [
+            {
+              "text": "The insurer offered a comparable vehicle available within 24 hours with no conditions, and the claimant unreasonably refused it without a valid reason",
+              "correct": true,
+              "explanation": "This is the core holding of Copley v Lawn. If the offer is reasonable and the refusal is unreasonable, the claimant's recovery may be limited from the date of the offer."
+            },
+            {
+              "text": "The insurer offered a vehicle but the offer was not communicated clearly to the claimant",
+              "correct": false,
+              "explanation": "If the offer was not clearly communicated, the claimant cannot unreasonably refuse what they did not understand. This would not trigger Copley v Lawn."
+            },
+            {
+              "text": "The insurer offered a significantly inferior vehicle specification and the claimant reasonably refused",
+              "correct": false,
+              "explanation": "If the claimant's refusal was reasonable (because the offer was not comparable), Copley v Lawn does not apply. Hire charges remain recoverable."
+            },
+            {
+              "text": "The insurer made an offer verbally but the claimant was not given time to consider it",
+              "correct": false,
+              "explanation": "The claimant's refusal would be reasonable if they were not given adequate time to consider the offer. This would not trigger the Copley consequence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s03",
+        "number": 3,
+        "title": "The GTA and first-to-customer",
+        "duration_minutes": 20,
+        "concept": "Under the GTA framework, the 'first to customer' principle provides important protection for subscribing CHOs. Where a GTA-subscribing CHO has captured the customer and is providing services, a GTA-subscribing insurer is generally expected to work within the GTA framework rather than intervening directly. However, this protection only applies where both parties subscribe to the GTA. Where the insurer is not a GTA subscriber, or where the CHO is not a GTA subscriber, the first-to-customer principle does not apply and the insurer is free to intervene. Understanding when GTA protection applies — and when it does not — is essential for every CHO.",
+        "content_points": [
+          "The GTA first-to-customer principle is and always has been an element of the GTA — it only applies to GTA claims",
+          "First-to-customer applies only where both the CHO and the at-fault insurer are GTA subscribers",
+          "When both are GTA subscribers, the expectation is that the first CHO to serve the customer should be protected from direct insurer intervention",
+          "The principle reduces unnecessary duplication and protects the CHO's investment in customer service",
+          "Where the insurer is not a GTA subscriber, the first-to-customer principle does NOT apply and the insurer is free to intervene directly",
+          "Where the CHO is not a GTA subscriber, the CHO has no contractual protection under the GTA framework and faces unrestricted intervention risk",
+          "If a GTA-subscribing insurer breaches first-to-customer by intervening when both parties subscribe, the CHO may raise a complaint through the GTA's dispute resolution process",
+          "A growing trend is insurers exiting the GTA precisely to pursue aggressive intervention strategies without contractual constraints; non-GTA CHOs face significantly higher intervention risk"
+        ],
+        "scenario": {
+          "text": "A mid-size CHO subscribes to the GTA and provides a vehicle to a claimant within 2 hours of the accident. Two days later, the at-fault insurer (also a GTA subscriber) contacts the claimant directly and offers their own courtesy vehicle. The CHO files a complaint with the GTA body, arguing that this direct intervention breaches the first-to-customer principle. The insurer responds: 'We are not intervening on first-to-customer grounds because the claimant's own vehicle is outside the GTA rate scope — it is a high-specification vehicle and we are entitled to manage the repair and offer our own solution.' The CHO disputes this. Analyse.",
+          "teaching_points": [
+            "Both parties are GTA subscribers, so first-to-customer should apply and protect the CHO",
+            "The insurer's defence (that the vehicle is outside rate scope) is a technical argument that may or may not succeed; it requires examination of the GTA code and the vehicle specification",
+            "If the insurer is correct that the vehicle is outside rate scope, the insurer may have grounds to intervene even though both subscribe to the GTA",
+            "If the insurer is incorrect (the vehicle is within rate scope), the insurer's intervention breaches first-to-customer and the CHO's GTA complaint is valid",
+            "The CHO's remedy is to pursue the GTA dispute resolution process; if successful, the CHO may recover loss caused by the insurer's wrongful intervention",
+            "This scenario illustrates that even GTA protection has limits: disputes over vehicle specification and rate scope can create vulnerability"
+          ]
+        },
+        "knowledge_check": {
+          "question": "In which of the following circumstances does the GTA first-to-customer principle provide protection to a CHO?",
+          "options": [
+            {
+              "text": "The CHO is a GTA subscriber and the claimant is sympathetic to the CHO's services",
+              "correct": false,
+              "explanation": "The claimant's preference is irrelevant. First-to-customer protection requires BOTH the CHO and the at-fault insurer to be GTA subscribers."
+            },
+            {
+              "text": "Both the CHO and the at-fault insurer are GTA subscribers, and the CHO has first provided services to the claimant",
+              "correct": true,
+              "explanation": "This is when first-to-customer applies. Both parties must subscribe, and the first CHO to serve the customer is protected from direct insurer intervention."
+            },
+            {
+              "text": "The CHO is a GTA subscriber but the at-fault insurer is not a GTA subscriber",
+              "correct": false,
+              "explanation": "First-to-customer only applies when both parties subscribe. If the insurer is not a subscriber, the insurer is free to intervene."
+            },
+            {
+              "text": "The CHO has been providing services for more than 30 days and the insurer has not intervened by that point",
+              "correct": false,
+              "explanation": "Duration of service does not determine first-to-customer protection. What matters is whether both parties subscribe to the GTA at the moment of intervention."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s04",
+        "number": 4,
+        "title": "Third-party capture and direct hire offers",
+        "duration_minutes": 20,
+        "concept": "Third-party capture is the broader strategy of which intervention is one tool. It encompasses all methods by which insurers (or their agents, including claims management companies) attempt to divert claimants away from CHOs and into the insurer's own supply chain. Methods include: direct telephone contact immediately after the accident, letters and SMS messages, and online advertising. A separate but related issue is the challenge by insurers that CHOs were using Google Adwords — including insurer brand names — to attract claimants who were searching for their insurer after an accident. Section 152 of the Road Traffic Act also creates specific obligations and opportunities around insurer identity that interact with capture strategies.",
+        "content_points": [
+          "Capture is a broader strategy than intervention: intervention is direct contact with a claimant who is already with a CHO; capture includes all methods of diverting claimants away from CHOs from the outset",
+          "Capture methods span a spectrum: telephone contact within minutes of the accident, SMS messages, email, direct mail, and digital advertising",
+          "Claims management companies (CMCs) are often used by insurers to conduct capture: they call claimants, offer services 'for free', and deliver the claimant to the insurer's supply chain",
+          "Google Adwords dispute: insurers challenged CHOs for using Google Adwords — including insurer brand names — to attract claimants searching for their insurer from the scene of an accident. Insurers argued this was misrepresentation, even though CHOs made clear during the call that they were an independent company and not acting for or instructed by the insurer. This is a distinct issue from capture and should not be conflated with it",
+          "Section 152 of the Road Traffic Act requires insurers to provide their identity and policy details to the claimant; some insurers use this contact point (the initial Section 152 letter or phone call) to launch immediate capture",
+          "The CHO's defences against capture include: speed of deployment (being first to the customer), clear communication about the CHO's role and the claimant's rights, and contractual protections requiring the claimant to notify the CHO of alternative offers",
+          "The claimant always has the right to choose their own service provider — an insurer cannot compel a claimant to use the insurer's own supply chain"
+        ],
+        "scenario": {
+          "text": "A CHO uses Google Adwords to advertise its services, including bidding on the brand name of a major insurer. A claimant searches for their insurer's name after an accident, clicks on the CHO's ad and calls the number displayed. The CHO's call handler identifies the company by name and explains clearly that they are an independent credit hire company, not the insurer. They offer a free replacement vehicle. The insurer later discovers the ad and argues the CHO is misrepresenting itself to customers. Meanwhile, the insurer's own claims team contacts the claimant within 30 minutes of the accident report and offers a courtesy vehicle from the insurer's own fleet. The claimant now has two offers. Analyse the issues.",
+          "teaching_points": [
+            "The Google Adwords issue is distinct from capture — it relates to whether using insurer brand names in advertising constitutes misrepresentation",
+            "The CHO made clear during the call that it was an independent company — insurers nevertheless argued this was misleading because the claimant initially believed they were calling their insurer",
+            "The insurer's direct contact with the claimant within 30 minutes is classic capture — diverting the claimant into the insurer's own supply chain",
+            "The claimant has the right to choose their service provider — neither the CHO nor the insurer can compel the claimant's decision",
+            "The CHO should document the call, including that it identified itself clearly, and should explain to the claimant the difference between an independent CHO and the insurer's own offering",
+            "The insurer's courtesy vehicle may be on less favourable terms (excess, mileage limits, vehicle class) than the CHO's credit hire vehicle — the claimant should be informed of these differences"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A CHO bids on an insurer's brand name in Google Adwords. A claimant clicks the ad, calls the CHO, and the CHO clearly identifies itself as an independent company. The insurer argues this is misrepresentation. What is the strongest response?",
+          "options": [
+            {
+              "text": "The insurer is correct — using another company's brand name in advertising is always misrepresentation",
+              "correct": false,
+              "explanation": "Using competitor brand names in search advertising is a common marketing practice. The question is whether the claimant was misled about who they were dealing with."
+            },
+            {
+              "text": "The CHO identified itself clearly during the call as an independent company — the claimant was not misled about who was providing the service",
+              "correct": true,
+              "explanation": "The CHO made clear it was an independent company and not acting for or instructed by the insurer. The claimant was therefore informed about who they were dealing with before any agreement was made."
+            },
+            {
+              "text": "Google Adwords bidding is regulated by the FCA and the CHO needs FCA approval to bid on insurer names",
+              "correct": false,
+              "explanation": "Google Adwords bidding is not regulated by the FCA. This is an advertising practice governed by general advertising standards and trademark law."
+            },
+            {
+              "text": "The CHO should never advertise its services online to avoid this type of challenge",
+              "correct": false,
+              "explanation": "CHOs are entitled to advertise their services. The issue is transparency about identity, not whether advertising itself is permissible."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s05",
+        "number": 5,
+        "title": "Handling intervention in practice",
+        "duration_minutes": 20,
+        "concept": "The CHO's response to intervention determines whether hire charges remain recoverable. The most important thing a CHO can do is get clarification of every element of the intervention offer and speak directly with the nominated hire company to confirm that a suitable vehicle is immediately available. Insurers frequently make offers without having a supplier capable of delivering a comparable replacement, which invalidates the offer. Making the request for clarification in writing usually results in a delayed response — often to the end of the hire period — and that delay is a strong basis to rebut the intervention offer. This section brings together the law and the practice into a step-by-step operational protocol.",
+        "content_points": [
+          "The most important step: get clarification of every element of the intervention offer in writing — vehicle specification, ACRISS group, availability, timeline, excess, mileage limits, insurance cover, conditions, and which repairer the claimant must use",
+          "Contact the nominated hire company directly to confirm that a suitable comparable vehicle is immediately available. Often insurers make the offer but do not have a supplier capable of delivering a comparable replacement — this invalidates the offer",
+          "Making the clarification request in writing usually results in a delayed response from the insurer, often extending to the end of the hire period. Their delay is a strong basis to rebut the intervention offer",
+          "The golden rule: always present any insurer offer to the claimant and always record their decision and the reasons for it in writing",
+          "Never direct a claimant to refuse an insurer's offer; instead, present the offer neutrally and help the claimant assess whether it is reasonable to accept or refuse",
+          "Help the claimant assess the offer against their own circumstances: have they already committed to a repairer, does the offered vehicle meet like-for-like standards, is the timeline realistic, are the conditions acceptable",
+          "If the claimant rejects the insurer's offer, ensure the rejection is reasonable and well-documented: the claimant must have a valid reason (offered vehicle not comparable, timeline unrealistic, repairer unacceptable, insurer failed to respond to clarification request, etc.), and this must be recorded in writing",
+          "Prepare for litigation: intervention correspondence, the clarification request, any delay in the insurer's response, and the record of the claimant's decision will be disclosed as standard in any claim; ensure the record shows the CHO acted correctly and tested the offer thoroughly"
+        ],
+        "scenario": {
+          "text": "A CHO handler receives a call from a claimant who says: 'I got a letter from the insurer offering me a car and they say if I don't take it I might not get my hire charges paid. The letter says they will collect my car from home and give me a comparable car within 24 hours. But my car is already at my chosen repairer (3 days into a 7-day repair), and I don't want to move it again — the repairer knows what they're doing and I trust them. What should I do?' Walk through the correct handling procedure step by step.",
+          "teaching_points": [
+            "Step 1 (Identify): Confirm this is an intervention offer and log it with the date and time of the claimant's call",
+            "Step 2 (Assess reasonableness): The insurer's offer appears reasonable on its face — comparable vehicle, 24-hour timeline, collection from home. But the conditions matter: the insurer is asking the claimant to move the vehicle from the chosen repairer to (presumably) the insurer's approved repairer",
+            "Step 3 (Present neutrally): Do not say 'You must refuse this' or 'You should accept this'. Say: 'The insurer has made you an offer. Let's look at it together and see if it's right for your circumstances.'",
+            "Step 4 (Discuss the claimant's circumstances): The claimant has already committed to a repairer, the repair is underway (3 days in), and moving the vehicle creates disruption and expense (collection, transport, delays). These are legitimate reasons to refuse",
+            "Step 5 (Advise on reasonableness): 'Your reason for refusing — that your car is already in repair with a repairer you trust — is reasonable. The insurer's offer might be reasonable in isolation, but given your circumstances, refusing is reasonable. I can help you write to the insurer explaining your position.'",
+            "Step 6 (Document): Send the claimant a written confirmation of the insurer's offer, the claimant's decision to refuse, and the reasons for refusal. Copy the claimant. This creates the contemporaneous record that protects both the claimant and the CHO",
+            "Step 7 (Write to the insurer): Send the insurer a letter (or email) confirming that the offer was presented to the claimant, the claimant's decision to refuse, and the claimant's reasons. This shows the CHO acted correctly and that refusal was reasonable",
+            "Step 8 (Continue hire): Continue providing the hire vehicle and charging hire charges. The CHO's recovery is now protected because the intervention offer was presented and reasonably refused",
+            "Step 9 (Prepare for litigation): Keep all correspondence on file. If the insurer later disputes the hire charges, the CHO's file shows the intervention was handled correctly"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A CHO handler receives an intervention letter from an insurer offering a comparable vehicle available within 48 hours. The handler thinks the offer is poor value and tells the claimant: 'Don't take it. This insurer is just trying to save money. You're better off with us.' What is the risk of this advice?",
+          "options": [
+            {
+              "text": "The handler has correctly protected the claimant by warning them against an unfavorable offer",
+              "correct": false,
+              "explanation": "This advice is problematic. The handler is directing the claimant to refuse, which could be seen as unreasonable advice if the offer was actually reasonable."
+            },
+            {
+              "text": "If the offer was reasonable, the handler's direction to refuse could mean the claimant's hire charges are not recoverable from the date of the offer (Copley v Lawn), and the CHO bears the liability",
+              "correct": true,
+              "explanation": "This is the key risk. Under Copley v Lawn, if the offer was reasonable and the claimant's refusal was unreasonable (because the CHO advised refusal), the CHO may lose recovery. The handler should have presented the offer neutrally and let the claimant decide."
+            },
+            {
+              "text": "The handler has committed the CHO to a specific service standard that must now be met",
+              "correct": false,
+              "explanation": "This is not the primary risk here. The primary risk is that the claimant's refusal becomes unreasonable if the offer was reasonable and the handler directed refusal."
+            },
+            {
+              "text": "The claimant's solicitor will refuse to act for the claimant on the basis of this advice",
+              "correct": false,
+              "explanation": "While a solicitor might advise the claimant separately, this is not the primary legal risk. The primary risk is Copley v Lawn liability."
+            }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "pass_mark": 75,
+      "questions": [
+        {
+          "type": "multiple_choice",
+          "question": "What is intervention in the credit hire context?",
+          "options": [
+            "A dispute between the CHO and the insurer over hire charges",
+            "The claimant voluntarily switching from one CHO to another",
+            "Direct contact by the at-fault insurer with the claimant to offer a replacement vehicle and/or repair management, bypassing the CHO",
+            "The claimant deciding to repair their vehicle themselves"
+          ],
+          "correct": 2,
+          "explanation": "Intervention is specifically the at-fault insurer (or their agent) contacting the claimant directly to offer an alternative to the CHO's services — typically a replacement vehicle at the insurer's own rate and/or managed repairs through the insurer's network."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Under Copley v Lawn, what is the consequence if a claimant unreasonably refuses a reasonable intervention offer from an insurer?",
+          "options": [
+            "The claimant loses all hire charges for the entire claim period",
+            "The claimant's hire charge recovery may be limited to the date of the offer",
+            "The CHO is required to refund all charges to the insurer",
+            "The claimant must pay the insurer's legal costs"
+          ],
+          "correct": 1,
+          "explanation": "Copley v Lawn established that where an insurer's offer is reasonable and the claimant unreasonably refuses it, the court may limit the claimant's recovery of hire charges from the date of the offer onwards. Charges up to the offer date remain recoverable."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "An insurer offers a Group 3 vehicle to a claimant who drives a Group 5 BMW 3 Series. The CHO has already provided a like-for-like Group 5 vehicle. Under the Copley v Lawn reasonableness test, is the claimant's refusal of the insurer's offer likely reasonable?",
+          "options": [
+            "No — the claimant must accept any offer from the insurer to avoid losing hire charges",
+            "Yes — the offered vehicle is a significant downgrade in specification, so the claimant has strong grounds for reasonable refusal",
+            "No — the claimant should have accepted and then complained about the vehicle class later",
+            "It depends solely on whether the insurer's offer was cheaper than the CHO rate"
+          ],
+          "correct": 1,
+          "explanation": "The insurer's offer must be genuinely comparable. A Group 3 vehicle is a significant downgrade from a Group 5 BMW 3 Series. Because the CHO has already provided a like-for-like replacement, the claimant has a strong basis for reasonably refusing the inferior offer."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A CHO handler receives an intervention letter but forgets to pass it to the claimant. The insurer later argues in litigation that the CHO should lose hire charges from the date of the letter. What is the likely outcome?",
+          "options": [
+            "The CHO wins because conveying insurer offers is not the CHO's responsibility",
+            "The CHO is protected because the oversight was unintentional",
+            "The CHO likely loses hire charge recovery from the date of the letter, because it failed to present a reasonable offer to the claimant",
+            "The court will disregard the letter because it was sent to the CHO, not the claimant"
+          ],
+          "correct": 2,
+          "explanation": "The CHO has a duty to present intervention offers to the claimant. Failure to do so — whether intentional or by oversight — puts the CHO at risk. If the offer was reasonable and the claimant would likely have accepted, the CHO may lose recovery from the date of the offer."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "What is the most important step a CHO should take when it becomes aware of an insurer intervention offer?",
+          "options": [
+            "Immediately tell the claimant to refuse the offer to protect the CHO's position",
+            "Ignore the offer and continue providing the hire vehicle",
+            "Get clarification of every element of the offer in writing and contact the nominated hire company to confirm a comparable vehicle is immediately available",
+            "Terminate the hire immediately and refer the claimant to the insurer"
+          ],
+          "correct": 2,
+          "explanation": "The most important step is to get full clarification of the offer details — vehicle specification, ACRISS group, availability, conditions — and verify with the nominated hire company that a comparable vehicle is actually available. Insurers frequently make offers without having a supplier capable of delivering, which invalidates the offer."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "In which circumstance does the GTA first-to-customer principle provide protection to a CHO against insurer intervention?",
+          "options": [
+            "Whenever the CHO is a GTA subscriber, regardless of the insurer's status",
+            "When both the CHO and the at-fault insurer are GTA subscribers, and the CHO has first provided services to the claimant",
+            "When the CHO has been providing services for more than 30 days without intervention",
+            "Whenever the claimant prefers the CHO's services over the insurer's offer"
+          ],
+          "correct": 1,
+          "explanation": "The GTA first-to-customer principle is bilateral — it only applies where both the CHO and the at-fault insurer are GTA subscribers. If either party is not a subscriber, the principle does not apply and the insurer is free to intervene directly."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A CHO handler tells a claimant: 'Don't take the insurer's offer. They're just trying to save money. You're better off with us.' If the insurer's offer was reasonable, what risk has the handler created?",
+          "options": [
+            "No risk — the handler is correctly advising the claimant about the insurer's motivation",
+            "The handler has committed the CHO to a higher service standard",
+            "Under Copley v Lawn, the claimant's refusal may be deemed unreasonable because the CHO directed refusal, and the CHO may lose hire charge recovery from the date of the offer",
+            "The claimant's solicitor will refuse to act on the claim"
+          ],
+          "correct": 2,
+          "explanation": "If the offer was reasonable and the handler directed refusal instead of presenting the offer neutrally, the claimant's refusal becomes unreasonable. Under Copley v Lawn, the CHO risks losing recovery from the date of the offer. The handler should have presented the offer neutrally and let the claimant decide."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: The GTA first-to-customer principle protects a CHO from intervention even when the at-fault insurer is not a GTA subscriber.",
+          "correct": 1,
+          "explanation": "False. First-to-customer is a bilateral protection that only applies when both the CHO and the at-fault insurer are GTA subscribers. If the insurer is not a GTA subscriber, they are free to intervene directly and the first-to-customer principle provides no protection."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Intervention and third-party capture are the same thing in credit hire.",
+          "correct": 1,
+          "explanation": "False. Intervention is a specific form of capture — it refers to the insurer contacting a claimant who is already with a CHO. Capture is the broader strategy encompassing all methods of diverting claimants away from CHOs, including telephone contact, SMS, advertising, and use of claims management companies."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Making a written request for clarification of an insurer's intervention offer often results in a delayed response from the insurer, which can itself be a strong basis to rebut the offer.",
+          "correct": 0,
+          "explanation": "True. Making the clarification request in writing usually results in a delayed response from the insurer, often extending to the end of the hire period. The insurer's own delay in responding to a reasonable request for details is a strong basis to rebut the intervention offer, as it demonstrates the offer was not genuinely available in practice."
+        }
+      ]
+    },
+    "ai_tutor": {
+      "system_prompt_per_section": {
+        "s01": "You are a credit hire training tutor for Section 1 of Module 5: What is intervention? The learner is working through the scenario about Mrs Khan who has received a direct call from the at-fault insurer offering a free courtesy vehicle. Guide the learner to identify: (1) that this is a textbook intervention — direct contact by the insurer bypassing the CHO, (2) the insurer's motivation (cost control), and (3) why the CHO handler must present the offer neutrally and record the claimant's decision. Ask probing questions: 'What would happen if the handler said \"don't take it\" without proper analysis?' Keep responses to 2-4 sentences. After 6-8 exchanges summarise what they have learned about recognising intervention and the CHO's protocol.",
+        "s02": "You are a credit hire training tutor for Section 2 of Module 5: Copley v Lawn and the legal framework. The learner is working through the scenario about a Group 3 offer when the claimant drives a Group 5. Guide the learner to identify: (1) how to apply Copley v Lawn's three-element test (genuineness, clarity, conditions), (2) whether this offer passes the test (it does not — it is not comparable), and (3) why the claimant's refusal is therefore reasonable and hire charges remain recoverable. Ask probing questions: 'Is a Group 3 genuinely comparable to a Group 5?' Keep responses to 2-4 sentences. After 6-8 exchanges summarise what they have learned about the reasonableness test and how to advise claimants.",
+        "s03": "You are a credit hire training tutor for Section 3 of Module 5: The GTA and first-to-customer. The learner is working through the scenario about a GTA-subscribing CHO and insurer where the insurer claims the vehicle is outside rate scope. Guide the learner to identify: (1) that first-to-customer applies only when both parties subscribe, (2) that the insurer's rate scope argument requires investigation (may be valid or invalid), and (3) how to pursue GTA dispute resolution if the insurer is wrong. Ask probing questions: 'What evidence would show the vehicle is within rate scope?' Keep responses to 2-4 sentences. After 6-8 exchanges summarise what they have learned about GTA protection and its limits.",
+        "s04": "You are a credit hire training tutor for Section 4 of Module 5: Third-party capture and direct hire offers. The learner is working through the scenario about the misleading 'FastCar Solutions' Google ad and the competing offers. Guide the learner to identify: (1) that this is sophisticated capture via search advertising, (2) that the insurer-owned CMC may be misrepresenting its independence, (3) what the claimant's actual options are and why transparency matters. Ask probing questions: 'If FastCar Solutions is actually the insurer, did the claimant make a truly informed choice?' Keep responses to 2-4 sentences. After 6-8 exchanges summarise what they have learned about capture methods and consumer protection principles.",
+        "s05": "You are a credit hire training tutor for Section 5 of Module 5: Handling intervention in practice. The learner is working through the scenario about the handler receiving an intervention offer with multiple complicating factors (claimant already with repairer, 72-hour timeline, conditions attached). Guide the learner to identify: (1) the step-by-step protocol (identify, assess, present neutrally, discuss circumstances, advise, document, continue/handover), (2) why documentation is critical, and (3) how this protects both the claimant and the CHO in litigation. Ask probing questions: 'What would go wrong if the handler did not document the claimant's decision?' Keep responses to 2-4 sentences. After 6-8 exchanges summarise what they have learned about operational best practice and the golden rule of always presenting offers."
+      }
+    },
+    "further_reading": {
+      "cases": [
+        {
+          "citation": "Copley v Lawn [2009] EWCA Civ 100",
+          "title": "Intervention and mitigation of loss in credit hire",
+          "summary": "The Court of Appeal established that where an at-fault insurer makes a reasonable offer of a replacement vehicle or repair management, and the claimant unreasonably refuses that offer, the claimant's hire charge recovery may be limited to the date of the offer. The case established the reasonableness test for both the insurer's offer and the claimant's refusal.",
+          "relevance": "Core authority for intervention and Copley letters; essential reading for understanding when hire charges remain recoverable"
+        },
+        {
+          "citation": "Parker v Skyfire 48 [2024] EWHC 1060 (KB)",
+          "title": "Misleading advertising and third-party capture in credit hire",
+          "summary": "The High Court examined whether Google search ads that appeared to be from independent hire services but were actually controlled by an at-fault insurer's CMC constituted misleading conduct. The court found that lack of transparency about the CMC's ownership could engage consumer protection liability.",
+          "relevance": "Key recent authority on capture via digital advertising; establishes precedent for CMC transparency obligations"
+        },
+        {
+          "citation": "Zurich Insurance plc v Umerji and Others [2020] EWHC 1050 (QB)",
+          "title": "Proportionality and reasonableness in hire charge disputes",
+          "summary": "While primarily concerned with proportionality of hire charges, this case also addresses the insurer's duty to make a reasonable alternative offer and the claimant's duty to mitigate. Relevant to the question of what constitutes a genuine intervention offer.",
+          "relevance": "Clarifies the interaction between hire charge proportionality and intervention reasonableness"
+        },
+        {
+          "citation": "Dimond v Boote Cash Registers Ltd [1989] 3 All ER 158",
+          "title": "Reasonableness and foreseeability in mitigation cases",
+          "summary": "While not a credit hire case, this authority is foundational to the concept of 'reasonable refusal' of an alternative offer. The court must consider whether the claimant's refusal was reasonable in all the circumstances, including the claimant's own commitments and knowledge.",
+          "relevance": "Establishes principles of reasonableness that underpin Copley v Lawn; used in claimant-side arguments for refusing insurer offers"
+        }
+      ],
+      "forum_search_queries": [
+        "Copley v Lawn letters from insurers and how to handle them",
+        "First-to-customer GTA protection and non-GTA insurer intervention",
+        "Third-party capture: claims management companies and independent appearance",
+        "Intervention offers and claimant timing — when to accept, when to refuse reasonably",
+        "Google search ads and credit hire: misleading advertising by insurers and CMCs"
+      ]
+    }
+  }
+}

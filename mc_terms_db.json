@@ -1,0 +1,8 @@
+{
+  "metadata": {
+    "name": "DEPRECATED - See BHR/rebuttal-tool/providers.json",
+    "description": "This file is no longer used. Motorcycle provider data is maintained in BHR/rebuttal-tool/providers.json",
+    "deprecated": true
+  },
+  "companies": {}
+}

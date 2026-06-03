@@ -1,0 +1,458 @@
+{
+  "module": {
+    "id": "module-01",
+    "title": "Introduction to credit hire",
+    "subtitle": "Understanding the credit hire model, key parties, and regulatory framework",
+    "level": "Foundation",
+    "duration_minutes": 90,
+    "format": "Self-paced e-learning with AI tutor",
+    "sections_count": 5,
+    "assessment_questions": 20,
+    "pass_mark_percent": 75,
+    "prerequisite": null,
+    "learning_objectives": [
+      {
+        "id": "lo1",
+        "text": "Define credit hire and explain how it differs from conventional vehicle hire"
+      },
+      {
+        "id": "lo2",
+        "text": "Identify the key parties in a credit hire transaction and describe their roles"
+      },
+      {
+        "id": "lo3",
+        "text": "Describe the typical sequence of events from accident to hire provision"
+      },
+      {
+        "id": "lo4",
+        "text": "Explain why credit hire claims are routinely challenged by insurers"
+      },
+      {
+        "id": "lo5",
+        "text": "Outline the regulatory framework governing credit hire including the CCA 1974"
+      },
+      {
+        "id": "lo6",
+        "text": "Identify the role of the Credit Hire Forum and the General Terms of Agreement"
+      }
+    ],
+    "sections": [
+      {
+        "id": "s01",
+        "number": 1,
+        "title": "What is credit hire?",
+        "duration_minutes": 15,
+        "concept": "Credit hire is a contractual arrangement whereby a credit hire company (CHO) provides a replacement vehicle to a claimant who has lost use of their vehicle following a road traffic accident. The hire vehicle is provided for the period the claimant's own vehicle is unusable — either because it is unroadworthy or being repaired. For credit hire to be effective, there must be an identified negligent third party against whom recovery can be made, usually through their insurer. The hire charges remain an extant liability of the claimant until the defendant insurer pays the claim; they are not billed to the insurer directly. The model originated in the 1980s and bridges the gap between loss of use and settlement, enabling claimants to maintain mobility.",
+        "content_points": [
+          "Credit hire provides a replacement vehicle for the period that the claimant's own vehicle is unusable, either because it is unroadworthy or being repaired",
+          "To be effective, there must be an identified negligent third party against whom recovery can be made, usually through their insurer",
+          "The hire charges are not billed to the defendant insurer directly; they are an extant liability of the claimant until the defendant insurer pays the claim",
+          "Credit hire differs from standard vehicle hire (which requires upfront payment) and from courtesy cars (provided by repairers at no cost)",
+          "The CHO assumes the administrative and financial risk of vehicle provision, recovering payment post-settlement",
+          "Credit hire is used only across motor claims arising from road traffic accidents",
+          "The model originated in the 1980s and has evolved to become industry standard, though it remains contested by insurers"
+        ],
+        "scenario": {
+          "text": "Sarah owns a 5-year-old Volkswagen Golf worth £12,000. She is hit by a delivery van at traffic lights. The van driver is insured. Sarah's car is damaged beyond economic repair. Within hours of the accident, Sarah contacts Apex Credit Hire Ltd after finding them through an online search. Apex collects her damaged vehicle and provides a replacement Hyundai i20 (appropriate vehicle matching). Sarah is told she will not be charged directly; the hire cost will be recovered from the defendant's insurer.",
+          "teaching_points": [
+            "Credit hire allows a claimant like Sarah to access a replacement vehicle immediately without paying upfront",
+            "The CHO takes on the financial risk, knowing they will invoice the defendant's insurer",
+            "The vehicle provided (Hyundai i20) should match Sarah's original vehicle in terms of type, age, and value—a core principle",
+            "Sarah's decision to instruct a CHO early is strategic; it establishes the hire start date and creates a contractual record"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Which of the following best defines credit hire?",
+          "options": [
+            {
+              "text": "A vehicle rental service where the claimant pays a daily rate to a hire company",
+              "correct": false,
+              "explanation": "This describes standard vehicle hire, not credit hire. In credit hire, the claimant typically does not pay directly; the insurer is billed."
+            },
+            {
+              "text": "A service where a CHO provides a replacement vehicle, with costs billed to the insurer and recovered as damages",
+              "correct": true,
+              "explanation": "This is the defining characteristic of credit hire: vehicle provision with post-settlement cost recovery from the defendant's insurer."
+            },
+            {
+              "text": "A courtesy car service provided free by a vehicle repairer during repair works",
+              "correct": false,
+              "explanation": "This is a separate arrangement offered by some repairers as part of their service, not credit hire."
+            },
+            {
+              "text": "An insurance policy that covers the cost of hiring a replacement vehicle",
+              "correct": false,
+              "explanation": "Credit hire is not an insurance product; it is a contractual arrangement between the claimant, CHO, and insurer."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s02",
+        "number": 2,
+        "title": "The parties involved",
+        "duration_minutes": 18,
+        "concept": "A credit hire transaction involves multiple interdependent parties, each with distinct roles and interests. The claimant seeks to restore their mobility and recover losses; the CHO provides vehicles and pursues payment; the insurer assesses liability and quantum; a solicitor may be instructed where there is an injury or where liability or quantum is disputed; and an independent engineer assesses damage and repair requirements. Understanding these roles and relationships is essential to navigating credit hire disputes.",
+        "content_points": [
+          "The claimant is the person who has suffered the loss of use of their vehicle; they instruct the CHO and may or may not instruct a solicitor",
+          "The credit hire company (CHO) is a commercial entity whose credit agreements are drafted to be exempt from the Consumer Credit Act — credit lasting less than 365 days with payment required in four or fewer instalments and no interest applying. The CHO provides replacement vehicles and manages the hire contract",
+          "The defendant's insurer (typically third-party insurer) receives the credit hire invoice and either pays or contests the claim",
+          "CHOs often manage their own negotiations, especially in GTA claims, and typically only instruct a solicitor when there is an injury or when liability or quantum is disputed",
+          "An independent engineer — not a loss adjuster — assesses the vehicle damage. They may be appointed by the CHO or solicitor where the CHO is arranging repairs or the vehicle is a total loss, or by the insurer if the claimant has elected to claim on their own comprehensive insurance policy",
+          "The claims handler employed by the insurer evaluates the credit hire claim and quantum",
+          "Support services (vehicle assessors, investigators) may be engaged by either party to challenge or defend credit hire costs"
+        ],
+        "scenario": {
+          "text": "Following Sarah's accident (from Section 1), she contacts Apex Credit Hire Ltd directly after finding them online. Apex is first to the claim — they collect the damaged Golf, arrange for an independent engineer to assess the damage, appoint a repairer and place Sarah in a Hyundai i20. Because the defendant insurer disputes liability, Apex instructs a solicitor, James, to handle the contested claim. Apex invoice the defendant's insurer, AXA Insurance, at £55 per day. AXA's claims handler, Karen, scrutinises the invoice, questioning whether the vehicle is appropriate, whether hire should have started before the repair assessment, and whether £55/day is reasonable. If liability and quantum were not in dispute, Apex would typically manage the claim and negotiate settlement themselves without instructing a solicitor.",
+          "teaching_points": [
+            "The CHO is generally first to the claim and drives the process — instructing engineers, arranging repairs and providing the hire vehicle",
+            "A solicitor is typically only instructed where there is an injury, or where liability or quantum is disputed; in straightforward GTA claims the CHO manages negotiations directly",
+            "Communication flows between parties: Apex invoices AXA; if a solicitor is instructed, they negotiate with AXA's legal team; Karen liaises with her own assessors",
+            "The defendant's insurer has significant power: they may dispute vehicle appropriateness, hire start date, daily rate, or total duration"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Which party is responsible for assessing the damage to Sarah's original vehicle and providing a repair estimate?",
+          "options": [
+            {
+              "text": "The credit hire company",
+              "correct": false,
+              "explanation": "The CHO provides the replacement vehicle and manages the hire contract, but does not assess damage to the original vehicle."
+            },
+            {
+              "text": "An independent engineer",
+              "correct": true,
+              "explanation": "An independent engineer inspects the damaged vehicle, assesses the extent of damage, provides a repair estimate, and determines repair duration. They may be appointed by the CHO, the solicitor, or the insurer depending on the circumstances."
+            },
+            {
+              "text": "The claimant's solicitor",
+              "correct": false,
+              "explanation": "The solicitor advises on the claim and negotiates compensation, but does not carry out technical repair assessments."
+            },
+            {
+              "text": "The defendant's insurer",
+              "correct": false,
+              "explanation": "The insurer may instruct a loss adjuster or assessor to evaluate the claim, but the formal repair assessment is typically the repairer's role."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s03",
+        "number": 3,
+        "title": "How a credit hire claim begins",
+        "duration_minutes": 17,
+        "concept": "A credit hire claim follows a predictable sequence of events triggered by a road traffic accident. The claimant will usually have already instructed the CHO before notifying their motor insurer, so the insurer notification is purely for information purposes as required by their policy. The CHO arranges everything — hire, repairs and, if the vehicle is beyond economic repair, the total loss. The anticipated hire duration will not be evident until the vehicle is assessed by the repairer. Understanding this sequence — and the critical decisions made at each stage — is essential for practitioners managing credit hire claims and disputes.",
+        "content_points": [
+          "The claimant reports the accident to their motor insurer as required by their policy of insurance, but will usually have already instructed the CHO — the notification is purely for information purposes because the CHO will arrange everything: hire, repairs and, if the vehicle is a total loss, the total loss",
+          "The anticipated hire duration will not be evident until the vehicle is assessed and estimated by the repairer",
+          "The CHO may carry out a credit check to confirm the claimant's address and to ensure the claim is not fraudulent",
+          "The CHO may also identify and speak to witnesses and obtain any dashcam or CCTV footage relevant to the accident",
+          "The CHO does not take possession of the damaged vehicle — they ensure it is delivered to a repairer or, if it is beyond economic repair, to safe storage",
+          "Hire starts from the point the customer's car is not capable of being used; that may be the date of the accident or the date it is scheduled for repair",
+          "The CHO liaises with the repairer to obtain repair progress updates and to schedule vehicle collection once repair is complete",
+          "Once repair is complete (or vehicle is written off), hire ceases and the claimant's original vehicle is returned or settlement proceeds"
+        ],
+        "scenario": {
+          "text": "On Day 1 (Monday), Sarah's accident occurs at 2 pm. She is uninjured but her car is undriveable. Sarah contacts Apex Credit Hire Ltd that afternoon. Apex arranges to collect her damaged Golf and deliver a replacement Hyundai i20 the following morning. Sarah also notifies her motor insurer as required by her policy, but this is for information only — Apex is already managing the claim. Apex carries out a credit check to confirm Sarah's address, speaks to a witness who saw the collision, and arranges for the Golf to be delivered to a repairer for assessment. The hire start date is recorded as Day 1 — the date Sarah's car became unusable — and invoicing begins at £55 per day.",
+          "teaching_points": [
+            "The CHO is typically first to the claim and arranges everything — hire, vehicle recovery, engineer appointment and repair",
+            "The claimant notifies their insurer as required by their policy, but this is for information purposes; the CHO is already managing the process",
+            "The CHO may carry out checks including credit verification, witness identification and obtaining dashcam or CCTV footage",
+            "The hire start date runs from when the claimant's vehicle became unusable, not from when the hire agreement is signed"
+          ]
+        },
+        "knowledge_check": {
+          "question": "When does credit hire invoicing typically commence?",
+          "options": [
+            {
+              "text": "From the date the claimant's original vehicle is handed to the repairer",
+              "correct": false,
+              "explanation": "Hire commences when the replacement vehicle is provided to the claimant, not when the original vehicle is handed for repair."
+            },
+            {
+              "text": "From the point the claimant's vehicle is not capable of being used, which may be the accident date or the date it is scheduled for repair",
+              "correct": true,
+              "explanation": "Hire starts from the point the customer's car becomes unusable. That may be the date of the accident itself or, if the car remains driveable, the date it goes in for repair."
+            },
+            {
+              "text": "From the date the original vehicle repair is completed",
+              "correct": false,
+              "explanation": "Hire invoicing commences well before repair completion and ceases once the original vehicle is returned or repair finalized."
+            },
+            {
+              "text": "From the date the claimant signs the hire agreement",
+              "correct": false,
+              "explanation": "The hire start date is set separately from the signature date; the agreement may be signed after hire has already commenced."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s04",
+        "number": 4,
+        "title": "Why credit hire is contested",
+        "duration_minutes": 20,
+        "concept": "Insurers routinely contest credit hire claims on quantum, need, causation, and fraud grounds. The core tension lies in rate: insurers argue the claimant should only recover at the basic hire rate (BHR), whereas the legal measure of damages for loss of use of a vehicle is the cost of hiring an equivalent vehicle — not the cheapest available. Fraud concerns, though less common, relate to contrived or staged accidents, fictitious claims, or disproportionate damages. Understanding these challenges is essential for practitioners advising on credit hire exposure.",
+        "content_points": [
+          "Insurers argue that credit hire rates are excessive and that claimants should only recover at the basic hire rate (BHR) — the rate available to a member of the public hiring directly from a mainstream rental company",
+          "The legal measure of damages for loss of use is the cost of hiring an equivalent vehicle — not the cheapest option. This is not simply a CHO argument; it is the established legal principle",
+          "Need challenges: insurers question whether hire was necessary, for example by arguing the claimant had access to another vehicle. This is a legitimate challenge to need, not a fraud allegation",
+          "Cost disputes: insurers argue that daily rates are inflated, that hire periods are extended, or that administrative costs are excessive",
+          "Fraud concerns (minority of cases): these relate to contrived or staged accidents, claims where there was no accident at all, or where the damages claimed are disproportionate to the circumstances",
+          "Causation challenges: insurers question whether hire started too early or continued beyond the point at which the claimant's vehicle was available",
+          "The role of leading cases (Dimond v Lovell, Lagden v O'Connor, Coles v Hetherton) in establishing legal precedent for credit hire recovery"
+        ],
+        "scenario": {
+          "text": "Apex Credit Hire submits the hire invoice to AXA Insurance: 48 days hire @ £55/day = £2,640. AXA's claims handler Karen disputes the claim, arguing: (1) Sarah should only recover at the basic hire rate — around £25/day from a mainstream rental company; (2) the Hyundai i20 is not an equivalent vehicle to Sarah's 5-year-old Golf; (3) hire should have started only after the vehicle had been assessed, not on the accident day; (4) 48 days is excessive — the Golf should have been repaired within 28 days; (5) Sarah has a partner's spare car and had no need for hire. Apex's claims team responds: (1) the legal measure of damages is the cost of hiring an equivalent vehicle, not the cheapest available; (2) the Hyundai appropriately matches the Golf's class; (3) hire starts from when the vehicle became unusable, which was the accident date; (4) repair delays were the repairer's responsibility, not Sarah's; (5) the partner's car was unavailable for regular commuting, so the need for hire is established. Because AXA continues to dispute quantum, Apex now considers instructing a solicitor to pursue the claim.",
+          "teaching_points": [
+            "The CHO typically handles the initial negotiation with the insurer directly, only escalating to a solicitor if the dispute cannot be resolved",
+            "The legal measure of damages is the cost of hiring an equivalent vehicle — insurers' argument that claimants should accept BHR is a dispute on quantum, not a statement of law",
+            "The availability of another vehicle is a legitimate challenge to need, not a fraud allegation — the distinction matters",
+            "Repair duration disputes often centre on whether the repairer's timeline is reasonable; delays may trigger insurer pushback",
+            "Fraud concerns relate to contrived or staged accidents, fictitious claims, or disproportionate damages — not to disputes about need or rate"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Which of the following is NOT a typical reason insurers contest credit hire claims?",
+          "options": [
+            {
+              "text": "The daily hire rate is too high compared to standard vehicle hire",
+              "correct": false,
+              "explanation": "Insurers regularly argue that credit hire daily rates are inflated (typically £40-60/day) compared to budget hire (£20-30/day)."
+            },
+            {
+              "text": "The claimant could have used alternative transport (public transport, borrowing a car)",
+              "correct": false,
+              "explanation": "Insurers often argue that hire was not necessary because the claimant had reasonable alternatives, though courts reject this in most cases."
+            },
+            {
+              "text": "The claimant instructed the CHO too quickly after the accident",
+              "correct": true,
+              "explanation": "Courts have consistently held that claimants are entitled to take prompt steps to mitigate their loss of use. Early instruction of a CHO is not a valid ground for disputing a credit hire claim."
+            },
+            {
+              "text": "The repair period was unreasonably extended, increasing the hire duration",
+              "correct": false,
+              "explanation": "Insurers frequently dispute whether repair timelines are reasonable, arguing that shorter repair periods would have justified less hire."
+            }
+          ]
+        }
+      },
+      {
+        "id": "s05",
+        "number": 5,
+        "title": "The regulatory and industry landscape",
+        "duration_minutes": 20,
+        "concept": "Credit hire operates within an industry landscape shaped by trade bodies, voluntary agreements and, in some cases, regulatory oversight. A CHO is not required to hold a Consumer Credit Licence — their agreements are typically drafted to be exempt from the CCA 1974. The General Terms of Agreement (GTA) is only relevant where both the CHO and the insurer are subscribers. The two principal industry bodies are the Credit Hire Forum (formed in 2018) and The Credit Hire Organisation (which has existed for over 25 years). Insurers routinely instruct solicitors who are members of FOIL (Forum of Insurance Lawyers) to defend credit hire claims.",
+        "content_points": [
+          "A CHO is not required to hold a Consumer Credit Licence from the FCA. CHO credit agreements are typically drafted to be exempt from the CCA 1974 — credit lasting less than 365 days with payment required in four or fewer instalments and no interest. The lack of a licence does not render an agreement void",
+          "The General Terms of Agreement (GTA) sets standards for appropriate vehicle matching, documentation, invoicing, and dispute resolution, but it is only relevant where both the CHO and the insurer are subscribers to the agreement",
+          "The GTA encourages CHOs to provide vehicles matching the claimant's original car in class, age, value, and specification; where both parties are GTA subscribers, this has become the expected standard",
+          "The Credit Hire Forum (formed in 2018) is a self-regulatory body that promotes best practice, publishes guidance, handles complaints, and advocates for sustainable credit hire standards",
+          "The Credit Hire Organisation (known as The CHO, and previously under earlier trade names) has existed for over 25 years and represents credit hire companies across the industry",
+          "The FCA only regulates credit hire companies if they are registered with the FCA — this is not a legal requirement for a CHO",
+          "Insurers routinely appoint solicitors who are members of FOIL (Forum of Insurance Lawyers) to defend credit hire claims in litigation"
+        ],
+        "scenario": {
+          "text": "Karen from AXA's claims team reviews Apex Credit Hire Ltd's hire agreement. She checks whether the agreement is CCA-exempt — it is, because it provides for credit lasting less than 365 days with payment in four or fewer instalments and no interest. She then checks whether both Apex and AXA are GTA subscribers. They are, so the GTA standards on vehicle matching, invoicing and dispute resolution apply. Karen notes that Apex has provided an equivalent vehicle consistent with GTA principles. AXA's legal team instructs a FOIL solicitor to review the claim and advise on quantum. The FOIL solicitor confirms that challenging the hire agreement itself is unlikely to succeed and recommends focusing on the rate and duration instead.",
+          "teaching_points": [
+            "A CHO does not need an FCA Consumer Credit Licence — agreements are typically structured to be CCA-exempt. The absence of a licence does not make the agreement void",
+            "The GTA only applies where both the CHO and the insurer are subscribers; where they are, it sets the standard for vehicle matching, invoicing and dispute resolution",
+            "The Credit Hire Forum and The Credit Hire Organisation are the two principal industry bodies representing and regulating credit hire practice",
+            "Insurers routinely instruct FOIL (Forum of Insurance Lawyers) solicitors to defend credit hire claims — practitioners should expect legally sophisticated opposition",
+            "The FCA only regulates CHOs that have chosen to register; FCA registration is not a legal requirement for operating as a credit hire company"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Why are most credit hire agreements exempt from the Consumer Credit Act 1974?",
+          "options": [
+            {
+              "text": "Because CHOs are regulated by the FCA instead",
+              "correct": false,
+              "explanation": "FCA registration is not a legal requirement for CHOs. The CCA exemption is based on the structure of the credit agreement itself, not on who regulates the company."
+            },
+            {
+              "text": "Because the credit lasts less than 365 days, requires payment in four or fewer instalments, and no interest applies",
+              "correct": true,
+              "explanation": "CHO agreements are deliberately structured to fall within the CCA exemption: credit lasting under 365 days, payable in four or fewer instalments, with no interest charged."
+            },
+            {
+              "text": "Because the GTA provides an alternative regulatory framework",
+              "correct": false,
+              "explanation": "The GTA is a voluntary industry agreement between subscribers, not a regulatory framework. It does not create CCA exemptions."
+            },
+            {
+              "text": "Because credit hire is classified as an insurance product, not a credit product",
+              "correct": false,
+              "explanation": "Credit hire is a credit arrangement, not an insurance product. The exemption arises from the specific terms of the agreement, not its classification."
+            }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "pass_mark": 75,
+      "questions": [
+        {
+          "type": "multiple_choice",
+          "question": "What is the primary financial model that distinguishes credit hire from standard vehicle hire?",
+          "options": [
+            "The claimant pays upfront and is reimbursed by the insurer later",
+            "The CHO provides a vehicle on credit, with hire charges recovered from the defendant's insurer post-settlement",
+            "The claimant's own insurer pays the CHO directly under their policy",
+            "The CHO charges the claimant a reduced daily rate subsidised by government funding"
+          ],
+          "correct": 1,
+          "explanation": "Credit hire is defined by the deferred payment model: the CHO provides the vehicle and the hire charges remain a liability of the claimant until recovered from the defendant's insurer as damages. The claimant does not pay upfront."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Which party is responsible for assessing vehicle damage and providing a repair estimate in a credit hire claim?",
+          "options": [
+            "The credit hire company",
+            "The claimant's solicitor",
+            "An independent engineer",
+            "The defendant's claims handler"
+          ],
+          "correct": 2,
+          "explanation": "An independent engineer inspects the damaged vehicle, assesses damage extent, provides a repair estimate, and determines repair duration. They may be appointed by the CHO, the solicitor, or the insurer depending on the circumstances."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "When does the hire start date typically commence in a credit hire claim?",
+          "options": [
+            "The date the claimant signs the hire agreement",
+            "The date the CHO physically delivers the replacement vehicle",
+            "The point at which the claimant's vehicle became unusable, which may be the accident date or the date it is scheduled for repair",
+            "The date the insurer acknowledges liability"
+          ],
+          "correct": 2,
+          "explanation": "Hire starts from when the claimant's vehicle became unusable. This may be the date of the accident itself (if the car is undriveable) or the date it goes in for repair (if it remained driveable until then)."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "What is the legal measure of damages for loss of use of a vehicle in credit hire?",
+          "options": [
+            "The cheapest available hire rate in the local area",
+            "The cost of hiring an equivalent vehicle to the one damaged",
+            "A fixed daily rate set by the GTA for all vehicle classes",
+            "The cost of public transport for the equivalent period"
+          ],
+          "correct": 1,
+          "explanation": "The legal measure of damages is the cost of hiring an equivalent vehicle — not the cheapest option. This principle has been established through case law including Dimond v Lovell and Coles v Hetherton."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Why are most CHO credit agreements exempt from the Consumer Credit Act 1974?",
+          "options": [
+            "Because CHOs are automatically regulated by the FCA",
+            "Because the GTA provides an alternative regulatory framework that supersedes the CCA",
+            "Because the agreements provide for credit lasting less than 365 days, payment in four or fewer instalments, and no interest",
+            "Because credit hire is classified as an insurance product rather than a credit product"
+          ],
+          "correct": 2,
+          "explanation": "CHO agreements are deliberately structured to fall within the CCA exemption: credit lasting under 365 days, payable in four or fewer instalments, with no interest charged. This means a Consumer Credit Licence is not required."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Under what circumstance does a CHO typically instruct a solicitor to handle a credit hire claim?",
+          "options": [
+            "In every credit hire claim as a matter of standard practice",
+            "Only when the hire period exceeds 30 days",
+            "When there is an injury, or when liability or quantum is disputed",
+            "Only when the claimant specifically requests legal representation"
+          ],
+          "correct": 2,
+          "explanation": "CHOs typically manage their own negotiations, especially in straightforward GTA claims. A solicitor is only instructed where there is an injury or where liability or quantum is disputed, escalating the claim beyond the CHO's usual scope."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "The GTA (General Terms of Agreement) sets standards for vehicle matching, documentation, and dispute resolution. When does the GTA apply to a credit hire claim?",
+          "options": [
+            "Whenever the CHO is a GTA subscriber, regardless of the insurer's status",
+            "Only where both the CHO and the insurer are subscribers to the GTA",
+            "Whenever the claim involves a vehicle valued above £10,000",
+            "In all credit hire claims as it is a mandatory industry regulation"
+          ],
+          "correct": 1,
+          "explanation": "The GTA is a bilateral agreement. It only applies where both the CHO and the insurer subscribe to it. If either party is not a subscriber, the GTA standards do not apply to that claim."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: A credit hire company (CHO) is legally required to hold an FCA Consumer Credit Licence to provide credit hire services.",
+          "correct": 1,
+          "explanation": "False. A CHO is not required to hold an FCA Consumer Credit Licence. Their agreements are typically drafted to be exempt from the CCA 1974. FCA registration is not a legal requirement for operating as a credit hire company, and the lack of a licence does not render an agreement void."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: In credit hire, the hire charges are billed directly to the defendant's insurer by the CHO.",
+          "correct": 1,
+          "explanation": "False. The hire charges are not billed to the defendant insurer directly. They remain an extant liability of the claimant until the defendant insurer pays the claim. The CHO recovers payment post-settlement through the damages process."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: The Credit Hire Forum and The Credit Hire Organisation are the two principal industry bodies representing credit hire practice in the UK.",
+          "correct": 0,
+          "explanation": "True. The Credit Hire Forum (formed in 2018) promotes best practice and publishes guidance, while The Credit Hire Organisation (known as The CHO, existing for over 25 years) represents credit hire companies across the industry. Together they are the two principal industry bodies."
+        }
+      ]
+    },
+    "ai_tutor": {
+      "system_prompt_per_section": {
+        "s01": "You are a credit hire training tutor for Section 1 of Module 1: What is credit hire? The learner is working through scenarios involving claimants who have lost vehicle use and need to understand how credit hire solves this problem. Guide the learner to identify: (1) the key difference between credit hire and standard vehicle hire, (2) why the CHO takes on financial risk, and (3) how cost recovery works post-settlement. Ask probing questions like 'Why would a claimant not want to pay upfront?' and 'What makes this arrangement attractive to CHOs despite the risk?' Keep responses to 2-4 sentences. After 6-8 exchanges, summarise the core principle: credit hire is a financially deferred hire arrangement enabling claimants to maintain mobility post-accident whilst the insurer bears the cost.",
+        "s02": "You are a credit hire training tutor for Section 2 of Module 1: The parties involved. The learner is working through scenarios involving Sarah, who has instructed her solicitor and a CHO following an accident. Guide the learner to identify: (1) the roles of the claimant, CHO, insurer, solicitor, and repairer, (2) where conflicts of interest arise, and (3) why communication between parties is essential. Ask probing questions like 'What incentive does the insurer have to contest this claim?' and 'Why is the repairer's timeline so important?' Keep responses to 2-4 sentences. After 6-8 exchanges, summarise the key relationships: multiple parties with conflicting interests must communicate, negotiate, and ultimately reach agreement on costs.",
+        "s03": "You are a credit hire training tutor for Section 3 of Module 1: How a credit hire claim begins. The learner is working through the sequence of events from accident to vehicle provision. Guide the learner to identify: (1) the timeline of key decisions (reporting, instruction, collection, provision), (2) why early instruction of a CHO is important, and (3) how hire start dates are determined. Ask probing questions like 'What happens if a claimant waits a week before instructing a CHO?' and 'Why does the hire start date matter for invoicing?' Keep responses to 2-4 sentences. After 6-8 exchanges, summarise the critical sequence: rapid instruction → hire agreement → vehicle provision → invoicing from agreed start date, with causation strengthened by early instruction.",
+        "s04": "You are a credit hire training tutor for Section 4 of Module 1: Why credit hire is contested. The learner is working through Sarah's situation where her insurer contests quantum, vehicle appropriateness, causation, and repair duration. Guide the learner to identify: (1) the core reasons insurers contest (cost, appropriateness, causation, fraud), (2) the evidence and arguments used by each party, and (3) how precedent cases (Dimond, Lagden, Coles) have shaped the law. Ask probing questions like 'Why would AXA prefer economy hire over matched vehicles?' and 'How do repair delays affect the hire period dispute?' Keep responses to 2-4 sentences. After 6-8 exchanges, summarise the central tension: claimants claim 'appropriate replacement cost', insurers argue 'minimal cost alternative', courts have generally favoured claimants on appropriateness but allow quantum dispute.",
+        "s05": "You are a credit hire training tutor for Section 5 of Module 1: The regulatory and industry landscape. The learner is working through Karen's verification of Apex Credit Hire's credentials (FCA licence, GTA compliance) and understanding why these frameworks matter. Guide the learner to identify: (1) the role of the CCA 1974 in licensing, (2) how the GTA sets industry standards, (3) the Credit Hire Forum's functions, and (4) why FCA conduct regulation is important. Ask probing questions like 'What happens if a CHO operates without a licence?' and 'Why should a practitioner check GTA compliance?' Keep responses to 2-4 sentences. After 6-8 exchanges, summarise the regulatory structure: CCA licensing (mandatory) → GTA standards (industry best practice) → Forum guidance (dispute resolution and advocacy) → FCA oversight (conduct regulation)."
+      }
+    },
+    "further_reading": {
+      "cases": [
+        {
+          "id": "case1",
+          "name": "Dimond v Lovell [2002] 1 AC 384",
+          "authority": "House of Lords",
+          "summary": "Landmark decision establishing that a claimant is entitled to recover the cost of hiring an appropriate replacement vehicle from the tortfeasor's insurer, even if cheaper alternatives are available. The court rejected the insurer's argument that claimants should be limited to minimal-cost hire. This case established the principle of 'appropriate vehicle matching' as the baseline for credit hire recovery.",
+          "relevance_to_module": "Dimond v Lovell is the foundational case on credit hire entitlement; it directly addresses the insurer contest issue discussed in Section 4."
+        },
+        {
+          "id": "case2",
+          "name": "Lagden v O'Brien [2001] UKHL 64",
+          "authority": "House of Lords",
+          "summary": "Confirmed that claimants can recover losses arising from credit hire arrangements, including the cost of hiring a replacement vehicle. The case addressed causation and foreseeability, holding that credit hire losses are a natural consequence of the defendant's negligence and recoverable in full. It also confirmed that claimants need not prove they had no alternative transport.",
+          "relevance_to_module": "Lagden v O'Brien reinforces the legal foundation for credit hire recovery and directly addresses the 'alternative transport' contest discussed in Section 4."
+        },
+        {
+          "id": "case3",
+          "name": "Coles v Hetherton [2011] EWHC 181 (QB)",
+          "authority": "Queen's Bench Division",
+          "summary": "Examined the reasonableness of credit hire charges and the obligation of claimants to mitigate losses. The court held that whilst claimants must act reasonably, they are not required to accept uncomfortable or inferior alternatives. The case addressed quantum disputes, holding that appropriate vehicle hire (even if higher cost) is recoverable if it represents reasonable mitigation.",
+          "relevance_to_module": "Coles v Hetherton addresses the 'appropriateness' and quantum disputes discussed in Sections 4 and 5, establishing that reasonableness is the test, not minimum cost."
+        }
+      ],
+      "forum_search_queries": [
+        {
+          "id": "query1",
+          "search_term": "General Terms of Agreement vehicle appropriateness guidelines",
+          "rationale": "Directs practitioners to the GTA principles on vehicle matching discussed in Section 5."
+        },
+        {
+          "id": "query2",
+          "search_term": "Credit Hire Forum dispute resolution procedure complaint handling",
+          "rationale": "Helps practitioners understand the Forum's role in mediating credit hire disputes as discussed in Section 5."
+        },
+        {
+          "id": "query3",
+          "search_term": "Credit hire claim best practice repair duration assessment",
+          "rationale": "Provides guidance on managing repair timelines and hire duration disputes discussed in Sections 3 and 4."
+        },
+        {
+          "id": "query4",
+          "search_term": "Appropriate vehicle class matching commercial vehicles professional use",
+          "rationale": "Extends the appropriateness principle discussed in Section 2 and Section 4 to commercial and professional vehicle claims."
+        }
+      ]
+    }
+  }
+}

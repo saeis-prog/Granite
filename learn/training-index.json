@@ -1,0 +1,209 @@
+{
+  "programme": {
+    "title": "Credit hire foundation to advanced training programme",
+    "platform": "credit-hire.ai",
+    "version": "2.0",
+    "created": "2026-04",
+    "total_modules": 10,
+    "total_hours": 16,
+    "certification_tiers": [
+      {
+        "id": "foundation",
+        "label": "Foundation certificate",
+        "requires": ["module-01", "module-02"],
+        "description": "Core entitlement, legal framework and industry landscape"
+      },
+      {
+        "id": "practitioner",
+        "label": "Practitioner certificate",
+        "requires": ["module-01", "module-02", "module-03", "module-04", "module-05", "module-06", "module-07"],
+        "description": "Full operational competence including liability, qualifying periods, intervention, rates, evidence and claims handling"
+      },
+      {
+        "id": "advanced",
+        "label": "Advanced certificate",
+        "requires": ["module-01", "module-02", "module-03", "module-04", "module-05", "module-06", "module-07", "module-08", "module-09", "module-10"],
+        "description": "Full programme including litigation, industry dynamics and emerging issues"
+      }
+    ],
+    "modules": [
+      {
+        "id": "module-01",
+        "file": "module-01-introduction.json",
+        "title": "Introduction to credit hire",
+        "level": "Foundation",
+        "duration_minutes": 90,
+        "sections": 5,
+        "status": "content_complete"
+      },
+      {
+        "id": "module-02",
+        "file": "module-02-legal-framework.json",
+        "title": "The legal framework",
+        "level": "Foundation",
+        "duration_minutes": 100,
+        "sections": 5,
+        "status": "content_complete"
+      },
+      {
+        "id": "module-03",
+        "file": "module-03-liability.json",
+        "title": "Liability in credit hire",
+        "level": "Operations",
+        "duration_minutes": 100,
+        "sections": 5,
+        "status": "content_complete"
+      },
+      {
+        "id": "module-04",
+        "file": "module-04-qualifying-periods.json",
+        "title": "Qualifying periods and need",
+        "level": "Operations",
+        "duration_minutes": 95,
+        "sections": 5,
+        "status": "content_complete"
+      },
+      {
+        "id": "module-05",
+        "file": "module-05-intervention.json",
+        "title": "Intervention",
+        "level": "Operations",
+        "duration_minutes": 100,
+        "sections": 5,
+        "status": "content_complete"
+      },
+      {
+        "id": "module-06",
+        "file": "module-06-rates-evidence.json",
+        "title": "Rates and evidence",
+        "level": "Operations",
+        "duration_minutes": 100,
+        "sections": 5,
+        "status": "content_complete"
+      },
+      {
+        "id": "module-07",
+        "file": "module-07-claims-handling.json",
+        "title": "Claims handling process",
+        "level": "Operations",
+        "duration_minutes": 100,
+        "sections": 5,
+        "status": "content_complete"
+      },
+      {
+        "id": "module-08",
+        "file": "module-08-litigation.json",
+        "title": "Litigation and dispute resolution",
+        "level": "Advanced",
+        "duration_minutes": 105,
+        "sections": 5,
+        "status": "content_complete"
+      },
+      {
+        "id": "module-09",
+        "file": "module-09-industry-dynamics.json",
+        "title": "Industry dynamics",
+        "level": "Advanced",
+        "duration_minutes": 95,
+        "sections": 5,
+        "refresh_cycle": "quarterly",
+        "status": "content_complete"
+      },
+      {
+        "id": "module-10",
+        "file": "module-10-emerging-issues.json",
+        "title": "Emerging issues and AI",
+        "level": "Advanced",
+        "duration_minutes": 90,
+        "sections": 5,
+        "refresh_cycle": "quarterly",
+        "status": "content_complete"
+      }
+    ],
+    "data_schema": {
+      "each_module_contains": [
+        "module.id — unique identifier e.g. module-03",
+        "module.title — display title",
+        "module.level — Foundation | Operations | Advanced",
+        "module.duration_minutes — estimated completion time",
+        "module.learning_objectives[] — array of LO objects with id and text",
+        "module.sections[] — array of section objects (see below)",
+        "module.assessment.sample_questions[] — assessment question objects",
+        "module.ai_tutor.system_prompt_per_section — keyed by section id",
+        "module.further_reading.forum_search_queries[] — suggested AI chatbot queries"
+      ],
+      "each_section_contains": [
+        "section.id — e.g. s01",
+        "section.number — integer 1-5",
+        "section.title — display title",
+        "section.duration_minutes — reading time",
+        "section.concept — core concept text (shown as the concept card)",
+        "section.content_points[] — bullet point content array",
+        "section.scenario.text — the practitioner scenario",
+        "section.scenario.teaching_points[] — AI tutor guidance for this scenario",
+        "section.knowledge_check — in-section MCQ with options and correct flag"
+      ],
+      "each_assessment_question_contains": [
+        "question.id — e.g. Q1",
+        "question.type — multiple_choice | true_false | scenario_based",
+        "question.text — question text",
+        "question.options[] — array with text, correct flag, and optional explanation",
+        "question.answer — for true_false questions",
+        "question.explanation — explanation shown after answering"
+      ]
+    },
+    "build_instructions": {
+      "overview": "These JSON files contain all content needed to build the learning section of credit-hire.ai. The learning section is at /learn alongside the existing /app route.",
+      "ui_components_needed": [
+        "Module dashboard — shows all 10 modules with progress, level badges, and lock state",
+        "Module intro page — title, objectives, duration, sections list",
+        "Section reader — concept card, content points, scenario box, knowledge check",
+        "AI tutor chat — conversational interface powered by Claude API with section-specific system prompt",
+        "Assessment engine — renders MCQ, true/false, and scenario questions; tracks score; shows results",
+        "Certification page — displays earned certificates with completion date",
+        "Progress tracker — persists completion state per user per module"
+      ],
+      "ai_tutor_implementation": {
+        "api": "Anthropic Claude API (claude-sonnet-4-20250514)",
+        "system_prompt_source": "module.ai_tutor.system_prompt_per_section[sectionId]",
+        "scenario_injection": "The scenario text from module.sections[n].scenario.text should be injected into the system prompt or provided as initial context",
+        "max_tokens": 300,
+        "conversation_history": "Maintain full conversation history within a session; reset on section change",
+        "session_end_trigger": "After 8 exchanges, the tutor should summarise learning and offer to move to the next section"
+      },
+      "forum_integration": {
+        "chatbot_queries": "The 'Further reading' queries in each module should be presented as clickable prompts that open the main credit-hire.ai news query interface pre-populated with the query text",
+        "source": "module.further_reading.forum_search_queries[]"
+      },
+      "progress_persistence": {
+        "method": "Use the existing storage API in credit-hire.ai",
+        "keys": [
+          "learning:module-{id}:started — boolean",
+          "learning:module-{id}:sections_complete — array of section ids",
+          "learning:module-{id}:assessment_score — integer",
+          "learning:module-{id}:certificate_earned — boolean with date"
+        ]
+      },
+      "refresh_cadence": {
+        "modules_09_and_10": "Quarterly content review using credit-hire.ai news feed; update content_points and scenario text to reflect current market conditions",
+        "all_modules": "Annual review of case references and legal principles"
+      },
+      "file_locations": {
+        "place_in": "Dropbox/companies/Credit Hire Forum/Credit Hire Forum Website/Historic/credit-hire-ai/learn/",
+        "files": [
+          "training-index.json (this file)",
+          "module-01-introduction.json",
+          "module-02-legal-framework.json",
+          "module-03-liability.json",
+          "module-04-qualifying-periods.json",
+          "module-05-intervention.json",
+          "module-06-rates-evidence.json",
+          "module-07-claims-handling.json",
+          "module-08-litigation.json",
+          "module-09-industry-dynamics.json",
+          "module-10-emerging-issues.json"
+        ]
+      }
+    }
+  }
+}

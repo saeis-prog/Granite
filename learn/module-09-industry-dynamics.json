@@ -1,0 +1,416 @@
+{
+  "module": {
+    "id": "module-09",
+    "title": "Industry dynamics",
+    "subtitle": "Understanding the commercial, regulatory and market forces shaping credit hire",
+    "level": "Advanced",
+    "duration_minutes": 95,
+    "format": "Self-paced e-learning with AI tutor \u2014 refreshed quarterly",
+    "sections_count": 5,
+    "assessment_questions": 20,
+    "pass_mark_percent": 75,
+    "prerequisite": "module-08",
+    "refresh_cycle": "quarterly",
+    "refresh_note": "This module contains market-sensitive content that should be reviewed and updated every quarter using the credit-hire.ai news feed as the primary source",
+    "learning_objectives": [
+      {
+        "id": "LO1",
+        "text": "Describe the current structure of the credit hire market including major operators, consolidation trends, and the declining CMC feeder pipeline"
+      },
+      {
+        "id": "LO2",
+        "text": "Explain how insurer profitability cycles affect their approach to credit hire challenge volume and settlement behaviour"
+      },
+      {
+        "id": "LO3",
+        "text": "Analyse the impact of the whiplash reforms on the credit hire market and the accident management sector"
+      },
+      {
+        "id": "LO4",
+        "text": "Describe the role of the GTA Chairman and the GTA as a governance mechanism for the industry"
+      },
+      {
+        "id": "LO5",
+        "text": "Explain how premium inflation, used car values, and supply chain pressures interact with credit hire claims"
+      },
+      {
+        "id": "LO6",
+        "text": "Assess the commercial strategies available to CHOs in a market characterised by consolidation and margin pressure"
+      }
+    ],
+    "sections": [
+      {
+        "id": "s01",
+        "number": 1,
+        "title": "Market structure: who does what and for whom",
+        "duration_minutes": 18,
+        "concept": "The credit hire market has consolidated significantly over the past decade. A handful of large CHOs now account for the majority of vehicle days. The CMC feeder pipeline that historically drove referrals into credit hire has contracted sharply following the whiplash reforms. Understanding who the major players are, how they operate, and where referrals now come from is essential context for anyone working in the industry.",
+        "content_points": [
+          "Major CHO operators: the market is dominated by a small number of large operators; the Forum has tracked the growth of accident management businesses within PI firms",
+          "The repairer network: most CHOs now have preferred repairer networks; referrals from repairers are a primary source of new instructions",
+          "The declining CMC market: the whiplash reforms removed a significant portion of PI work; the Forum reported that 50% of legal firms said goodbye to whiplash work; CMC referrals to CHOs fell in parallel",
+          "Direct referral channels: CHOs increasingly invest in direct consumer contact \u2014 call centres, apps, roadside assistance partnerships",
+          "Insurer-operated credit hire: some insurers now offer their own credit hire product; creates conflicts but also generates volume",
+          "Enterprise Holdings and the consolidation trend: major players in the daily rental market have expanded into accident management; the Forum covered Enterprise Holdings rebranding as Enterprise Mobility",
+          "The accident management PI firm: firms like Cogent have grown their accident management businesses alongside PI; the Forum has tracked these developments",
+          "Fleet and telematics: telematics data from commercial fleets is increasingly used to triage accident claims and accelerate referrals"
+        ],
+        "scenario": {
+          "text": "A mid-size CHO has historically relied heavily on a network of PI firms for referrals. Following the whiplash reforms, 40% of its referral volume has disappeared. Its two largest repairer partners have signed preferred supplier agreements with larger CHO competitors. Advise on strategic options for the next 12 months.",
+          "teaching_points": [
+            "The CMC/PI channel has structurally declined \u2014 waiting for it to recover is not a strategy",
+            "Repairer relationships are critical and must be actively managed",
+            "Direct consumer channels (online, app, roadside) are increasingly important",
+            "Fleet and commercial vehicle markets may be an alternative referral source",
+            "The learner should identify diversification of referral channels as the core strategic imperative"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Which development most directly reduced the volume of CMC-sourced referrals to credit hire organisations in the early 2020s?",
+          "options": [
+            {
+              "text": "The introduction of the GTA",
+              "correct": false
+            },
+            {
+              "text": "The whiplash reforms under the Civil Liability Act 2018, which reduced PI claim volumes and the number of active CMCs",
+              "correct": true,
+              "explanation": "The whiplash reforms fundamentally reduced the PI feeder from which CMC-referred credit hire had historically been generated."
+            },
+            {
+              "text": "The COVID-19 pandemic",
+              "correct": false
+            },
+            {
+              "text": "The introduction of dashcam evidence requirements",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s02",
+        "number": 2,
+        "title": "Insurer economics and the challenge cycle",
+        "duration_minutes": 20,
+        "concept": "Insurers' appetite to challenge credit hire claims is not constant \u2014 it follows their profitability cycle. When combined ratios are high (insurers are losing money), challenge volume increases and settlement behaviour hardens. When combined ratios improve, the pressure to contest every claim reduces. Understanding where insurers are in this cycle \u2014 and why \u2014 allows CHOs to anticipate market behaviour and adjust their strategy. The Forum has tracked motor premium movements and insurer financial results closely.",
+        "content_points": [
+          "The combined ratio: the key measure of insurer profitability; a combined ratio above 100% means the insurer is paying out more in claims and expenses than it receives in premium",
+          "Motor insurance losses: several major insurers recorded significant losses in 2022-2023 as claims costs outpaced premium; the Forum reported extensively on this",
+          "Premium inflation: motor premiums rose nearly a third and then more in 2023-2024 as insurers repriced for losses; the Forum tracked premium movements as an industry indicator",
+          "The hardening market and credit hire: when insurers are under pressure, credit hire challenge volume tends to rise; when they are profitable, settlement is faster",
+          "Insurer capital and reserving: credit hire reserves are part of the overall claims reserving picture; when overall reserves are stressed, credit hire targets are scrutinised",
+          "The big insurer results: the Forum tracked results from major operators (Admiral, Aviva, Direct Line, etc.) as leading indicators of market behaviour",
+          "Bad years and their aftermath: the Forum reported on several 'bad years for motor insurers'; the subsequent premium increases and their effect on the claims market",
+          "Hastings Direct and ARAG: the Forum covered Hastings partnering with ARAG for vehicle hire insurance \u2014 an example of how insurers seek to control the hire cost line"
+        ],
+        "scenario": {
+          "text": "A CHO has noticed that settlement times with three major insurers have lengthened from an average of 45 days to 90 days over the past 6 months. Challenge letters are arriving faster and the insurer's opening settlement offers are lower than they were 18 months ago. What does this pattern suggest and how should the CHO respond?",
+          "teaching_points": [
+            "This pattern suggests the insurers are in a more defensive financial position \u2014 hardening market behaviour",
+            "The Forum's tracking of insurer profitability cycles is directly relevant here",
+            "The CHO should anticipate longer settlement timelines and price this into their working capital planning",
+            "Relationship management with insurer counterparts becomes more important when behaviour hardens",
+            "The learner should identify this as a cyclical market dynamic, not a permanent shift, and advise accordingly"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Motor insurers recorded large losses in 2022-2023. What effect would this most likely have on their approach to credit hire claims?",
+          "options": [
+            {
+              "text": "Faster settlement and higher offers \u2014 they want to clear liabilities from their books",
+              "correct": false
+            },
+            {
+              "text": "More aggressive challenge behaviour, longer settlement times, and lower opening offers as they seek to reduce claims spend",
+              "correct": true,
+              "explanation": "When insurers are under financial pressure, credit hire is a target for cost reduction. Challenge volume typically rises and settlement behaviour hardens."
+            },
+            {
+              "text": "No change \u2014 credit hire challenge behaviour is independent of insurer profitability",
+              "correct": false
+            },
+            {
+              "text": "Withdrawal from the GTA to avoid agreed rate obligations",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s03",
+        "number": 3,
+        "title": "The whiplash reforms and their aftermath",
+        "duration_minutes": 20,
+        "concept": "The Civil Liability Act 2018 and the Official Injury Claim (OIC) portal fundamentally changed the personal injury market from May 2021. Fixed tariff damages for soft tissue injuries, a new low-value PI portal, and the removal of most legal costs from whiplash claims reshaped the entire accident management sector \u2014 including credit hire. Understanding what changed, what the impact has been, and what the market looks like post-reform is essential context for anyone working in credit hire today.",
+        "content_points": [
+          "What the reforms did: introduced fixed tariffs for whiplash injuries; created the OIC portal for claims up to \u00a35,000; removed legal costs recovery for most low-value whiplash claims",
+          "The impact on PI firms: 50% of legal firms reported saying goodbye to whiplash work; the market for low-value PI shrank dramatically",
+          "The impact on CMCs: CMCs whose business model depended on whiplash referral fees were effectively eliminated or forced to pivot",
+          "The impact on credit hire: the CHO lost a major referral channel; claims that would previously have been managed by PI firms now needed alternative handling arrangements",
+          "The OIC portal and credit hire: credit hire claims can be added to OIC portal claims but the interaction between the portal process and credit hire recovery is complex",
+          "The 'rump' of claims companies: the Forum reported that just a 'rump' of claims companies remained active in the PI market post-reform",
+          "Pivot to non-whiplash: some PI firms pivoted to more serious injury work, clinical negligence, and employment; credit hire lost these referral relationships",
+          "The broader PI market: the reforms created pressure on the entire claims supply chain; understanding which firms survived and how they adapted is useful market intelligence"
+        ],
+        "scenario": {
+          "text": "A credit hire manager who joined the industry in 2018 (pre-reform) is briefing a new starter who has never known the pre-reform market. The new starter asks: 'Why do so many cases now come through repairers rather than solicitors?' Explain the post-reform referral landscape.",
+          "teaching_points": [
+            "Pre-reform: solicitors handled PI + credit hire as a package; referral fees and costs recovery made this viable",
+            "Post-reform: low-value PI is no longer commercially attractive for solicitors; the credit hire referral went with the PI instruction",
+            "Repairers remain active because their vehicle repairs are not affected by the PI reforms",
+            "The repairer is now the primary first point of contact after an accident for many claimants",
+            "The learner should understand this as a structural, not cyclical, shift in the referral market"
+          ]
+        },
+        "knowledge_check": {
+          "question": "The OIC portal (Official Injury Claim) was introduced primarily to:",
+          "options": [
+            {
+              "text": "Replace the GTA for credit hire settlement",
+              "correct": false
+            },
+            {
+              "text": "Handle low-value personal injury claims (principally whiplash) at fixed tariffs without legal cost recovery",
+              "correct": true,
+              "explanation": "The OIC portal is the digital claims process introduced under the Civil Liability Act 2018 reforms for low-value soft tissue injury claims."
+            },
+            {
+              "text": "Regulate credit hire organisations",
+              "correct": false
+            },
+            {
+              "text": "Replace the Motor Insurers Bureau for uninsured driver claims",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s04",
+        "number": 4,
+        "title": "The GTA: governance, tensions and the chairman's role",
+        "duration_minutes": 18,
+        "concept": "The General Terms of Agreement (GTA) is governed by a joint committee of subscribing CHOs and insurers, with a GTA Chairman who plays a key role in resolving disputes and maintaining the framework. The Forum has reported on GTA developments extensively \u2014 including debates about whether the GTA rates remain fair, the role of the Chairman in mediating disputes, and the tensions between large and small subscribers. Understanding the GTA as a living institution \u2014 not just a document \u2014 is important for industry practitioners.",
+        "content_points": [
+          "GTA governance: a joint committee of CHO and insurer subscribers manages the GTA; changes to rates and terms require negotiation and agreement",
+          "The GTA Chairman: an independent chair who plays a dispute resolution and mediation role within the GTA framework; the Forum has covered the Chairman's appointment and activities",
+          "GTA rate reviews: rates are periodically reviewed; the negotiation between CHOs and insurers is commercial and often contested",
+          "The fairness debate: the Forum has covered debates about whether GTA rates reflect true market costs for CHOs or have been suppressed by insurer commercial pressure",
+          "Non-subscribing operators: CHOs and insurers outside the GTA operate on open market terms; this creates two-tier dynamics",
+          "GTA dispute resolution: the GTA has its own mechanism for resolving disputes between subscribers; understanding when this applies and when litigation is the alternative",
+          "The GTA and prestige vehicles: the GTA rate tables may not adequately reflect the genuine market for prestige or specialist vehicles; this is a source of ongoing tension",
+          "The future of the GTA: whether the GTA framework remains fit for purpose in a market reshaped by reform, consolidation and EV is a live question the Forum has explored"
+        ],
+        "scenario": {
+          "text": "A CHO that is a GTA subscriber believes the current GTA rates for prestige vehicles are significantly below the genuine market rate. The CHO wants to raise this at the next GTA governance meeting but is concerned that the insurer subscribers will resist any increase. What options does the CHO have and what is the Forum's view on this issue?",
+          "teaching_points": [
+            "The GTA is a negotiated framework \u2014 CHOs can and should raise concerns through the governance process",
+            "Building a coalition with other CHO subscribers strengthens the position",
+            "Gathering market rate evidence (specialist hire company quotes) is essential preparation",
+            "The GTA Chairman's role as mediator may be relevant if the parties cannot agree",
+            "The alternative is to litigate prestige claims outside the GTA \u2014 but this is slower and more expensive",
+            "The Forum has reported on whether GTA rates are working \u2014 the AI chatbot can find the relevant posts"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A GTA subscriber CHO wishes to claim at rates above the GTA table for a prestige vehicle hire. Which approach is most appropriate?",
+          "options": [
+            {
+              "text": "They must always accept the GTA rate \u2014 there is no alternative for a subscriber",
+              "correct": false
+            },
+            {
+              "text": "They may be able to argue the claim outside the GTA framework if the GTA rate does not adequately reflect the genuine market rate for that vehicle class, particularly if the insurer is agreeable or the claim goes to litigation",
+              "correct": true,
+              "explanation": "While the GTA creates obligations between subscribers, it does not prevent claims for genuine market rates where the GTA rate is inadequate \u2014 particularly for specialist vehicles where the GTA table does not apply."
+            },
+            {
+              "text": "They must first resign from the GTA before claiming above GTA rates",
+              "correct": false
+            },
+            {
+              "text": "Above-GTA rates are only claimable if the vehicle costs more than \u00a350,000",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s05",
+        "number": 5,
+        "title": "Premium inflation, used car values and claims interaction",
+        "duration_minutes": 19,
+        "concept": "The post-COVID insurance market saw unprecedented premium inflation, driven by rising repair costs, parts shortages, used car value volatility, and fraud. These macro factors interact directly with credit hire \u2014 through longer repair periods, higher total loss settlements, and the economic pressures on both CHOs and insurers. The Forum tracked all of these developments in real time. Understanding the macro context makes practitioners more effective at anticipating challenges and explaining delays.",
+        "content_points": [
+          "Premium inflation: motor premiums rose 58% and more in 2023; the Forum tracked this as a leading indicator of market stress",
+          "Why premiums rose: increased claims costs (parts, labour, courtesy cars), fraud, used car price volatility, and the lagging effect of prior underpricing",
+          "Used car values: used car values surged post-COVID due to new car supply constraints; this affected total loss settlements \u2014 higher values meant more vehicles were written off at higher payouts",
+          "The falling used car market: by late 2023, used car values began to fall again; the Forum tracked monthly movements",
+          "Parts shortages and repair times: the interaction between parts availability and hire period has been extensively covered by the Forum",
+          "The EV specific dynamic: EV repair costs are significantly higher than ICE; insurers are struggling with EV claims costs and this affects premium",
+          "Thatcham's 7 challenges: Thatcham Research published a report identifying 7 challenges facing the industry including ADAS costs, EV repair complexity, and data sharing; the Forum covered this in detail",
+          "The fraud connection: premium inflation drives up the financial incentive for fraud; the Forum has tracked the relationship between premium levels and fraud rates"
+        ],
+        "scenario": {
+          "text": "A claimant's car is declared a total loss. The insurer values it at \u00a38,200. The claimant believes it is worth \u00a39,500 based on online used car valuations. The claimant is in credit hire while negotiations continue. The insurer says the hire should stop while they negotiate the total loss value. The CHO says the hire continues until settlement. Who is correct and what factors affect the answer?",
+          "teaching_points": [
+            "The hire continues until the claimant can replace the vehicle",
+            "A disputed total loss value is not a settled total loss \u2014 the qualifying period continues",
+            "The claimant cannot be expected to accept an undervalue and then purchase a replacement with insufficient funds",
+            "However, the claimant must engage reasonably with the valuation process \u2014 deliberate delay to extend hire is not acceptable",
+            "The used car value volatility context is directly relevant \u2014 prices were moving rapidly in this period"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Used car values fell significantly in late 2023. What effect would this have on total loss credit hire claims made in that period?",
+          "options": [
+            {
+              "text": "No effect \u2014 total loss values are independent of used car markets",
+              "correct": false
+            },
+            {
+              "text": "Lower used car values mean lower total loss settlements, potentially making replacement harder for claimants and arguably justifying longer qualifying periods",
+              "correct": true,
+              "explanation": "If the settlement buys less vehicle in the current market, the claimant may take longer to find a suitable replacement. This can legitimately extend the qualifying period."
+            },
+            {
+              "text": "Lower values always reduce the qualifying period",
+              "correct": false
+            },
+            {
+              "text": "Insurers are required to pay above-market values when prices fall",
+              "correct": false
+            }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "pass_mark": 75,
+      "questions": [
+        {
+          "type": "multiple_choice",
+          "question": "Which development most directly reduced the volume of CMC-sourced referrals to credit hire organisations?",
+          "options": [
+            "The introduction of the GTA framework",
+            "The whiplash reforms under the Civil Liability Act 2018, which reduced PI claim volumes and the number of active CMCs",
+            "The COVID-19 pandemic reducing traffic volumes",
+            "The introduction of mandatory dashcam evidence"
+          ],
+          "correct": 1,
+          "explanation": "The whiplash reforms fundamentally reduced the PI feeder market from which CMC-referred credit hire had historically been generated. 50% of legal firms reported saying goodbye to whiplash work."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Motor insurers recorded large underwriting losses in 2022-2023. What effect would this most likely have on their approach to credit hire claims?",
+          "options": [
+            "Faster settlement and higher offers to clear liabilities from their books",
+            "More aggressive challenge behaviour, longer settlement times, and lower opening offers as they seek to reduce claims spend",
+            "No change — credit hire challenge behaviour is independent of insurer profitability",
+            "Withdrawal from the GTA to avoid agreed rate obligations"
+          ],
+          "correct": 1,
+          "explanation": "When insurers are under financial pressure with combined ratios above 100%, credit hire is a target for cost reduction. Challenge volume typically rises and settlement behaviour hardens as part of the insurer profitability cycle."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "The OIC (Official Injury Claim) portal was introduced primarily to:",
+          "options": [
+            "Replace the GTA for credit hire settlement",
+            "Handle low-value personal injury claims (principally whiplash) at fixed tariffs without legal cost recovery",
+            "Regulate credit hire organisations directly",
+            "Replace the Motor Insurers Bureau for uninsured driver claims"
+          ],
+          "correct": 1,
+          "explanation": "The OIC portal is the digital claims process introduced under the Civil Liability Act 2018 reforms for low-value soft tissue injury claims at fixed tariff damages."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A GTA subscriber CHO believes the GTA rates for prestige vehicles are significantly below genuine market rates. What is the most appropriate approach?",
+          "options": [
+            "The CHO must always accept the GTA rate with no alternative",
+            "The CHO may argue the claim outside the GTA framework if the GTA rate does not adequately reflect the genuine market rate for that vehicle class",
+            "The CHO must resign from the GTA before claiming above GTA rates",
+            "Above-GTA rates are only claimable for vehicles costing over £50,000 new"
+          ],
+          "correct": 1,
+          "explanation": "While the GTA creates obligations between subscribers, it does not prevent claims for genuine market rates where the GTA rate is inadequate, particularly for specialist vehicles where the GTA table does not apply."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A claimant's car is declared a total loss. The insurer says the hire should stop immediately while total loss value negotiations continue. The CHO disagrees. Who is correct?",
+          "options": [
+            "The insurer — once a total loss is declared, the hire must stop regardless",
+            "The CHO — the hire continues until the claimant receives settlement and can reasonably replace the vehicle, provided the claimant engages with the valuation process",
+            "Neither — the hire must stop but resumes once the total loss value is agreed",
+            "It depends entirely on the vehicle's age"
+          ],
+          "correct": 1,
+          "explanation": "A disputed total loss value is not a settled total loss. The qualifying period continues until the claimant can replace the vehicle. However, the claimant must engage reasonably with the valuation process — deliberate delay to extend hire is not acceptable."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "What is the 'combined ratio' and why does it matter for credit hire practitioners?",
+          "options": [
+            "The ratio of BHR to CHO rates, indicating how much above spot rate a CHO charges",
+            "The key measure of insurer profitability — a ratio above 100% means the insurer pays out more than it receives, leading to harder challenge behaviour on credit hire claims",
+            "The proportion of credit hire claims that go to litigation versus settle",
+            "The percentage of CMC referrals versus direct referrals to a CHO"
+          ],
+          "correct": 1,
+          "explanation": "The combined ratio measures insurer profitability. When it exceeds 100%, insurers are loss-making and tend to increase challenge volume and harden settlement behaviour on credit hire claims. Understanding this cycle helps CHOs anticipate market conditions."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Post-whiplash reform, which referral channel has become the primary source of new credit hire instructions?",
+          "options": [
+            "CMCs specialising in low-value whiplash claims",
+            "Government referral programmes",
+            "Repairer networks and accident management partnerships",
+            "Social media advertising to individual claimants"
+          ],
+          "correct": 2,
+          "explanation": "With the structural decline in PI-sourced referrals following the whiplash reforms, repairers have become the primary first point of contact after an accident for many claimants. Repairer relationships are now critical to CHO referral volume."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: The whiplash reforms under the Civil Liability Act 2018 had no effect on credit hire referral volumes.",
+          "correct": 1,
+          "explanation": "False. The whiplash reforms substantially reduced the PI feeder market from which CHOs historically received referrals via CMCs and PI firms. 50% of legal firms reported saying goodbye to whiplash work, and CMC referrals to CHOs fell in parallel."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: The GTA Chairman plays a dispute resolution and mediation role within the GTA framework.",
+          "correct": 0,
+          "explanation": "True. The GTA Chairman is an independent chair who plays a key role in resolving disputes and mediating between CHO and insurer subscribers within the GTA framework."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: When used car values fall, total loss settlements increase because insurers must pay above the current market value.",
+          "correct": 1,
+          "explanation": "False. Insurers are not required to pay above-market values when prices fall. Lower used car values mean lower total loss settlements, which can make replacement harder for claimants and may legitimately extend qualifying periods."
+        }
+      ]
+    },
+    "ai_tutor": {
+      "system_prompt_per_section": {
+        "s01": "You are a credit hire training tutor for Section 1 of Module 7: market structure. The learner is advising a mid-size CHO that has lost 40% of its PI-sourced referrals. Guide them to identify diversification of referral channels as the strategic priority. Keep responses to 2-4 sentences.",
+        "s02": "You are a credit hire training tutor for Section 2 of Module 7: insurer economics. The learner is interpreting a pattern of hardening insurer behaviour (longer settlement times, lower offers). Guide them to connect this to the insurer profitability cycle and advise on CHO response. Reference the Forum's tracking of insurer results. Keep responses to 2-4 sentences.",
+        "s03": "You are a credit hire training tutor for Section 3 of Module 7: whiplash reforms. The learner is explaining the post-reform referral landscape to a new starter. Guide them to articulate why repairers have replaced solicitors as the primary referral source. Keep responses to 2-4 sentences.",
+        "s04": "You are a credit hire training tutor for Section 4 of Module 7: the GTA. The learner is advising a CHO seeking above-GTA rates for prestige vehicles. Guide them through governance options, coalition-building with other subscribers, and the litigation alternative. Keep responses to 2-4 sentences.",
+        "s05": "You are a credit hire training tutor for Section 5 of Module 7: premium inflation and used car values. The learner is working through a disputed total loss scenario where the insurer argues hire should stop during value negotiations. Guide them to identify that the qualifying period continues until the claimant can replace the vehicle. Keep responses to 2-4 sentences."
+      }
+    },
+    "further_reading": {
+      "forum_search_queries": [
+        "What has the Forum reported about motor premium inflation in 2023-2024?",
+        "Find Forum posts about the whiplash reforms and their effect on the market",
+        "Forum coverage of Enterprise Holdings / Enterprise Mobility rebrand",
+        "What does the Forum say about the GTA Chairman and GTA governance?",
+        "Find Forum posts about used car value changes and their effect on total loss claims",
+        "Forum posts about Thatcham's 7 challenges to the motor industry"
+      ]
+    }
+  }
+}

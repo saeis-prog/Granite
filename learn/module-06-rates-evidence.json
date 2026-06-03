@@ -1,0 +1,410 @@
+{
+  "module": {
+    "id": "module-06",
+    "title": "Rates and evidence",
+    "subtitle": "Building and defending the financial case for a credit hire claim",
+    "level": "Operations",
+    "duration_minutes": 100,
+    "format": "Self-paced e-learning with AI tutor",
+    "sections_count": 5,
+    "assessment_questions": 20,
+    "pass_mark_percent": 75,
+    "prerequisite": "module-05",
+    "learning_objectives": [
+      {
+        "id": "LO1",
+        "text": "Explain how CHO rates are set and how they differ from basic hire rates (BHR)"
+      },
+      {
+        "id": "LO2",
+        "text": "Identify and evaluate the types of evidence used to establish or challenge the applicable rate"
+      },
+      {
+        "id": "LO3",
+        "text": "Assess impecuniosity evidence \u2014 what is required, what is sufficient, and what is disproportionate to demand"
+      },
+      {
+        "id": "LO4",
+        "text": "Explain the role of digital bank statements and the controversy surrounding their use as impecuniosity evidence"
+      },
+      {
+        "id": "LO5",
+        "text": "Recognise the tactics used by insurers to attack the evidence base of a credit hire claim and explain the response to each"
+      },
+      {
+        "id": "LO6",
+        "text": "Apply the proportionality principle to disclosure demands in lower-value credit hire claims"
+      }
+    ],
+    "sections": [
+      {
+        "id": "s01",
+        "number": 1,
+        "title": "How CHO rates are constructed",
+        "duration_minutes": 18,
+        "concept": "A credit hire rate is not simply a hire rate \u2014 it includes a credit element reflecting the CHO's cost of carrying the debt until the claim is settled. This credit element is recoverable only where the claimant needed it (i.e. could not have hired at spot rate). Understanding how CHO rates are built helps practitioners explain and justify them, and identify where an insurer's challenge has genuine merit vs where it is tactical.",
+        "content_points": [
+          "Components of a CHO rate: base vehicle cost, fleet depreciation, insurance, administration, and the credit element (cost of carrying unpaid debt)",
+          "The credit element: reflects the CHO's working capital cost of providing vehicles on deferred payment terms; typically 15-30% above spot hire",
+          "Why CHO rates vary: market, vehicle class, geography, and the CHO's own cost structure all influence the rate",
+          "Spot hire vs CHO rates: spot hire companies (Enterprise, Hertz, Arnold Clark) charge on payment; they have no credit risk and therefore no credit element",
+          "The BHR comparator: insurers produce Basic Hire Rate evidence \u2014 surveys of what spot hire companies charge for a comparable vehicle in the local market",
+          "GTA rates vs open market rates: GTA rates are negotiated compromises; open market rates (CHO vs BHR) may diverge significantly for specialist vehicles",
+          "The rate as a snapshot: rates must reflect the market at the time of hire, not at the time of settlement"
+        ],
+        "scenario": {
+          "text": "A CHO charges \u00a385/day for a mid-size family car. The insurer produces a BHR survey showing that Enterprise, Hertz, and Arnold Clark all offer comparable vehicles for between \u00a338-\u00a352/day in the same city. The insurer argues only \u00a352/day is recoverable. The claimant is impecunious. Analyse the rate dispute.",
+          "teaching_points": [
+            "If the claimant is impecunious under Lagden, the full \u00a385/day CHO rate is recoverable",
+            "BHR evidence is only relevant where the claimant is NOT impecunious",
+            "The learner must first establish impecuniosity before engaging with the rate challenge",
+            "If impecuniosity is not established, the BHR survey becomes the key battleground and \u00a352/day is a defensible ceiling",
+            "The quality of the BHR survey matters \u2014 same area, same vehicle class, same time of hire"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A BHR survey produced by the insurer shows spot hire rates of \u00a340-55/day. The CHO charged \u00a378/day. The claimant is impecunious under Lagden v O'Brien. What is the rate that is most likely recoverable?",
+          "options": [
+            {
+              "text": "\u00a340/day \u2014 the cheapest available spot rate",
+              "correct": false
+            },
+            {
+              "text": "\u00a355/day \u2014 the highest spot rate in the survey",
+              "correct": false
+            },
+            {
+              "text": "\u00a378/day \u2014 the full CHO rate, because the claimant's impecuniosity means they needed the credit element",
+              "correct": true,
+              "explanation": "Where the claimant is genuinely impecunious, the full CHO rate is recoverable regardless of what spot rates were available. BHR evidence is irrelevant for an impecunious claimant."
+            },
+            {
+              "text": "The average of the BHR survey rates",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s02",
+        "number": 2,
+        "title": "BHR evidence: surveys, sources and challenges",
+        "duration_minutes": 20,
+        "concept": "Basic Hire Rate (BHR) evidence is the primary tool used by insurers to argue that a lower rate should apply where the claimant is not impecunious. The quality, methodology and timeliness of BHR evidence is frequently disputed. Practitioners must be able to assess BHR evidence critically \u2014 identifying where it is reliable, where it is flawed, and how to challenge it effectively.",
+        "content_points": [
+          "What BHR evidence should show: the rate for a comparable vehicle, in the same geographic market, at the time of hire, from a mainstream rental company. Only where no mainstream supplier can provide a comparable vehicle should evidence from a reputable local company be considered",
+          "Common BHR sources: insurers use independent rate surveys, direct quotes from mainstream rental companies, or internal rate databases",
+          "Flaws in BHR evidence: wrong vehicle class, wrong geography, wrong hire period (daily vs weekly rates differ), rates obtained after the hire rather than at the time of hire",
+          "Timing of rate evidence: rates obtained for a hire start date several days before the hire actually starts are flawed. The closer the rate is obtained to the actual start of hire, the higher the rate will generally be \u2014 rates quoted days in advance do not reflect the true cost of hiring at short notice",
+          "The 'like-for-like' issue in BHR evidence: a survey for a 'mid-size car' may not reflect a vehicle comparable to a specific prestige or specialist model",
+          "Online quote evidence: insurers sometimes produce online quotes from rental websites; these may not reflect actual availability or walk-in rates",
+          "Challenging BHR evidence: the CHO should be prepared to produce counter-evidence \u2014 quotes for the same vehicle, same period, from the same market, obtained as close to the hire start date as possible"
+        ],
+        "scenario": {
+          "text": "The insurer produces a BHR survey for a Ford Transit van hire showing rates of \u00a355-75/day. The claimant hired a Transit from the CHO at \u00a3110/day. The survey was obtained 6 weeks after the hire ended. The rates are from national rental companies. The claimant's van was hired in a rural area of Scotland where two of the three companies surveyed have no local branch. Identify the weaknesses in the BHR evidence.",
+          "teaching_points": [
+            "Timing: obtained 6 weeks post-hire \u2014 rates may have changed",
+            "Geography: rural Scotland \u2014 national companies may have no local presence; rates reflect urban markets",
+            "Availability: if the surveyed companies have no branch in the area, their quoted rates are theoretical",
+            "The learner should identify all three weaknesses and understand they go to the weight of the evidence",
+            "The CHO should produce counter-evidence: what rates were actually available locally at the time"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Which of the following most undermines the reliability of a BHR survey produced by the insurer?",
+          "options": [
+            {
+              "text": "The survey was produced by an independent research company",
+              "correct": false
+            },
+            {
+              "text": "The survey quotes rates for the same vehicle class but from companies that had no branch within 40 miles of where the claimant actually hired",
+              "correct": true,
+              "explanation": "Geographic irrelevance is a fundamental flaw \u2014 if the quoted companies could not actually provide a vehicle to the claimant, their rates are not true comparators."
+            },
+            {
+              "text": "The insurer paid for the survey",
+              "correct": false
+            },
+            {
+              "text": "The survey shows rates lower than the CHO rate",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s03",
+        "number": 3,
+        "title": "Impecuniosity evidence: what is needed and what is enough",
+        "duration_minutes": 22,
+        "concept": "Proving impecuniosity requires the claimant to show they could not reasonably have afforded spot hire at the time of the accident. There is no fixed threshold but courts look at the whole picture: income, savings, credit availability, and whether paying upfront would have caused genuine hardship. The evidence must be proportionate to the value of the claim \u2014 demanding six months of bank statements for a \u00a3400 rate dispute is oppressive. The Forum has tracked the growing use of digital bank statement technology as a less intrusive solution.",
+        "content_points": [
+          "What impecuniosity means in practice: the claimant could not have hired at the spot rate from their own resources at the time of the accident",
+          "The evidence typically sought: bank statements, payslips, credit card statements, overdraft limits, evidence of benefits",
+          "The proportionality requirement: evidence demands must be proportionate to the value at stake \u2014 a \u00a3500 rate differential does not justify demanding three months of bank statements",
+          "Income is not the only factor: a claimant earning \u00a330,000 with substantial debts and outgoings may be impecunious; a claimant earning \u00a318,000 with savings may not be",
+          "Credit availability: a claimant with an unused credit card with a \u00a32,000 limit is harder to argue as impecunious; one with a maxed-out card is not",
+          "Self-certification: some CHOs ask claimants to self-certify their financial position; courts give this limited weight without supporting documentary evidence",
+          "The digital bank statement solution: technology now allows claimants to share a read-only view of relevant bank data without producing physical statements \u2014 reducing delay and intrusion",
+          "The threshold question: courts have not set a fixed income or savings figure; the assessment is holistic and fact-specific"
+        ],
+        "scenario": {
+          "text": "Aisha is a home care worker earning \u00a313.50/hour working 25 hours per week (approximately \u00a317,550/year). She has a current account with an average balance of \u00a3180 between paydays. She has a credit card with a \u00a3500 limit that is consistently at 85-90% utilisation. She has no savings. Her car is written off. The CHO rate is \u00a365/day; BHR is \u00a330/day. The insurer demands: 6 months of bank statements, 3 months of payslips, a credit reference report, and a sworn statement of means. Advise.",
+          "teaching_points": [
+            "Aisha's financial profile strongly supports impecuniosity",
+            "The insurer's demand is disproportionate \u2014 this is a relatively modest rate differential",
+            "3 months of bank statements and 1-2 payslips would likely be sufficient",
+            "A credit reference report and sworn statement are excessive for this value",
+            "The learner should advise providing proportionate evidence and challenging the scope of the demand",
+            "The Forum has reported that courts have criticised oppressive disclosure demands in credit hire cases"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A claimant self-certifies that they are impecunious by signing a form stating they could not afford spot hire. The insurer challenges. How much weight will a court likely give to the self-certification alone?",
+          "options": [
+            {
+              "text": "Full weight \u2014 the claimant has confirmed it under their own hand",
+              "correct": false
+            },
+            {
+              "text": "Limited weight \u2014 self-certification without supporting documentary evidence is unlikely to be sufficient; courts expect corroborating financial evidence",
+              "correct": true,
+              "explanation": "Self-certification is a starting point, not a conclusion. Courts expect it to be supported by bank statements, payslips, or other objective evidence of the claimant's financial position."
+            },
+            {
+              "text": "No weight \u2014 impecuniosity can only be proved by bank statements",
+              "correct": false
+            },
+            {
+              "text": "Full weight, unless the insurer produces evidence that the claimant is not impecunious",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s04",
+        "number": 4,
+        "title": "Digital bank statements and the disclosure battleground",
+        "duration_minutes": 20,
+        "concept": "The use of digital bank statement technology \u2014 platforms that allow a claimant to share a read-only, categorised view of their bank transactions \u2014 has emerged as a practical solution to the impecuniosity evidence debate. It reduces delay (no need to request paper statements), reduces intrusion (the claimant controls what is shared), and provides objective data. However, it remains contested. The Forum has covered the evolution of this issue extensively, including the insurer push for more extensive financial disclosure and the courts' increasingly critical response.",
+        "content_points": [
+          "What digital bank statement technology does: connects directly to the claimant's bank via open banking, categorises transactions, and produces a summary or detailed view without sharing account credentials",
+          "The advantage for CHOs: faster impecuniosity evidence, less friction for claimants, more objective than self-certification",
+          "The advantage for claimants: less intrusive than producing paper statements, claimant controls the scope of sharing",
+          "Insurer acceptance: some insurers now accept digital bank statement evidence; others still demand paper statements",
+          "The scope dispute: insurers often demand 3-6 months of full statements; courts have indicated that a shorter period may suffice where the financial position is clear",
+          "What the statements should show: average balances, credit card limits and utilisation, regular income and outgoings, absence of significant savings",
+          "The proportionality principle in CPR: courts expect disclosure requests to be proportionate to the issues and the value of the claim; disproportionate demands may result in adverse costs orders"
+        ],
+        "scenario": {
+          "text": "A CHO uses a digital bank statement platform. The claimant completes the process within 2 hours of instruction, sharing 2 months of current account data. The platform report shows an average balance of \u00a395, consistent income of \u00a31,200/month, no savings account, and a credit card with \u00a3150 available. The insurer says they will not accept the digital statement and demand 6 months of original paper statements and a credit reference report. How should the CHO respond?",
+          "teaching_points": [
+            "The digital statement provides objective, real-time evidence of the claimant's position",
+            "The insurer's refusal to accept it should be challenged \u2014 it is irrational if the data is accurate",
+            "The CHO should assert that the digital evidence is sufficient and proportionate",
+            "If litigation follows, the CHO should flag the proportionality issue to the court",
+            "On these facts \u2014 \u00a395 average balance, no savings, \u00a3150 credit \u2014 impecuniosity is strongly made out regardless of format"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Which of the following best describes the proportionality principle as applied to impecuniosity disclosure demands?",
+          "options": [
+            {
+              "text": "The insurer can demand as much evidence as they wish because proving impecuniosity is the claimant's obligation",
+              "correct": false
+            },
+            {
+              "text": "Evidence demands must be proportionate to the value of the rate differential at stake \u2014 a small rate difference does not justify extensive financial disclosure",
+              "correct": true,
+              "explanation": "CPR proportionality applies to disclosure in credit hire as in all civil litigation. Courts have criticised excessive demands and may penalise them in costs."
+            },
+            {
+              "text": "Only digital bank statements are proportionate \u2014 paper statements cannot be demanded",
+              "correct": false
+            },
+            {
+              "text": "Proportionality only applies in cases worth less than \u00a310,000",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s05",
+        "number": 5,
+        "title": "Insurer tactics: recognising and responding to standard challenges",
+        "duration_minutes": 20,
+        "concept": "Insurers use a range of standard tactics to challenge credit hire claims \u2014 many of which arrive as template letters regardless of the specific facts. Experienced practitioners learn to distinguish genuine challenges (where the insurer has identified a real weakness) from volume tactics (where the challenge is sent as a matter of policy). Understanding the playbook allows the CHO to respond efficiently, prioritise issues, and avoid wasting resources on spurious challenges.",
+        "content_points": [
+          "The template letter: many insurers send standard challenge letters within 24-48 hours of hire notification; these rarely engage with the specific facts and should be treated as tactical until proven otherwise",
+          "Common challenge types: rate challenge (BHR only), period challenge (hire is too long), need challenge (claimant did not need a vehicle), impecuniosity challenge (claimant is not impecunious)",
+          "The 'mitigation offer': the insurer offers their own vehicle at their own rate; the claimant is not obliged to accept but the offer is relevant to what is reasonable",
+          "The notification delay argument: where a CHO notifies the insurer late, the insurer may argue they had no opportunity to mitigate; late notification weakens but does not necessarily defeat the claim",
+          "The 'you should have used public transport' argument: typically spurious unless the claimant's vehicle use was genuinely limited to journeys easily replaceable by public transport",
+          "The fraud flag: insurers occasionally flag claims as potentially fraudulent; this changes the dynamic significantly and requires careful handling",
+          "The Part 36 offer: in litigation, insurers use Part 36 offers to manage costs risk; understanding when to accept and when to press on is a key practitioner skill",
+          "Responding effectively: acknowledge the challenge, address each point factually, provide evidence where available, and identify where the challenge has no merit"
+        ],
+        "scenario": {
+          "text": "A CHO provides a vehicle on day 1. On day 2, the insurer sends a template letter stating: (a) the rate is too high, (b) the claimant should have used public transport, (c) they are investigating liability, and (d) the hire should not exceed 14 days. The claimant is a district nurse who drives to patient homes daily. The repair takes 18 days. Analyse each challenge.",
+          "teaching_points": [
+            "Rate challenge: depends on impecuniosity \u2014 must be assessed on the claimant's financial position",
+            "Public transport: a district nurse who visits patients at home cannot use public transport for her job \u2014 this is a non-starter",
+            "Liability investigation: relevant \u2014 if liability is not admitted, the CHO takes a risk on recovery; but a district nurse in a clear rear-end collision presents low liability risk",
+            "14-day cap: has no legal basis as a unilateral cap; the period depends on facts and reasonable repair time",
+            "The learner should identify this as a template letter with no fact-specific engagement and respond accordingly"
+          ]
+        },
+        "knowledge_check": {
+          "question": "An insurer's challenge letter states the claimant 'should have used public transport'. The claimant is a community midwife who attends home births. How should the CHO respond?",
+          "options": [
+            {
+              "text": "Accept the challenge \u2014 the insurer has raised a valid point about mitigation",
+              "correct": false
+            },
+            {
+              "text": "Reject the challenge as unsustainable on the facts \u2014 a midwife attending home births cannot use public transport for her professional duties; document the claimant's role and respond clearly",
+              "correct": true,
+              "explanation": "The public transport argument is a standard template challenge. On these facts it has no merit and should be rejected promptly with a clear factual explanation."
+            },
+            {
+              "text": "Await the insurer's further evidence before responding",
+              "correct": false
+            },
+            {
+              "text": "Reduce the hire rate as a goodwill gesture",
+              "correct": false
+            }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "pass_mark": 75,
+      "questions": [
+        {
+          "type": "multiple_choice",
+          "question": "What is the 'credit element' in a CHO rate?",
+          "options": [
+            "A profit margin added by the CHO above the market rate",
+            "The cost the CHO incurs by carrying the unpaid hire debt until the claim is settled",
+            "An administrative fee for processing the hire agreement",
+            "A surcharge applied only to impecunious claimants"
+          ],
+          "correct": 1,
+          "explanation": "The credit element reflects the CHO's working capital cost of providing vehicles on deferred payment terms. It is the key component that distinguishes CHO rates from spot hire rates and is recoverable where the claimant needed credit."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A claimant is impecunious under Lagden v O'Brien. The CHO rate is \u00a385/day and the BHR survey shows spot rates of \u00a340-52/day. What rate is most likely recoverable?",
+          "options": [
+            "\u00a352/day \u2014 the highest rate in the BHR survey",
+            "\u00a346/day \u2014 the average of the BHR survey range",
+            "\u00a385/day \u2014 the full CHO rate, because an impecunious claimant needed the credit element",
+            "\u00a340/day \u2014 the lowest available spot rate to minimise cost"
+          ],
+          "correct": 2,
+          "explanation": "Where the claimant is genuinely impecunious, the full CHO rate is recoverable because the claimant could not have hired at the spot rate. BHR evidence is irrelevant when impecuniosity is established."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "An insurer produces a BHR survey for a Transit van hire. The survey was obtained 6 weeks after the hire ended, and two of the three companies surveyed had no branch within 40 miles of the hire location. Which weaknesses should the CHO identify?",
+          "options": [
+            "Only the timing is a weakness; the geographic issue is irrelevant",
+            "Timing (obtained post-hire) and geography (no local branch presence), both of which undermine the reliability of the survey as a true comparator",
+            "The survey is automatically invalid because it was commissioned by the insurer",
+            "Only the geographic issue matters; timing of the survey is not relevant"
+          ],
+          "correct": 1,
+          "explanation": "Both timing and geography are fundamental weaknesses. Rates obtained weeks after the hire may not reflect the market at the time, and companies with no local presence cannot serve as genuine comparators for what the claimant could actually have hired locally."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Which of the following best describes the court's approach to the impecuniosity threshold?",
+          "options": [
+            "Any claimant earning below \u00a325,000 per year is automatically impecunious",
+            "Only claimants on state benefits qualify as impecunious",
+            "There is no fixed threshold; the assessment is holistic, considering income, savings, debts, outgoings, and credit availability",
+            "A claimant with any available credit on a credit card cannot be impecunious"
+          ],
+          "correct": 2,
+          "explanation": "Courts have not set a fixed income or savings threshold for impecuniosity. The assessment looks at the whole financial picture: a claimant earning \u00a330,000 with substantial debts may be impecunious, while one earning \u00a318,000 with savings may not be."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A claimant self-certifies their impecuniosity by signing a form but provides no supporting financial documents. How much weight will a court likely give this?",
+          "options": [
+            "Full weight \u2014 the claimant has confirmed it under their own hand",
+            "Full weight, unless the insurer produces contradictory evidence",
+            "Limited weight \u2014 self-certification without corroborating documentary evidence such as bank statements or payslips is unlikely to be sufficient",
+            "No weight at all \u2014 impecuniosity can only be proved by a credit reference report"
+          ],
+          "correct": 2,
+          "explanation": "Self-certification is a starting point, not a conclusion. Courts expect it to be supported by objective evidence such as bank statements, payslips, or other financial documentation."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "What is the main advantage of digital bank statement technology for impecuniosity evidence?",
+          "options": [
+            "It eliminates the need to prove impecuniosity entirely",
+            "It provides faster, less intrusive, and more objective evidence of the claimant's financial position than paper statements",
+            "It is the only form of evidence that courts will accept",
+            "It automatically determines whether the claimant qualifies as impecunious"
+          ],
+          "correct": 1,
+          "explanation": "Digital bank statement technology connects directly to the claimant's bank via open banking, producing a categorised summary quickly and with less intrusion. It is not the only acceptable form of evidence, but it offers practical advantages over paper statements."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "An insurer sends a template challenge letter within 24 hours of hire notification, raising rate, period, need, and public transport arguments without engaging with the specific facts of the claim. How should the CHO treat this letter?",
+          "options": [
+            "Accept all challenges immediately as the insurer has raised valid points",
+            "Treat it as tactical until the insurer engages with the specific facts; assess each point on its merits and respond factually",
+            "Ignore it entirely as it has no legal significance",
+            "Withdraw the hire immediately to avoid further dispute"
+          ],
+          "correct": 1,
+          "explanation": "Template challenge letters rarely engage with the specific facts and should be treated as tactical. However, they may contain valid points, so each challenge should be assessed on the merits and addressed with evidence where available."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: BHR evidence is relevant to the rate recoverable regardless of whether the claimant is impecunious.",
+          "correct": 1,
+          "explanation": "False. BHR evidence is only relevant where the claimant is NOT impecunious. If the claimant is impecunious under Lagden v O'Brien, the full CHO rate is recoverable and BHR evidence is irrelevant because the claimant could not have hired at the spot rate."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Evidence demands for impecuniosity must be proportionate to the value of the rate differential at stake in the claim.",
+          "correct": 0,
+          "explanation": "True. The CPR proportionality principle applies to disclosure in credit hire litigation. Courts have criticised excessive demands and may penalise them in costs. A small rate difference does not justify demanding extensive financial disclosure."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: CHO rates must reflect the market rate at the time of settlement rather than at the time of hire.",
+          "correct": 1,
+          "explanation": "False. Rates must reflect the market at the time of hire, not at the time of settlement. The rate is a snapshot of the market when the vehicle was actually hired."
+        }
+      ]
+    },
+    "ai_tutor": {
+      "system_prompt_per_section": {
+        "s01": "You are a credit hire training tutor for Section 1 of Module 4: how CHO rates are constructed. The learner is working through a rate dispute scenario \u2014 a \u00a385/day CHO rate vs \u00a338-52/day BHR. Guide them to identify that the first question is always impecuniosity; if established, BHR evidence is irrelevant. Keep responses to 2-4 sentences.",
+        "s02": "You are a credit hire training tutor for Section 2 of Module 4: BHR evidence. The learner is working through a van hire scenario where the BHR survey has timing, geography and availability weaknesses. Guide them to identify all three weaknesses and explain that the CHO should produce counter-evidence. Keep responses to 2-4 sentences.",
+        "s03": "You are a credit hire training tutor for Section 3 of Module 4: impecuniosity evidence. The learner is working through Aisha's scenario \u2014 a home care worker facing a disproportionate disclosure demand. Guide them to advise providing proportionate evidence (shorter period, fewer documents) and challenging the scope of the demand. Keep responses to 2-4 sentences.",
+        "s04": "You are a credit hire training tutor for Section 4 of Module 4: digital bank statements. The learner is working through a scenario where the insurer refuses to accept digital bank statement evidence. Guide them to challenge the insurer's refusal, assert proportionality, and identify that on the specific financial facts impecuniosity is strongly made out. Reference Forum coverage of this issue. Keep responses to 2-4 sentences.",
+        "s05": "You are a credit hire training tutor for Section 5 of Module 4: insurer tactics. The learner is working through a district nurse scenario with a template letter challenging rate, public transport, liability and period. Guide them to identify the template nature of the letter, assess each challenge on the facts, and recognise that the public transport argument is non-existent for a district nurse. Keep responses to 2-4 sentences."
+      }
+    },
+    "further_reading": {
+      "forum_search_queries": [
+        "What has the Forum reported about digital bank statements and impecuniosity evidence?",
+        "Forum posts about disclosure as trench warfare in credit hire",
+        "Find Forum coverage of BHR surveys and rate evidence disputes",
+        "What does the Forum say about proportionality in credit hire disclosure?",
+        "Forum posts about insurer mitigation offers and their effect on claims"
+      ]
+    }
+  }
+}

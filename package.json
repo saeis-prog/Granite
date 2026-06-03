@@ -1,0 +1,13 @@
+{
+  "name": "granite-ask-the-oracle",
+  "version": "0.1.0",
+  "description": "Granite — Ask the Oracle: internal portal for CRASH Services & JMK Solicitors (prototype)",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

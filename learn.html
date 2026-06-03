@@ -1,0 +1,2347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Hire Training - Ask the Oracle</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="brand.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #0f1e3c;
+      --navy-light: #1a2f5e;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --white: #ffffff;
+      --off-white: #f5f6f8;
+      --text: #2d3748;
+      --text-light: #718096;
+      --border: #e2e8f0;
+      --green: #2d7d46;
+      --blue: #3b82f6;
+      --amber: #f59e0b;
+      --purple: #8b5cf6;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background-color: var(--off-white);
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: var(--navy);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--white);
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .btn-nav {
+      background-color: var(--gold) !important;
+      color: var(--navy) !important;
+      padding: 0.5rem 1rem !important;
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+      font-weight: bold;
+    }
+
+    .btn-nav:hover {
+      background-color: var(--gold-light) !important;
+    }
+
+    /* Main content area */
+    main {
+      flex: 1;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* View management */
+    .view {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      flex: 1;
+    }
+
+    .view.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Auth Screen */
+    #authScreen {
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 60px);
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    }
+
+    #authScreen.active {
+      display: flex;
+    }
+
+    .auth-container {
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .auth-title {
+      font-family: Georgia, serif;
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .auth-subtitle {
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    .form-group input {
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background-color: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(201,168,76,0.3);
+    }
+
+    .btn-secondary {
+      background-color: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--navy-light);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--navy);
+      color: var(--white);
+    }
+
+    .auth-error {
+      background-color: #fee;
+      color: #c33;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .auth-error.show {
+      display: block;
+    }
+
+    /* Module Dashboard */
+    #moduleDashboard {
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .dashboard-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .dashboard-title {
+      font-family: Georgia, serif;
+      font-size: 2.5rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .dashboard-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .certification-badges {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .cert-badge {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      min-width: 150px;
+      border: 2px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .cert-badge.locked {
+      opacity: 0.6;
+      background-color: #f9f9f9;
+    }
+
+    .cert-badge.earned {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 100%);
+    }
+
+    .cert-badge-name {
+      font-weight: bold;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-badge-progress {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .cert-checkmark {
+      color: var(--gold);
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .module-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .module-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .module-card.locked {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .module-card.locked:hover {
+      transform: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .module-lock {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: var(--text-light);
+      font-size: 1.5rem;
+    }
+
+    .level-badge {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .level-foundation {
+      background-color: var(--blue);
+    }
+
+    .level-operations {
+      background-color: var(--amber);
+    }
+
+    .level-advanced {
+      background-color: var(--purple);
+    }
+
+    .module-title {
+      font-family: Georgia, serif;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .module-duration {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .progress-bar {
+      background-color: var(--border);
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .progress-fill {
+      background-color: var(--gold);
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .module-card .btn {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    /* Module Detail View */
+    #moduleDetail {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .detail-header {
+      margin-bottom: 2rem;
+    }
+
+    .back-button {
+      background: none;
+      border: none;
+      color: var(--navy);
+      cursor: pointer;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      text-decoration: underline;
+      padding: 0;
+    }
+
+    .back-button:hover {
+      color: var(--gold);
+    }
+
+    .detail-title {
+      font-family: Georgia, serif;
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .detail-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .learning-objectives {
+      background: var(--off-white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      border-left: 4px solid var(--gold);
+    }
+
+    .learning-objectives h3 {
+      color: var(--navy);
+      margin-bottom: 1rem;
+      font-family: Georgia, serif;
+    }
+
+    .learning-objectives ol {
+      margin-left: 1.5rem;
+      color: var(--text);
+    }
+
+    .learning-objectives li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+
+    .sections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .section-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-color: var(--gold);
+    }
+
+    .section-number {
+      display: inline-block;
+      background-color: var(--navy);
+      color: var(--white);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-duration {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-complete {
+      color: var(--green);
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .assessment-button {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .assessment-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .further-reading {
+      background: var(--off-white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--gold);
+    }
+
+    .further-reading h3 {
+      color: var(--navy);
+      margin-bottom: 1rem;
+      font-family: Georgia, serif;
+    }
+
+    .forum-queries {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .forum-query {
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 4px;
+      border-left: 3px solid var(--gold);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .forum-query:hover {
+      transform: translateX(4px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .forum-query a {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .forum-query a:hover {
+      color: var(--gold);
+    }
+
+    /* Section Reader View */
+    #sectionReader {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .reader-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .reader-sidebar {
+      width: 35%;
+      min-width: 300px;
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .reader-section-header {
+      margin-bottom: 2rem;
+    }
+
+    .reader-section-number {
+      display: inline-block;
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .reader-section-title {
+      font-family: Georgia, serif;
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .concept-card {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .concept-card strong {
+      color: var(--gold);
+    }
+
+    .content-points {
+      margin-bottom: 2rem;
+    }
+
+    .content-points h3 {
+      color: var(--navy);
+      font-family: Georgia, serif;
+      margin-bottom: 1rem;
+    }
+
+    .content-points ul {
+      list-style: none;
+    }
+
+    .content-points li {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      position: relative;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .content-points li:before {
+      content: "●";
+      color: var(--gold);
+      position: absolute;
+      left: 0;
+    }
+
+    .scenario-box {
+      background-color: var(--off-white);
+      padding: 1.5rem;
+      border-left: 4px solid var(--gold);
+      border-radius: 4px;
+      margin-bottom: 2rem;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .scenario-box h4 {
+      color: var(--navy);
+      font-style: normal;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .knowledge-check {
+      background: var(--white);
+      padding: 1.5rem;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .knowledge-check h4 {
+      color: var(--navy);
+      margin-bottom: 1rem;
+      font-family: Georgia, serif;
+    }
+
+    .knowledge-check-question {
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .knowledge-check-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .knowledge-check-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+    }
+
+    .knowledge-check-option input[type="radio"] {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--gold);
+    }
+
+    .knowledge-check-option label {
+      cursor: pointer;
+      flex: 1;
+      color: var(--text);
+    }
+
+    .knowledge-check-button {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .knowledge-check-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .knowledge-check-feedback {
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .knowledge-check-feedback.show {
+      display: block;
+    }
+
+    .feedback-correct {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .feedback-incorrect {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .feedback-checkmark {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .reader-nav {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .reader-nav .btn {
+      flex: 1;
+    }
+
+    .back-to-module {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .back-to-module:hover {
+      color: var(--gold);
+    }
+
+    /* AI Tutor Sidebar */
+    .tutor-header {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 1.5rem;
+      border-radius: 8px 8px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .tutor-header-icon {
+      font-size: 1.5rem;
+    }
+
+    .tutor-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .tutor-message {
+      display: flex;
+      gap: 0.75rem;
+      animation: slideIn 0.3s ease;
+    }
+
+    .tutor-message.tutor-msg {
+      flex-direction: row;
+    }
+
+    .tutor-message.user-msg {
+      flex-direction: row-reverse;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message-bubble {
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      max-width: 85%;
+      word-wrap: break-word;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .tutor-message.tutor-msg .message-bubble {
+      background-color: var(--navy);
+      color: var(--white);
+    }
+
+    .tutor-message.user-msg .message-bubble {
+      background-color: var(--gold);
+      color: var(--navy);
+    }
+
+    .tutor-input {
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .tutor-exchange-count {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      text-align: right;
+    }
+
+    .tutor-textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      resize: vertical;
+      min-height: 60px;
+      transition: border-color 0.3s ease;
+    }
+
+    .tutor-textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+    }
+
+    .tutor-button {
+      width: 100%;
+    }
+
+    /* Assessment View */
+    #assessmentView {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .assessment-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .assessment-title {
+      font-family: Georgia, serif;
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .assessment-counter {
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .assessment-container {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .assessment-question {
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .assessment-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .assessment-option {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .assessment-option:hover {
+      border-color: var(--gold);
+      background-color: rgba(201,168,76,0.05);
+    }
+
+    .assessment-option input[type="radio"],
+    .assessment-option input[type="checkbox"] {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      accent-color: var(--gold);
+    }
+
+    .assessment-option label {
+      flex: 1;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .assessment-option.selected {
+      border-color: var(--gold);
+      background-color: rgba(201,168,76,0.1);
+    }
+
+    .assessment-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .assessment-buttons .btn {
+      flex: 1;
+    }
+
+    .assessment-feedback {
+      background: var(--off-white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+      border-left: 4px solid var(--gold);
+      display: none;
+    }
+
+    .assessment-feedback.show {
+      display: block;
+    }
+
+    .assessment-feedback.correct {
+      border-left-color: var(--green);
+      background-color: #d4edda;
+    }
+
+    .assessment-feedback.incorrect {
+      border-left-color: #dc3545;
+      background-color: #f8d7da;
+    }
+
+    .assessment-feedback-label {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .assessment-feedback.correct .assessment-feedback-label {
+      color: #155724;
+    }
+
+    .assessment-feedback.incorrect .assessment-feedback-label {
+      color: #721c24;
+    }
+
+    .assessment-feedback-explanation {
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .assessment-results {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: var(--white);
+      border-radius: 8px;
+      margin-top: 2rem;
+      display: none;
+    }
+
+    .assessment-results.show {
+      display: block;
+    }
+
+    .assessment-results-score {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--gold);
+    }
+
+    .assessment-results-label {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .assessment-results-breakdown {
+      background: rgba(255,255,255,0.1);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .assessment-results-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .assessment-results-pass {
+      color: var(--green);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .assessment-results-fail {
+      color: #ff6b6b;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .certificate-notification {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 2rem;
+      display: none;
+    }
+
+    .certificate-notification.show {
+      display: block;
+    }
+
+    .certificate-notification-title {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .certificate-notification-checkmark {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: popIn 0.6s ease;
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Certification View */
+    #certificationView {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .cert-view-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .cert-view-title {
+      font-family: Georgia, serif;
+      font-size: 2.5rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-view-subtitle {
+      color: var(--text-light);
+      font-size: 1.05rem;
+    }
+
+    .cert-tiers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .cert-tier-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border: 3px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cert-tier-card.earned {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(201,168,76,0.3);
+    }
+
+    .cert-tier-card.locked {
+      opacity: 0.6;
+      background-color: #f9f9f9;
+    }
+
+    .cert-tier-badge {
+      display: inline-block;
+      padding: 0.6rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+      color: var(--white);
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .cert-tier-foundation {
+      background-color: var(--blue);
+    }
+
+    .cert-tier-practitioner {
+      background-color: var(--amber);
+    }
+
+    .cert-tier-advanced {
+      background-color: var(--purple);
+    }
+
+    .cert-tier-name {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cert-tier-checkmark {
+      color: var(--gold);
+      font-size: 1.3rem;
+    }
+
+    .cert-tier-description {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .cert-tier-modules {
+      background: var(--off-white);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+    }
+
+    .cert-tier-modules-title {
+      font-weight: bold;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .cert-tier-modules ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .cert-tier-modules li {
+      padding: 0.25rem 0;
+    }
+
+    .cert-tier-date {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      #sectionReader {
+        flex-direction: column;
+      }
+
+      .reader-sidebar {
+        width: 100%;
+        min-width: unset;
+        max-height: 400px;
+      }
+
+      .modules-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      main {
+        margin-top: 120px;
+      }
+
+      .dashboard-title {
+        font-size: 1.8rem;
+      }
+
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .certification-badges {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .detail-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .sections-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reader-main {
+        flex: 1;
+      }
+
+      .reader-sidebar {
+        max-height: 300px;
+      }
+
+      .tutor-messages {
+        max-height: 250px;
+      }
+
+      #sectionReader {
+        padding: 1rem;
+      }
+
+      .auth-container {
+        margin: 1rem;
+        width: calc(100% - 2rem);
+        max-width: none;
+      }
+
+      .assessment-options {
+        gap: 0.75rem;
+      }
+
+      .assessment-option {
+        padding: 0.75rem;
+      }
+
+      .cert-tiers {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Loading spinner */
+    .spinner {
+      border: 4px solid var(--border);
+      border-top: 4px solid var(--gold);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 0.8s linear infinite;
+      margin: 2rem auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Error message */
+    .error-message {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* Success message */
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      border: 1px solid #c3e6cb;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo">Ask the <span>Oracle</span></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="app.html">Research</a>
+      <a href="learn.html" style="color: var(--gold)">Learn</a>
+      <a href="#" onclick="signOut()" class="btn-nav">Sign Out</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Auth Screen -->
+    <div id="authScreen" class="view">
+      <div class="auth-container">
+        <h1 class="auth-title">Ask the Oracle</h1>
+        <p class="auth-subtitle">Training Module</p>
+        <div class="auth-error" id="authError"></div>
+        <form class="auth-form" onsubmit="handleSignIn(event)">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required placeholder="••••••••">
+          </div>
+          <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+        <p style="text-align: center; margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem;">
+          Demo mode available - use demo credentials or Supabase auth
+        </p>
+      </div>
+    </div>
+
+    <!-- Module Dashboard -->
+    <div id="moduleDashboard" class="view">
+      <div class="dashboard-header">
+        <h1 class="dashboard-title">Credit Hire Training Programme</h1>
+        <p class="dashboard-subtitle">Foundation to Advanced — 10 modules, 16 hours, 3 certification tiers</p>
+        <div class="certification-badges" id="certBadges"></div>
+      </div>
+      <div class="modules-grid" id="modulesGrid"></div>
+    </div>
+
+    <!-- Module Detail -->
+    <div id="moduleDetail" class="view">
+      <div class="detail-header">
+        <button class="back-button" onclick="showModuleDashboard()">← Back to Modules</button>
+        <h1 class="detail-title" id="detailTitle"></h1>
+        <div class="detail-meta" id="detailMeta"></div>
+      </div>
+      <div class="learning-objectives" id="learningObjectives"></div>
+      <div class="sections-grid" id="sectionsGrid"></div>
+      <button class="btn btn-secondary assessment-button" id="assessmentBtn" onclick="startAssessment()">Take Assessment</button>
+      <div class="further-reading" id="furtherReading"></div>
+    </div>
+
+    <!-- Section Reader -->
+    <div id="sectionReader" class="view">
+      <div class="reader-main">
+        <div class="reader-section-header">
+          <span class="reader-section-number" id="sectionNumber"></span>
+          <h2 class="reader-section-title" id="sectionTitle"></h2>
+        </div>
+        <div class="concept-card" id="conceptCard"></div>
+        <div class="content-points" id="contentPoints"></div>
+        <div class="scenario-box" id="scenarioBox"></div>
+        <div class="knowledge-check" id="knowledgeCheck"></div>
+        <div class="reader-nav">
+          <button class="btn btn-secondary" onclick="previousSection()" id="prevBtn">← Previous Section</button>
+          <button class="btn btn-primary" onclick="nextSection()" id="nextBtn">Next Section →</button>
+        </div>
+        <a class="back-to-module" href="#" onclick="backToModule(event)">← Back to Module</a>
+      </div>
+      <div class="reader-sidebar">
+        <div class="tutor-header">
+          <span class="tutor-header-icon">🎓</span>
+          <span>AI Tutor</span>
+        </div>
+        <div class="tutor-messages" id="tutorMessages"></div>
+        <div class="tutor-input">
+          <div class="tutor-exchange-count" id="exchangeCount"></div>
+          <textarea class="tutor-textarea" id="tutorInput" placeholder="Ask your question..."></textarea>
+          <button class="btn btn-primary tutor-button" onclick="sendTutorMessage()">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assessment -->
+    <div id="assessmentView" class="view">
+      <div class="assessment-header">
+        <h1 class="assessment-title" id="assessmentTitle">Module Assessment</h1>
+        <div class="assessment-counter" id="assessmentCounter"></div>
+      </div>
+      <div class="assessment-container">
+        <div class="assessment-question" id="assessmentQuestion"></div>
+        <div class="assessment-options" id="assessmentOptions"></div>
+        <div class="assessment-feedback" id="assessmentFeedback"></div>
+        <div class="assessment-buttons" id="assessmentButtons"></div>
+        <div class="assessment-results" id="assessmentResults"></div>
+        <div class="certificate-notification" id="certificateNotification"></div>
+        <button class="btn btn-secondary" id="returnBtn" onclick="returnFromAssessment()" style="display:none; width: 100%; margin-top: 2rem;">Return to Module</button>
+      </div>
+    </div>
+
+    <!-- Certification -->
+    <div id="certificationView" class="view">
+      <div class="cert-view-header">
+        <h1 class="cert-view-title">Your Certifications</h1>
+        <p class="cert-view-subtitle">Track your learning journey across three certification tiers</p>
+      </div>
+      <div class="cert-tiers" id="certTiers"></div>
+    </div>
+  </main>
+
+  <script>
+    // Global state
+    let supabaseClient = null;
+    let currentUser = null;
+    let trainingIndex = null;
+    let currentModule = null;
+    let currentModuleId = null;
+    let currentSection = null;
+    let currentSectionIndex = 0;
+    let conversationHistory = [];
+    let exchangeCount = 0;
+    let assessmentState = null;
+    let currentQuestion = 0;
+    let assessmentAnswers = [];
+
+    const configured = typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL && !SUPABASE_URL.includes('your-project');
+    if (configured) {
+      supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
+
+    // Authenticated corpus fetch helper
+    async function fetchCorpus(filename) {
+      const headers = {};
+      if (supabaseClient) {
+        try {
+          const { data: { session } } = await supabaseClient.auth.getSession();
+          if (session?.access_token) headers['Authorization'] = 'Bearer ' + session.access_token;
+        } catch (_) {}
+      }
+      return fetch('/api/corpus?file=' + encodeURIComponent(filename), { headers });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (configured && supabaseClient) {
+        const { data: { session } } = await supabaseClient.auth.getSession();
+        if (session) {
+          enterDashboard(session.user);
+        } else {
+          showAuthScreen();
+        }
+        supabaseClient.auth.onAuthStateChange((event, session) => {
+          if (session) {
+            currentUser = session.user;
+            enterDashboard(session.user);
+          }
+        });
+      } else {
+        // Demo mode
+        enterDashboard({ email: 'demo@Ask the Oracle', user_metadata: { name: 'Demo User' } });
+      }
+    });
+
+    // ==================== AUTH ====================
+    function showAuthScreen() {
+      showView('authScreen');
+    }
+
+    async function handleSignIn(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const errorEl = document.getElementById('authError');
+
+      if (!configured || !supabaseClient) {
+        errorEl.textContent = 'Authentication not configured. Use demo mode.';
+        errorEl.classList.add('show');
+        return;
+      }
+
+      try {
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        if (error) {
+          errorEl.textContent = error.message;
+          errorEl.classList.add('show');
+        } else {
+          currentUser = data.user;
+          enterDashboard(data.user);
+        }
+      } catch (err) {
+        errorEl.textContent = err.message;
+        errorEl.classList.add('show');
+      }
+    }
+
+    async function signOut() {
+      if (configured && supabaseClient) {
+        await supabaseClient.auth.signOut();
+      }
+      showAuthScreen();
+      document.getElementById('email').value = '';
+      document.getElementById('password').value = '';
+    }
+
+    // ==================== VIEWS ====================
+    function showView(viewId) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById(viewId).classList.add('active');
+    }
+
+    async function enterDashboard(user) {
+      currentUser = user;
+      showView('moduleDashboard');
+      await loadAllProgress();
+      await loadModuleDashboard();
+      // Log page visit to activity_logs so the dashboard can track Learn usage
+      logLearnActivity('tab_view', { tab_name: 'learn' });
+    }
+
+    async function logLearnActivity(type, data) {
+      if (!supabaseClient || !currentUser || !currentUser.id) return;
+      try {
+        await supabaseClient.from('activity_logs').insert({
+          user_id:       currentUser.id,
+          user_email:    currentUser.email,
+          activity_type: type,
+          ...data
+        });
+      } catch(e) { /* silent */ }
+    }
+
+    // ==================== MODULE DASHBOARD ====================
+    async function loadModuleDashboard() {
+      try {
+        const indexResp = await fetchCorpus('learn/training-index.json');
+        const indexData = await indexResp.json();
+        trainingIndex = indexData.programme || indexData;
+
+        // Render cert badges
+        renderCertBadges();
+
+        // Render modules
+        renderModules();
+      } catch (err) {
+        console.error('Error loading training index:', err);
+        document.getElementById('modulesGrid').innerHTML = '<div class="error-message">Error loading modules. Please check that learn/training-index.json exists.</div>';
+      }
+    }
+
+    function renderCertBadges() {
+      const badges = document.getElementById('certBadges');
+      badges.innerHTML = '';
+
+      const tiers = [
+        { name: 'Foundation', progress: getFoundationProgress() },
+        { name: 'Practitioner', progress: getPractitionerProgress() },
+        { name: 'Advanced', progress: getAdvancedProgress() }
+      ];
+
+      tiers.forEach(tier => {
+        const earned = tier.progress.completed;
+        const certEl = document.createElement('div');
+        certEl.className = `cert-badge ${earned ? 'earned' : 'locked'}`;
+        certEl.innerHTML = `
+          <div class="cert-badge-name">${tier.name}</div>
+          <div class="cert-badge-progress">${tier.progress.current}/${tier.progress.total} modules</div>
+          ${earned ? '<div class="cert-checkmark">✓</div>' : ''}
+        `;
+        badges.appendChild(certEl);
+      });
+    }
+
+    // TEMPORARY: Only show Module 1 to regular users. Admin sees all.
+    // Remove this array or set to [] to unlock all modules for everyone.
+    const ADMIN_EMAILS = ['sae@credithire.org.uk', 'saeis@icloud.com'];
+    const VISIBLE_MODULE_COUNT = 10; // All modules available
+
+    function isAdmin() {
+      return currentUser && ADMIN_EMAILS.includes(currentUser.email?.toLowerCase());
+    }
+
+    function renderModules() {
+      const grid = document.getElementById('modulesGrid');
+      grid.innerHTML = '';
+
+      if (!trainingIndex || !trainingIndex.modules) {
+        grid.innerHTML = '<div class="error-message">No modules found.</div>';
+        return;
+      }
+
+      trainingIndex.modules.forEach((moduleInfo, index) => {
+        // Skip modules beyond the visible count unless admin
+        if (!isAdmin() && index >= VISIBLE_MODULE_COUNT) return;
+        const progress = getProgress(moduleInfo.id);
+        const isLocked = index > 0 && !isModuleUnlocked(index);
+
+        const card = document.createElement('div');
+        card.className = `module-card ${isLocked ? 'locked' : ''}`;
+        card.onclick = () => !isLocked && showModuleDetail(moduleInfo.id);
+
+        const levelClass = `level-${moduleInfo.level.toLowerCase()}`;
+        const sectionsCompleted = progress.sectionsComplete.length;
+        const totalSections = 5;
+        const progressPercent = (sectionsCompleted / totalSections) * 100;
+
+        card.innerHTML = `
+          ${isLocked ? '<div class="module-lock">🔒</div>' : ''}
+          <span class="level-badge ${levelClass}">${moduleInfo.level}</span>
+          <h3 class="module-title">${moduleInfo.title}</h3>
+          <p class="module-duration">⏱ ${moduleInfo.duration_minutes} mins</p>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${progressPercent}%"></div>
+          </div>
+          <p class="progress-text">${sectionsCompleted}/${totalSections} sections</p>
+          <button class="btn btn-primary">${progress.started ? 'Continue' : 'Start'}</button>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    function isModuleUnlocked(moduleIndex) {
+      if (moduleIndex === 0) return true;
+      const prevModule = trainingIndex.modules[moduleIndex - 1];
+      const prevProgress = getProgress(prevModule.id);
+      return prevProgress.sectionsComplete.length === 5;
+    }
+
+    function getFoundationProgress() {
+      const modules = trainingIndex.modules.filter(m => m.level === 'Foundation');
+      let completed = 0;
+      modules.forEach(m => {
+        const p = getProgress(m.id);
+        if (p.certificateEarned) completed++;
+      });
+      return { current: completed, total: modules.length, completed: completed === modules.length };
+    }
+
+    function getPractitionerProgress() {
+      const modules = trainingIndex.modules.filter(m => m.level === 'Operations');
+      let completed = 0;
+      modules.forEach(m => {
+        const p = getProgress(m.id);
+        if (p.certificateEarned) completed++;
+      });
+      return { current: completed, total: modules.length, completed: completed === modules.length };
+    }
+
+    function getAdvancedProgress() {
+      const modules = trainingIndex.modules.filter(m => m.level === 'Advanced');
+      let completed = 0;
+      modules.forEach(m => {
+        const p = getProgress(m.id);
+        if (p.certificateEarned) completed++;
+      });
+      return { current: completed, total: modules.length, completed: completed === modules.length };
+    }
+
+    // ==================== MODULE DETAIL ====================
+    async function showModuleDetail(moduleId) {
+      currentModuleId = moduleId;
+      showView('moduleDetail');
+
+      try {
+        const moduleInfo = trainingIndex.modules.find(m => m.id === moduleId);
+        const moduleResp = await fetchCorpus(`learn/${moduleInfo.file}`);
+        const moduleData = await moduleResp.json();
+        currentModule = moduleData.module || moduleData;
+
+        renderModuleDetail();
+      } catch (err) {
+        console.error('Error loading module:', err);
+      }
+    }
+
+    function renderModuleDetail() {
+      document.getElementById('detailTitle').textContent = currentModule.title;
+
+      const levelClass = `level-${currentModule.level.toLowerCase()}`;
+      document.getElementById('detailMeta').innerHTML = `
+        <span class="level-badge ${levelClass}">${currentModule.level}</span>
+        <span>⏱ ${currentModule.duration_minutes} mins</span>
+      `;
+
+      const objsHtml = currentModule.learning_objectives.map(obj => `<li>${typeof obj === 'string' ? obj : obj.text}</li>`).join('');
+      document.getElementById('learningObjectives').innerHTML = `
+        <h3>Learning Objectives</h3>
+        <ol>${objsHtml}</ol>
+      `;
+
+      const sectionsGrid = document.getElementById('sectionsGrid');
+      sectionsGrid.innerHTML = '';
+      currentModule.sections.forEach((section, idx) => {
+        const progress = getProgress(currentModuleId);
+        const isComplete = progress.sectionsComplete.includes(section.id);
+
+        const card = document.createElement('div');
+        card.className = 'section-card';
+        card.onclick = () => showSectionReader(idx);
+        card.innerHTML = `
+          <div class="section-number">${idx + 1}</div>
+          <h3 class="section-title">${section.title}</h3>
+          <p class="section-duration">⏱ ${section.duration || '15 mins'}</p>
+          ${isComplete ? '<p class="section-complete">✓ Complete</p>' : ''}
+        `;
+        sectionsGrid.appendChild(card);
+      });
+
+      const progress = getProgress(currentModuleId);
+      const allComplete = progress.sectionsComplete.length === currentModule.sections.length;
+      document.getElementById('assessmentBtn').disabled = !allComplete;
+
+      const fr = currentModule.further_reading;
+      let frHtml = '';
+
+      if (fr) {
+        // Cases
+        const cases = fr.cases || [];
+        if (cases.length) {
+          frHtml += '<h4 style="margin:0 0 8px;">Key Cases</h4>';
+          frHtml += cases.map(c => {
+            const name = typeof c === 'string' ? c : (c.name || c.citation);
+            const summaryText = typeof c === 'object' ? (c.summary || c.significance || '') : '';
+            const summary = summaryText ? `<div style="font-size:0.85rem;color:#666;margin-top:4px;">${summaryText}</div>` : '';
+            return `<div class="forum-query"><strong>${name}</strong>${summary}</div>`;
+          }).join('');
+        }
+
+        // Forum search queries
+        const queries = fr.forum_search_queries || [];
+        if (queries.length) {
+          frHtml += '<h4 style="margin:12px 0 8px;">Suggested Searches</h4>';
+          frHtml += queries.map(q => {
+            const term = typeof q === 'string' ? q : q.search_term;
+            return `<div class="forum-query"><a href="app.html?q=${encodeURIComponent(term)}" target="_blank">${term}</a></div>`;
+          }).join('');
+        }
+      }
+
+      if (frHtml) {
+        document.getElementById('furtherReading').innerHTML = `
+          <h3>Further Reading</h3>
+          ${frHtml}
+        `;
+      } else {
+        document.getElementById('furtherReading').innerHTML = '';
+      }
+    }
+
+    function showModuleDashboard() {
+      showView('moduleDashboard');
+    }
+
+    // ==================== SECTION READER ====================
+    async function showSectionReader(sectionIndex) {
+      currentSectionIndex = sectionIndex;
+      currentSection = currentModule.sections[sectionIndex];
+      conversationHistory = [];
+      exchangeCount = 0;
+
+      showView('sectionReader');
+      renderSectionReader();
+
+      // Initialize AI tutor
+      const tutorMessages = document.getElementById('tutorMessages');
+      tutorMessages.innerHTML = '';
+      const initialMsg = document.createElement('div');
+      initialMsg.className = 'tutor-message tutor-msg';
+      const bubble = document.createElement('div');
+      bubble.className = 'message-bubble';
+      const scenario = currentSection.scenario?.text || 'Let us explore this section together.';
+      bubble.textContent = `Welcome to this section! Let's explore the scenario together. ${scenario} What's your initial analysis?`;
+      initialMsg.appendChild(bubble);
+      tutorMessages.appendChild(initialMsg);
+
+      markSectionComplete();
+      updateProgress();
+    }
+
+    function renderSectionReader() {
+      document.getElementById('sectionNumber').textContent = `Section ${currentSectionIndex + 1}`;
+      document.getElementById('sectionTitle').textContent = currentSection.title;
+
+      const conceptCard = document.getElementById('conceptCard');
+      conceptCard.textContent = currentSection.concept?.text || '';
+
+      const cpHtml = (currentSection.content_points || []).map(p => `<li>${p}</li>`).join('');
+      document.getElementById('contentPoints').innerHTML = cpHtml ? `<h3>Key Points</h3><ul>${cpHtml}</ul>` : '';
+
+      const scenarioBox = document.getElementById('scenarioBox');
+      if (currentSection.scenario) {
+        scenarioBox.innerHTML = `
+          <h4>Scenario</h4>
+          <p>${currentSection.scenario.text}</p>
+        `;
+        scenarioBox.style.display = 'block';
+      } else {
+        scenarioBox.style.display = 'none';
+      }
+
+      renderKnowledgeCheck();
+
+      document.getElementById('prevBtn').style.display = currentSectionIndex === 0 ? 'none' : 'block';
+      document.getElementById('nextBtn').textContent = currentSectionIndex === currentModule.sections.length - 1 ? 'Complete Module →' : 'Next Section →';
+    }
+
+    function renderKnowledgeCheck() {
+      const kc = currentSection.knowledge_check;
+      if (!kc) return;
+
+      const kcEl = document.getElementById('knowledgeCheck');
+      kcEl.innerHTML = `
+        <h4>Knowledge Check</h4>
+        <div class="knowledge-check-question">${kc.question}</div>
+        <div class="knowledge-check-options">
+          ${kc.options.map((opt, idx) => `
+            <div class="knowledge-check-option">
+              <input type="radio" name="kc-answer" value="${idx}" id="kc-${idx}">
+              <label for="kc-${idx}">${typeof opt === 'string' ? opt : opt.text}</label>
+            </div>
+          `).join('')}
+        </div>
+        <button class="btn btn-primary knowledge-check-button" onclick="checkKnowledge()">Check Answer</button>
+        <div class="knowledge-check-feedback" id="kcFeedback"></div>
+      `;
+    }
+
+    function checkKnowledge() {
+      const kc = currentSection.knowledge_check;
+      const selected = document.querySelector('input[name="kc-answer"]:checked');
+
+      if (!selected) {
+        alert('Please select an answer');
+        return;
+      }
+
+      const selectedIdx = parseInt(selected.value);
+      const selectedOpt = kc.options[selectedIdx];
+      const isCorrect = typeof selectedOpt === 'object' ? selectedOpt.correct === true : selectedIdx === kc.correct_option;
+      const explanation = typeof selectedOpt === 'object' ? selectedOpt.explanation : kc.explanation;
+      const feedback = document.getElementById('kcFeedback');
+
+      feedback.className = `knowledge-check-feedback show ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}`;
+      feedback.innerHTML = `
+        <div class="feedback-checkmark">${isCorrect ? '✓' : '✗'}</div>
+        <strong>${isCorrect ? 'Correct!' : 'Incorrect'}</strong>
+        <p>${explanation || ''}</p>
+      `;
+
+      document.querySelectorAll('input[name="kc-answer"]').forEach(r => r.disabled = true);
+      document.querySelector('.knowledge-check-button').disabled = true;
+    }
+
+    function markSectionComplete() {
+      const progress = getProgress(currentModuleId);
+      if (!progress.sectionsComplete.includes(currentSection.id)) {
+        progress.sectionsComplete.push(currentSection.id);
+        saveProgress(currentModuleId, progress);
+      }
+    }
+
+    async function sendTutorMessage() {
+      const input = document.getElementById('tutorInput');
+      const text = input.value.trim();
+
+      if (!text) return;
+
+      // Add user message
+      const tutorMessages = document.getElementById('tutorMessages');
+      const userMsg = document.createElement('div');
+      userMsg.className = 'tutor-message user-msg';
+      const bubble = document.createElement('div');
+      bubble.className = 'message-bubble';
+      bubble.textContent = text;
+      userMsg.appendChild(bubble);
+      tutorMessages.appendChild(userMsg);
+
+      conversationHistory.push({ role: 'user', content: text });
+      input.value = '';
+      exchangeCount++;
+      updateExchangeCount();
+      tutorMessages.scrollTop = tutorMessages.scrollHeight;
+
+      // Get tutor response
+      try {
+        // Build auth headers for tutor API
+        const tutorHeaders = { 'Content-Type': 'application/json' };
+        if (supabaseClient) {
+          try {
+            const { data: { session: s } } = await supabaseClient.auth.getSession();
+            if (s?.access_token) tutorHeaders['Authorization'] = 'Bearer ' + s.access_token;
+          } catch (_) {}
+        }
+        const response = await fetch('/api/tutor', {
+          method: 'POST',
+          headers: tutorHeaders,
+          body: JSON.stringify({
+            system_prompt: currentModule.ai_tutor?.system_prompt_per_section?.[currentSection.id] || 'You are a helpful tutor.',
+            scenario: currentSection.scenario?.text || '',
+            messages: conversationHistory,
+            exchange_count: exchangeCount
+          })
+        });
+
+        const data = await response.json();
+        const tutorReply = data.response || 'I encountered an issue processing your question. Please try again.';
+
+        // Add tutor message
+        const tutorMsg = document.createElement('div');
+        tutorMsg.className = 'tutor-message tutor-msg';
+        const bubble2 = document.createElement('div');
+        bubble2.className = 'message-bubble';
+        bubble2.textContent = tutorReply;
+        tutorMsg.appendChild(bubble2);
+        tutorMessages.appendChild(tutorMsg);
+
+        conversationHistory.push({ role: 'assistant', content: tutorReply });
+        tutorMessages.scrollTop = tutorMessages.scrollHeight;
+
+        if (exchangeCount >= 8) {
+          const summaryMsg = document.createElement('div');
+          summaryMsg.className = 'tutor-message tutor-msg';
+          const summaryBubble = document.createElement('div');
+          summaryBubble.className = 'message-bubble';
+          summaryBubble.textContent = 'We\'ve had a good discussion. This is a great point to summarize: you\'ve learned about the key concepts and how they apply to the scenario. Feel free to continue asking questions or move to the next section!';
+          summaryMsg.appendChild(summaryBubble);
+          tutorMessages.appendChild(summaryMsg);
+        }
+      } catch (err) {
+        console.error('Tutor error:', err);
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'tutor-message tutor-msg';
+        const errorBubble = document.createElement('div');
+        errorBubble.className = 'message-bubble';
+        errorBubble.textContent = 'I encountered an issue. Please try again.';
+        errorMsg.appendChild(errorBubble);
+        tutorMessages.appendChild(errorMsg);
+      }
+    }
+
+    function updateExchangeCount() {
+      document.getElementById('exchangeCount').textContent = `Exchange ${exchangeCount}/8`;
+    }
+
+    function nextSection() {
+      if (currentSectionIndex < currentModule.sections.length - 1) {
+        showSectionReader(currentSectionIndex + 1);
+      } else {
+        showModuleDetail(currentModuleId);
+      }
+    }
+
+    function previousSection() {
+      if (currentSectionIndex > 0) {
+        showSectionReader(currentSectionIndex - 1);
+      }
+    }
+
+    function backToModule(e) {
+      e.preventDefault();
+      showModuleDetail(currentModuleId);
+    }
+
+    function updateProgress() {
+      const progress = getProgress(currentModuleId);
+      progress.started = true;
+      saveProgress(currentModuleId, progress);
+      renderModules();
+    }
+
+    // ==================== ASSESSMENT ====================
+    async function startAssessment() {
+      showView('assessmentView');
+      const moduleInfo = trainingIndex.modules.find(m => m.id === currentModuleId);
+      document.getElementById('assessmentTitle').textContent = `Module Assessment — ${currentModule.title}`;
+
+      assessmentState = currentModule.assessment || { questions: [] };
+      assessmentAnswers = new Array(assessmentState.questions.length).fill(null);
+      currentQuestion = 0;
+
+      renderAssessmentQuestion();
+    }
+
+    function renderAssessmentQuestion() {
+      const q = assessmentState.questions[currentQuestion];
+      document.getElementById('assessmentCounter').textContent = `Question ${currentQuestion + 1} of ${assessmentState.questions.length}`;
+      document.getElementById('assessmentQuestion').textContent = q.question;
+
+      const optionsEl = document.getElementById('assessmentOptions');
+      optionsEl.innerHTML = '';
+
+      if (q.type === 'true_false') {
+        ['True', 'False'].forEach((opt, idx) => {
+          const label = document.createElement('label');
+          label.className = 'assessment-option';
+          label.innerHTML = `
+            <input type="radio" name="assessment-answer" value="${idx}">
+            <span>${opt}</span>
+          `;
+          optionsEl.appendChild(label);
+        });
+      } else {
+        q.options.forEach((opt, idx) => {
+          const label = document.createElement('label');
+          label.className = 'assessment-option';
+          label.innerHTML = `
+            <input type="radio" name="assessment-answer" value="${idx}">
+            <span>${opt}</span>
+          `;
+          optionsEl.appendChild(label);
+        });
+      }
+
+      document.getElementById('assessmentFeedback').classList.remove('show');
+      const buttonsEl = document.getElementById('assessmentButtons');
+      buttonsEl.innerHTML = `
+        <button class="btn btn-primary" onclick="checkAssessmentAnswer()">Check Answer</button>
+      `;
+    }
+
+    function checkAssessmentAnswer() {
+      const selected = document.querySelector('input[name="assessment-answer"]:checked');
+      if (!selected) {
+        alert('Please select an answer');
+        return;
+      }
+
+      const q = assessmentState.questions[currentQuestion];
+      const selectedIdx = parseInt(selected.value);
+      const isCorrect = selectedIdx === (q.correct_option ?? q.correct);
+      assessmentAnswers[currentQuestion] = { selected: selectedIdx, correct: isCorrect };
+
+      const feedback = document.getElementById('assessmentFeedback');
+      feedback.className = `assessment-feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+      feedback.innerHTML = `
+        <div class="assessment-feedback-label">${isCorrect ? '✓ Correct!' : '✗ Incorrect'}</div>
+        <div class="assessment-feedback-explanation">${q.explanation}</div>
+      `;
+
+      document.querySelectorAll('input[name="assessment-answer"]').forEach(r => r.disabled = true);
+
+      const buttonsEl = document.getElementById('assessmentButtons');
+      if (currentQuestion < assessmentState.questions.length - 1) {
+        buttonsEl.innerHTML = `<button class="btn btn-primary" onclick="nextAssessmentQuestion()">Next Question</button>`;
+      } else {
+        buttonsEl.innerHTML = `<button class="btn btn-primary" onclick="finishAssessment()">See Results</button>`;
+      }
+    }
+
+    function nextAssessmentQuestion() {
+      currentQuestion++;
+      renderAssessmentQuestion();
+    }
+
+    function finishAssessment() {
+      const correct = assessmentAnswers.filter(a => a?.correct).length;
+      const score = Math.round((correct / assessmentAnswers.length) * 100);
+      const passed = score >= 75;
+
+      const progress = getProgress(currentModuleId);
+      progress.assessmentScore = score;
+      if (passed) {
+        progress.certificateEarned = { earned: true, date: new Date().toISOString() };
+      }
+      saveProgress(currentModuleId, progress);
+
+      renderAssessmentResults(score, passed, correct);
+    }
+
+    function renderAssessmentResults(score, passed, correct) {
+      const resultsEl = document.getElementById('assessmentResults');
+      resultsEl.classList.add('show');
+
+      const totalQuestions = assessmentState.questions.length;
+
+      resultsEl.innerHTML = `
+        <div class="assessment-results-score">${score}%</div>
+        <div class="assessment-results-label">${passed ? 'Module Passed!' : 'Module Not Passed'}</div>
+        <div class="assessment-results-breakdown">
+          <div class="assessment-results-item">
+            <span>Correct Answers:</span>
+            <span>${correct}/${totalQuestions}</span>
+          </div>
+          <div class="assessment-results-item">
+            <span>Pass Threshold:</span>
+            <span>75%</span>
+          </div>
+          <div class="assessment-results-item">
+            <span>Your Score:</span>
+            <span class="${passed ? 'assessment-results-pass' : 'assessment-results-fail'}">${passed ? '✓ PASS' : '✗ FAIL'}</span>
+          </div>
+        </div>
+      `;
+
+      if (passed) {
+        const certEl = document.getElementById('certificateNotification');
+        certEl.classList.add('show');
+        certEl.innerHTML = `
+          <div class="certificate-notification-checkmark">🎉</div>
+          <div class="certificate-notification-title">Certificate Earned!</div>
+          <p>Congratulations! You've successfully completed this module.</p>
+        `;
+      }
+
+      document.getElementById('returnBtn').style.display = 'block';
+    }
+
+    function returnFromAssessment() {
+      showModuleDetail(currentModuleId);
+      renderModules();
+    }
+
+    // ==================== PROGRESS ====================
+    // In-memory cache of all module progress for the current user
+    let progressCache = {};
+
+    // Load all progress from Supabase into cache (called once on login)
+    async function loadAllProgress() {
+      progressCache = {};
+      let supabaseLoaded = false;
+      if (supabaseClient && currentUser) {
+        try {
+          const { data, error } = await supabaseClient
+            .from('module_progress')
+            .select('module_id, started, sections_complete, assessment_score, certificate_earned')
+            .eq('user_id', currentUser.id);
+          if (error) {
+            console.error('[Learn] Supabase SELECT error:', error.message, error.code);
+          } else if (data) {
+            data.forEach(row => {
+              progressCache[row.module_id] = {
+                started: row.started || false,
+                sectionsComplete: row.sections_complete || [],
+                assessmentScore: row.assessment_score || 0,
+                certificateEarned: row.certificate_earned || null
+              };
+              // Also sync to localStorage as backup
+              syncToLocalStorage(row.module_id, progressCache[row.module_id]);
+            });
+            console.log('[Learn] Progress loaded from Supabase:', data.length, 'rows,', Object.keys(progressCache).length, 'modules');
+            supabaseLoaded = true;
+          }
+        } catch (e) {
+          console.error('[Learn] Supabase progress load exception:', e);
+        }
+      }
+
+      // Always merge localStorage as a safety net — if Supabase returned
+      // zero rows (possible RLS issue) but localStorage has progress,
+      // the user still sees their work and we attempt to re-sync.
+      loadProgressFromLocalStorage();
+
+      // If Supabase returned 0 rows but localStorage had progress,
+      // something is wrong server-side — attempt to re-push localStorage
+      // data to Supabase so it isn't lost, and warn in the console.
+      if (supabaseLoaded && Object.keys(progressCache).length > 0) {
+        // Check if any modules came only from localStorage (not Supabase)
+        const localOnlyModules = Object.keys(progressCache).filter(id => {
+          // If Supabase had data for this module, it would have been set before localStorage merge
+          return progressCache[id]._fromLocal;
+        });
+        if (localOnlyModules.length > 0) {
+          console.warn('[Learn] Found', localOnlyModules.length, 'modules in localStorage not in Supabase — re-syncing');
+          localOnlyModules.forEach(id => saveProgress(id, progressCache[id]));
+        }
+      } else if (!supabaseLoaded && Object.keys(progressCache).length > 0) {
+        console.warn('[Learn] Supabase unavailable/failed but localStorage has', Object.keys(progressCache).length, 'modules — using localStorage');
+      }
+    }
+
+    function loadProgressFromLocalStorage() {
+      // Scan localStorage for any learning: keys — merge with Supabase data
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('learning:') && key.endsWith(':started')) {
+          const moduleId = key.replace('learning:', '').replace(':started', '');
+          const localProgress = {
+            started: localStorage.getItem(`learning:${moduleId}:started`) === 'true',
+            sectionsComplete: JSON.parse(localStorage.getItem(`learning:${moduleId}:sections_complete`) || '[]'),
+            assessmentScore: parseInt(localStorage.getItem(`learning:${moduleId}:assessment_score`) || '0'),
+            certificateEarned: JSON.parse(localStorage.getItem(`learning:${moduleId}:certificate_earned`) || 'null')
+          };
+          if (!progressCache[moduleId]) {
+            // Not in Supabase — use localStorage and flag it
+            progressCache[moduleId] = { ...localProgress, _fromLocal: true };
+          } else {
+            // Merge: keep whichever has more progress (higher score, more sections)
+            const existing = progressCache[moduleId];
+            if (localProgress.assessmentScore > (existing.assessmentScore || 0)) {
+              existing.assessmentScore = localProgress.assessmentScore;
+            }
+            if ((localProgress.sectionsComplete || []).length > (existing.sectionsComplete || []).length) {
+              existing.sectionsComplete = localProgress.sectionsComplete;
+            }
+            if (localProgress.certificateEarned && !existing.certificateEarned) {
+              existing.certificateEarned = localProgress.certificateEarned;
+            }
+          }
+        }
+      }
+    }
+
+    function syncToLocalStorage(moduleId, progress) {
+      try {
+        localStorage.setItem(`learning:${moduleId}:started`, progress.started);
+        localStorage.setItem(`learning:${moduleId}:sections_complete`, JSON.stringify(progress.sectionsComplete));
+        localStorage.setItem(`learning:${moduleId}:assessment_score`, progress.assessmentScore);
+        if (progress.certificateEarned) {
+          localStorage.setItem(`learning:${moduleId}:certificate_earned`, JSON.stringify(progress.certificateEarned));
+        }
+      } catch (e) {
+        // localStorage may not be available (e.g. Citrix) — that's fine
+      }
+    }
+
+    function getProgress(moduleId) {
+      return progressCache[moduleId] || {
+        started: false,
+        sectionsComplete: [],
+        assessmentScore: 0,
+        certificateEarned: null
+      };
+    }
+
+    function saveProgress(moduleId, progress) {
+      // Strip internal flags before caching
+      const clean = { ...progress };
+      delete clean._fromLocal;
+
+      // Update in-memory cache
+      progressCache[moduleId] = clean;
+
+      // Save to localStorage as backup
+      syncToLocalStorage(moduleId, clean);
+
+      // Save to Supabase (async, non-blocking)
+      if (supabaseClient && currentUser) {
+        supabaseClient
+          .from('module_progress')
+          .upsert({
+            user_id: currentUser.id,
+            module_id: moduleId,
+            started: clean.started || false,
+            sections_complete: clean.sectionsComplete || [],
+            assessment_score: clean.assessmentScore || 0,
+            certificate_earned: clean.certificateEarned || null,
+            updated_at: new Date().toISOString()
+          }, { onConflict: 'user_id,module_id' })
+          .then(({ error }) => {
+            if (error) console.error('[Learn] Supabase save FAILED for', moduleId, ':', error.message, error.code, '— progress preserved in localStorage');
+            else console.log('[Learn] Saved to Supabase:', moduleId);
+          });
+      }
+    }
+  </script>
+<footer style="text-align:center;padding:1.25rem;font-family:Arial,sans-serif;font-size:0.78rem;color:#718096;border-top:1px solid #e2e8f0;background:#ffffff;">
+  <a href="privacy.html" style="color:#718096;text-decoration:none;">Privacy Policy</a>
+  &nbsp;·&nbsp; &copy; 2026 Ask the Oracle
+</footer>
+</body>
+</html>

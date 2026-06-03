@@ -1,0 +1,52 @@
+{
+  "_meta": {
+    "purpose": "When the correspondence-reply tool is run for a Northern Ireland or Scottish user, swap English / EWCA authorities for the locally-binding equivalent on the same point. Keys are case IDs from case_database.json. Each entry lists the analogous case(s) per jurisdiction. v1.1 focuses on BHR / impecuniosity / mitigation principles relevant to credit-hire correspondence.",
+    "version": "1.1",
+    "updated": "2026-05-30",
+    "changelog": [
+      "v1.1 (2026-05-30): Lloyd v RSA [2025] NIKB 43 removed as the NI substitute for Stevens v Equity, Bunting v Zurich, and McBride v UK Insurance — Lloyd is McLaughlin J's NI mitigation / duration / roadworthiness decision and is NOT authority on BHR methodology. Mis-substitution would have placed the wrong authority into NI correspondence on BHR points. NI BHR substitution is now empty pending verified identification of the right NI authority (candidates: Burrows v Ross [2014] NIQB 99; McAteer v Kirkpatrick [2011] NIQB 52; Gilheaney v McGovern [2009] NIQB 38).",
+      "v1.0 (2026-05-30): initial mapping (Stevens / Bunting / McBride → Lloyd; Holt → Kerr v Toal) — both directions of substitution have now been corrected following supplied case notes."
+    ]
+  },
+  "equivalents": {
+    "stevens-v-equity-management-ltd-2015-ewca-civ-93": {
+      "ni": [],
+      "ni_note": "NI BHR analogue currently unconfirmed; candidates in the case database include Burrows v Ross [2014] NIQB 99, McAteer v Kirkpatrick [2011] NIQB 52 and Gilheaney v McGovern [2009] NIQB 38 (all 'credit hire rate / basic hire rate' topic-tagged). For now the rebuttal will cite Stevens itself for the NI user — English Court of Appeal authority is routinely cited and followed in NI on credit hire BHR. Lloyd v RSA [2025] NIKB 43 is NOT the right substitute; it is a mitigation / roadworthiness decision, not a BHR authority.",
+      "scot": [],
+      "scot_note": "No reported Court of Session BHR analogue; English authority routinely followed."
+    },
+    "bunting-v-zurich-insurance-2020-ewhc-1807-qb": {
+      "ni": [],
+      "ni_note": "No reported NI authority directly on Bunting's 'rough and ready' BHR jurisdiction. English authority is persuasive in NI; cite Bunting itself.",
+      "scot": [],
+      "scot_note": "No Scottish equivalent; English authority persuasive."
+    },
+    "holt-v-allianz-insurance-plc-2023-ewhc-790-kb": {
+      "ni": ["kerr-v-toal-2015-niqb-83"],
+      "ni_note": "Kerr v Toal [2015] NIQB 83 (Burgess J) is the leading NI authority on impecuniosity pleading and disclosure: the issue is to be addressed at the outset of a claim, supported by typically three months of pre-accident bank statements, proof of income and liabilities, and details of essential outgoings, with the burden on the claimant (per the Umerji line followed in NI). Read alongside SEH&SCT v Flanagan [2015] NIQB 30 (Stephens J — impecuniosity is not strictly a question of being penniless). Where the defendant has invoked Holt's pre-action disclosure regime in NI correspondence, Kerr is the locally-binding equivalent on the substance; the precise English PD-PAC mechanism in Holt is technically of E&W procedural application only.",
+      "scot": [],
+      "scot_note": "No reported Scottish authority directly on point; English authority persuasive."
+    },
+    "lagden-v-o-connor-2003-ukhl-64": {
+      "_note": "Lagden is a House of Lords decision and binds NI and Scotland directly. No substitution required."
+    },
+    "mcbride-v-uki-2017-ewca-civ-144": {
+      "ni": [],
+      "ni_note": "No reported NI authority directly on McBride [2017]'s nil-excess analysis (see [68], [76], [77]) and Clayton v EUI's admissibility of standalone nil-excess product evidence [105]. English Court of Appeal authority is persuasive in NI; cite McBride itself.",
+      "scot": [],
+      "scot_note": "No Scottish equivalent; English authority persuasive."
+    },
+    "pattni-v-first-leicester-2011-ewca-civ-1384": {
+      "ni": [],
+      "ni_note": "No reported NI authority directly on Pattni / McBride [2011]'s analysis of BHR for the model actually hired in the same broad geographical area and the admissibility of specialist comparators. English Court of Appeal authority is persuasive in NI; cite Pattni itself.",
+      "scot": [],
+      "scot_note": "No Scottish equivalent; English authority persuasive."
+    },
+    "diriye-v-bojaj-2020-ewca-civ-1400": {
+      "ni": [],
+      "ni_note": "No reported NI authority directly on Diriye's procedural ratio (pleading impecuniosity; CPR 6.26 deemed service for Royal Mail 'Signed For 1st Class'; Denton stage 1 / 3 analysis). The CPR-specific rulings have limited application in NI which operates under its own procedural rules; the substantive proposition that impecuniosity must be properly pleaded is generally aligned with the NI court's approach.",
+      "scot": [],
+      "scot_note": "Scottish procedural framework differs; Diriye is not directly applicable."
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/ask.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "knowledge_base.json",
+          "case_database.json",
+          "liability_database.json",
+          "highway_code.json",
+          "gta_rates.json",
+          "bhr_terms_db.json"
+        ]
+      }
+    },
+    { "src": "api/tutor.js", "use": "@vercel/node" },
+    { "src": "api/access-request.js", "use": "@vercel/node" },
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "config.js", "use": "@vercel/static" },
+    { "src": "brand.js", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/ask", "dest": "/api/ask.js" },
+    { "src": "/api/tutor", "dest": "/api/tutor.js" },
+    { "src": "/api/access-request", "dest": "/api/access-request.js" },
+    { "src": "/app", "dest": "/app.html" },
+    { "src": "/learn", "dest": "/learn.html" },
+    { "src": "/admin", "dest": "/admin.html" },
+    { "src": "/dashboard", "dest": "/dashboard.html" },
+    { "src": "/how-to-ask", "dest": "/how-to-ask.html" },
+    { "src": "/privacy", "dest": "/privacy.html" },
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}

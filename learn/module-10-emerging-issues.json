@@ -1,0 +1,425 @@
+{
+  "module": {
+    "id": "module-10",
+    "title": "Emerging issues and AI",
+    "subtitle": "Electric vehicles, autonomous technology, artificial intelligence and the future of credit hire",
+    "level": "Advanced",
+    "duration_minutes": 90,
+    "format": "Self-paced e-learning with AI tutor \u2014 refreshed quarterly",
+    "sections_count": 5,
+    "assessment_questions": 20,
+    "pass_mark_percent": 75,
+    "prerequisite": "module-09",
+    "refresh_cycle": "quarterly",
+    "refresh_note": "This module has the highest velocity of change. Content should be reviewed monthly and formally updated quarterly using the credit-hire.ai news feed as the primary source. The AI tutor for this module should specifically direct learners to query the Forum news database for the latest developments.",
+    "learning_objectives": [
+      {
+        "id": "LO1",
+        "text": "Explain the specific credit hire challenges presented by electric vehicles, including repair complexity, parts availability, and holding costs"
+      },
+      {
+        "id": "LO2",
+        "text": "Describe the implications of autonomous and driverless vehicle technology for fault attribution, insurance, and credit hire"
+      },
+      {
+        "id": "LO3",
+        "text": "Assess how artificial intelligence is being used in claims handling and what this means for credit hire practitioners"
+      },
+      {
+        "id": "LO4",
+        "text": "Identify how ADAS (Advanced Driver Assistance Systems) adds complexity to repairs and legitimately extends hire periods"
+      },
+      {
+        "id": "LO5",
+        "text": "Explain the role of AI-powered platforms like credit-hire.ai in the future of industry knowledge and training"
+      },
+      {
+        "id": "LO6",
+        "text": "Anticipate the regulatory developments that are likely to affect credit hire in the next 2-5 years"
+      }
+    ],
+    "sections": [
+      {
+        "id": "s01",
+        "number": 1,
+        "title": "Electric vehicles: the claims challenge",
+        "duration_minutes": 20,
+        "concept": "Electric vehicles represent the most immediate structural challenge to credit hire. EV repairs are slower, more expensive, and more complex than ICE vehicle repairs. Parts are scarcer, bodyshops need specialist certification, and battery assessments can add weeks. All of this legitimately extends hire periods \u2014 but only if the CHO documents the reasons meticulously. The Forum has tracked EV repair developments in detail, and credit-hire.ai's case database includes the emerging case law.",
+        "content_points": [
+          "Why EV repairs take longer: high-voltage battery systems require specialist technicians; ADAS sensors must be recalibrated; proprietary parts have longer lead times",
+          "The battery assessment process: before any repair, a damaged EV may need a battery health assessment; this can add 1-2 weeks before repair even begins",
+          "Certified bodyshops: not all bodyshops can repair EVs; vehicles may need to travel to specialist centres, adding journey and queue time",
+          "Parts supply: OEM parts for popular EVs (Tesla, Jaguar Land Rover) have experienced significant delays; the Forum reported on 10,000+ JLR vehicles off the road due to parts shortages",
+          "Holding costs: when an EV is at a repairer and cannot be worked on (waiting for parts, assessment, or specialist availability), holding costs accrue; these are recoverable in principle",
+          "The right to an EV replacement: a claimant is not automatically entitled to an EV replacement \u2014 but where their specific circumstances require one (home charging infrastructure, ULEZ, lease terms), this can be justified",
+          "Insurance challenges for EVs: EV insurance costs significantly more than ICE; write-off thresholds are lower relative to repair costs; this affects total loss frequency",
+          "Thatcham's position: Thatcham Research has advocated for better data sharing and standardised repair protocols for EVs; the Forum covered their 7-point challenge to the government"
+        ],
+        "scenario": {
+          "text": "A Tesla Model S with a 100kWh battery pack is involved in a side impact. The bodyshop is Tesla-certified. The battery is assessed \u2014 a 10-day process. A damaged cell module is identified and ordered from Tesla \u2014 21-day delivery. Installation and ADAS recalibration takes 4 days. Total repair time: 35 days. The insurer's engineer estimated 10 days based on the visible damage. The CHO claims 35 days of hire at \u00a3160/day. The insurer challenges all days beyond 10. Advise.",
+          "teaching_points": [
+            "The engineer's 10-day estimate was based on visible damage before the EV-specific process was known",
+            "Each phase (battery assessment, parts wait, calibration) is documented and justifiable",
+            "The CHO needs: battery assessment report, parts order with delivery confirmation, Tesla workshop record",
+            "35 days for this repair is not unreasonable given the EV-specific process",
+            "The learner should identify that this is a documentation challenge, not a legal one \u2014 all 35 days should be recoverable with the right evidence"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Which document most critically supports a 21-day parts delay in an EV repair claim?",
+          "options": [
+            {
+              "text": "The claimant's statement confirming the car was not available",
+              "correct": false
+            },
+            {
+              "text": "A contemporaneous written confirmation from the repairer of the parts order date and the manufacturer-confirmed delivery date",
+              "correct": true,
+              "explanation": "A contemporaneous parts order with manufacturer confirmation is the strongest evidence of a genuine, unavoidable delay. Retrospective explanations carry much less weight."
+            },
+            {
+              "text": "The original engineer's estimate",
+              "correct": false
+            },
+            {
+              "text": "A news article about EV parts shortages generally",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s02",
+        "number": 2,
+        "title": "ADAS and autonomous vehicles: current and future impact",
+        "duration_minutes": 18,
+        "concept": "Advanced Driver Assistance Systems (ADAS) \u2014 lane keeping, automatic emergency braking, adaptive cruise control, parking sensors \u2014 are now standard on most new vehicles. Any accident that disturbs an ADAS component triggers mandatory recalibration before the vehicle can be returned to road. This legitimately adds time to every repair. True autonomous vehicles are still limited in the UK, but the legal, insurance and claims frameworks are already being developed. Driverless technology on UK motorways was reportedly possible by 2026.",
+        "content_points": [
+          "What ADAS is: a range of electronic driver assistance systems that use sensors, cameras and radar to enhance safety; now standard on most new vehicles over \u00a315,000",
+          "ADAS calibration: after any repair that may disturb cameras or sensors, ADAS must be recalibrated; this requires specialist equipment and typically adds 1-2 days to a repair",
+          "Thatcham's mandatory calibration position: Thatcham Research has confirmed that ADAS calibration after repair is mandatory for safety; it is not optional and cannot be waived to reduce the hire period",
+          "The calibration dispute: insurers sometimes argue calibration is unnecessary or that a shorter period should be allowed; the Thatcham position is the industry standard response",
+          "Automated Lane Keeping Systems (ALKS): the first level of true automation approved for UK motorways; introduces questions about fault attribution when the system is engaged",
+          "The driverless car timeline: the Forum reported on government predictions of driverless capability on UK motorways by 2026; the legal framework is still developing",
+          "Who is liable when an autonomous vehicle has an accident?: under the Automated and Electric Vehicles Act 2018, insurers remain liable for ADAS accidents where the system was engaged, with a right of recovery against the manufacturer",
+          "Implications for credit hire: autonomous vehicle accidents create the same entitlement to a replacement vehicle; the question of fault attribution becomes more complex but the claimant's right to hire is unchanged"
+        ],
+        "scenario": {
+          "text": "A 2024 BMW 5 Series is rear-ended at low speed. The visible damage is a damaged number plate surround and a bent boot lid \u2014 seemingly a 2-day repair. The repairer identifies that the rear radar, parking sensors, and reversing camera all require post-repair calibration. This adds 2 days. The insurer argues calibration is optional and the hire should end after 2 days. Advise.",
+          "teaching_points": [
+            "Thatcham's position: ADAS calibration is mandatory for safety \u2014 it is not optional",
+            "The insurer cannot argue calibration is unnecessary against the Thatcham standard",
+            "4 days total (2 repair + 2 calibration) is entirely reasonable and well-evidenced",
+            "The learner should cite the Thatcham position and identify the insurer's argument as unsustainable",
+            "The Forum has covered Thatcham's advocacy on this issue"
+          ]
+        },
+        "knowledge_check": {
+          "question": "An insurer argues that ADAS recalibration after a repair is optional and the hire period should not include the calibration days. The repairer disagrees. What is the authoritative industry position?",
+          "options": [
+            {
+              "text": "ADAS calibration is optional and can be skipped to save time",
+              "correct": false
+            },
+            {
+              "text": "Thatcham Research has established that ADAS calibration is mandatory after any repair that may affect the system; it is a safety requirement, not a preference",
+              "correct": true,
+              "explanation": "The Thatcham position is the industry standard. ADAS calibration is mandatory for safety reasons and the repair is not complete without it."
+            },
+            {
+              "text": "The insurer's engineer determines whether calibration is needed",
+              "correct": false
+            },
+            {
+              "text": "Calibration is only mandatory for vehicles over 3 years old",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s03",
+        "number": 3,
+        "title": "Artificial intelligence in claims handling",
+        "duration_minutes": 18,
+        "concept": "AI is transforming motor claims handling \u2014 from automated first notification of loss systems to AI-assisted damage assessment, fraud detection, and settlement negotiation. For credit hire practitioners, AI represents both a threat (faster, more aggressive challenge processes) and an opportunity (better data, faster evidence gathering, smarter settlement decisions). The Forum has begun covering AI developments in the claims market. Credit-hire.ai itself is an example of AI being used to improve industry knowledge.",
+        "content_points": [
+          "AI in FNOL (First Notification of Loss): automated systems now handle initial accident reporting, liability triage, and early instructions to repairers; this compresses timelines",
+          "AI damage assessment: computer vision systems can assess vehicle damage from photos and estimate repair times and costs; increasingly used by insurers to challenge CHO periods",
+          "AI fraud detection: machine learning models identify patterns associated with staged accidents and inflated claims; legitimate claims with unusual patterns may be incorrectly flagged",
+          "AI settlement tools: some insurers use AI to set initial settlement offers based on claim characteristics; the offers may be systematically below fair value",
+          "The 'ChatGPT moment' for the industry: the Forum covered AI developments and asked what comes next; the credit-hire.ai platform is an example of AI applied to industry knowledge",
+          "AI and the CHO: CHOs can use AI to: monitor repair progress, identify fraud indicators, assess impecuniosity evidence automatically, and generate case assessments",
+          "The risk of AI-generated challenges: template letters are being replaced by AI-generated personalised challenges based on claim data; practitioners must recognise these and respond on the facts",
+          "Regulatory considerations: the FCA's principles on AI fairness apply to automated claims decisions; claimants have a right to have automated decisions reviewed by a human"
+        ],
+        "scenario": {
+          "text": "An insurer's AI system flags a credit hire claim as 'high risk' and automatically generates a detailed challenge letter within 6 hours of hire notification. The letter references the claimant's vehicle, the repair shop's historical performance data, and a BHR survey \u2014 all generated automatically. The claimant is a genuine accident victim with a strong claim. How should the CHO respond?",
+          "teaching_points": [
+            "The speed of the response (6 hours) suggests AI generation \u2014 not a human assessment of the specific claim",
+            "The letter may still contain valid points \u2014 assess each on the merits",
+            "The BHR survey and repairer performance data may or may not be accurate \u2014 check and challenge where appropriate",
+            "The claimant has a right to have an automated decision reviewed by a human under FCA AI fairness principles",
+            "The learner should not be intimidated by the sophistication of the challenge letter \u2014 it is still a template, just a smarter one"
+          ]
+        },
+        "knowledge_check": {
+          "question": "An insurer uses an AI model to set all initial credit hire settlement offers. A claimant's offer is systematically 30% below what similarly situated claimants receive from non-AI-using insurers. Under FCA AI fairness principles, the claimant has:",
+          "options": [
+            {
+              "text": "No recourse \u2014 the insurer is entitled to use any pricing methodology",
+              "correct": false
+            },
+            {
+              "text": "A right to request that the automated decision be reviewed by a human and potentially a complaint route if the AI produces unfair outcomes",
+              "correct": true,
+              "explanation": "FCA principles on AI require fairness, explainability, and human oversight. Systematically low AI-generated offers may constitute unfair treatment."
+            },
+            {
+              "text": "A right to know the AI's algorithm in full",
+              "correct": false
+            },
+            {
+              "text": "A right to have the claim assessed under the GTA instead",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s04",
+        "number": 4,
+        "title": "Regulatory horizon: what is coming and what it means",
+        "duration_minutes": 20,
+        "concept": "The regulatory environment for credit hire, motor insurance, and claims management continues to evolve. Practitioners who anticipate regulatory change \u2014 rather than react to it \u2014 are better placed to protect their business and their clients. Key developments on the horizon include FCA consumer duty, government review of credit hire costs, whiplash reform review, the implications of the Automated and Electric Vehicles Act, and the major taxi licensing reform under the English Devolution and Community Empowerment Bill which is expected to receive Royal Assent in summer 2026. The Forum tracks regulatory developments as they emerge.",
+        "content_points": [
+          "FCA Consumer Duty: the new principle requiring firms to act to deliver good outcomes for retail customers; applies to CHOs as credit providers under CCA and to insurers in their claims handling",
+          "Good consumer outcomes in credit hire: Consumer Duty requires that credit hire is explained clearly, that the claimant understands their rights, and that they are not placed in a product that does not meet their needs",
+          "Government interest in credit hire costs: motor insurance costs (including credit hire) have attracted political and media attention; the lobby group demand for regulation of 'no win, no fee' terms and related structures has been covered by the Forum",
+          "Post-whiplash reform review: the government committed to reviewing the whiplash reforms; any revision could reopen the PI feeder for credit hire",
+          "The Automated and Electric Vehicles Act 2018: establishes the framework for insurance of autonomous vehicles; as autonomous technology develops, this framework will be tested",
+          "Taxi licensing reform \u2014 the English Devolution and Community Empowerment Bill: expected to receive Royal Assent in summer 2026, this Bill will establish national minimum standards for all taxi and private hire drivers, vehicles and operators across England, replacing the inconsistent regimes operated by 263 local authorities",
+          "Taxi reform \u2014 consolidation and cross-border closure: the 263 licensing authorities will be absorbed into approximately 70 larger Local Transport Authorities (LTAs), closing the cross-border licensing loophole exploited in areas such as Rossendale and Wolverhampton where drivers obtained licences in areas with cheaper fees or less stringent checks",
+          "Taxi reform \u2014 enhanced vetting and grandfather rights: enhanced DBS checks and mandatory safeguarding training will be required; existing drivers must meet the new standards upon licence renewal, restricting grandfather rights for sub-standard vehicles; a 2028 deadline for zero-emissions vehicles has been suggested",
+          "Taxi reform \u2014 credit hire impact on rates: CHO fleets will face immediate cost impact to meet new minimum standards, likely resulting in uplifted contractual credit hire rates and potential pressure for uplifted ABI rates",
+          "Taxi reform \u2014 vehicle specification disputes: claimants driving older vehicles under grandfather rights at the time of accident will likely be provided newer, higher specification hire vehicles meeting the new requirements, with the CHO arguing there was no alternative but to hire a compliant vehicle",
+          "Taxi reform \u2014 total loss implications: claims may include arguments for the cost of a new compliant vehicle rather than pre-accident value, though this is problematic given the non-compliant vehicle would have needed replacing at the next licensing renewal; insurers should be alert to increased fraudulent claims for written-off vehicles approaching licence renewal date",
+          "Taxi reform \u2014 duration impact: stricter roadworthiness requirements mean even minor cosmetic damage may prevent continued use of a taxi; increased regulatory burden on LTAs is likely to cause longer waits for inspections and administrative bottlenecks extending hire periods",
+          "Justice system delays: the Forum reported that the justice committee was to look at County Court delays; long court queues affect the economics of credit hire litigation",
+          "GDPR and data in claims: the use of personal financial data in impecuniosity assessment must comply with GDPR; digital bank statement platforms raise data handling obligations",
+          "The no-fault accident agenda: some policy voices advocate for a no-fault accident compensation system; this would fundamentally change the basis of credit hire recovery"
+        ],
+        "scenario": {
+          "text": "A CHO receives a complaint from a claimant who says they did not understand that the hire charges would be sought from the third-party insurer and that if recovery failed, they could be liable. They say the hire agreement was not explained to them. Under FCA Consumer Duty, how serious is this and what should the CHO have done at the point of hire?",
+          "teaching_points": [
+            "Consumer Duty requires that customers understand the product and its implications \u2014 not just that they sign a form",
+            "A hire agreement that leaves the claimant uncertain about their potential liability is a Consumer Duty concern",
+            "The CHO should have explained clearly: the hire is on credit, recovery is sought from the third party, and if recovery fails, there may be implications",
+            "This is likely a training and process issue \u2014 the CHO's onboarding process needs to ensure clear explanation",
+            "The learner should identify Consumer Duty as a live obligation, not just a regulatory box to tick"
+          ]
+        },
+        "knowledge_check": {
+          "question": "FCA Consumer Duty requires CHOs to ensure that claimants receive:",
+          "options": [
+            {
+              "text": "The cheapest possible hire vehicle",
+              "correct": false
+            },
+            {
+              "text": "Products and services that meet their needs, are clearly explained, and where the consumer understands the key features and risks",
+              "correct": true,
+              "explanation": "Consumer Duty goes beyond minimum legal compliance. It requires genuine understanding, not just signed forms. CHOs must evidence good consumer outcomes."
+            },
+            {
+              "text": "A fixed rate guarantee for all credit hire",
+              "correct": false
+            },
+            {
+              "text": "A 14-day cooling off period on all hire agreements",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s05",
+        "number": 5,
+        "title": "Credit-hire.ai and the AI-powered practitioner",
+        "duration_minutes": 17,
+        "concept": "Credit-hire.ai demonstrates how AI can be applied to specialist industry knowledge \u2014 giving every practitioner instant access to the depth of expertise previously available only through years of experience or expensive legal advice. This final section reflects on what AI-powered tools mean for the industry, how to use them effectively, and what skills will distinguish the best practitioners in a world where AI handles the knowledge retrieval. The answer: judgment, relationships, and the ability to ask the right questions.",
+        "content_points": [
+          "What credit-hire.ai does: an AI-powered platform drawing on the Credit Hire Forum's knowledge base \u2014 1,000+ posts, case decisions, and industry commentary \u2014 to answer practitioner questions in natural language",
+          "How to use it effectively: specificity matters \u2014 'what has the Forum said about impecuniosity evidence in small claims track cases' returns better results than 'tell me about impecuniosity'",
+          "What AI cannot replace: judgment in applying law to specific facts; relationship management with repairers, solicitors and insurers; strategic commercial decisions; advocacy in court",
+          "The AI as a research assistant: use credit-hire.ai to find relevant cases, identify Forum commentary on current issues, and check your understanding of legal principles \u2014 then apply your own judgment",
+          "Staying current: the Forum's news feed is the primary source of industry intelligence; credit-hire.ai makes this searchable and queryable in real time",
+          "The training loop: these modules were built from the Forum's knowledge base; as the Forum continues to publish, the AI's knowledge improves; the practitioner who uses both the training and the tool continuously learns",
+          "AI ethics in claims: as AI is used more in claims handling \u2014 by both CHOs and insurers \u2014 practitioners have an obligation to ensure AI decisions are fair, explainable, and subject to human review",
+          "The future practitioner: deeper expertise in fewer areas; better use of AI tools for research and evidence gathering; stronger judgment and relationship skills as AI handles the routine"
+        ],
+        "scenario": {
+          "text": "A new credit hire handler has completed all 8 training modules. They receive their first complex claim: a Tesla Model S, 35-day repair, impecuniosity borderline, insurer alleging fraud, prestige vehicle class dispute. They have access to credit-hire.ai. Walk through how they should use the platform to prepare their case strategy.",
+          "teaching_points": [
+            "EV repair period: query the Forum for EV repair delay precedents and the specific Tesla/JLR parts shortage coverage",
+            "Impecuniosity: query the Forum for cases on borderline impecuniosity and proportionate evidence demands",
+            "Fraud allegation: query for the AXA disclosure case and the sword/shield principle",
+            "Prestige vehicle rate: query for Forum coverage of GTA rate disputes and prestige vehicle hire evidence",
+            "The handler should use the AI as a research tool, then apply their own judgment on strategy",
+            "This is the synthesis of all 8 modules \u2014 the learner should feel equipped to handle this claim"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Which of the following best describes how credit-hire.ai should be used by a credit hire practitioner?",
+          "options": [
+            {
+              "text": "As a replacement for legal advice on specific claim decisions",
+              "correct": false
+            },
+            {
+              "text": "As a research and knowledge tool \u2014 to find relevant cases, Forum commentary, and industry context \u2014 which informs but does not replace the practitioner's own judgment",
+              "correct": true,
+              "explanation": "AI tools augment practitioner judgment \u2014 they do not replace it. The practitioner's value lies in applying knowledge to specific facts, managing relationships, and making commercial decisions."
+            },
+            {
+              "text": "Only for looking up GTA rates",
+              "correct": false
+            },
+            {
+              "text": "As evidence in court proceedings",
+              "correct": false
+            }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "pass_mark": 75,
+      "questions": [
+        {
+          "type": "multiple_choice",
+          "question": "Why do EV repairs typically take longer than ICE vehicle repairs?",
+          "options": [
+            "EVs are less common so repairers are unfamiliar with them",
+            "High-voltage battery systems require specialist technicians, ADAS sensors need recalibration, and proprietary parts often have longer lead times",
+            "EV manufacturers deliberately slow the parts supply to increase costs",
+            "EVs always require complete repainting after any accident"
+          ],
+          "correct": 1,
+          "explanation": "EV repairs involve specialist battery assessment processes, mandatory ADAS recalibration, and OEM parts with longer lead times. Only certified bodyshops can work on EVs, potentially adding journey and queue time as well."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "An insurer argues that ADAS recalibration after a rear-end repair is optional and the hire period should not include the calibration days. What is the authoritative industry position?",
+          "options": [
+            "ADAS calibration is optional and can be skipped to reduce the repair period",
+            "Thatcham Research has established that ADAS calibration is mandatory after any repair that may affect the system \u2014 it is a safety requirement, not a preference",
+            "The insurer's engineer determines whether calibration is needed on a case-by-case basis",
+            "Calibration is only mandatory for vehicles less than 3 years old"
+          ],
+          "correct": 1,
+          "explanation": "Thatcham Research confirms that ADAS calibration after repair is mandatory for safety. It is the industry standard and cannot be waived to reduce the hire period. A repair is not complete without it."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "An insurer's AI system generates a detailed challenge letter within 6 hours of hire notification, referencing specific claim data. How should the CHO respond?",
+          "options": [
+            "Be intimidated by the sophistication and accept the challenge points",
+            "Ignore the letter entirely because it was AI-generated",
+            "Assess each point on its merits regardless of how the letter was generated \u2014 it may contain valid points but is still a template, just a smarter one",
+            "Demand the insurer confirm the letter was written by a human before responding"
+          ],
+          "correct": 2,
+          "explanation": "The speed suggests AI generation rather than a human assessment of the specific claim. However, the letter may still contain valid points. Each challenge should be assessed on the merits and responded to factually."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Under the Automated and Electric Vehicles Act 2018, who is initially liable when an autonomous driving system causes an accident while engaged?",
+          "options": [
+            "The vehicle manufacturer exclusively",
+            "The driver, because they should have been supervising the system",
+            "The insurer remains liable, with a right of recovery against the manufacturer where the system was defective",
+            "No one \u2014 autonomous vehicle accidents are treated as acts of God"
+          ],
+          "correct": 2,
+          "explanation": "The Act provides that insurers remain liable for accidents caused by autonomous systems when the system was engaged. The insurer then has a right of recovery against the vehicle manufacturer where the system was defective."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "FCA Consumer Duty requires CHOs to ensure that claimants receive:",
+          "options": [
+            "The cheapest possible hire vehicle available in the market",
+            "Products and services that meet their needs, are clearly explained, and where the consumer understands the key features and risks",
+            "A fixed rate guarantee for all credit hire regardless of vehicle class",
+            "A mandatory 14-day cooling off period on all hire agreements"
+          ],
+          "correct": 1,
+          "explanation": "Consumer Duty goes beyond minimum legal compliance. It requires genuine understanding from the consumer, not just signed forms. CHOs must evidence that they deliver good consumer outcomes."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A CHO uses an AI tool to assess impecuniosity. The tool flags the claimant as 'not impecunious' based solely on income of \u00a325,000/year. The handler notes the claimant has significant debts, a dependent child, and zero savings. What should the handler do?",
+          "options": [
+            "Accept the AI assessment because it is objective and impartial",
+            "Override the AI assessment using human judgment \u2014 income alone does not determine impecuniosity, and the full financial picture must be considered and documented",
+            "Ask the insurer to confirm which rate applies",
+            "Refer the case to a solicitor without forming any view"
+          ],
+          "correct": 1,
+          "explanation": "AI tools are research aids, not decision-makers. The impecuniosity test is holistic. The handler's judgment on the full financial picture should prevail where the AI has applied a simplistic income-only test."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Which best describes how credit-hire.ai should be used by a credit hire practitioner?",
+          "options": [
+            "As a replacement for legal advice on specific claim decisions",
+            "As a research and knowledge tool to find relevant cases and Forum commentary, which informs but does not replace the practitioner's own judgment",
+            "Only for looking up GTA rates and vehicle classifications",
+            "As evidence to be submitted directly in court proceedings"
+          ],
+          "correct": 1,
+          "explanation": "AI tools augment practitioner judgment but do not replace it. The practitioner's value lies in applying knowledge to specific facts, managing relationships, and making commercial decisions that require human judgment."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Under the Automated and Electric Vehicles Act 2018, insurers are not liable for accidents caused by autonomous driving systems.",
+          "correct": 1,
+          "explanation": "False. The Act provides that insurers remain liable for accidents caused by autonomous systems when the system was engaged. They have a right of recovery against the vehicle manufacturer where the system was defective."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: A claimant is always entitled to an EV replacement vehicle when their own EV is being repaired.",
+          "correct": 1,
+          "explanation": "False. A claimant is not automatically entitled to an EV replacement. However, where their specific circumstances require one (such as home charging infrastructure, ULEZ compliance, or lease terms), an EV replacement can be justified."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Under FCA AI fairness principles, a claimant has the right to request that an automated claims decision be reviewed by a human.",
+          "correct": 0,
+          "explanation": "True. FCA principles on AI require fairness, explainability, and human oversight. Claimants have the right to have automated decisions reviewed by a human, and systematically unfair AI-generated outcomes may constitute a breach of these principles."
+        }
+      ]
+    },
+    "ai_tutor": {
+      "system_prompt_per_section": {
+        "s01": "You are a credit hire training tutor for Section 1 of Module 8: electric vehicles. The learner is working through a Tesla Model S repair scenario where 35 days of hire is challenged by the insurer who estimated 10 days. Guide them to identify each phase of the repair (battery assessment, parts wait, calibration) as documentable and justifiable. Emphasise that this is a documentation challenge, not a legal one. Keep responses to 2-4 sentences.",
+        "s02": "You are a credit hire training tutor for Section 2 of Module 8: ADAS and autonomous vehicles. The learner is working through a BMW 5 Series scenario where the insurer argues ADAS calibration is optional. Guide them to cite the Thatcham mandatory calibration position and identify the insurer's argument as unsustainable. Reference Forum coverage of Thatcham's advocacy. Keep responses to 2-4 sentences.",
+        "s03": "You are a credit hire training tutor for Section 3 of Module 8: AI in claims handling. The learner is responding to an AI-generated challenge letter that arrived within 6 hours of hire notification. Guide them to identify the AI-generated nature of the letter, assess each point on its merits rather than being intimidated by the sophistication, and reference the claimant's right to human review of automated decisions. Keep responses to 2-4 sentences.",
+        "s04": "You are a credit hire training tutor for Section 4 of Module 8: regulatory horizon. The learner is working through a Consumer Duty complaint scenario where a claimant did not understand their hire agreement. Guide them to identify Consumer Duty as a genuine obligation requiring understanding, not just signatures, and recommend process improvements. Keep responses to 2-4 sentences.",
+        "s05": "You are a credit hire training tutor for Section 5 of Module 8: credit-hire.ai and the AI-powered practitioner. The learner is a newly qualified handler using the platform on their first complex claim. Guide them through which queries to make on the platform for each element of the claim (EV period, impecuniosity, fraud allegation, prestige rate). This is the synthesis of all 8 modules. Be encouraging and connective. Keep responses to 2-4 sentences."
+      }
+    },
+    "further_reading": {
+      "forum_search_queries": [
+        "What has the Forum reported about AI in credit hire and motor claims?",
+        "Find Forum posts about EV insurance costs and write-off thresholds",
+        "Forum coverage of driverless cars and the 2026 UK motorway timeline",
+        "What does the Forum say about Consumer Duty and its application to claims?",
+        "Find Forum posts about Thatcham and ADAS calibration requirements",
+        "Forum posts about ChatGPT and AI \u2014 what comes next for the industry?",
+        "What are the implications of the 2026 taxi licensing reform for credit hire?",
+        "English Devolution and Community Empowerment Bill \u2014 taxi and private hire impact"
+      ]
+    }
+  }
+}

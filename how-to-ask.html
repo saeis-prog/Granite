@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to ask — Ask the Oracle</title>
+  <meta name="description" content="Tips for getting the best legal research answers from Ask the Oracle. Frame your question, paste the defendant's challenge, and tell us what you need." />
+  <style>
+    :root {
+      --navy: #0f1e3c;
+      --navy-light: #1a2f5e;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --white: #ffffff;
+      --off-white: #f5f6f8;
+      --text: #2d3748;
+      --text-light: #718096;
+      --border: #e2e8f0;
+      --green: #2d7d46;
+      --red: #c1272d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+    a { color: var(--navy); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15,30,60,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1.25rem; font-weight: 700; color: var(--white);
+      display: flex; align-items: center; gap: 0.5rem;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { color: rgba(255,255,255,0.8); font-size: 0.875rem; font-family: 'Arial', sans-serif; transition: color 0.2s; text-decoration: none; }
+    .nav-links a:hover { color: var(--gold); }
+    .btn-nav {
+      background: var(--gold); color: var(--navy) !important;
+      padding: 0.5rem 1.25rem; border-radius: 6px;
+      font-weight: 700; font-family: 'Arial', sans-serif !important;
+      transition: background 0.2s !important;
+    }
+    .btn-nav:hover { background: var(--gold-light) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #1e3a6e 100%);
+      padding: 130px 2rem 70px;
+      color: var(--white);
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-family: 'Arial', sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem; line-height: 1.15;
+      letter-spacing: -0.02em; margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.15rem; max-width: 720px; margin: 0 auto;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── CONTENT ── */
+    main { max-width: 880px; margin: 0 auto; padding: 64px 2rem 96px; }
+
+    h2 {
+      font-size: 1.55rem; color: var(--navy);
+      margin: 2.5rem 0 0.5rem; letter-spacing: -0.01em;
+    }
+    h2 .num {
+      display: inline-block; min-width: 1.6em;
+      color: var(--gold); font-weight: 700;
+    }
+    h3 {
+      font-size: 1.05rem; color: var(--navy);
+      margin: 1.5rem 0 0.4rem;
+      font-family: 'Arial', sans-serif; font-weight: 700;
+      letter-spacing: 0.02em; text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+    p { margin-bottom: 1rem; }
+
+    .lede {
+      font-size: 1.1rem; color: var(--text);
+      border-left: 3px solid var(--gold);
+      padding: 0.5rem 0 0.5rem 1.25rem;
+      margin: 0 0 2rem;
+    }
+
+    /* ── EXAMPLE BLOCKS ── */
+    .examples { margin: 1rem 0 2rem; }
+    .example {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: var(--white);
+    }
+    .example > div { padding: 1rem 1.25rem; }
+    .example .bad {
+      background: #fdf3f3;
+      border-right: 1px solid var(--border);
+    }
+    .example .good { background: #f3f9f5; }
+    .example .label {
+      display: block;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .example .bad .label { color: var(--red); }
+    .example .good .label { color: var(--green); }
+    .example .text {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .example .text em {
+      display: block;
+      color: var(--text-light);
+      font-style: italic;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 640px) {
+      .example { grid-template-columns: 1fr; }
+      .example .bad { border-right: 0; border-bottom: 1px solid var(--border); }
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--off-white);
+      border-left: 4px solid var(--navy);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .callout strong { color: var(--navy); }
+
+    /* ── TEMPLATE BLOCK ── */
+    .template {
+      background: #fbfbfd;
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      border-radius: 8px;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--text);
+      margin: 1rem 0 1.5rem;
+    }
+    .template .placeholder {
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    /* ── FOOTER CTA ── */
+    .footer-cta {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: var(--white);
+      border-radius: 12px;
+      text-align: center;
+    }
+    .footer-cta h2 { color: var(--white); margin-top: 0; }
+    .footer-cta a.btn-cta {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-family: 'Arial', sans-serif;
+      padding: 0.75rem 1.75rem;
+      border-radius: 6px;
+      margin-top: 0.75rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .footer-cta a.btn-cta:hover { background: var(--gold-light); }
+  </style>
+  <script src="brand.js"></script>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Ask the <span>Oracle</span></a>
+  <div class="nav-links">
+    <a href="/learn">Learn</a>
+    <a href="/app">Research</a>
+    <a class="btn-nav" href="/app">Open the app</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Member Guide</div>
+  <h1>How to ask Ask the Oracle a good question</h1>
+  <p>The model is trained on credit hire law and your evidence database. The better you frame the question, the more focused the answer. Five minutes to read; saves an hour of back-and-forth.</p>
+</section>
+
+<main>
+
+  <p class="lede">
+    Most users type into Ask the Oracle the way they would type into Google &mdash; a couple of keywords, no context, no question. The model can usually still produce <em>something</em>, but the answer is unfocused, generic, and often not the argument you actually need. The four habits below transform the quality of the response without requiring any extra time.
+  </p>
+
+  <h2><span class="num">1.</span> Don&rsquo;t search like Google. Ask like a colleague.</h2>
+  <p>
+    A bare keyword tells the model nothing about what you actually need. Type a sentence: who, what, the issue in dispute, and the question you want answered. Treat the prompt as if you were briefing a junior colleague who hasn&rsquo;t seen the file before.
+  </p>
+
+  <div class="examples">
+    <div class="example">
+      <div class="bad">
+        <span class="label">Don&rsquo;t do this</span>
+        <div class="text">betterment</div>
+      </div>
+      <div class="good">
+        <span class="label">Do this</span>
+        <div class="text">The defendant is arguing that my client got a 1.4&#8209;litre Golf when he previously drove a 1.0&#8209;litre Polo, so the hire is betterment. What is the leading authority on betterment in credit hire and how do I rebut?</div>
+      </div>
+    </div>
+    <div class="example">
+      <div class="bad">
+        <span class="label">Don&rsquo;t do this</span>
+        <div class="text">impecuniosity and credit cards</div>
+      </div>
+      <div class="good">
+        <span class="label">Do this</span>
+        <div class="text">The defendant says my client&rsquo;s &pound;800 of available credit on his credit card defeats impecuniosity. The card is &pound;200 short of its limit and the bank statements show he was at the limit each month. What test should the court apply and what authorities should I cite?</div>
+      </div>
+    </div>
+    <div class="example">
+      <div class="bad">
+        <span class="label">Don&rsquo;t do this</span>
+        <div class="text">total loss 14 days offhire</div>
+      </div>
+      <div class="good">
+        <span class="label">Do this</span>
+        <div class="text">Total loss notification was served on the claimant on 5 March. The defendant&rsquo;s PAV payment was not received until 9 April. The defendant is now offering only 14 days post&#8209;notification of hire. How do I argue for the period through to receipt of the PAV?</div>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="num">2.</span> Paste the actual challenge.</h2>
+  <p>
+    If you have had a letter, defence, Part 36 offer, expert report, skeleton or counsel&rsquo;s note that triggered your question, copy and paste the relevant paragraph or two into the prompt. <em>Then</em> ask your question underneath.
+  </p>
+  <p>
+    This single habit is the most powerful one on the page. It anchors the question in the defendant&rsquo;s own terminology &mdash; which is exactly what the retrieval system needs to find the right authorities &mdash; and it forces you to be specific about what is in dispute.
+  </p>
+
+  <div class="example">
+    <div class="bad">
+      <span class="label">Don&rsquo;t do this</span>
+      <div class="text">any argument for BHR from Enterprise?</div>
+    </div>
+    <div class="good">
+      <span class="label">Do this</span>
+      <div class="text">
+        The defendant&rsquo;s BHR expert has produced this:
+        <em>&ldquo;The claimant could have hired a Group D vehicle from Enterprise at a daily rate of &pound;52.40, giving a BHR of &pound;6,130.80 over the 117&#8209;day period.&rdquo;</em>
+        Enterprise&rsquo;s rental terms cap the hire period at 88 days. What argument can I run that Enterprise is not a valid comparator for a 117&#8209;day hire?
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="num">3.</span> Tell us what you need.</h2>
+  <p>
+    The same fact pattern produces different answers depending on what you ask for. Be explicit. A short phrase at the end of the prompt is enough.
+  </p>
+
+  <h3>Useful framings</h3>
+  <p>
+    <strong>&ldquo;What authorities should I cite?&rdquo;</strong> &mdash; produces a focused list of cases with citations and key paragraphs.<br>
+    <strong>&ldquo;Draft me a paragraph for the reply.&rdquo;</strong> &mdash; produces drafting in the right register.<br>
+    <strong>&ldquo;Is the defendant right?&rdquo;</strong> &mdash; produces a critique of the defendant&rsquo;s argument.<br>
+    <strong>&ldquo;What evidence do I need?&rdquo;</strong> &mdash; produces a checklist of disclosure or witness evidence.<br>
+    <strong>&ldquo;Summarise the law.&rdquo;</strong> &mdash; produces a concise statement of principles.
+  </p>
+
+  <h2><span class="num">4.</span> Be specific about facts.</h2>
+  <p>
+    You don&rsquo;t need to keep saying &ldquo;I act for the CHO&rdquo; &mdash; the system already knows you&rsquo;re acting on the claimant side and treats every question as a request for help defeating a defendant&rsquo;s point unless you say otherwise. But the more concrete facts you give, the sharper the answer.
+  </p>
+
+  <h3>Facts that nearly always sharpen the answer</h3>
+  <p>
+    Hire period (start and end dates), daily rate, vehicle group, ACRISS or GTA code, claimant&rsquo;s occupation, accident date, repair completion date or date of total loss notification, location, and the head of loss in dispute (need / period / rate / type / impecuniosity).
+  </p>
+
+  <div class="callout">
+    <strong>If in doubt, follow the template.</strong> Paste the defendant&rsquo;s words, add your facts, ask your question.
+  </div>
+
+  <div class="template">
+    The defendant is arguing <span class="placeholder">[paste the relevant paragraph from the letter, defence, expert report, Part 36 offer, etc.]</span>.<br><br>
+    The relevant facts are <span class="placeholder">[hire period, vehicle, claimant&rsquo;s occupation, dates of repair / PAV, location, head of loss in dispute]</span>.<br><br>
+    <span class="placeholder">[What authorities should I cite? / Draft a paragraph for my reply / Is the defendant right? / What evidence do I need?]</span>
+  </div>
+
+  <h2><span class="num">5.</span> One more thing.</h2>
+  <p>
+    The system answers every question through the claimant&rsquo;s lens by default. If you genuinely want a defendant&rsquo;s perspective on a point &mdash; for example to anticipate how an opposing argument will be framed &mdash; say so explicitly in the prompt. Otherwise the model will assume you want the claimant&rsquo;s rebuttal.
+  </p>
+
+  <div class="footer-cta">
+    <h2>Ready to try?</h2>
+    <p>Open the research tool and ask your next question with one of the templates above.</p>
+    <a class="btn-cta" href="/app">Open credit&#8209;hire.ai</a>
+  </div>
+
+</main>
+
+<footer style="text-align:center;padding:1.25rem;font-family:Arial,sans-serif;font-size:0.78rem;color:#718096;border-top:1px solid #e2e8f0;background:#ffffff;">
+  <a href="privacy.html" style="color:#718096;text-decoration:none;">Privacy Policy</a>
+  &nbsp;·&nbsp; &copy; 2026 Ask the Oracle
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,413 @@
+{
+  "module": {
+    "id": "module-08",
+    "title": "Litigation and dispute resolution",
+    "subtitle": "Preparing for and navigating credit hire disputes in the courts",
+    "level": "Advanced",
+    "duration_minutes": 105,
+    "format": "Self-paced e-learning with AI tutor",
+    "sections_count": 5,
+    "assessment_questions": 20,
+    "pass_mark_percent": 75,
+    "prerequisite": "module-07",
+    "learning_objectives": [
+      {
+        "id": "LO1",
+        "text": "Describe the County Court procedure applicable to credit hire claims, including track allocation and its costs consequences"
+      },
+      {
+        "id": "LO2",
+        "text": "Explain the disclosure obligations of both parties in credit hire litigation and identify when those obligations are breached"
+      },
+      {
+        "id": "LO3",
+        "text": "Apply the principle from Excalibur and related cases on the claimant's duty to provide evidence"
+      },
+      {
+        "id": "LO4",
+        "text": "Explain the role of Alternative Dispute Resolution (ADR) in credit hire disputes, including the Court of Appeal's ruling on compelled ADR"
+      },
+      {
+        "id": "LO5",
+        "text": "Assess the costs implications of Part 36 offers in credit hire litigation"
+      },
+      {
+        "id": "LO6",
+        "text": "Identify the warning signs of a fraud risk in a credit hire claim and explain the appropriate response"
+      }
+    ],
+    "sections": [
+      {
+        "id": "s01",
+        "number": 1,
+        "title": "Court procedure and track allocation",
+        "duration_minutes": 20,
+        "concept": "Most credit hire disputes are resolved in the County Court. The track to which a claim is allocated \u2014 Small Claims, Fast Track, or Multi-Track \u2014 determines the procedure, the time to trial, and most importantly the costs regime. Understanding track allocation is fundamental to settlement strategy: a claimant on the Small Claims Track cannot recover legal costs even if they win, which fundamentally changes the economics of litigation.",
+        "content_points": [
+          "Small Claims Track: claims up to \u00a310,000 in value; simplified procedure; legal costs generally not recoverable by either party",
+          "Fast Track: claims \u00a310,000-\u00a325,000; full costs regime applies; trial within 30 weeks typically",
+          "Multi-Track: claims over \u00a325,000; full costs, case management, disclosure obligations; complex credit hire claims (prestige vehicles, long periods) often here",
+          "The costs implication of Small Claims: even a winning claimant cannot recover legal costs; the CHO bears its own litigation costs; this changes the economics of dispute",
+          "Pre-Action Protocol: there is a Pre-Action Protocol for Personal Injury claims which also covers associated credit hire; the protocol sets out steps parties must take before issuing",
+          "Letters of claim and acknowledgment: the formal start of the litigation process; timelines matter and default can have consequences",
+          "Court fees: issuing fees are payable by the claimant and are recoverable if the claim succeeds",
+          "Default judgment: where a defendant does not respond within the required period, judgment in default may be obtained; useful but subject to application to set aside"
+        ],
+        "scenario": {
+          "text": "A CHO has a claim for \u00a38,500 (hire charges only, no PI). The insurer has offered \u00a35,000. The CHO's solicitor estimates \u00a32,500 in legal costs to take the claim to Small Claims Track trial. The CHO believes they would win in full. The claim is on the Small Claims Track. Advise on whether to litigate or negotiate.",
+          "teaching_points": [
+            "If the CHO wins: \u00a38,500 recovered but \u00a32,500 in legal costs irrecoverable \u2014 net \u00a36,000",
+            "If the insurer's offer is accepted: \u00a35,000 net with no litigation costs",
+            "The uplift from litigating (\u00a31,000 net after costs) may not justify the risk and resource",
+            "The learner should identify the Small Claims Track costs trap and recommend negotiating a higher settlement rather than litigating",
+            "A counter-offer of \u00a37,000-7,500 may achieve a better net outcome than a full trial"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A credit hire claim for \u00a39,500 is allocated to the Small Claims Track. The claimant wins in full. They incurred \u00a33,000 in legal costs. What costs are recoverable?",
+          "options": [
+            {
+              "text": "\u00a33,000 \u2014 the winning party always recovers legal costs",
+              "correct": false
+            },
+            {
+              "text": "Nothing beyond the court fee \u2014 legal costs are generally irrecoverable in the Small Claims Track",
+              "correct": true,
+              "explanation": "Small Claims Track costs rules mean legal costs are not recoverable regardless of the outcome. This is a fundamental feature of the track that shapes settlement strategy."
+            },
+            {
+              "text": "\u00a31,500 \u2014 50% of legal costs as a standard award",
+              "correct": false
+            },
+            {
+              "text": "\u00a33,000 if the defendant behaved unreasonably",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s02",
+        "number": 2,
+        "title": "Disclosure obligations: both ways",
+        "duration_minutes": 22,
+        "concept": "Disclosure in credit hire litigation runs both ways. The claimant must disclose documents supporting their claim (repair records, hire agreement, financial evidence). The defendant (insurer) must disclose documents relevant to their challenge \u2014 including BHR survey methodology, internal handling guidelines, and, as the Forum has reported, evidence of potential fraud concerns that they seek to use offensively. Withholding relevant evidence to gain tactical advantage is a serious professional obligation breach.",
+        "content_points": [
+          "Standard disclosure: each party must disclose documents they rely on AND documents that adversely affect their own case or support the other party's case",
+          "The claimant's disclosure obligations: hire agreement, repair invoice, photos, hire notification, impecuniosity evidence, any communications with the insurer",
+          "The defendant's disclosure obligations: BHR survey methodology and raw data, internal handling notes on the claim, any earlier offers and their basis",
+          "The AXA case: the Forum reported on AXA being held not entitled to withhold evidence of potential PI fraud while using fraud allegations offensively \u2014 a significant ruling on insurer disclosure obligations",
+          "Non-disclosure and its consequences: deliberate non-disclosure can result in adverse inference, cost penalties, or (in serious cases) strike-out",
+          "The proportionality limit: disclosure must be proportionate to the issues and value of the claim; satellite litigation over disclosure is itself a cost risk",
+          "Electronic documents: most claim correspondence is now electronic; emails, texts, and system records are disclosable",
+          "Privilege: legal advice privilege protects communications between a party and their lawyer; litigation privilege protects documents created for the dominant purpose of litigation"
+        ],
+        "scenario": {
+          "text": "In litigation, the CHO's solicitor discovers that the insurer is challenging the credit hire on the basis of alleged fraud indicators, but has not disclosed its fraud investigation file or the basis for its fraud concerns. The insurer says the file is privileged. The CHO's solicitor argues the insurer cannot use fraud allegations as a sword while shielding the evidence as a privilege shield. Analyse.",
+          "teaching_points": [
+            "The principle: a party cannot use allegations offensively while claiming privilege to avoid disclosing the evidential basis",
+            "The AXA case is directly relevant \u2014 the Forum covered it",
+            "The insurer must either disclose the fraud investigation basis or withdraw the fraud allegation",
+            "The CHO's solicitor should make a disclosure application to the court",
+            "The learner should identify this as an application of the sword/shield principle and the AXA precedent"
+          ]
+        },
+        "knowledge_check": {
+          "question": "An insurer alleges that a credit hire claim is exaggerated but refuses to disclose its own internal file note identifying what it says are the fraud indicators, claiming legal advice privilege. Which principle is most relevant?",
+          "options": [
+            {
+              "text": "Legal advice privilege always protects internal file notes regardless of their use",
+              "correct": false
+            },
+            {
+              "text": "A party cannot use allegations as an offensive weapon while relying on privilege to avoid disclosing the evidential basis for those allegations",
+              "correct": true,
+              "explanation": "The sword/shield principle prevents a party from using protected material offensively while shielding it from disclosure. The Forum reported on AXA being held to this standard."
+            },
+            {
+              "text": "Internal file notes are always disclosable in litigation",
+              "correct": false
+            },
+            {
+              "text": "The claimant must prove the fraud allegation is false before seeking disclosure",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s03",
+        "number": 3,
+        "title": "ADR: mediation, negotiation and the court's new powers",
+        "duration_minutes": 20,
+        "concept": "Alternative Dispute Resolution (ADR) \u2014 mediation, early neutral evaluation, and structured negotiation \u2014 has become increasingly important in credit hire disputes. The Court of Appeal's ruling that judges can order parties to engage in ADR (against the previous view that it could not be compelled) fundamentally changes the landscape. Parties who unreasonably refuse ADR risk costs sanctions. For CHOs, understanding ADR as a tool \u2014 not just a delay tactic \u2014 is increasingly important.",
+        "content_points": [
+          "What ADR covers: mediation (neutral third party facilitates settlement), early neutral evaluation (neutral expert gives non-binding opinion), the GTA's own settlement framework",
+          "The Court of Appeal ruling: the Forum covered the ruling that judges can now order parties to engage in ADR; previously this was considered an infringement of party autonomy",
+          "Costs consequences of unreasonable ADR refusal: a party who unreasonably refuses ADR may have costs awarded against them even if they win at trial",
+          "When ADR is appropriate for credit hire: disputes where the quantum is agreed but liability or rate is in issue; multi-party disputes; high-value prestige vehicle claims",
+          "When ADR is less suitable: low-value Small Claims Track disputes where mediation costs would exceed the amount in dispute; cases involving fraud allegations; cases where a binding precedent is needed",
+          "Mediation preparation: the CHO should prepare a position statement, bundle of key documents, and a realistic settlement range before entering mediation",
+          "The GTA arbitration mechanism: some GTA disputes are resolved through the GTA's own arbitration process rather than the courts",
+          "The without prejudice rule: communications in the course of ADR are generally without prejudice and cannot be relied on in subsequent litigation if settlement fails"
+        ],
+        "scenario": {
+          "text": "A credit hire claim for \u00a314,000 (Fast Track) has been running for 8 months. Trial is 6 weeks away. The insurer offers mediation. The CHO declines, saying mediation would be a waste of time and they are confident of winning. The case goes to trial. The CHO wins but is awarded only \u00a312,000 \u2014 within the range they could have achieved in mediation. The insurer applies for a costs order on the grounds of the CHO's unreasonable ADR refusal. Analyse the costs position.",
+          "teaching_points": [
+            "The court has the power to penalise unreasonable ADR refusal in costs",
+            "The CHO won but achieved a result within the mediation range \u2014 arguably no benefit from refusing",
+            "The insurer's costs application is likely to have some merit",
+            "The learner should identify that 'confident of winning' is not a sufficient reason to refuse ADR",
+            "Best practice: engage with ADR and if it fails, proceed to trial with no costs risk from refusal"
+          ]
+        },
+        "knowledge_check": {
+          "question": "Following the Court of Appeal ruling reported by the Forum, a court orders the parties in a credit hire dispute to attempt mediation. One party refuses to participate. What is the most likely consequence?",
+          "options": [
+            {
+              "text": "No consequence \u2014 parties cannot be compelled to settle",
+              "correct": false
+            },
+            {
+              "text": "The refusing party may face a costs sanction even if they ultimately win at trial",
+              "correct": true,
+              "explanation": "The court can order engagement with ADR and penalise unreasonable refusal in costs. Refusing a court order is a serious matter regardless of the eventual trial outcome."
+            },
+            {
+              "text": "The claim is automatically struck out",
+              "correct": false
+            },
+            {
+              "text": "The refusing party's position is treated as an admission",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s04",
+        "number": 4,
+        "title": "Part 36 offers: strategy and consequences",
+        "duration_minutes": 22,
+        "concept": "Part 36 of the Civil Procedure Rules provides a mechanism for making formal settlement offers with specific costs consequences designed to encourage early settlement. A claimant's Part 36 offer that is not beaten at trial means the defendant pays enhanced costs and interest. A defendant's Part 36 offer that is not beaten means the claimant cannot recover costs after the date of the offer. Understanding Part 36 strategy is essential for any practitioner involved in credit hire litigation.",
+        "content_points": [
+          "How Part 36 works: an offer in prescribed form that stays open for at least 21 days; acceptance within 21 days leads to settlement on agreed terms without court involvement",
+          "Claimant's Part 36 offer: if the claimant makes an offer and the defendant does not accept, and the claimant beats the offer at trial, the defendant faces: indemnity costs, enhanced interest (up to 10% above base rate), and an additional amount (up to \u00a375,000 or 10% of the award, whichever is less)",
+          "Defendant's Part 36 offer: if the defendant makes an offer and the claimant does not accept, and the claimant fails to beat it at trial, the claimant pays their own costs from the offer date onwards",
+          "The costs trap for claimants: a claimant who holds out for more than a defendant's Part 36 offer but fails to beat it at trial can end up with a net recovery lower than the offer",
+          "Timing strategy: claimants should make Part 36 offers early in proceedings to maximise the period over which enhanced consequences run; defendants should make Part 36 offers when confident in their position",
+          "Realistic offers: a Part 36 offer must be realistic \u2014 too high and the consequences never trigger; too low and it signals weakness",
+          "Part 36 in the Small Claims Track: the Small Claims Track costs regime means Part 36 consequences are limited; specialist advice should be taken",
+          "Withdrawal and variation: Part 36 offers can be withdrawn or varied but with specific procedural requirements"
+        ],
+        "scenario": {
+          "text": "A credit hire claim is for \u00a311,000 (Fast Track). In month 2 of proceedings, the claimant makes a Part 36 offer to settle for \u00a39,000. The insurer declines and makes its own Part 36 offer of \u00a37,500. The case goes to trial 10 months later. The judge awards \u00a39,500. Analyse the costs consequences for both parties.",
+          "teaching_points": [
+            "Award of \u00a39,500 beats the claimant's offer of \u00a39,000 \u2014 the enhanced Part 36 consequences apply",
+            "The insurer must pay: indemnity costs from month 2, enhanced interest on the damages, and the additional Part 36 amount",
+            "The claimant beat the insurer's Part 36 offer (\u00a39,500 > \u00a37,500) so no adverse costs consequence for the claimant",
+            "The insurer's decision to decline the claimant's \u00a39,000 offer was very costly",
+            "The learner should calculate the approximate costs differential between standard and indemnity costs and understand the significance of the additional amount"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A defendant makes a Part 36 offer of \u00a36,000. The claimant rejects it and proceeds to trial. The judge awards \u00a35,800. What is the most likely costs consequence?",
+          "options": [
+            {
+              "text": "The claimant recovers all their costs because they won",
+              "correct": false
+            },
+            {
+              "text": "The claimant pays their own costs from the date of the defendant's Part 36 offer onwards, and may pay the defendant's costs for the same period",
+              "correct": true,
+              "explanation": "The claimant failed to beat the defendant's Part 36 offer. This triggers adverse costs consequences from the date of the offer \u2014 potentially eliminating or reversing the net recovery."
+            },
+            {
+              "text": "The defendant pays all costs because the claimant won at trial",
+              "correct": false
+            },
+            {
+              "text": "Part 36 consequences only apply if the offer is accepted",
+              "correct": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "s05",
+        "number": 5,
+        "title": "Fraud indicators and the appropriate response",
+        "duration_minutes": 21,
+        "concept": "Credit hire fraud \u2014 staged accidents, invented losses, inflated claims \u2014 is a real and costly problem that damages the entire industry and drives up premiums for honest policyholders. Practitioners must be able to recognise fraud indicators in their own claims, respond appropriately, and understand the consequences of knowingly advancing a fraudulent claim. At the same time, fraud allegations are sometimes used as a tactical weapon against legitimate claims; distinguishing these situations is critical.",
+        "content_points": [
+          "Common fraud types in credit hire: staged accidents, induced collisions, phantom passengers, inflated hire periods, fictitious vehicles",
+          "Fraud indicators at instruction: inconsistent accident accounts, multiple claimants from the same vehicle, claimant cannot describe the accident, same solicitor/repairer/CHO pattern on multiple claims",
+          "Fraud indicators during hire: hire period significantly longer than the repair period with no explanation, claimant cannot be contacted at the delivery address, vehicle not collected despite being repaired",
+          "The CHO's obligations: a CHO who becomes aware of fraud indicators must investigate; knowingly advancing a fraudulent claim exposes the CHO to regulatory and legal consequences",
+          "Withdrawing from a fraudulent claim: a CHO who identifies fraud should cease the hire and notify their insurers; they should not simply continue and hope",
+          "The insurer's fraud allegation: where an insurer raises fraud, they must have a proper basis; unsubstantiated fraud allegations are a serious matter and the CHO should challenge the basis",
+          "The AXA principle: an insurer cannot use fraud allegations offensively while withholding the evidence base (see Module 6, Section 2)",
+          "Reporting obligations: in serious cases, CHOs may have obligations under the Proceeds of Crime Act; specialist legal advice should be taken"
+        ],
+        "scenario": {
+          "text": "A CHO receives an instruction for a claimant following an accident. On checking their records, the CHO notices this is the claimant's third accident in 14 months, each involving a different vehicle and a different at-fault driver, but always using the same solicitor, the same repairer, and the same CHO. The repair periods and hire periods have been very similar in each case. Advise on what the CHO should do.",
+          "teaching_points": [
+            "This pattern is a significant fraud indicator \u2014 same solicitor, repairer, CHO across three accidents is not coincidental",
+            "The CHO should not simply decline and move on \u2014 they should investigate and document",
+            "If they continue the hire, they must be satisfied it is legitimate",
+            "Internal fraud referral is appropriate at this stage",
+            "The Insurance Fraud Bureau (IFB) cheatline may be relevant",
+            "The learner should identify this as a 'crash for cash' / organised fraud indicator and advise a cautious, investigative approach before proceeding"
+          ]
+        },
+        "knowledge_check": {
+          "question": "A CHO identifies fraud indicators in a claim but continues to provide the hire anyway, hoping the claim will be settled before the issue becomes apparent. What is the most serious risk they face?",
+          "options": [
+            {
+              "text": "The claim may settle at a lower value than expected",
+              "correct": false
+            },
+            {
+              "text": "The CHO may face regulatory, civil, and potentially criminal consequences for knowingly advancing a fraudulent claim",
+              "correct": true,
+              "explanation": "Knowingly advancing a fraudulent claim exposes the CHO to serious consequences including FCA regulatory action, civil liability, and in serious cases criminal liability under the Fraud Act or POCA."
+            },
+            {
+              "text": "The insurer will simply reduce the settlement offer",
+              "correct": false
+            },
+            {
+              "text": "There are no consequences if the fraud is not proven at trial",
+              "correct": false
+            }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "pass_mark": 75,
+      "questions": [
+        {
+          "type": "multiple_choice",
+          "question": "A credit hire claim for \u00a39,500 is allocated to the Small Claims Track. The claimant wins in full at trial and incurred \u00a33,000 in legal costs. What costs are recoverable from the defendant?",
+          "options": [
+            "\u00a33,000 \u2014 the winning party always recovers legal costs",
+            "Nothing beyond the court fee \u2014 legal costs are generally irrecoverable in the Small Claims Track regardless of outcome",
+            "\u00a31,500 \u2014 50% of costs as a standard Small Claims Track award",
+            "\u00a33,000 only if the defendant behaved unreasonably"
+          ],
+          "correct": 1,
+          "explanation": "In the Small Claims Track, legal costs are generally not recoverable by either party regardless of outcome. This fundamental feature shapes settlement strategy because the CHO bears its own litigation costs even when it wins."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "An insurer alleges fraud in a credit hire claim but refuses to disclose its fraud investigation file, claiming legal advice privilege. Which principle is most relevant?",
+          "options": [
+            "Legal advice privilege always protects internal file notes regardless of their use",
+            "The sword/shield principle \u2014 a party cannot use allegations offensively while relying on privilege to withhold the evidential basis for those allegations",
+            "Internal file notes are always disclosable in litigation without exception",
+            "The claimant must disprove the fraud allegation before seeking disclosure"
+          ],
+          "correct": 1,
+          "explanation": "The sword/shield principle, as illustrated by the AXA case reported by the Forum, prevents a party from deploying fraud allegations as an offensive weapon while hiding behind privilege to avoid disclosing the evidence supporting those allegations."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "Following the Court of Appeal ruling on ADR, a court orders both parties in a credit hire dispute to attempt mediation. One party refuses to participate. What is the most likely consequence?",
+          "options": [
+            "No consequence \u2014 parties cannot be compelled to settle",
+            "The refusing party may face a costs sanction even if they ultimately win at trial",
+            "The claim is automatically struck out",
+            "The refusing party's position is treated as an admission"
+          ],
+          "correct": 1,
+          "explanation": "The Court of Appeal ruled that courts can order engagement with ADR and penalise unreasonable refusal in costs. Refusing a court order is a serious matter regardless of the eventual trial outcome."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A defendant makes a Part 36 offer of \u00a36,000. The claimant rejects it and proceeds to trial. The judge awards \u00a35,800. What is the costs consequence for the claimant?",
+          "options": [
+            "The claimant recovers all costs because they won at trial",
+            "The claimant pays their own costs from the date of the Part 36 offer onwards, and may also pay the defendant's costs for the same period",
+            "The defendant pays all costs because the claimant obtained a judgment",
+            "No costs consequences arise because the amounts are close"
+          ],
+          "correct": 1,
+          "explanation": "The claimant failed to beat the defendant's Part 36 offer (\u00a35,800 < \u00a36,000). This triggers adverse costs consequences from the date of the offer, potentially eliminating or even reversing the net recovery."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A CHO identifies that a claimant is making their third accident claim in 14 months, always using the same solicitor, repairer, and CHO. What is the most appropriate initial response?",
+          "options": [
+            "Proceed with the hire as normal because each claim may be genuine",
+            "Decline the hire and move on without further action",
+            "Investigate the pattern, document the fraud indicators, and make an internal fraud referral before deciding whether to proceed",
+            "Report the claimant to the police immediately"
+          ],
+          "correct": 2,
+          "explanation": "This pattern is a significant fraud indicator. The CHO should not simply proceed nor simply decline without investigation. A cautious, investigative approach including internal fraud referral is appropriate before making a decision on the claim."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A claimant makes a Part 36 offer of \u00a38,500 in month 1 of proceedings. The case goes to trial in month 12 and the judge awards \u00a38,600. What Part 36 consequences apply?",
+          "options": [
+            "No enhanced consequences because the offer was only just beaten",
+            "The defendant pays indemnity costs from month 1, enhanced interest on the damages, and the additional Part 36 amount \u2014 the margin by which the offer is beaten is irrelevant",
+            "Standard costs only \u2014 Part 36 enhancements require the offer to be beaten by at least 10%",
+            "The claimant pays enhanced costs for not settling earlier at a lower figure"
+          ],
+          "correct": 1,
+          "explanation": "Once the claimant beats their own Part 36 offer at trial, the full enhanced consequences apply regardless of the margin. The defendant must pay indemnity costs, enhanced interest, and the additional Part 36 amount."
+        },
+        {
+          "type": "multiple_choice",
+          "question": "A CHO knowingly continues to provide a hire vehicle after identifying clear fraud indicators. What is the most serious risk the CHO faces?",
+          "options": [
+            "The claim may settle at a lower value than expected",
+            "Regulatory, civil, and potentially criminal consequences for knowingly advancing a fraudulent claim",
+            "The insurer will simply reduce the settlement offer",
+            "There are no consequences if the fraud is never proven at trial"
+          ],
+          "correct": 1,
+          "explanation": "Knowingly advancing a fraudulent claim exposes the CHO to serious consequences including FCA regulatory action, civil liability, and in serious cases criminal liability under the Fraud Act or Proceeds of Crime Act."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: A court can never order parties to engage in alternative dispute resolution against their will.",
+          "correct": 1,
+          "explanation": "False. The Court of Appeal ruled that courts can order parties to engage in ADR. This overturned the previous view that compelled ADR infringed party autonomy. Unreasonable refusal to participate may result in costs sanctions."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: In credit hire litigation, the defendant insurer has disclosure obligations including the methodology behind their BHR surveys and internal handling notes.",
+          "correct": 0,
+          "explanation": "True. Standard disclosure requires each party to disclose documents they rely on and documents that adversely affect their own case. The insurer must disclose BHR survey methodology, raw data, internal handling notes, and the basis for any earlier offers."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Communications made during mediation are 'without prejudice' and can be relied upon in court if the mediation fails to produce a settlement.",
+          "correct": 1,
+          "explanation": "False. Communications in the course of ADR are generally without prejudice and cannot be relied upon in subsequent litigation if settlement fails. This protection encourages open and honest negotiation during the mediation process."
+        }
+      ]
+    },
+    "ai_tutor": {
+      "system_prompt_per_section": {
+        "s01": "You are a credit hire training tutor for Section 1 of Module 6: court procedure and track allocation. The learner is working through a Small Claims Track scenario where litigation costs would consume most of the potential uplift. Guide them through the costs-benefit calculation and recommend a negotiation strategy over litigation. Keep responses to 2-4 sentences.",
+        "s02": "You are a credit hire training tutor for Section 2 of Module 6: disclosure obligations. The learner is working through a scenario where the insurer uses fraud allegations as a sword while claiming privilege over the evidence. Guide them to identify the sword/shield principle and the AXA precedent reported by the Forum. Keep responses to 2-4 sentences.",
+        "s03": "You are a credit hire training tutor for Section 3 of Module 6: ADR. The learner is working through a scenario where a CHO unreasonably refused mediation and then won at trial but faced a costs application. Guide them to identify that winning at trial does not protect against costs sanctions for unreasonable ADR refusal. Keep responses to 2-4 sentences.",
+        "s04": "You are a credit hire training tutor for Section 4 of Module 6: Part 36 offers. The learner is working through a scenario where the award of \u00a39,500 beats the claimant's Part 36 offer of \u00a39,000. Guide them to calculate the enhanced costs consequences and understand why the insurer's decision to decline was costly. Keep responses to 2-4 sentences.",
+        "s05": "You are a credit hire training tutor for Section 5 of Module 6: fraud indicators. The learner is working through a repeat-claimant scenario with consistent patterns suggesting organised fraud. Guide them to identify the fraud indicators, advise an investigative approach before proceeding, and understand the CHO's obligations and risks. Keep responses to 2-4 sentences."
+      }
+    },
+    "further_reading": {
+      "forum_search_queries": [
+        "What did the Forum report about the Court of Appeal ADR ruling?",
+        "Find Forum posts about AXA and disclosure of fraud evidence",
+        "Forum coverage of Part 36 offers in credit hire litigation",
+        "What does the Forum say about defending credit hire litigation?",
+        "Forum posts about fraud patterns and crash for cash in credit hire"
+      ]
+    }
+  }
+}

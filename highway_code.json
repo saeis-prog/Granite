@@ -1,0 +1,690 @@
+{
+  "version": 1,
+  "effective_date": "2025-04-10",
+  "source": "The Official Highway Code (UK), effective 10 April 2025",
+  "legal_framework": {
+    "must_rules": "Rules using MUST/MUST NOT are legal requirements backed by specific Acts of Parliament. Breach constitutes a criminal offence.",
+    "should_rules": "Rules using should/should not are advisory. Failure to follow them does not constitute an offence but may be used as evidence of negligence or contributory negligence in civil proceedings.",
+    "hierarchy_of_road_users": "Rules H1-H3 establish a hierarchy where those in charge of vehicles that can cause the greatest harm bear the greatest responsibility to reduce danger to others."
+  },
+  "categories": [
+    {
+      "name": "Hierarchy of Road Users",
+      "description": "Establishes responsibility based on potential to cause harm. Drivers have greatest responsibility to vulnerable road users.",
+      "rules": [
+        {
+          "rule_number": "H1",
+          "title": "Hierarchy Principle - Greatest Harm Equals Greatest Responsibility",
+          "summary": "Those in charge of vehicles that can cause the greatest harm bear the greatest responsibility to reduce danger to others.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Core principle establishing that drivers have elevated duty of care toward vulnerable users. In RTA claims, defendant drivers are expected to anticipate and avoid harm to pedestrians and cyclists even if those users are partly at fault. Claimant's comparative negligence may be reduced if defendant failed to follow this principle."
+        },
+        {
+          "rule_number": "H2",
+          "title": "Drivers Give Way to Pedestrians",
+          "summary": "Drivers must give way to pedestrians crossing or waiting to cross at junctions, whether or not there are traffic lights or crossing facilities.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Establishes driver's duty to anticipate pedestrian movements at junctions. Evidence that driver failed to give way to pedestrian (even if pedestrian entered road) strongly suggests negligence. Critical for junction collision claims involving pedestrians."
+        },
+        {
+          "rule_number": "H3",
+          "title": "Drivers Must Not Cut Across Cyclists",
+          "summary": "Drivers must not cut across cyclists going ahead at junctions, including when turning into side roads.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Establishes driver's specific duty toward cyclists at junctions. Driver turning left/right must yield to cyclist proceeding straight. Breach strongly indicates driver negligence in junction RTA claims involving cyclists."
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Condition and Fitness to Drive",
+      "description": "Requirements for vehicle maintenance, health conditions, and driver fitness.",
+      "rules": [
+        {
+          "rule_number": "89",
+          "title": "Vehicle MUST Comply with Construction and Use Regulations",
+          "summary": "Vehicles must be maintained in a safe condition, with all safety equipment functional and compliant with Construction and Use Regulations.",
+          "legal_status": "MUST",
+          "legislation": "Construction and Use Regulations",
+          "liability_relevance": "Vehicle defects (failed brakes, bad tyres, faulty lights) can constitute breach of statutory duty and negligence. In RTA claims, poor vehicle condition may be comparative negligence factor or breach of duty. Defendant's maintenance records are discoverable."
+        },
+        {
+          "rule_number": "90",
+          "title": "MUST Report Health Conditions; MUST NOT Drive if Advised Against",
+          "summary": "Drivers must report relevant health conditions to DVLA and must not drive if a doctor has advised against it.",
+          "legal_status": "MUST",
+          "legislation": "DVLA regulations",
+          "liability_relevance": "Driving whilst unfit due to medical condition (even if not reported to DVLA) constitutes negligence. If medical evidence shows driver was unfit, this establishes causation of collision. Particularly relevant for claims involving sudden illness or uncontrolled conditions."
+        },
+        {
+          "rule_number": "91",
+          "title": "Driving When Tired Increases Collision Risk",
+          "summary": "Drowsy driving severely impairs reaction time and judgment, substantially increasing collision risk. Rest is essential.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Evidence of driver fatigue (long hours, no breaks, evidence of nodding off) supports negligence claim. Collision pattern consistent with microsleep (drifting lane) strengthens liability. Defendants have duty to ensure adequate rest breaks."
+        },
+        {
+          "rule_number": "92",
+          "title": "MUST Read Number Plate at 20m; MUST Wear Glasses if Needed",
+          "summary": "Drivers must be able to read a number plate in good daylight at 20 metres. Must wear corrective lenses if prescribed.",
+          "legal_status": "MUST",
+          "legislation": "DVLA regulations",
+          "liability_relevance": "Poor vision constitutes breach of legal requirement and negligence. If driver wasn't wearing required glasses at collision time, establishes breach of duty and likely causation. Optical exam records and prescription compliance are discoverable."
+        },
+        {
+          "rule_number": "95",
+          "title": "Alcohol/Drug Limits - England and Wales",
+          "summary": "England/Wales limits: 35 micrograms breath, 80 milligrams blood, 107 milligrams urine. MUST NOT drive over these limits.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Act 1988",
+          "liability_relevance": "Breath/blood test over limit is conclusive evidence of impaired driving and negligence. Even below-limit consumption impairing judgment is negligence. Failed breathalyser or toxicology evidence directly establishes liability. Claimant completely exonerated if defendant over limit."
+        },
+        {
+          "rule_number": "96",
+          "title": "Alcohol/Drug Limits - Scotland",
+          "summary": "Scotland limits: 22 micrograms breath, 50 milligrams blood, 67 milligrams urine. MUST NOT drive over these limits.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Act 1988 (as amended)",
+          "liability_relevance": "Stricter Scottish limits apply in Scottish jurisdiction. Toxicology evidence is highly probative of negligence and impairs viability of any contributory negligence defense. Establishes breach of statutory duty."
+        },
+        {
+          "rule_number": "97",
+          "title": "MUST NOT Drive Under Influence of Drugs or Medicine",
+          "summary": "Drivers must not drive under the influence of drugs or medicines that impair driving ability, whether legal or illegal.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Act 1988",
+          "liability_relevance": "Medical evidence of prescription drug side effects impairing cognition/reaction (e.g., drowsiness, dizziness) supports negligence claim. Illicit drug use constitutes additional criminal negligence. Medication records and impairment testing support liability."
+        }
+      ]
+    },
+    {
+      "name": "Seat Belts and Passengers",
+      "description": "Mandatory use of seat belts and child restraints for safety.",
+      "rules": [
+        {
+          "rule_number": "99",
+          "title": "MUST Wear Seat Belt if Fitted",
+          "summary": "Drivers and front seat passengers must wear seat belts if fitted, with limited exceptions (medical exemption, reversing, etc.).",
+          "legal_status": "MUST",
+          "legislation": "Motor Vehicles (Wearing of Seat Belts) Regulations 1993",
+          "liability_relevance": "Claimant's failure to wear seat belt may reduce damages (contributory negligence) if injuries worsened by non-compliance, though burden remains with defendant to prove causation link. In RTA claims, seatbelt status is routinely established from scene evidence."
+        },
+        {
+          "rule_number": "100",
+          "title": "Children Under 135cm/12 Years MUST Use Correct Child Restraint",
+          "summary": "Children under 135cm in height or 12 years of age must use an approved child car seat or restraint.",
+          "legal_status": "MUST",
+          "legislation": "Motor Vehicles (Wearing of Seat Belts) Regulations 1993",
+          "liability_relevance": "Driver responsibility for passenger children. Failure to restrain child constitutes breach of duty toward child and potential basis for separate claim. In injury assessment, unrestrained child's injuries may be compared to restrained scenario for damages reduction due to contributory negligence."
+        },
+        {
+          "rule_number": "101",
+          "title": "Rear Seat Belt Requirements",
+          "summary": "Rear seat passengers must wear seat belts where fitted.",
+          "legal_status": "MUST",
+          "legislation": "Motor Vehicles (Wearing of Seat Belts) Regulations 1993",
+          "liability_relevance": "Similar to front seat provisions. Rear passenger failure to wear belt may reduce damages. Driver passenger accountability limited unless driver has control over rear restraint usage."
+        }
+      ]
+    },
+    {
+      "name": "Speed and Stopping Distances",
+      "description": "Speed limits and stopping distance requirements for different vehicle types and road conditions.",
+      "rules": [
+        {
+          "rule_number": "124",
+          "title": "Speed Limits - Cars",
+          "summary": "Cars: 30 mph built-up areas, 60 mph single carriageway, 70 mph dual carriageway/motorway. MUST NOT exceed.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Regulation Act 1984",
+          "liability_relevance": "Speeding is strict liability breach establishing negligence. Claimant's speeding defense weakened if defendant was also exceeding limit. Speed significantly affects stopping distance and collision severity. Evidence of excessive speed (from scene, witness, vehicle data) strongly supports liability."
+        },
+        {
+          "rule_number": "125",
+          "title": "Speed Limits - Goods Vehicles >7.5 Tonnes",
+          "summary": "Goods vehicles over 7.5 tonnes: 30 mph built-up, 50 mph single carriageway, 60 mph dual carriageway, 60 mph motorway.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Regulation Act 1984",
+          "liability_relevance": "HGV subject to lower speed limits. Breach by HGV establishes negligence. HGV's greater mass and reduced braking capability makes speeding particularly dangerous. Tachograph data often available to prove speed violation."
+        },
+        {
+          "rule_number": "126",
+          "title": "Stopping Distances and 2-Second Rule",
+          "summary": "20mph=12m, 30mph=23m, 40mph=36m, 50mph=53m, 60mph=73m, 70mph=96m. Double on wet roads. Up to 10x on ice/snow. Maintain 2-second gap minimum.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Stopping distance evidence crucial for negligence analysis. If accident happened within published stopping distance despite available time, establishes negligence/excessive speed. Wet/ice conditions require increased distance; failure to slow down despite weather constitutes negligence. Reconstruction experts rely on these figures."
+        },
+        {
+          "rule_number": "127",
+          "title": "Tailgating is Dangerous and Constitutes Careless Driving",
+          "summary": "Following another vehicle too closely (less than 2-second gap) is dangerous and can constitute careless driving offense.",
+          "legal_status": "should",
+          "legislation": "Road Traffic Act 1988 s3 (careless driving)",
+          "liability_relevance": "Tailgating evidence from witness testimony or dashcam establishes negligence. If rear-end collision occurred, close following automatically suggests breach of 2-second rule. Can support careless driving criminal charge, strengthening civil negligence claim."
+        }
+      ]
+    },
+    {
+      "name": "Traffic Signals and Road Markings",
+      "description": "Compliance with traffic lights, road markings, and regulatory signs.",
+      "rules": [
+        {
+          "rule_number": "109",
+          "title": "MUST Obey Traffic Light Signals",
+          "summary": "Drivers must obey all traffic light signals. Red means stop, amber means prepare to stop, green means proceed (if safe).",
+          "legal_status": "MUST",
+          "legislation": "Traffic Regulation Act 1984, Traffic Signs Regulations 2002",
+          "liability_relevance": "Red light breach is strict liability and conclusive negligence evidence. Witness testimony, CCTV, or traffic light timing data proving red light running establishes driver liability. Defendant running red light typically bars any contributory negligence defense for claimant."
+        },
+        {
+          "rule_number": "129",
+          "title": "MUST NOT Cross Solid Double White Lines",
+          "summary": "Drivers must not cross solid double white lines except to pass a stationary obstruction, turn, or avoid hazard.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Traffic Signs Regulations 2002",
+          "liability_relevance": "Illegal overtaking across double lines establishes negligence. If head-on collision resulted from crossing double lines, this proves negligent conduct and recklessness. Road markings evidence from scene investigation supports this finding."
+        },
+        {
+          "rule_number": "140",
+          "title": "MUST NOT Drive or Park in Cycle Lanes During Operation",
+          "summary": "Drivers must not drive or park in dedicated cycle lanes when they are operational, indicated by road markings and/or traffic signals.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Traffic Signs Regulations 2002",
+          "liability_relevance": "Parking/driving in active cycle lane violates dedicated cyclist protection. If collision with cyclist occurred while driver occupied cycle lane, establishes breach of duty to cyclist. Particularly relevant for liability when driver's vehicle encroached on cyclist's protected space."
+        },
+        {
+          "rule_number": "175",
+          "title": "Traffic Lights at Junctions - MUST Stop at Red",
+          "summary": "At red traffic light, drivers must stop before the stop line or crossing, except when stopping would be unsafe.",
+          "legal_status": "MUST",
+          "legislation": "Traffic Regulation Act 1984",
+          "liability_relevance": "Failure to stop at red light is automatic negligence. Traffic light cycle timing data can prove whether light was green or red at collision time. Claimant protected if defendant ran light."
+        },
+        {
+          "rule_number": "178",
+          "title": "Advanced Stop Lines for Cyclists",
+          "summary": "Advanced stop lines allow cyclists to position ahead of other traffic at junctions. Drivers must not enter the area when red light shows.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Traffic Regulation Act 1984",
+          "liability_relevance": "Driver encroaching on advanced stop line when red violates cyclist protection. If collision with cyclist at junction involved driver entering ASL zone, establishes breach of duty. Particularly relevant for liability in cyclist claims."
+        }
+      ]
+    },
+    {
+      "name": "Mobile Phones and Vehicle Control",
+      "description": "Restrictions on mobile phone use while driving and maintaining vehicle control.",
+      "rules": [
+        {
+          "rule_number": "149",
+          "title": "MUST NOT Use Hand-Held Mobile Phone While Driving",
+          "summary": "Drivers must not use hand-held mobile phones or similar devices while driving or stopped in traffic. Applies even when stationary in traffic.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Act 1988 s41D, Construction and Use Regulations reg 110",
+          "liability_relevance": "Mobile phone use is strict liability breach and automatic negligence. Evidence of phone use at collision time (call logs, text records, dashcam showing phone) strongly proves negligence and distraction. Claimant's recovery unaffected if defendant used phone; establishes causation of inattention."
+        },
+        {
+          "rule_number": "150",
+          "title": "MUST Exercise Proper Control of Vehicle at All Times",
+          "summary": "Drivers must keep their hands on the steering wheel and exercise proper control of the vehicle at all times.",
+          "legal_status": "MUST",
+          "legislation": "Construction and Use Regulations",
+          "liability_relevance": "Loss of control evidence (swerving, unintended lane changes, skidding) suggests breach of proper control duty. If collision caused by loss of control, establishes negligence regardless of speed or weather. Medical emergency or mechanical failure may provide defense."
+        }
+      ]
+    },
+    {
+      "name": "Overtaking",
+      "description": "Safe overtaking procedures and minimum clearance distances for vulnerable road users.",
+      "rules": [
+        {
+          "rule_number": "110",
+          "title": "Flashing Headlights — Only to Warn Others of Your Presence",
+          "summary": "Only flash your headlights to let other road users know that you are there. Do not flash your headlights to convey any other message or to intimidate other road users.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Critical in side-road and right-turn cases where one driver flashes another out of a side road or across a queue. The Code is clear that headlight flashing has ONE meaning — \"I am here\" — and is NOT a signal of priority. A driver who flashes another out and a collision results bears responsibility for misleading both that driver and any oncoming traffic. A driver who treats a flash as a priority signal and pulls out without their own check has also breached Rule 211 (looking out for other road users including motorcyclists). Rule 110 is regularly cited in the apportionment analysis of side-road emergence collisions."
+        },
+        {
+          "rule_number": "162",
+          "title": "Leave 1.5m Clearance for Cyclists at Speeds Up to 30mph",
+          "summary": "Drivers must leave at least 1.5 metres lateral clearance when overtaking cyclists at speeds up to 30 mph. Increase clearance at higher speeds.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Specific requirement protecting cyclists. If driver passed cyclist with less than 1.5m clearance at ≤30mph and collision resulted, establishes breach of duty. Expert cyclist safety evidence and measurement of road width support this. Particularly probative in side-swipe collision claims."
+        },
+        {
+          "rule_number": "163",
+          "title": "Overtake Only When Safe; Give Motorcyclists/Cyclists Room",
+          "summary": "Overtake only when it is safe to do so. Give motorcyclists and cyclists at least as much room as a car.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Unsafe overtaking (insufficient time, space, or visibility) establishes negligence. Failure to provide motorcycle/cyclist equivalent clearance violates specific duty. If overtaking maneuver caused collision, suggests driver misjudged safety. Witness accounts of close/dangerous pass support negligence."
+        },
+        {
+          "rule_number": "164",
+          "title": "Overtaking Large Vehicles — Allow Extra Distance and Take Care",
+          "summary": "Overtaking large vehicles (lorries, buses, coaches) takes longer than overtaking cars and is more difficult because of size, restricted view, slipstream effects and harder-to-judge speed. Drop further back than usual to improve your view of the road ahead, allow more time and space, and only overtake when you can see the whole road ahead is clear. If you cannot see clearly, do not overtake.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Engaged in motorcycle-overtaking-bus or motorcycle-overtaking-HGV cases. The rule places a heightened duty on the overtaking road user (whether car or motorcyclist) to satisfy themselves the road ahead is clear. A motorcyclist overtaking a large vehicle who collides with an emerging or pulling-out vehicle will frequently face an apportionment-against-them at 80% or higher (cf. the principles in Powell v Moody (1966) and the modern apportionment authority Davis v Schrogin [2006] EWCA Civ 974). The mitigating factors are speed, sightline (was the bus stationary, was a passing place available), and whether the emerging driver discharged their own Rule 211 duty."
+        },
+        {
+          "rule_number": "167",
+          "title": "MUST NOT Overtake at Pedestrian Crossing or Double Lines",
+          "summary": "Drivers must not overtake the nearest vehicle to a pedestrian crossing, at double white lines, or after a No Overtaking sign.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Traffic Signs Regulations 2002",
+          "liability_relevance": "Illegal overtaking at crossing or marked areas is strict liability. Head-on collision during illegal overtake establishes fault. Road markings evidence from scene proves breach. No comparative negligence defense available to defendant undertaking prohibited maneuver."
+        }
+      ]
+    },
+    {
+      "name": "Junctions",
+      "description": "Requirements at junctions including give way rules and pedestrian crossings.",
+      "rules": [
+        {
+          "rule_number": "170",
+          "title": "Give Way to Pedestrians Crossing at Junctions",
+          "summary": "Drivers must give way to pedestrians crossing the road at junctions, whether the crossing is marked or implied.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Establishes driver duty toward pedestrians at junctions. Failure to yield to pedestrian (even if pedestrian errors exist) suggests negligence. Pedestrian claimant's comparative negligence limited if driver failed yield duty. Critical for intersection collision claims."
+        },
+        {
+          "rule_number": "171",
+          "title": "MUST Stop at Stop Signs; MUST Give Way at Give Way Signs",
+          "summary": "At Stop signs, drivers must come to a complete stop before the stop line. At Give Way signs, drivers must yield to traffic on the main road.",
+          "legal_status": "MUST",
+          "legislation": "Traffic Signs Regulations 2002",
+          "liability_relevance": "Failure to stop at stop line or give way at intersection is automatic negligence. Evidence (witness, CCTV, scene investigation) proving non-compliance establishes liability. Rear-end collision at give-way junction may reduce rear vehicle's liability if stationary vehicle failed give way."
+        },
+        {
+          "rule_number": "172",
+          "title": "Check for Traffic, Cyclists, and Pedestrians Before Emerging",
+          "summary": "Drivers must check for traffic, cyclists, and pedestrians before emerging from a junction, looking in all directions including blind spots.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Failure to properly check before emerging establishes negligence. If collision involved cyclist/pedestrian in blind spot or driver failed to look both ways, supports negligence claim. Witness testimony about driver failing to look is probative. Suggests inadequate observation rather than unavoidable collision."
+        }
+      ]
+    },
+    {
+      "name": "Pedestrian Crossings",
+      "description": "Regulations regarding designated pedestrian crossing areas and driver responsibilities.",
+      "rules": [
+        {
+          "rule_number": "191",
+          "title": "MUST NOT Park on Crossing or in Zig-Zag Area",
+          "summary": "Drivers must not park on a pedestrian crossing or in the zig-zag marked area either side of a crossing.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Traffic Regulation Act 1984",
+          "liability_relevance": "Parking on/near crossing creates visual obstruction for pedestrians and drivers. If pedestrian collision occurred near improperly parked vehicle, suggests parked vehicle contributed to obscured sight lines. Statutory breach supports negligence liability."
+        },
+        {
+          "rule_number": "195",
+          "title": "MUST Give Way to Pedestrians on Zebra Crossing",
+          "summary": "Drivers must give way to pedestrians already on or about to cross a zebra crossing. Stop if necessary.",
+          "legal_status": "MUST",
+          "legislation": "Zebra Crossings Regulations 1997",
+          "liability_relevance": "Failure to give way to pedestrian on zebra crossing is absolute liability. Pedestrian's right to cross protected zone is nearly conclusive defense. Driver running across zebra crossing collision establishes automatic negligence. Pedestrian claimant's contributory negligence severely limited."
+        },
+        {
+          "rule_number": "196",
+          "title": "MUST Stop When Traffic Lights Show Red at Pelican/Puffin/Toucan Crossings",
+          "summary": "Drivers must stop when red light shows at signal-controlled pedestrian crossings (pelican, puffin, toucan).",
+          "legal_status": "MUST",
+          "legislation": "Zebra Crossings Regulations 1997, Traffic Regulation Act 1984",
+          "liability_relevance": "Running red light at signal-controlled crossing is strict liability negligence. Pedestrian protected in marked crossing area with green signal. Traffic light timing data and CCTV prove breach. Claimant pedestrian exonerated if lawfully crossing on pedestrian signal."
+        },
+        {
+          "rule_number": "199",
+          "title": "MUST NOT Park in Zig-Zag Area Near Pedestrian Crossing",
+          "summary": "Drivers must not park in the zig-zag marked area on either side of a pedestrian crossing.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Traffic Regulation Act 1984",
+          "liability_relevance": "Parking in zig-zag area creates sight-line obstructions for both pedestrians and drivers. Statutory breach contributes to collision risk. If pedestrian-vehicle collision near crossing involved improperly parked vehicle obscuring vision, supports negligence liability."
+        }
+      ]
+    },
+    {
+      "name": "Vulnerable Road Users",
+      "description": "Special provisions for pedestrians, cyclists, horse riders, and other vulnerable road users.",
+      "rules": [
+        {
+          "rule_number": "86",
+          "title": "Daylight Riding — Make Yourself as Visible as Possible",
+          "summary": "Motorcyclists should make themselves as visible as possible from the side as well as the front and rear during daylight riding. This includes wearing a light or brightly coloured helmet and fluorescent clothing or strips, and using dipped headlights even in daylight where conditions warrant.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Establishes a specific motorcyclist conspicuity duty. A motorcyclist riding in dark clothing on an unlit machine in conditions where conspicuity is poor may face a contributory-negligence reduction where the defendant's evidence is that the motorcyclist was not seen. The reduction is causal — it depends on whether better conspicuity would have prevented or reduced the collision. The hierarchy of road users (Rule H1) and Rule 211 reduce the weight of this rule against the motorcyclist where the defendant should in any event have looked."
+        },
+        {
+          "rule_number": "88",
+          "title": "Motorcyclists Manoeuvring — Drivers Should Be Aware",
+          "summary": "Motorcyclists should be aware of what is behind and to the sides before manoeuvring. Drivers of larger vehicles should be aware of motorcyclists who may be alongside or overtaking, including in queues, at junctions, and during lane changes. Motorcyclists should look behind them and use mirrors and signals before manoeuvring.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Used in two directions. (i) When the motorcyclist is the claimant: a defendant driver who manoeuvred without checking for motorcyclists alongside or behind is in breach of Rule 88. (ii) When contributory negligence is alleged against the motorcyclist: failure to check mirrors/blind-spot before changing lane or overtaking can support a reduction. Frequently engaged in U-turn, lane-change and side-road emerging cases."
+        },
+        {
+          "rule_number": "204",
+          "title": "Hierarchy of Road Users Principle - Vulnerable Users",
+          "summary": "Hierarchy principle applies: greatest responsibility toward vulnerable users (pedestrians, cyclists, horse riders) who are at greatest risk.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Establishes elevated duty of care toward vulnerable users. Collision with pedestrian/cyclist implies breach unless driver can prove unavoidable accident. Defendant cannot rely on victim's error alone if driver failed to anticipate vulnerability. Reduces claimant's comparative negligence exposure."
+        },
+        {
+          "rule_number": "205",
+          "title": "Drive Carefully Near Pedestrians",
+          "summary": "Drivers must take particular care near pedestrians, especially in built-up areas, schools, and residential zones.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Elevated duty near pedestrian concentrations. Speed reduction and heightened vigilance required. If driver maintained high speed near school/residential area and hit pedestrian, suggests breach of careful driving duty. Evidence of excessive speed in high-pedestrian zones supports negligence."
+        },
+        {
+          "rule_number": "206",
+          "title": "Drive Carefully Near Schools and Older/Disabled People",
+          "summary": "Drivers must exercise particular care near schools, and when encountering older people, disabled people, and children.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Specific duty to anticipate behavior of vulnerable groups (children, elderly, disabled). Failure to slow/observe near school during hours constitutes negligence. If victim was visibly elderly/disabled/child and driver didn't adjust behavior, supports negligence liability."
+        },
+        {
+          "rule_number": "207",
+          "title": "Special Care for Pedestrians in Traffic",
+          "summary": "Drivers must take special care and slow down for pedestrians in traffic, particularly near junctions and crossings.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Duty to anticipate pedestrian presence and unpredictability. Failure to reduce speed/increase observation near pedestrian zones when pedestrians present establishes negligence. Supports pedestrian claimant's negligence case."
+        },
+        {
+          "rule_number": "211",
+          "title": "Give Motorcyclists/Cyclists Room",
+          "summary": "Drivers must give motorcyclists and cyclists adequate room, especially when overtaking or at junctions.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Specific duty toward motorcycle/cyclist users. Close passing, failure to anticipate cyclist presence, or cutting across cyclists establishes negligence. Evidence of adequate clearance absence supports negligence. Protects cyclist/motorcyclist claimants."
+        },
+        {
+          "rule_number": "212",
+          "title": "At Least 1.5m Clearance When Overtaking Cyclists at ≤30mph",
+          "summary": "Drivers must leave at least 1.5 metres clearance when overtaking cyclists at speeds of 30 mph or less.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Specific quantified duty protecting cyclists. If side-swipe collision with cyclist occurred during overtake with <1.5m clearance at ≤30mph, establishes clear negligence breach. Road width measurement and expert testimony support this. Highly probative for cyclist collision claims."
+        },
+        {
+          "rule_number": "213",
+          "title": "Give Horses at Least 2m Space at Under 10mph",
+          "summary": "Drivers must pass horses at under 10 mph with at least 2 metres lateral clearance.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Specific duty toward horse riders. Excessive speed near horse or inadequate clearance causing horse to bolt establishes negligence. Horse rider claimant protected by specific clearance requirement. Evidence of excessive speed or close pass supports negligence."
+        },
+        {
+          "rule_number": "214",
+          "title": "Horse Riders - Pass at Under 10mph with At Least 2m Space",
+          "summary": "When passing a horse rider, drivers must reduce speed to under 10 mph and allow at least 2 metres clearance.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Reinforces horse-related duty. Failure to slow below 10mph and maintain 2m distance when passing horse establishes negligence if collision/injury resulted. Expert evidence on horse behavior and startlement supports negligence claim by rider."
+        },
+        {
+          "rule_number": "215",
+          "title": "Additional Horse Safety Requirements",
+          "summary": "Extra caution required; horses are unpredictable and can be easily startled by sudden noise or close approach.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "General duty acknowledging horse unpredictability. Evidence that driver made noise, approached suddenly, or failed anticipate horse startle behavior supports negligence. Horse rider claimant protected by recognition of horse behavior risk."
+        }
+      ]
+    },
+    {
+      "name": "Driving in Adverse Weather",
+      "description": "Requirements for driving safely in rain, snow, ice, and reduced visibility conditions.",
+      "rules": [
+        {
+          "rule_number": "226",
+          "title": "MUST Use Headlights When Visibility Seriously Reduced",
+          "summary": "Drivers must use headlights whenever visibility is seriously reduced to under 100 metres. Law requires headlights between sunset and sunrise.",
+          "legal_status": "MUST",
+          "legislation": "Road Vehicles Lighting Regulations regs 25 & 27",
+          "liability_relevance": "Failure to use headlights in low visibility is strict liability breach. If collision occurred in fog/twilight with lights off, establishes negligence. Evidence of visibility conditions and light status from scene investigation supports negligence claim."
+        },
+        {
+          "rule_number": "227",
+          "title": "Wet Weather - Double Stopping Distance; Keep Well Back",
+          "summary": "In wet weather, stopping distances at least double. Drivers must keep well back from vehicle ahead and reduce speed accordingly.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Wet roads require increased following distance and reduced speed. Rear-end collision in rain where following distance <4 seconds (doubled) suggests negligence. Weather conditions documented by scene investigation support negligence analysis. Driver has duty to adjust behavior to weather."
+        },
+        {
+          "rule_number": "229",
+          "title": "Snow/Ice - MUST Clear Windows; MUST Ensure Lights/Plates Visible",
+          "summary": "In snow and ice, drivers must clear all windows, ensure lights and registration plates are visible, and ensure tires have adequate tread.",
+          "legal_status": "MUST",
+          "legislation": "Construction and Use Regulations reg 30, Road Vehicles Lighting Regulations reg 23",
+          "liability_relevance": "Failure to clear windows, ensure light visibility, or maintain tire tread in ice/snow is statutory breach establishing negligence. Evidence of obscured windows, dirty lights, or worn tires in winter conditions supports liability. Contributes to collision causation."
+        },
+        {
+          "rule_number": "230",
+          "title": "Stopping Distances Can Be 10x Greater on Ice",
+          "summary": "On ice and snow, stopping distances can be up to 10 times greater than on dry roads, requiring extreme caution and reduced speed.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Ice/snow significantly extends stopping distance. Collision on ice where driver maintained speed suited to dry conditions establishes negligence. Weather data and road conditions evidence from scene support this. Driver must reduce speed proportionately to conditions."
+        },
+        {
+          "rule_number": "236",
+          "title": "MUST NOT Use Fog Lights Unless Visibility Seriously Reduced; MUST Switch Off When Improves",
+          "summary": "Fog lights must not be used unless visibility is seriously reduced (under 100m). Must be switched off when visibility improves to avoid dazzling other drivers.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Vehicles Lighting Regulations",
+          "liability_relevance": "Misuse of fog lights (using in normal conditions, failing to switch off) can dazzle oncoming drivers and cause collision. Evidence of fog light misuse supports negligence claim. Statutory breach if fog lights used inappropriately."
+        }
+      ]
+    },
+    {
+      "name": "Lighting",
+      "description": "Requirements for vehicle lights and visibility on public roads.",
+      "rules": [
+        {
+          "rule_number": "113",
+          "title": "MUST Use Lights Between Sunset and Sunrise",
+          "summary": "Drivers must use headlights between sunset and sunrise, and also in reduced visibility conditions during daytime.",
+          "legal_status": "MUST",
+          "legislation": "Road Vehicles Lighting Regulations regs 3, 24 & 25",
+          "liability_relevance": "Failure to use lights during required periods is strict liability breach. If night-time collision involved unlit vehicle, establishes negligence. Vehicle condition (non-functional lights) and compliance with lighting regulations are discoverable."
+        },
+        {
+          "rule_number": "114",
+          "title": "MUST NOT Use Lights That Dazzle or Cause Discomfort",
+          "summary": "Drivers must not use any lights in a way that would dazzle or cause discomfort to other road users.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Vehicles Lighting Regulations",
+          "liability_relevance": "Improper use of high beam or dazzling lights causing driver to be momentarily blinded establishes negligence if collision resulted. Evidence of witness dazzlement or improper light adjustment supports negligence claim. Relates to duty of care toward other road users."
+        }
+      ]
+    },
+    {
+      "name": "Dangerous/Careless Driving",
+      "description": "General duty requirements for safe driving conduct.",
+      "rules": [
+        {
+          "rule_number": "144",
+          "title": "MUST NOT Drive Dangerously or Without Due Care",
+          "summary": "Drivers must not drive in a manner that is dangerous, without due care and attention, or without reasonable consideration for other road users.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Act 1988 sects 2 & 3 (as amended by RTA 1991)",
+          "liability_relevance": "Foundational duty for all driving. Breach establishes civil negligence liability. Criminal careless/dangerous driving conviction directly supports civil negligence claim. Evidence of inattention, recklessness, or failure to anticipate supports breach. Critical element in all RTA negligence cases."
+        },
+        {
+          "rule_number": "147",
+          "title": "MUST NOT Throw Anything Out of Vehicle",
+          "summary": "Drivers must not throw any articles or matter from a vehicle while driving.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Act 1988",
+          "liability_relevance": "Throwing objects from vehicle is strict liability breach. If article thrown from defendant's vehicle caused collision/injury, establishes negligence. Evidence of objects found or witness testimony supports liability."
+        }
+      ]
+    },
+    {
+      "name": "Reversing",
+      "description": "Safe reversing procedures and restrictions.",
+      "rules": [
+        {
+          "rule_number": "202",
+          "title": "MUST NOT Reverse Further Than Necessary",
+          "summary": "Drivers must not reverse further than necessary, and must take great care when reversing to avoid hidden dangers.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Construction and Use Regulations reg 106",
+          "liability_relevance": "Excessive reversing or careless reversal establishes negligence. If collision involved reversing vehicle, negligence presumed unless driver proves adequate lookout was maintained. Reversing vehicle typically bears greater liability in reversing collisions."
+        },
+        {
+          "rule_number": "203",
+          "title": "MUST NOT Reverse from Side Road into Main Road",
+          "summary": "Drivers must never reverse from a side road into a main road, as this creates serious collision hazard.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Construction and Use Regulations reg 106",
+          "liability_relevance": "Reversing from minor to major road is automatic negligence. If collision resulted from illegal reverse maneuver, establishes clear breach. Main road vehicle claimant has virtually no comparative negligence liability."
+        }
+      ]
+    },
+    {
+      "name": "Waiting and Parking",
+      "description": "Regulations governing vehicle stopping, waiting, and parking on public roads.",
+      "rules": [
+        {
+          "rule_number": "238",
+          "title": "MUST NOT Wait or Park on Yellow Lines During Operation",
+          "summary": "Drivers must not wait or park on yellow lines during the times of operation shown on nearby signs, except where exceptions apply.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Traffic Regulation Act 1984",
+          "liability_relevance": "Illegal parking on yellow lines during restricted hours is statutory breach. If parked vehicle caused collision (sight obstruction, traffic obstruction, pedestrian striking parked vehicle), supports negligence liability against parked vehicle owner. Parking evidence from scene investigation is discoverable."
+        },
+        {
+          "rule_number": "239",
+          "title": "MUST Check for Cyclists Before Opening Door",
+          "summary": "When parking or about to exit a vehicle, drivers must check for cyclists and allow adequate clearance when opening doors.",
+          "legal_status": "should",
+          "legislation": null,
+          "liability_relevance": "Dooring (opening car door into cyclist) is negligence toward cyclist. Duty to check mirrors and shoulder before opening door. If cyclist injured by suddenly opened door, driver establishing negligence. Dutch reach technique recommended as evidence of careful practice."
+        },
+        {
+          "rule_number": "240",
+          "title": "MUST NOT Stop or Park on Carriageway, Crossing, or Clearway",
+          "summary": "Drivers must not stop or park on a carriageway where there are no parking facilities, at a pedestrian crossing, or on a clearway.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Traffic Regulation Act 1984",
+          "liability_relevance": "Illegal parking creates hazard to pedestrians and traffic. If pedestrian collision occurred near illegally parked vehicle or vehicle was struck while illegally parked, establishes breach. Parking in prohibited zone shows lack of reasonable care."
+        },
+        {
+          "rule_number": "242",
+          "title": "MUST NOT Leave Vehicle in Dangerous Position or Causing Obstruction",
+          "summary": "Drivers must not leave a vehicle in a dangerous position or causing unnecessary obstruction to traffic or pedestrians.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Act 1988 sect 22, Construction and Use Regulations reg 103",
+          "liability_relevance": "Parking in dangerous location (on blind bend, crest of hill, narrow street) is statutory breach. If parked vehicle contributed to collision risk, owner bears negligence liability. Scene evidence and road layout analysis support this breach."
+        },
+        {
+          "rule_number": "244",
+          "title": "MUST NOT Park on Pavement in London or Scotland",
+          "summary": "In London and Scotland, drivers must not park on the pavement or partially on the pavement.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Traffic Regulation Act 1984",
+          "liability_relevance": "Pavement parking obstructs pedestrians and is statutory breach in London/Scotland. If pedestrian collision involved pavement-parked vehicle, supports negligence. Creates hazard forcing pedestrian into traffic path."
+        },
+        {
+          "rule_number": "248",
+          "title": "MUST NOT Park Facing Against Traffic Flow at Night",
+          "summary": "At night, drivers must not park on the nearside of the road facing against the direction of traffic, except in certain circumstances.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Vehicles (Construction and Use) Regulations",
+          "liability_relevance": "Parking against traffic flow at night reduces visibility of parked vehicle. If night collision involved parked vehicle, failure to park with traffic establishes contributory negligence. Parking orientation evidence from scene investigation supports this."
+        }
+      ]
+    },
+    {
+      "name": "Motorways",
+      "description": "Special rules and restrictions applying only to motorways.",
+      "rules": [
+        {
+          "rule_number": "253",
+          "title": "Prohibited Vehicles MUST NOT Use Motorways",
+          "summary": "Certain vehicle types (mopeds, learner motorcycles, goods vehicles under 7.5 tonnes in some circumstances) are prohibited from using motorways.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Highways Act 1980 sects 16, 17",
+          "liability_relevance": "Prohibited vehicle on motorway is illegal presence. If prohibited vehicle caused collision, establishes negligence. Insurance implications may arise if vehicle was illegally using motorway."
+        },
+        {
+          "rule_number": "258",
+          "title": "MUST NOT Drive in Closed Lane",
+          "summary": "Drivers must not drive in a motorway lane that is closed, indicated by red X or lane closure signals.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Traffic Regulation Act 1984",
+          "liability_relevance": "Driving in closed lane is statutory breach and dangerous. If collision occurred in closed lane where driver shouldn't have been, establishes negligence. Lane closure evidence (red X, traffic control) supports breach."
+        },
+        {
+          "rule_number": "261",
+          "title": "MUST NOT Exceed Speed Limit on Motorway",
+          "summary": "Drivers must not exceed the national speed limit (70 mph for cars) on motorways.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Regulation Act 1984",
+          "liability_relevance": "Speeding on motorway is strict liability breach. High-speed collision on motorway increases injury severity. Evidence of excessive speed (tachograph, witness, damage analysis) proves negligence. Defendant's excessive speed prevents comparative negligence defense."
+        },
+        {
+          "rule_number": "263",
+          "title": "MUST NOT Reverse, Cross Reservation, or Drive Against Traffic",
+          "summary": "Drivers must never reverse on a motorway, cross the central reservation, or drive against the flow of traffic.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Act 1988",
+          "liability_relevance": "Reversing, crossing barrier, or driving wrong-way on motorway is extremely dangerous and automatic negligence. Head-on or reverse collision from these actions establishes absolute liability. No comparative negligence defense available to defendant."
+        },
+        {
+          "rule_number": "269",
+          "title": "MUST NOT Use Hard Shoulder Except in Emergency",
+          "summary": "Drivers must not use the hard shoulder of a motorway except in emergency or on instruction from police/traffic control.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Act 1988",
+          "liability_relevance": "Hard shoulder use outside emergency is breach. If collision occurred due to illegal hard shoulder driving, establishes negligence. Emergency status disputed at liability stage."
+        },
+        {
+          "rule_number": "271",
+          "title": "MUST NOT Stop on Carriageway Except in Emergency",
+          "summary": "Drivers must not stop on the motorway carriageway except in emergency or on traffic officer instruction.",
+          "legal_status": "MUST_NOT",
+          "legislation": "Road Traffic Act 1988",
+          "liability_relevance": "Stopping on live motorway carriage is dangerous and breaches duty. If collision involved stationary vehicle on motorway outside emergency, parked vehicle driver bears major liability. Rear-end collision with stationary motorway vehicle suggests defendant inadequate observation."
+        }
+      ]
+    },
+    {
+      "name": "Incidents and Documentation",
+      "description": "Legal obligations following road traffic incidents and collisions.",
+      "rules": [
+        {
+          "rule_number": "286",
+          "title": "MUST Stop and Give Details if Involved in Collision",
+          "summary": "If involved in a collision that causes damage or injury, drivers must stop at the scene, give their details to others involved, and report to police if anyone is injured.",
+          "legal_status": "MUST",
+          "legislation": "Road Traffic Act 1988 sect 170",
+          "liability_relevance": "Failure to stop at scene or refusal to provide details can result in prosecution for hit-and-run. In civil claim, failure to stop suggests consciousness of guilt and supports negligence inference. Hit-and-run creates presumption of liability and criminal offense."
+        },
+        {
+          "rule_number": "287",
+          "title": "MUST Report to Police Within 24 Hours if Injury and No Insurance Cert Produced",
+          "summary": "If someone is injured and no insurance certificate was produced at the scene, the incident must be reported to police within 24 hours.",
+          "legal_status": "MUST",
+          "legislation": "Road Traffic Act 1988 sect 154",
+          "liability_relevance": "Failure to report within 24 hours is criminal offense. In civil claim, failure to report or produce insurance raises liability questions. Insurance compliance and reporting obligations evidence support litigation. Can result in criminal prosecution alongside civil liability."
+        }
+      ]
+    }
+  ]
+}

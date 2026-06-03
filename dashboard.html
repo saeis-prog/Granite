@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask the Oracle — Usage Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="config.js"></script>
+  <script src="brand.js"></script>
+  <style>
+    :root {
+      --navy:#0f1e3c; --navy-light:#1a2f5e; --gold:#c9a84c; --gold-light:#e8c96a;
+      --white:#ffffff; --off-white:#f5f6f8; --text:#2d3748; --text-light:#718096;
+      --border:#e2e8f0; --green:#15803d; --red:#b91c1c;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Arial',sans-serif;background:var(--off-white);color:var(--text);}
+
+    /* AUTH */
+    #auth-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--navy) 0%,#1e3a6e 100%);padding:2rem;}
+    .auth-card{background:var(--white);border-radius:14px;padding:2.5rem;
+      width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,0.35);}
+    .auth-logo{font-family:'Georgia',serif;font-size:1.3rem;color:var(--navy);
+      text-align:center;margin-bottom:0.3rem;}
+    .auth-logo span{color:var(--gold);}
+    .auth-sub{text-align:center;font-size:0.78rem;color:var(--text-light);
+      margin-bottom:2rem;letter-spacing:0.06em;text-transform:uppercase;}
+    .fg{margin-bottom:1rem;}
+    .fg label{display:block;font-size:0.78rem;font-weight:700;color:var(--navy);
+      margin-bottom:0.35rem;text-transform:uppercase;letter-spacing:0.05em;}
+    .fg input{width:100%;padding:0.65rem 0.85rem;border:1.5px solid var(--border);
+      border-radius:7px;font-size:0.9rem;outline:none;}
+    .fg input:focus{border-color:var(--navy);}
+    .btn-signin{width:100%;padding:0.75rem;background:var(--navy);color:var(--white);
+      border:none;border-radius:7px;font-size:0.95rem;font-weight:700;cursor:pointer;}
+    .btn-signin:hover{background:var(--navy-light);}
+    .auth-err{margin-top:0.75rem;padding:0.6rem;border-radius:6px;font-size:0.82rem;
+      text-align:center;color:var(--red);background:#fee2e2;display:none;}
+    .auth-err.show{display:block;}
+
+    /* LAYOUT */
+    #dashboard{display:none;min-height:100vh;}
+    .topbar{background:var(--navy);height:56px;display:flex;align-items:center;
+      padding:0 1.75rem;border-bottom:2px solid var(--gold);}
+    .topbar-logo{font-family:'Georgia',serif;font-size:1.1rem;color:var(--white);margin-right:0.75rem;}
+    .topbar-logo span{color:var(--gold);}
+    .topbar-badge{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);
+      color:var(--gold);font-size:0.68rem;font-weight:700;letter-spacing:0.12em;
+      text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:4px;}
+    .topbar-right{margin-left:auto;display:flex;align-items:center;gap:0.75rem;}
+    .topbar-nav a{color:rgba(255,255,255,0.6);font-size:0.8rem;text-decoration:none;
+      padding:0.35rem 0.75rem;border:1px solid rgba(255,255,255,0.15);border-radius:5px;
+      transition:all 0.2s;}
+    .topbar-nav a:hover{color:var(--gold);border-color:var(--gold);}
+    .topbar-user{font-size:0.78rem;color:rgba(255,255,255,0.45);}
+    .btn-so{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);
+      border:1px solid rgba(255,255,255,0.15);padding:0.3rem 0.75rem;
+      border-radius:5px;font-size:0.78rem;cursor:pointer;}
+    .btn-so:hover{color:var(--gold);border-color:rgba(201,168,76,0.4);}
+
+    .body{padding:1.75rem;max-width:1320px;margin:0 auto;}
+
+    /* CONTROLS */
+    .controls{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+    .controls label{font-size:0.82rem;font-weight:700;color:var(--navy);}
+    .controls select{padding:0.4rem 0.8rem;border:1.5px solid var(--border);
+      border-radius:7px;font-size:0.82rem;background:var(--white);cursor:pointer;}
+    .btn-refresh{padding:0.4rem 1rem;background:var(--navy);color:var(--white);
+      border:none;border-radius:7px;font-size:0.8rem;font-weight:700;cursor:pointer;margin-left:auto;}
+    .btn-refresh:hover{background:var(--navy-light);}
+    .updated{font-size:0.72rem;color:var(--text-light);}
+
+    /* STAT CARDS */
+    .stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:1.5rem;}
+    .sc{background:var(--white);border:1px solid var(--border);border-radius:11px;
+      padding:1.1rem 1.25rem;border-top:3px solid var(--navy);}
+    .sc.gold{border-top-color:var(--gold);}
+    .sc.green{border-top-color:#38a169;}
+    .sc.red{border-top-color:#e53e3e;}
+    .sc.purple{border-top-color:#7e22ce;}
+    .sc-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;
+      letter-spacing:0.1em;color:var(--text-light);margin-bottom:0.35rem;}
+    .sc-val{font-size:1.9rem;font-weight:700;color:var(--navy);line-height:1;}
+    .sc-val.gold{color:var(--gold);}
+    .sc-sub{font-size:0.72rem;color:var(--text-light);margin-top:0.3rem;}
+
+    /* RT ROW */
+    .rt-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem;}
+    .rtc{background:var(--white);border:1px solid var(--border);border-radius:11px;
+      padding:1rem 1.25rem;text-align:center;}
+    .rtc-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;
+      letter-spacing:0.1em;color:var(--text-light);margin-bottom:0.3rem;}
+    .rtc-val{font-size:1.65rem;font-weight:700;line-height:1;}
+    .rtc-val.best{color:#38a169;}
+    .rtc-val.med{color:var(--gold);}
+    .rtc-val.avg{color:var(--gold);}
+    .rtc-val.worst{color:#e53e3e;}
+    .rtc-unit{font-size:0.72rem;color:var(--text-light);margin-top:0.15rem;}
+
+    /* CARDS */
+    .card{background:var(--white);border:1px solid var(--border);border-radius:11px;padding:1.25rem;}
+    .card-title{font-size:0.72rem;font-weight:700;text-transform:uppercase;
+      letter-spacing:0.1em;color:var(--navy);padding-bottom:0.75rem;
+      border-bottom:1px solid var(--border);margin-bottom:1rem;}
+    .chart-wrap{position:relative;height:210px;}
+    .two-chart{display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+
+    /* TABLES */
+    .tbl-wrap{overflow-x:auto;}
+    table{width:100%;border-collapse:collapse;font-size:0.81rem;}
+    th{text-align:left;padding:0.55rem 0.8rem;font-size:0.68rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:0.08em;color:var(--text-light);
+      border-bottom:2px solid var(--border);white-space:nowrap;}
+    td{padding:0.55rem 0.8rem;border-bottom:1px solid var(--border);
+      color:var(--text);vertical-align:middle;}
+    tr:last-child td{border-bottom:none;}
+    tr:hover td{background:var(--off-white);}
+    .q-text{max-width:320px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .mono{font-variant-numeric:tabular-nums;}
+    .badge{display:inline-block;padding:0.15rem 0.5rem;border-radius:20px;
+      font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;}
+    .b-ch{background:#dbeafe;color:#1d4ed8;}
+    .b-li{background:#dcfce7;color:#15803d;}
+    .b-both{background:#f3e8ff;color:#7e22ce;}
+    .b-ok{background:#dcfce7;color:#15803d;}
+    .b-fail{background:#fee2e2;color:#b91c1c;}
+    .b-bhr-mc{background:#fef3c7;color:#92400e;}
+    .empty{text-align:center;padding:2.5rem;color:var(--text-light);font-size:0.85rem;}
+
+    /* COLLAPSIBLE SECTIONS */
+    .card-title-row{display:flex;align-items:center;justify-content:space-between;
+      padding-bottom:0.75rem;border-bottom:1px solid var(--border);margin-bottom:1rem;}
+    .card-title-row .card-title{border-bottom:none;padding-bottom:0;margin-bottom:0;}
+    .btn-toggle{background:rgba(15,30,60,0.06);border:1px solid var(--border);
+      border-radius:6px;padding:0.25rem 0.7rem;font-size:0.72rem;font-weight:600;
+      color:var(--navy);cursor:pointer;white-space:nowrap;}
+    .btn-toggle:hover{background:rgba(15,30,60,0.12);}
+    .collapsible{transition:max-height 0.35s ease, opacity 0.25s ease;overflow:hidden;}
+    .collapsible.collapsed{max-height:0 !important;opacity:0;margin:0;padding:0;}
+
+    /* BHR ANALYTICS */
+    .bhr-stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.25rem;}
+    .bhr-sc{background:var(--white);border:1px solid var(--border);border-radius:9px;
+      padding:0.9rem 1rem;text-align:center;border-top:3px solid #b45309;}
+    .bhr-sc-label{font-size:0.62rem;font-weight:700;text-transform:uppercase;
+      letter-spacing:0.08em;color:var(--text-light);margin-bottom:0.25rem;}
+    .bhr-sc-val{font-size:1.5rem;font-weight:700;color:#b45309;line-height:1;}
+    .bhr-sc-sub{font-size:0.68rem;color:var(--text-light);margin-top:0.2rem;}
+
+    @media(max-width:1000px){
+      .stat-row{grid-template-columns:repeat(3,1fr);}
+      .two-chart,.two-col{grid-template-columns:1fr;}
+      .rt-row{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:600px){
+      .stat-row{grid-template-columns:repeat(2,1fr);}
+      .rt-row{grid-template-columns:repeat(2,1fr);}
+    }
+  </style>
+</head>
+<body>
+
+<!-- AUTH -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">Ask the <span>Oracle</span></div>
+    <div class="auth-sub">Usage Dashboard</div>
+    <div class="fg"><label>Email</label>
+      <input type="email" id="ae" placeholder="sae@credithire.org.uk" />
+    </div>
+    <div class="fg"><label>Password</label>
+      <input type="password" id="ap" />
+    </div>
+    <button class="btn-signin" onclick="doSignIn()">Sign in</button>
+    <div class="auth-err" id="aerr"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <div class="topbar">
+    <div class="topbar-logo">Ask the <span>Oracle</span></div>
+    <div class="topbar-badge">Usage Dashboard</div>
+    <div class="topbar-right">
+      <div class="topbar-nav">
+        <a href="learn.html">📖 Learn</a>
+        <a href="admin.html">👥 User Management</a>
+      </div>
+      <div class="topbar-user" id="tu"></div>
+      <button class="btn-so" onclick="doSignOut()">Sign out</button>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="controls">
+      <label>Period:</label>
+      <select id="period" onchange="loadData()">
+        <option value="7">Last 7 days</option>
+        <option value="30" selected>Last 30 days</option>
+        <option value="90">Last 90 days</option>
+        <option value="9999">All time</option>
+      </select>
+      <span class="updated" id="updated-at"></span>
+      <button class="btn-refresh" onclick="loadData()">↻ Refresh</button>
+    </div>
+
+    <!-- Summary stats -->
+    <div class="stat-row">
+      <div class="sc">
+        <div class="sc-label">Total Queries</div>
+        <div class="sc-val" id="s1">—</div>
+        <div class="sc-sub" id="s1b"></div>
+      </div>
+      <div class="sc gold">
+        <div class="sc-label">Unique Users</div>
+        <div class="sc-val gold" id="s2">—</div>
+        <div class="sc-sub" id="s2b"></div>
+      </div>
+      <div class="sc green">
+        <div class="sc-label">Success Rate</div>
+        <div class="sc-val" id="s3">—</div>
+        <div class="sc-sub" id="s3b"></div>
+      </div>
+      <div class="sc">
+        <div class="sc-label">Avg Response</div>
+        <div class="sc-val" id="s4">—</div>
+        <div class="sc-sub">average ms</div>
+      </div>
+      <div class="sc purple">
+        <div class="sc-label">Tab Views</div>
+        <div class="sc-val" id="s5">—</div>
+        <div class="sc-sub">navigation events</div>
+      </div>
+    </div>
+
+    <!-- Feature usage -->
+    <div class="rt-row" style="margin-bottom:1.5rem;">
+      <div class="rtc" style="border-top:3px solid #b45309;">
+        <div class="rtc-label">BHR Rebuttal M/C</div>
+        <div class="rtc-val" style="color:#b45309;" id="f-bhr-mc">—</div>
+        <div class="rtc-unit">tab views</div>
+      </div>
+      <div class="rtc" style="border-top:3px solid #7e22ce;">
+        <div class="rtc-label">Learn Page</div>
+        <div class="rtc-val" style="color:#7e22ce;" id="f-learn">—</div>
+        <div class="rtc-unit">page visits</div>
+      </div>
+      <div class="rtc" style="border-top:3px solid var(--navy);">
+        <div class="rtc-label">BHR Queries</div>
+        <div class="rtc-val" style="color:var(--navy);" id="f-bhr-q">—</div>
+        <div class="rtc-unit">scope = BHR</div>
+      </div>
+      <div class="rtc" style="border-top:3px solid #38a169;">
+        <div class="rtc-label">New Features %</div>
+        <div class="rtc-val" style="color:#38a169;" id="f-pct">—</div>
+        <div class="rtc-unit">of total activity</div>
+      </div>
+    </div>
+
+    <!-- Response times -->
+    <div class="rt-row">
+      <div class="rtc">
+        <div class="rtc-label">Best Response</div>
+        <div class="rtc-val best" id="rt1">—</div>
+        <div class="rtc-unit">fastest query</div>
+      </div>
+      <div class="rtc">
+        <div class="rtc-label">Median Response</div>
+        <div class="rtc-val med" id="rt2">—</div>
+        <div class="rtc-unit">p50</div>
+      </div>
+      <div class="rtc">
+        <div class="rtc-label">Average Response</div>
+        <div class="rtc-val avg" id="rt3">—</div>
+        <div class="rtc-unit">mean</div>
+      </div>
+      <div class="rtc">
+        <div class="rtc-label">Worst Response</div>
+        <div class="rtc-val worst" id="rt4">—</div>
+        <div class="rtc-unit">slowest query</div>
+      </div>
+    </div>
+
+    <!-- Timeline + scope -->
+    <div class="two-chart">
+      <div class="card">
+        <div class="card-title">Queries per day</div>
+        <div class="chart-wrap"><canvas id="c1"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Scope breakdown</div>
+        <div class="chart-wrap"><canvas id="c2"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Tab usage + top users -->
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Tab usage</div>
+        <div class="chart-wrap"><canvas id="c3"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Top users by query count</div>
+        <div class="tbl-wrap" id="top-users"><div class="empty">Loading…</div></div>
+      </div>
+    </div>
+
+    <!-- Peak hours + user retention -->
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Peak usage hours (queries)</div>
+        <div class="chart-wrap"><canvas id="c-hours"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Failed queries</div>
+        <div class="tbl-wrap" id="failed-queries"><div class="empty">Loading…</div></div>
+      </div>
+    </div>
+
+    <!-- Learn Analytics -->
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div class="card-title">📖 Learn — Training Analytics <span style="font-weight:400;font-size:0.78rem;color:var(--text-light)">(all users · all time)</span></div>
+      <div class="stat-row" style="margin-bottom:1.25rem;">
+        <div class="sc" style="border-top-color:#7e22ce;">
+          <div class="sc-label">Learners</div>
+          <div class="sc-val" id="l-users">—</div>
+          <div class="sc-sub" id="l-users-sub">users with progress</div>
+        </div>
+        <div class="sc" style="border-top-color:var(--gold);">
+          <div class="sc-label">Modules Started</div>
+          <div class="sc-val" id="l-started">—</div>
+          <div class="sc-sub" id="l-started-sub">total enrolments</div>
+        </div>
+        <div class="sc green">
+          <div class="sc-label">Avg Assessment</div>
+          <div class="sc-val" id="l-avg-score">—</div>
+          <div class="sc-sub">mean score across all attempts</div>
+        </div>
+        <div class="sc" style="border-top-color:#38a169;">
+          <div class="sc-label">Certificates Earned</div>
+          <div class="sc-val" id="l-certs">—</div>
+          <div class="sc-sub" id="l-certs-sub">modules completed</div>
+        </div>
+        <div class="sc" style="border-top-color:#e53e3e;">
+          <div class="sc-label">Avg Completion</div>
+          <div class="sc-val" id="l-completion">—</div>
+          <div class="sc-sub">sections completed per enrolment</div>
+        </div>
+      </div>
+      <div class="two-col" style="gap:1.5rem;">
+        <div>
+          <div style="font-size:0.78rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem">Learn usage by domain</div>
+          <div class="tbl-wrap" id="learn-domains"><div class="empty">Loading…</div></div>
+        </div>
+        <div>
+          <div style="font-size:0.78rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem">Module popularity</div>
+          <div class="tbl-wrap" id="learn-modules"><div class="empty">Loading…</div></div>
+        </div>
+      </div>
+      <div style="margin-top:1.25rem;">
+        <div style="font-size:0.78rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem">Individual learner progress</div>
+        <div class="tbl-wrap" id="learn-users"><div class="empty">Loading…</div></div>
+      </div>
+    </div>
+
+    <!-- BHR Rebuttal Analytics -->
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div class="card-title-row">
+        <div class="card-title">🔍 BHR Rebuttal Analytics <span style="font-weight:400;font-size:0.78rem;color:var(--text-light)">(all-time)</span></div>
+        <button class="btn-toggle" onclick="toggleSection('bhr-analytics-body',this)">▼ Expand</button>
+      </div>
+      <div class="collapsible collapsed" id="bhr-analytics-body">
+        <div class="bhr-stat-row">
+          <div class="bhr-sc">
+            <div class="bhr-sc-label">Ingestions</div>
+            <div class="bhr-sc-val" id="bhr-s-ingest">—</div>
+            <div class="bhr-sc-sub">reports uploaded</div>
+          </div>
+          <div class="bhr-sc">
+            <div class="bhr-sc-label">Rebuttals</div>
+            <div class="bhr-sc-val" id="bhr-s-rebuttal">—</div>
+            <div class="bhr-sc-sub">analyses run</div>
+          </div>
+          <div class="bhr-sc">
+            <div class="bhr-sc-label">Docx Downloads</div>
+            <div class="bhr-sc-val" id="bhr-s-docx">—</div>
+            <div class="bhr-sc-sub">reports exported</div>
+          </div>
+          <div class="bhr-sc">
+            <div class="bhr-sc-label">Ripostes</div>
+            <div class="bhr-sc-val" id="bhr-s-riposte">—</div>
+            <div class="bhr-sc-sub">correspondence generated</div>
+          </div>
+        </div>
+        <div class="two-col" style="gap:1.5rem;margin-bottom:0;">
+          <div>
+            <div style="font-size:0.78rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem">Report type breakdown</div>
+            <div class="tbl-wrap" id="bhr-report-types"><div class="empty">No BHR data yet. Logging starts from next use.</div></div>
+          </div>
+          <div>
+            <div style="font-size:0.78rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem">BHR usage by user</div>
+            <div class="tbl-wrap" id="bhr-user-breakdown"><div class="empty">No BHR data yet.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent queries -->
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div class="card-title-row">
+        <div class="card-title">Recent queries (last 50)</div>
+        <button class="btn-toggle" onclick="toggleSection('recent-body',this)">▲ Collapse</button>
+      </div>
+      <div class="collapsible" id="recent-body">
+        <div class="tbl-wrap" id="recent"><div class="empty">Loading…</div></div>
+      </div>
+    </div>
+
+    <!-- Domain analysis -->
+    <div class="card">
+      <div class="card-title-row">
+        <div class="card-title">Usage by email domain <span style="font-weight:400;font-size:0.78rem;color:var(--text-light)">(all-time · credithire.org.uk excluded)</span></div>
+        <button class="btn-toggle" onclick="toggleSection('domain-body',this)">▲ Collapse</button>
+      </div>
+      <div class="collapsible" id="domain-body">
+        <div style="font-size:0.78rem;color:var(--text-light);margin-bottom:1rem" id="domain-debug"></div>
+        <div class="two-col" style="gap:1.5rem">
+          <div>
+            <div style="font-size:0.78rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem">Confirmed users per domain</div>
+            <div class="tbl-wrap" id="domain-users"><div class="empty">Loading…</div></div>
+          </div>
+          <div>
+            <div style="font-size:0.78rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem">Queries per domain</div>
+            <div class="tbl-wrap" id="domain-queries"><div class="empty">Loading…</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const ADMIN = 'sae@credithire.org.uk';
+let sb = null, cTimeline = null, cScope = null, cTabs = null, cHours = null;
+
+// ── AUTH ──────────────────────────────────────────────────────────────────────
+(function init() {
+  try { sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch(e) {}
+  if (!sb) return;
+  sb.auth.getSession().then(({ data: { session } }) => {
+    if (session && session.user.email === ADMIN) enter(session.user);
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') doSignIn(); });
+})();
+
+async function doSignIn() {
+  const email = document.getElementById('ae').value.trim();
+  const pw    = document.getElementById('ap').value;
+  const err   = document.getElementById('aerr');
+  err.className = 'auth-err'; err.textContent = '';
+  if (email !== ADMIN) { showErr('Access restricted to the site administrator.'); return; }
+  if (!sb) { showErr('Supabase not configured.'); return; }
+  const { data, error } = await sb.auth.signInWithPassword({ email, password: pw });
+  if (error) { showErr(error.message); return; }
+  enter(data.user);
+}
+function showErr(m) {
+  const e = document.getElementById('aerr');
+  e.textContent = m; e.className = 'auth-err show';
+}
+async function doSignOut() {
+  if (sb) await sb.auth.signOut();
+  location.reload();
+}
+function enter(user) {
+  document.getElementById('auth-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display   = 'block';
+  document.getElementById('tu').textContent = user.email;
+  loadData();
+}
+
+// ── DATA ──────────────────────────────────────────────────────────────────────
+async function loadData() {
+  const days  = parseInt(document.getElementById('period').value, 10);
+  const since = days < 9999
+    ? new Date(Date.now() - days * 86400000).toISOString()
+    : '2000-01-01T00:00:00Z';
+
+  // Period-filtered rows for charts, stats and recent queries
+  const { data, error } = await sb
+    .from('activity_logs')
+    .select('*')
+    .gte('created_at', since)
+    .order('created_at', { ascending: false });
+
+  if (error) { console.error(error); return; }
+
+  // profiles — simple query matching admin.html exactly; no range/pagination needed at this scale
+  const { data: profileData, error: pfErr } = await sb
+    .from('profiles')
+    .select('email');
+  if (pfErr) console.error('profiles query error:', pfErr);
+
+  // activity_logs all-time — query counts per domain (limit to 10K for non-BHR events)
+  const { data: allData, error: allErr } = await sb
+    .from('activity_logs')
+    .select('user_email, activity_type, query_text')
+    .limit(10000);
+  if (allErr) console.error('activity_logs all-time error:', allErr);
+
+  // BHR events — separate query with no limit, filtered server-side so we get ALL of them
+  // (the main allData query has a 10K limit which may exclude recent BHR events)
+  const { data: bhrData, error: bhrErr } = await sb
+    .from('activity_logs')
+    .select('user_email, activity_type, query_text')
+    .like('activity_type', 'bhr_%');
+  if (bhrErr) console.error('BHR activity_logs query error:', bhrErr);
+
+  // Merge BHR events into allData (dedup by ensuring bhr_ rows aren't double-counted)
+  const allRows = [...(allData || []).filter(r => !r.activity_type || !r.activity_type.startsWith('bhr_')), ...(bhrData || [])];
+
+  console.log('profiles rows:', (profileData||[]).length);
+  console.log('activity_logs all-time rows:', (allData||[]).length, '+ BHR rows:', (bhrData||[]).length);
+
+  // module_progress — Learn analytics
+  const { data: learnData, error: learnErr } = await sb
+    .from('module_progress')
+    .select('user_id, module_id, started, sections_complete, assessment_score, certificate_earned, updated_at');
+  if (learnErr) console.error('module_progress query error:', learnErr);
+  console.log('module_progress rows:', (learnData||[]).length, learnErr ? '(ERROR: ' + learnErr.message + ')' : '');
+  if (!learnData || learnData.length === 0) {
+    console.warn('⚠️ module_progress returned 0 rows. This is likely an RLS policy issue.');
+    console.warn('Run sql/fix_module_progress_rls.sql in the Supabase SQL Editor to fix.');
+  }
+
+  render(data || [], allRows, profileData || [], learnData || []);
+  document.getElementById('updated-at').textContent =
+    'Updated ' + new Date().toLocaleTimeString('en-GB');
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function render(rows, allRows, profileRows, learnRows) {
+  const qs   = rows.filter(r => r.activity_type === 'query');
+  const tvs  = rows.filter(r => r.activity_type === 'tab_view');
+  const ok   = qs.filter(r => r.success);
+  const times = ok.map(r => r.response_time_ms).filter(x => x > 0).sort((a,b) => a-b);
+
+  // stat cards
+  set('s1', qs.length.toLocaleString());
+  set('s1b', tvs.length + ' tab nav events');
+  const users = new Set(qs.map(r => r.user_email).filter(Boolean));
+  set('s2', users.size);
+  set('s2b', users.size + ' distinct email' + (users.size !== 1 ? 's' : ''));
+  const pct = qs.length ? Math.round(ok.length / qs.length * 100) : 0;
+  set('s3', qs.length ? pct + '%' : '—');
+  set('s3b', ok.length + ' of ' + qs.length + ' succeeded');
+  const avg = times.length ? Math.round(times.reduce((a,b)=>a+b,0)/times.length) : 0;
+  set('s4', avg ? fms(avg) : '—');
+  set('s5', tvs.length.toLocaleString());
+
+  // response times
+  if (times.length) {
+    set('rt1', fms(times[0]));
+    set('rt2', fms(times[Math.floor(times.length / 2)]));
+    set('rt3', fms(avg));
+    set('rt4', fms(times[times.length - 1]));
+  } else {
+    ['rt1','rt2','rt3','rt4'].forEach(id => set(id, '—'));
+  }
+
+  // timeline
+  const days  = parseInt(document.getElementById('period').value, 10);
+  const nDays = Math.min(days, 90);
+  const labels = [], counts = {};
+  for (let i = nDays - 1; i >= 0; i--) {
+    const d = new Date(Date.now() - i * 86400000);
+    const k = d.toISOString().slice(0,10);
+    labels.push(d.toLocaleDateString('en-GB', { day:'numeric', month:'short' }));
+    counts[k] = 0;
+  }
+  qs.forEach(r => { const k = r.created_at.slice(0,10); if (k in counts) counts[k]++; });
+  drawLine(labels, Object.values(counts));
+
+  // scope donut
+  const sc = {'Credit Hire':0, 'Liability':0, 'Both':0, 'BHR':0};
+  qs.forEach(r => {
+    if (r.scope==='credit_hire') sc['Credit Hire']++;
+    else if (r.scope==='liability') sc['Liability']++;
+    else if (r.scope==='both') sc['Both']++;
+    else if (r.scope==='bhr') sc['BHR']++;
+  });
+  drawDonut(Object.keys(sc), Object.values(sc));
+
+  // tab bar (now includes BHR Rebuttal M/C and Learn)
+  const tc = {'AI Query':0,'Case Browser':0,'Directory':0,'News Archive':0,'BHR Rebuttal M/C':0,'Learn':0};
+  tvs.forEach(r => {
+    if (r.tab_name==='ai-query') tc['AI Query']++;
+    else if (r.tab_name==='case-browser') tc['Case Browser']++;
+    else if (r.tab_name==='directory') tc['Directory']++;
+    else if (r.tab_name==='news') tc['News Archive']++;
+    else if (r.tab_name==='bhr-rebuttal-mc') tc['BHR Rebuttal M/C']++;
+    else if (r.tab_name==='learn') tc['Learn']++;
+  });
+  drawBar(Object.keys(tc), Object.values(tc));
+
+  // feature usage cards
+  const bhrMcViews  = tc['BHR Rebuttal M/C'];
+  const learnViews  = tc['Learn'];
+  const bhrQueries  = sc['BHR'] || 0;
+  const totalActivity = qs.length + tvs.length;
+  const newFeatureActivity = bhrMcViews + learnViews + bhrQueries;
+  const newFeaturePct = totalActivity > 0
+    ? Math.round(newFeatureActivity / totalActivity * 100) + '%'
+    : '—';
+  set('f-bhr-mc', bhrMcViews.toLocaleString());
+  set('f-learn',  learnViews.toLocaleString());
+  set('f-bhr-q',  bhrQueries.toLocaleString());
+  set('f-pct',    newFeaturePct);
+
+  // top users
+  const um = {};
+  qs.forEach(r => {
+    if (!r.user_email) return;
+    if (!um[r.user_email]) um[r.user_email] = { n:0, ms:[], last:r.created_at };
+    um[r.user_email].n++;
+    if (r.response_time_ms) um[r.user_email].ms.push(r.response_time_ms);
+    if (r.created_at > um[r.user_email].last) um[r.user_email].last = r.created_at;
+  });
+  const top = Object.entries(um).sort((a,b)=>b[1].n-a[1].n).slice(0,15);
+  document.getElementById('top-users').innerHTML = top.length
+    ? `<table><thead><tr><th>User</th><th>Queries</th><th>Avg response</th><th>Last active</th></tr></thead><tbody>
+        ${top.map(([e,d])=>`<tr>
+          <td>${esc(e)}</td>
+          <td>${d.n}</td>
+          <td class="mono">${d.ms.length ? fms(Math.round(d.ms.reduce((a,b)=>a+b,0)/d.ms.length)) : '—'}</td>
+          <td style="white-space:nowrap">${fdt(d.last)}</td>
+        </tr>`).join('')}
+      </tbody></table>`
+    : '<div class="empty">No queries in this period.</div>';
+
+  // peak usage hours
+  const hourCounts = new Array(24).fill(0);
+  qs.forEach(r => {
+    const h = new Date(r.created_at).getHours();
+    hourCounts[h]++;
+  });
+  drawHoursBar(hourCounts);
+
+  // failed queries table
+  const failedQs = qs.filter(r => !r.success).slice(0, 15);
+  document.getElementById('failed-queries').innerHTML = failedQs.length
+    ? `<table><thead><tr><th>Time</th><th>User</th><th>Scope</th><th>Query</th></tr></thead><tbody>
+        ${failedQs.map(r => `<tr>
+          <td style="white-space:nowrap">${fdt(r.created_at)}</td>
+          <td style="white-space:nowrap;font-size:0.75rem">${esc(r.user_email||'—')}</td>
+          <td>${scopeBadge(r.scope)}</td>
+          <td class="q-text" title="${esc(r.query_text||'')}">${esc(r.query_text||'—')}</td>
+        </tr>`).join('')}
+       </tbody></table>`
+    : '<div class="empty">No failed queries — 🎉</div>';
+
+  // domain analysis — uses allRows (all-time, unfiltered) so period selector doesn't distort counts
+  const EXCLUDE_DOMAIN = 'credithire.org.uk';
+  function getDomain(email) {
+    if (!email || !email.includes('@')) return null;
+    return email.split('@').pop().toLowerCase().trim();
+  }
+  // registered users per domain — from profiles table (every signup, not just active users)
+  const domainUsers = {};
+  (profileRows || []).forEach(r => {
+    const d = getDomain(r.email);
+    if (!d || d === EXCLUDE_DOMAIN) return;
+    domainUsers[d] = (domainUsers[d] || 0) + 1;
+  });
+  // total queries per domain (all-time)
+  const domainQueries = {};
+  (allRows || []).filter(r => r.activity_type === 'query').forEach(r => {
+    const d = getDomain(r.user_email);
+    if (!d || d === EXCLUDE_DOMAIN) return;
+    domainQueries[d] = (domainQueries[d] || 0) + 1;
+  });
+  const duRows = Object.entries(domainUsers).sort((a,b) => b[1]-a[1]);
+  const dqRows = Object.entries(domainQueries).sort((a,b) => b[1]-a[1]);
+  const domainTable = (rows, col2Label) => rows.length
+    ? `<table><thead><tr><th>Domain</th><th>${col2Label}</th></tr></thead><tbody>
+        ${rows.map(([d,n]) => `<tr><td>${esc(d)}</td><td>${n}</td></tr>`).join('')}
+       </tbody></table>`
+    : '<div class="empty">No data in this period.</div>';
+  const debugEl = document.getElementById('domain-debug');
+  if (debugEl) debugEl.textContent =
+    `Source data: ${(profileRows||[]).length} profile rows · ${(allRows||[]).filter(r=>r.activity_type==='query').length} query log entries (all-time)`;
+  document.getElementById('domain-users').innerHTML   = domainTable(duRows,   'Users');
+  document.getElementById('domain-queries').innerHTML = domainTable(dqRows, 'Queries');
+
+  // ── BHR Rebuttal Analytics ──
+  const bhrTypes = { 'bhr_ingestion': 0, 'bhr_rebuttal': 0, 'bhr_docx': 0, 'bhr_riposte': 0 };
+  const bhrByReport = {};    // e.g. 'WhichRate Car': { ingestions: 3, rebuttals: 5, docx: 4 }
+  const bhrByUser = {};      // e.g. 'user@example.com': { ingestions: 1, rebuttals: 2, docx: 2, ripostes: 0 }
+
+  (allRows || []).forEach(r => {
+    if (!r.activity_type || !r.activity_type.startsWith('bhr_')) return;
+    if (bhrTypes.hasOwnProperty(r.activity_type)) bhrTypes[r.activity_type]++;
+
+    // Report type breakdown
+    const label = r.query_text || 'Unknown';
+    if (!bhrByReport[label]) bhrByReport[label] = { ingestions: 0, rebuttals: 0, docx: 0, ripostes: 0 };
+    if (r.activity_type === 'bhr_ingestion') bhrByReport[label].ingestions++;
+    else if (r.activity_type === 'bhr_rebuttal') bhrByReport[label].rebuttals++;
+    else if (r.activity_type === 'bhr_docx') bhrByReport[label].docx++;
+    else if (r.activity_type === 'bhr_riposte') bhrByReport[label].ripostes++;
+
+    // User breakdown
+    const email = r.user_email || 'Unknown';
+    if (email === ADMIN) return; // skip admin from user table
+    if (!bhrByUser[email]) bhrByUser[email] = { ingestions: 0, rebuttals: 0, docx: 0, ripostes: 0 };
+    if (r.activity_type === 'bhr_ingestion') bhrByUser[email].ingestions++;
+    else if (r.activity_type === 'bhr_rebuttal') bhrByUser[email].rebuttals++;
+    else if (r.activity_type === 'bhr_docx') bhrByUser[email].docx++;
+    else if (r.activity_type === 'bhr_riposte') bhrByUser[email].ripostes++;
+  });
+
+  const totalBhrEvents = Object.values(bhrTypes).reduce((a,b) => a+b, 0);
+  set('bhr-s-ingest', bhrTypes.bhr_ingestion.toLocaleString());
+  set('bhr-s-rebuttal', bhrTypes.bhr_rebuttal.toLocaleString());
+  set('bhr-s-docx', bhrTypes.bhr_docx.toLocaleString());
+  set('bhr-s-riposte', bhrTypes.bhr_riposte.toLocaleString());
+
+  // Report type table
+  const reportRows = Object.entries(bhrByReport)
+    .sort((a,b) => (b[1].rebuttals + b[1].ingestions) - (a[1].rebuttals + a[1].ingestions));
+  document.getElementById('bhr-report-types').innerHTML = reportRows.length
+    ? `<table><thead><tr><th>Report Type</th><th>Ingested</th><th>Rebuttals</th><th>Exported</th><th>Ripostes</th></tr></thead><tbody>
+        ${reportRows.map(([label, d]) => `<tr>
+          <td style="white-space:nowrap">${esc(label)}</td>
+          <td>${d.ingestions}</td>
+          <td>${d.rebuttals}</td>
+          <td>${d.docx}</td>
+          <td>${d.ripostes}</td>
+        </tr>`).join('')}
+       </tbody></table>`
+    : '<div class="empty">No BHR data yet. Logging starts from next use.</div>';
+
+  // BHR user table
+  const bhrUserRows = Object.entries(bhrByUser)
+    .sort((a,b) => (b[1].rebuttals + b[1].ingestions) - (a[1].rebuttals + a[1].ingestions))
+    .slice(0, 20);
+  document.getElementById('bhr-user-breakdown').innerHTML = bhrUserRows.length
+    ? `<table><thead><tr><th>User</th><th>Ingested</th><th>Rebuttals</th><th>Exported</th><th>Ripostes</th></tr></thead><tbody>
+        ${bhrUserRows.map(([email, d]) => `<tr>
+          <td style="white-space:nowrap;font-size:0.75rem">${esc(email)}</td>
+          <td>${d.ingestions}</td>
+          <td>${d.rebuttals}</td>
+          <td>${d.docx}</td>
+          <td>${d.ripostes}</td>
+        </tr>`).join('')}
+       </tbody></table>`
+    : '<div class="empty">No BHR user data yet.</div>';
+
+  // Auto-expand BHR analytics if there's data
+  if (totalBhrEvents > 0) {
+    const bhrBody = document.getElementById('bhr-analytics-body');
+    if (bhrBody && bhrBody.classList.contains('collapsed')) {
+      bhrBody.classList.remove('collapsed');
+      const btn = bhrBody.previousElementSibling?.querySelector('.btn-toggle');
+      if (btn) btn.textContent = '▲ Collapse';
+    }
+  }
+
+  // ── Learn analytics ──
+  const MODULE_NAMES = {
+    'module-01':'Introduction to Credit Hire',
+    'module-02':'The Legal Framework',
+    'module-03':'Liability in Credit Hire',
+    'module-04':'Qualifying Periods & Need',
+    'module-05':'Intervention',
+    'module-06':'Rates & Evidence',
+    'module-07':'Claims Handling',
+    'module-08':'Litigation',
+    'module-09':'Industry Dynamics',
+    'module-10':'Emerging Issues'
+  };
+  const MODULE_SECTIONS = {
+    'module-01':5,'module-02':5,'module-03':5,'module-04':5,'module-05':5,
+    'module-06':5,'module-07':5,'module-08':5,'module-09':5,'module-10':5
+  };
+  if (learnRows && learnRows.length) {
+    // Build email lookup from profiles
+    const idToEmail = {};
+    // We need user emails — join via profileRows isn't possible since module_progress has user_id not email
+    // Instead we'll look up from activity_logs which have both user_id and user_email
+    (allRows || []).forEach(r => {
+      if (r.user_email) {
+        // Try to find matching user_id from the learn data
+        // activity_logs don't have user_id — so we match via profileRows email list
+      }
+    });
+    // Use profiles to map — but module_progress only has user_id, not email
+    // We'll query profiles with IDs from learn data
+    const learnUserIds = [...new Set(learnRows.map(r => r.user_id))];
+
+    // Fetch emails for learn user IDs (async, update table when ready)
+    (async function() {
+      let emailMap = {};
+      if (sb && learnUserIds.length) {
+        const { data: authProfiles } = await sb
+          .from('profiles')
+          .select('id, email');
+        if (authProfiles) {
+          authProfiles.forEach(p => { emailMap[p.id] = p.email; });
+        }
+      }
+
+      // Stat cards
+      const uniqueLearners = new Set(learnRows.map(r => r.user_id));
+      set('l-users', uniqueLearners.size);
+      set('l-users-sub', uniqueLearners.size + ' distinct user' + (uniqueLearners.size !== 1 ? 's' : ''));
+
+      const startedRows = learnRows.filter(r => r.started);
+      set('l-started', startedRows.length);
+      set('l-started-sub', startedRows.length + ' total enrolments');
+
+      const scores = learnRows.map(r => r.assessment_score).filter(s => s > 0);
+      const avgScore = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : 0;
+      set('l-avg-score', scores.length ? avgScore + '%' : '—');
+
+      const certRows = learnRows.filter(r => r.certificate_earned);
+      set('l-certs', certRows.length);
+      set('l-certs-sub', certRows.length + ' module' + (certRows.length !== 1 ? 's' : '') + ' completed');
+
+      // Average completion %
+      const completionPcts = learnRows.filter(r => r.started).map(r => {
+        const total = MODULE_SECTIONS[r.module_id] || 5;
+        const done = (r.sections_complete || []).length;
+        return Math.round(done / total * 100);
+      });
+      const avgCompletion = completionPcts.length
+        ? Math.round(completionPcts.reduce((a,b)=>a+b,0)/completionPcts.length)
+        : 0;
+      set('l-completion', completionPcts.length ? avgCompletion + '%' : '—');
+
+      // Domain breakdown
+      const EXCLUDE = 'credithire.org.uk';
+      const domLearn = {};
+      learnRows.forEach(r => {
+        const email = emailMap[r.user_id];
+        if (!email) return;
+        const d = email.split('@').pop().toLowerCase().trim();
+        if (d === EXCLUDE) return;
+        if (!domLearn[d]) domLearn[d] = { users: new Set(), modules: 0, certs: 0 };
+        domLearn[d].users.add(r.user_id);
+        if (r.started) domLearn[d].modules++;
+        if (r.certificate_earned) domLearn[d].certs++;
+      });
+      const dlRows = Object.entries(domLearn)
+        .map(([d, v]) => ({ domain: d, users: v.users.size, modules: v.modules, certs: v.certs }))
+        .sort((a,b) => b.modules - a.modules);
+      document.getElementById('learn-domains').innerHTML = dlRows.length
+        ? `<table><thead><tr><th>Domain</th><th>Learners</th><th>Modules Started</th><th>Certificates</th></tr></thead><tbody>
+            ${dlRows.map(r => `<tr>
+              <td>${esc(r.domain)}</td>
+              <td>${r.users}</td>
+              <td>${r.modules}</td>
+              <td>${r.certs}</td>
+            </tr>`).join('')}
+           </tbody></table>`
+        : '<div class="empty">No external domain data yet.</div>';
+
+      // Module popularity
+      const modCount = {};
+      learnRows.filter(r => r.started).forEach(r => {
+        modCount[r.module_id] = (modCount[r.module_id] || 0) + 1;
+      });
+      const modRows = Object.entries(modCount)
+        .sort((a,b) => b[1] - a[1])
+        .map(([id, n]) => {
+          const certsForMod = learnRows.filter(r => r.module_id === id && r.certificate_earned).length;
+          const scoresForMod = learnRows.filter(r => r.module_id === id && r.assessment_score > 0).map(r => r.assessment_score);
+          const avgS = scoresForMod.length ? Math.round(scoresForMod.reduce((a,b)=>a+b,0)/scoresForMod.length) : 0;
+          return { id, name: MODULE_NAMES[id] || id, started: n, certs: certsForMod, avgScore: avgS };
+        });
+      document.getElementById('learn-modules').innerHTML = modRows.length
+        ? `<table><thead><tr><th>Module</th><th>Started</th><th>Completed</th><th>Avg Score</th></tr></thead><tbody>
+            ${modRows.map(r => `<tr>
+              <td style="white-space:nowrap">${esc(r.name)}</td>
+              <td>${r.started}</td>
+              <td>${r.certs}</td>
+              <td class="mono">${r.avgScore ? r.avgScore + '%' : '—'}</td>
+            </tr>`).join('')}
+           </tbody></table>`
+        : '<div class="empty">No module data yet.</div>';
+
+      // Individual learner progress
+      const userProgress = {};
+      learnRows.forEach(r => {
+        const email = emailMap[r.user_id] || r.user_id.slice(0,8) + '…';
+        if (!userProgress[email]) userProgress[email] = { modules: 0, sections: 0, totalSections: 0, certs: 0, bestScore: 0, lastActive: null };
+        const up = userProgress[email];
+        if (r.started) up.modules++;
+        up.sections += (r.sections_complete || []).length;
+        up.totalSections += (MODULE_SECTIONS[r.module_id] || 5);
+        if (r.certificate_earned) up.certs++;
+        if (r.assessment_score > up.bestScore) up.bestScore = r.assessment_score;
+        if (!up.lastActive || r.updated_at > up.lastActive) up.lastActive = r.updated_at;
+      });
+      const upRows = Object.entries(userProgress)
+        .sort((a,b) => b[1].sections - a[1].sections)
+        .slice(0, 25);
+      document.getElementById('learn-users').innerHTML = upRows.length
+        ? `<table><thead><tr><th>User</th><th>Modules</th><th>Progress</th><th>Certificates</th><th>Best Score</th><th>Last Active</th></tr></thead><tbody>
+            ${upRows.map(([email, d]) => {
+              const pct = d.totalSections ? Math.round(d.sections / d.totalSections * 100) : 0;
+              return `<tr>
+                <td style="white-space:nowrap;font-size:0.75rem">${esc(email)}</td>
+                <td>${d.modules}</td>
+                <td><div style="display:flex;align-items:center;gap:0.5rem;">
+                  <div style="flex:1;height:6px;background:#e2e8f0;border-radius:3px;min-width:60px;">
+                    <div style="height:100%;width:${pct}%;background:${pct===100?'#38a169':'#7e22ce'};border-radius:3px;"></div>
+                  </div>
+                  <span class="mono" style="font-size:0.72rem;">${d.sections}/${d.totalSections} (${pct}%)</span>
+                </div></td>
+                <td>${d.certs}</td>
+                <td class="mono">${d.bestScore ? d.bestScore + '%' : '—'}</td>
+                <td style="white-space:nowrap">${fdt(d.lastActive)}</td>
+              </tr>`;
+            }).join('')}
+           </tbody></table>`
+        : '<div class="empty">No learner data yet.</div>';
+    })();
+  } else {
+    set('l-users', '0'); set('l-started', '0'); set('l-avg-score', '—');
+    set('l-certs', '0'); set('l-completion', '—');
+    document.getElementById('learn-domains').innerHTML = '<div class="empty">No Learn data yet.</div>';
+    document.getElementById('learn-modules').innerHTML = '<div class="empty">No Learn data yet.</div>';
+    document.getElementById('learn-users').innerHTML = '<div class="empty">No Learn data yet.</div>';
+  }
+
+  // recent queries
+  document.getElementById('recent').innerHTML = qs.slice(0,50).length
+    ? `<table><thead><tr>
+        <th>Time</th><th>User</th><th>Scope</th><th>Query</th>
+        <th>Response</th><th>Cases</th><th>Status</th>
+      </tr></thead><tbody>
+        ${qs.slice(0,50).map(r=>`<tr>
+          <td style="white-space:nowrap">${fdt(r.created_at)}</td>
+          <td style="white-space:nowrap;font-size:0.75rem">${esc(r.user_email||'—')}</td>
+          <td>${scopeBadge(r.scope)}</td>
+          <td class="q-text" title="${esc(r.query_text||'')}">${esc(r.query_text||'—')}</td>
+          <td class="mono">${r.response_time_ms ? fms(r.response_time_ms) : '—'}</td>
+          <td>${r.cases_returned??'—'}</td>
+          <td>${r.success
+            ? '<span class="badge b-ok">OK</span>'
+            : '<span class="badge b-fail">Error</span>'}</td>
+        </tr>`).join('')}
+      </tbody></table>`
+    : '<div class="empty">No queries in this period.</div>';
+}
+
+// ── CHARTS ────────────────────────────────────────────────────────────────────
+function drawLine(labels, values) {
+  if (cTimeline) cTimeline.destroy();
+  cTimeline = new Chart(document.getElementById('c1').getContext('2d'), {
+    type: 'line',
+    data: { labels, datasets: [{
+      label:'Queries', data:values,
+      borderColor:'#0f1e3c', backgroundColor:'rgba(15,30,60,0.07)',
+      borderWidth:2, fill:true, tension:0.3,
+      pointRadius:3, pointBackgroundColor:'#c9a84c'
+    }]},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{grid:{display:false}, ticks:{maxTicksLimit:12,font:{size:10}}},
+        y:{beginAtZero:true, ticks:{stepSize:1,font:{size:10}}, grid:{color:'#f0f0f0'}}
+      }
+    }
+  });
+}
+
+function drawDonut(labels, values) {
+  if (cScope) cScope.destroy();
+  cScope = new Chart(document.getElementById('c2').getContext('2d'), {
+    type: 'doughnut',
+    data:{ labels, datasets:[{
+      data:values,
+      backgroundColor:['#0f1e3c','#c9a84c','#7e22ce','#b45309'],
+      borderWidth:2, borderColor:'#fff'
+    }]},
+    options:{
+      responsive:true, maintainAspectRatio:false, cutout:'60%',
+      plugins:{legend:{position:'bottom', labels:{font:{size:11},padding:10}}}
+    }
+  });
+}
+
+function drawBar(labels, values) {
+  if (cTabs) cTabs.destroy();
+  cTabs = new Chart(document.getElementById('c3').getContext('2d'), {
+    type:'bar',
+    data:{ labels, datasets:[{
+      data:values,
+      backgroundColor:['#0f1e3c','#1a2f5e','#c9a84c','#718096','#b45309','#7e22ce'],
+      borderRadius:6, borderSkipped:false
+    }]},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:11}}},
+        y:{beginAtZero:true,ticks:{stepSize:1,font:{size:10}},grid:{color:'#f0f0f0'}}
+      }
+    }
+  });
+}
+
+function drawHoursBar(hourCounts) {
+  if (cHours) cHours.destroy();
+  const labels = hourCounts.map((_, i) => String(i).padStart(2, '0') + ':00');
+  const maxVal = Math.max(...hourCounts);
+  const colors = hourCounts.map(v => v === maxVal && v > 0 ? '#c9a84c' : '#0f1e3c');
+  cHours = new Chart(document.getElementById('c-hours').getContext('2d'), {
+    type: 'bar',
+    data: { labels, datasets: [{ data: hourCounts, backgroundColor: colors, borderRadius: 4, borderSkipped: false }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 9 }, maxRotation: 90, callback: function(v,i) { return i % 2 === 0 ? this.getLabelForValue(v) : ''; } } },
+        y: { beginAtZero: true, ticks: { stepSize: 1, font: { size: 10 } }, grid: { color: '#f0f0f0' } }
+      }
+    }
+  });
+}
+
+// ── COLLAPSIBLE SECTIONS ─────────────────────────────────────────────────────
+function toggleSection(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const isCollapsed = el.classList.toggle('collapsed');
+  if (btn) btn.textContent = isCollapsed ? '▼ Expand' : '▲ Collapse';
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function set(id, v) { const e=document.getElementById(id); if(e) e.textContent=v; }
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function fms(ms) { return ms>=1000?(ms/1000).toFixed(1)+'s':ms+'ms'; }
+function fdt(iso) {
+  if (!iso) return '—';
+  const d=new Date(iso);
+  return d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+
+         ' '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+}
+function scopeBadge(s) {
+  if (s==='credit_hire') return '<span class="badge b-ch">CH</span>';
+  if (s==='liability')   return '<span class="badge b-li">Liability</span>';
+  if (s==='both')        return '<span class="badge b-both">Both</span>';
+  if (s==='bhr')         return '<span class="badge" style="background:#fef3c7;color:#92400e">BHR</span>';
+  return '—';
+}
+</script>
+<footer style="text-align:center;padding:1.25rem;font-family:Arial,sans-serif;font-size:0.78rem;color:#718096;border-top:1px solid #e2e8f0;background:#ffffff;">
+  <a href="privacy.html" style="color:#718096;text-decoration:none;">Privacy Policy</a>
+  &nbsp;·&nbsp; &copy; 2026 Ask the Oracle
+</footer>
+</body>
+</html>
