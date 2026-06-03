@@ -17,6 +17,32 @@
     },
     { "src": "api/tutor.js", "use": "@vercel/node" },
     { "src": "api/access-request.js", "use": "@vercel/node" },
+    {
+      "src": "api/corpus.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "case_database.json",
+          "liability_database.json",
+          "resources_database.json",
+          "posts_index.json",
+          "knowledge_base.json",
+          "bhr_terms_db.json",
+          "jurisdiction_equivalents.json",
+          "learn/training-index.json",
+          "learn/module-01-introduction.json",
+          "learn/module-02-legal-framework.json",
+          "learn/module-03-liability.json",
+          "learn/module-04-qualifying-periods.json",
+          "learn/module-05-intervention.json",
+          "learn/module-06-rates-evidence.json",
+          "learn/module-07-claims-handling.json",
+          "learn/module-08-litigation.json",
+          "learn/module-09-industry-dynamics.json",
+          "learn/module-10-emerging-issues.json"
+        ]
+      }
+    },
     { "src": "*.html", "use": "@vercel/static" },
     { "src": "config.js", "use": "@vercel/static" },
     { "src": "brand.js", "use": "@vercel/static" }
@@ -25,6 +51,7 @@
     { "src": "/api/ask", "dest": "/api/ask.js" },
     { "src": "/api/tutor", "dest": "/api/tutor.js" },
     { "src": "/api/access-request", "dest": "/api/access-request.js" },
+    { "src": "/api/corpus", "dest": "/api/corpus.js" },
     { "src": "/app", "dest": "/app.html" },
     { "src": "/learn", "dest": "/learn.html" },
     { "src": "/admin", "dest": "/admin.html" },

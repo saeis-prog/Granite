@@ -1218,8 +1218,6 @@
     <div class="topbar-tabs">
       <button class="topbar-tab active" data-tab="ai-query" onclick="showTab('ai-query')">🤖 AI Query</button>
       <button class="topbar-tab" data-tab="case-browser" onclick="showTab('case-browser')">📚 Case Browser</button>
-      <button class="topbar-tab" data-tab="directory" onclick="showTab('directory')">🏢 Directory</button>
-      <button class="topbar-tab" data-tab="news" onclick="showTab('news')">📰 News Archive</button>
       <a href="learn.html" class="topbar-tab" style="text-decoration:none;">📖 Learn</a>
     </div>
     <div class="topbar-user">
@@ -1361,52 +1359,7 @@
       </div>
     </div>
 
-    <!-- NEWS ARCHIVE TAB -->
-    <div class="tab-pane" id="pane-news">
-      <div class="news-wrap">
-        <div class="news-header">
-          <h1>📰 News Archive</h1>
-          <p>Search and browse 1,000+ Credit Hire Forum articles from 2020 to present. Click any post to read the full article on credithire.org.uk.</p>
-        </div>
-        <div class="news-controls">
-          <input class="news-search" id="news-search" placeholder="🔍  Search by title or keyword…" oninput="filterNews()" />
-          <select class="news-year-select" id="news-year" onchange="filterNews()">
-            <option value="">All Years</option>
-          </select>
-          <span class="news-count" id="news-count"></span>
-        </div>
-        <div id="news-grid" class="news-grid">
-          <div class="news-empty">Loading news archive…</div>
-        </div>
-        <div id="news-pagination" class="pagination" style="margin-top:1.5rem;"></div>
-      </div>
-    </div>
-
-    <!-- DIRECTORY TAB -->
-    <div class="tab-pane" id="pane-directory">
-      <div class="dir-wrap">
-        <div class="dir-controls">
-          <input class="dir-search" id="dir-search" placeholder="🔍  Search by name or description…" oninput="filterDirectory()" />
-          <span class="dir-count" id="dir-count"></span>
-        </div>
-        <div class="dir-cats" id="dir-cats">
-          <button class="dir-cat-btn active" data-cat="All" onclick="setDirCat('All')">All</button>
-          <button class="dir-cat-btn" data-cat="CHO" onclick="setDirCat('CHO')">CHO</button>
-          <button class="dir-cat-btn" data-cat="Solicitor" onclick="setDirCat('Solicitor')">Solicitors</button>
-          <button class="dir-cat-btn" data-cat="Counsel" onclick="setDirCat('Counsel')">Counsel</button>
-          <button class="dir-cat-btn" data-cat="Chambers" onclick="setDirCat('Chambers')">Chambers</button>
-          <button class="dir-cat-btn" data-cat="BHR" onclick="setDirCat('BHR')">BHR</button>
-          <button class="dir-cat-btn" data-cat="Car Rental" onclick="setDirCat('Car Rental')">Car Rental</button>
-          <button class="dir-cat-btn" data-cat="Funding" onclick="setDirCat('Funding')">Funding</button>
-          <button class="dir-cat-btn" data-cat="Consultant" onclick="setDirCat('Consultant')">Consultants</button>
-          <button class="dir-cat-btn" data-cat="Other" onclick="setDirCat('Other')">Other</button>
-        </div>
-        <div class="dir-grid" id="dir-grid">
-          <div class="dir-empty">Loading directory…</div>
-        </div>
-      </div>
-    </div>
-
+    <!-- News Archive and Directory tabs removed for Granite (no content / out of scope) -->
     <!-- BHR Rebuttal programme tab removed for Granite (out of scope) -->
 
   </div>
