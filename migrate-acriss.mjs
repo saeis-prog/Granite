@@ -53,10 +53,46 @@ async function readAll() {
   return rows;
 }
 
+// Source stores some numbers as text with thousands commas (e.g. "30,985").
+// Coerce numeric/integer columns so they fit the typed destination columns.
+const NUM_COLS = ['list_price'];
+const INT_COLS = ['year', 'seats', 'doors', 'bhp'];
+function toNum(v) {
+  if (v == null) return null;
+  const s = String(v).replace(/,/g, '').trim();
+  if (s === '') return null;
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
+}
+function cleanRow(r) {
+  const o = { ...r };
+  for (const c of NUM_COLS) if (c in o) o[c] = toNum(o[c]);
+  for (const c of INT_COLS) if (c in o) { const n = toNum(o[c]); o[c] = n == null ? null : Math.round(n); }
+  return o;
+}
+
+async function countRows(url, key) {
+  // exact count via PostgREST (Prefer: count=exact -> Content-Range: 0-0/<total>)
+  const res = await fetch(`${url}/rest/v1/${TABLE}?select=acriss_code`, {
+    method: 'HEAD',
+    headers: {
+      apikey: key,
+      Authorization: `Bearer ${key}`,
+      Range: '0-0',
+      'Range-Unit': 'items',
+      Prefer: 'count=exact',
+    },
+  });
+  if (!res.ok) throw new Error(`Count failed ${res.status}: ${await res.text()}`);
+  const cr = res.headers.get('content-range') || '';      // e.g. "0-0/12345"
+  const total = parseInt(cr.split('/')[1], 10);
+  return Number.isNaN(total) ? null : total;
+}
+
 async function writeAll(rows) {
   let done = 0;
   for (let i = 0; i < rows.length; i += BATCH) {
-    const batch = rows.slice(i, i + BATCH);
+    const batch = rows.slice(i, i + BATCH).map(cleanRow);
     const res = await fetch(`${DST_URL}/rest/v1/${TABLE}`, {
       method: 'POST',
       headers: {
@@ -81,5 +117,18 @@ async function writeAll(rows) {
   const rows = await readAll();
   if (!rows.length) { console.log('No rows found in source — nothing to migrate.'); return; }
   await writeAll(rows);
-  console.log(`\n✓ Done — migrated ${rows.length} rows.`);
+
+  // ── Verify: compare exact row counts in source vs destination ──
+  const srcCount = await countRows(SRC_URL, SRC_KEY);
+  const dstCount = await countRows(DST_URL, DST_KEY);
+  console.log(`\nSource rows:      ${srcCount ?? 'unknown'}`);
+  console.log(`Destination rows: ${dstCount ?? 'unknown'}`);
+
+  if (srcCount != null && dstCount != null && srcCount === dstCount) {
+    console.log(`\n✓ Done — counts match (${dstCount} rows).`);
+  } else {
+    console.log('\n⚠ Done, but counts do NOT match. If the destination already had rows, ' +
+                'TRUNCATE acriss_vehicles and re-run, or investigate the difference above.');
+    process.exitCode = 2;
+  }
 })().catch((e) => { console.error('\n✗ ERROR:', e.message); process.exit(1); });
