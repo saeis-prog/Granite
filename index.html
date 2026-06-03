@@ -16,7 +16,6 @@
       --text: #2d3748;
       --text-light: #718096;
       --border: #e2e8f0;
-      --green: #2d7d46;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -285,57 +284,6 @@
     .step h3 { color: var(--white); font-size: 1.05rem; margin-bottom: 0.5rem; }
     .step p { color: rgba(255,255,255,0.55); font-size: 0.875rem; font-family: 'Arial', sans-serif; line-height: 1.6; }
 
-    /* ── TOPICS ── */
-    .topics { background: var(--off-white); }
-    .topic-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 2.5rem;
-    }
-    .topic-chip {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 0.5rem 1.1rem;
-      font-size: 0.875rem;
-      font-family: 'Arial', sans-serif;
-      color: var(--navy);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .topic-chip:hover { border-color: var(--gold); background: #fffbf0; color: var(--navy); }
-
-    /* ── COURTS ── */
-    .courts-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 2.5rem;
-    }
-    .court-item {
-      display: flex; align-items: center; gap: 0.75rem;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 1.25rem;
-    }
-    .court-badge {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem;
-      font-weight: 700;
-      font-family: 'Arial', sans-serif;
-      flex-shrink: 0;
-    }
-    .badge-sc { background: #1a1a2e; color: #e8c96a; }
-    .badge-ca { background: #2d1b69; color: #a78bfa; }
-    .badge-hc { background: #1e3a5f; color: #60a5fa; }
-    .badge-cc { background: #1e4d3a; color: #4ade80; }
-    .court-info h4 { font-size: 0.9rem; color: var(--navy); }
-    .court-info span { font-size: 0.78rem; color: var(--text-light); font-family: 'Arial', sans-serif; }
-
     /* ── PRICING ── */
     .pricing { background: var(--white); text-align: center; }
     .price-card {
@@ -354,13 +302,6 @@
       height: 4px;
       background: linear-gradient(90deg, var(--gold), var(--gold-light));
     }
-    .price-tag {
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1;
-    }
-    .price-tag sup { font-size: 1.5rem; vertical-align: top; margin-top: 0.5rem; }
     .price-period { font-size: 0.9rem; color: rgba(255,255,255,0.5); font-family: 'Arial', sans-serif; margin-bottom: 1.5rem; }
     .price-features { list-style: none; text-align: left; margin-bottom: 2rem; }
     .price-features li {

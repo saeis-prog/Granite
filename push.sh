@@ -10,6 +10,22 @@ set -euo pipefail
 # Always run from the repo root (the folder this script lives in)
 cd "$(dirname "$0")"
 
+# ── Clear stale git lock files ──────────────────────────────
+# A crashed/interrupted git (or a file-sync tool like Dropbox) can leave a
+# .lock behind that blocks every subsequent git command. Remove them ONLY if
+# no git process is currently running, so we never disturb a live operation.
+if pgrep -x git >/dev/null 2>&1; then
+  echo "✗ A git process is already running — not touching locks. Wait for it to finish, then re-run." >&2
+  exit 1
+fi
+for lock in index.lock config.lock HEAD.lock shallow.lock ORIG_HEAD.lock; do
+  if [ -e ".git/$lock" ]; then
+    rm -f ".git/$lock" && echo "Cleared stale lock: .git/$lock"
+  fi
+done
+# stale per-ref locks (e.g. refs/heads/main.lock)
+find .git/refs -name '*.lock' -type f -print -delete 2>/dev/null | sed 's/^/Cleared stale lock: /' || true
+
 MSG="${1:-Scaffold Granite \"Ask the Oracle\" portal (brand-by-domain, query + learn, BHR rebuttal excluded)}"
 
 echo "Repo:   $(git remote get-url origin)"
