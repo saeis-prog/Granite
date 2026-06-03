@@ -54,6 +54,7 @@
     { "src": "/api/corpus", "dest": "/api/corpus.js" },
     { "src": "/app", "dest": "/app.html" },
     { "src": "/learn", "dest": "/learn.html" },
+    { "src": "/acriss-lookup", "dest": "/acriss-lookup.html" },
     { "src": "/admin", "dest": "/admin.html" },
     { "src": "/dashboard", "dest": "/dashboard.html" },
     { "src": "/how-to-ask", "dest": "/how-to-ask.html" },

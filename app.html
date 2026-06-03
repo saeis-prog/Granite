@@ -1218,6 +1218,7 @@
     <div class="topbar-tabs">
       <button class="topbar-tab active" data-tab="ai-query" onclick="showTab('ai-query')">🤖 AI Query</button>
       <button class="topbar-tab" data-tab="case-browser" onclick="showTab('case-browser')">📚 Case Browser</button>
+      <button class="topbar-tab" data-tab="acriss" onclick="showTab('acriss')">🚗 ACRISS Lookup</button>
       <a href="learn.html" class="topbar-tab" style="text-decoration:none;">📖 Learn</a>
     </div>
     <div class="topbar-user">
@@ -1357,6 +1358,12 @@
 
         <div id="pagination" class="pagination"></div>
       </div>
+    </div>
+
+    <!-- ACRISS VEHICLE LOOKUP TAB -->
+    <div class="tab-pane" id="pane-acriss">
+      <iframe src="acriss-lookup.html" title="ACRISS Vehicle Lookup"
+              style="width:100%;height:calc(100vh - 56px);border:0;display:block;"></iframe>
     </div>
 
     <!-- News Archive and Directory tabs removed for Granite (no content / out of scope) -->

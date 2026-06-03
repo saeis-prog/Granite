@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACRISS Vehicle Lookup — Ask the Oracle</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="brand.js"></script>
+  <style>
+    :root {
+      --navy: #0f1e3c;
+      --navy-light: #1a2f5e;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --white: #ffffff;
+      --off-white: #f5f6f8;
+      --text: #2d3748;
+      --text-light: #718096;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Arial', sans-serif; background: var(--off-white); color: var(--text); }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--navy);
+      display: flex; align-items: center;
+      padding: 0 1.5rem; height: 52px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .topbar-logo {
+      font-family: 'Georgia', serif;
+      font-size: 1.15rem; color: var(--white);
+      white-space: nowrap; margin-right: 1.5rem;
+    }
+    .topbar-logo span { color: var(--gold); }
+    .topbar-back {
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      font-size: 0.82rem; margin-left: auto;
+      transition: color 0.2s;
+    }
+    .topbar-back:hover { color: var(--gold); }
+
+    /* ── PAGE LAYOUT ── */
+    .page-wrap {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .page-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+    .page-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    /* ── LOOKUP CARD ── */
+    .lookup-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .lookup-card h2 {
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .filter-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.35rem;
+    }
+    .filter-group select {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      color: var(--text);
+      background: var(--white);
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .filter-group select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .filter-group select:disabled {
+      background: #f0f0f0;
+      color: #999;
+      cursor: not-allowed;
+    }
+
+    /* ── MANUFACTURER GRID ── */
+    .mfr-search {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      transition: border-color 0.2s;
+    }
+    .mfr-search:focus { outline: none; border-color: var(--gold); }
+    .mfr-search::placeholder { color: #aaa; }
+    .mfr-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      max-height: 180px;
+      overflow-y: auto;
+      padding: 0.25rem 0;
+    }
+    .mfr-btn {
+      padding: 0.35rem 0.7rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .mfr-btn:hover { border-color: var(--gold); color: var(--navy); }
+    .mfr-btn.selected {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    .reset-btn {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .reset-btn:hover { color: var(--navy); border-color: var(--navy); }
+
+    /* ── RESULT CARD ── */
+    .result-card {
+      display: none;
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3366 100%);
+      border-radius: 12px;
+      padding: 2rem;
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+    .result-card.visible { display: block; }
+
+    .result-vehicle-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .result-vehicle-trim {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.5rem;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .result-item {
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 0.85rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .result-item-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+    .result-item-value {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .acriss-code-display {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .acriss-code-display .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      margin-right: 0.5rem;
+    }
+    .acriss-char {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px; height: 38px;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 1.1rem;
+      border-radius: 6px;
+    }
+    .acriss-char-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      margin-left: -0.15rem;
+      margin-right: 0.75rem;
+    }
+
+    /* ── MATCHING VEHICLES SECTION ── */
+    .match-section {
+      display: none;
+      margin-bottom: 2rem;
+    }
+    .match-section.visible { display: block; }
+    .match-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .match-header h2 {
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .match-count {
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+    .match-hint {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .match-filters {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .match-filters select {
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 0.82rem;
+      color: var(--text);
+      background: var(--white);
+    }
+    .match-filters select:focus { outline: none; border-color: var(--gold); }
+    .match-table-wrap {
+      background: var(--white);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+    .match-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .match-table thead {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .match-table th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .match-table td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f0f0f0;
+      color: var(--text);
+    }
+    .match-table tr:hover td { background: #f8f9fb; }
+    .match-table .price-col { text-align: right; }
+    .match-table .code-col {
+      font-weight: 700;
+      color: var(--navy);
+      font-family: monospace;
+      font-size: 0.88rem;
+    }
+
+    /* ── LOADING ── */
+    .loading-spinner {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-light);
+      font-size: 0.88rem;
+    }
+    .loading-spinner.visible { display: block; }
+
+    /* ── DATA INFO ── */
+    .data-info {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .filter-row { grid-template-columns: 1fr 1fr; }
+      .result-grid { grid-template-columns: 1fr 1fr; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .compare-vs { padding: 0.5rem 0; }
+    }
+    @media (max-width: 480px) {
+      .filter-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-logo">credit-hire<span>.ai</span></div>
+    <a href="app.html" class="topbar-back">← Back to main app</a>
+  </div>
+
+  <div class="page-wrap">
+    <h1 class="page-title">ACRISS Vehicle Lookup</h1>
+    <p class="page-subtitle">
+      Search the ACRISS vehicle classification database to find the rental industry grouping for any vehicle.
+      Use this to verify the category of a claimant's own vehicle or to check the comparator vehicle cited in BHR evidence.
+      Data current as at March 2026.
+    </p>
+
+    <!-- VEHICLE 1: Claimant's vehicle -->
+    <div class="lookup-card" id="lookup-1">
+      <h2>Select Vehicle</h2>
+      <label style="font-size:0.75rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:0.03em;display:block;margin-bottom:0.4rem;">Manufacturer</label>
+      <input type="text" class="mfr-search" id="mfr-search" placeholder="Type to filter manufacturers…" oninput="filterManufacturers()">
+      <div class="mfr-grid" id="mfr-grid"></div>
+
+      <div class="filter-row" style="margin-top:1.25rem;">
+        <div class="filter-group">
+          <label for="sel-model">Model</label>
+          <select id="sel-model" disabled onchange="onModelChange()">
+            <option value="">Select model…</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sel-year">Year</label>
+          <select id="sel-year" disabled onchange="onYearChange()">
+            <option value="">Select year…</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sel-trim">Trim / Derivative</label>
+          <select id="sel-trim" disabled onchange="onTrimChange()">
+            <option value="">Select trim…</option>
+          </select>
+        </div>
+      </div>
+      <button class="reset-btn" onclick="resetLookup()">Reset</button>
+    </div>
+
+    <div class="loading-spinner" id="loading">Loading vehicle data…</div>
+
+    <!-- RESULT CARD -->
+    <div class="result-card" id="result-card">
+      <div class="result-vehicle-name" id="result-name"></div>
+      <div class="result-vehicle-trim" id="result-trim"></div>
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-item-label">ACRISS Descriptor</div>
+          <div class="result-item-value" id="result-descriptor"></div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Body Type</div>
+          <div class="result-item-value" id="result-category"></div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Fuel Type</div>
+          <div class="result-item-value" id="result-fuel"></div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">List Price</div>
+          <div class="result-item-value" id="result-price"></div>
+        </div>
+      </div>
+      <div class="result-grid" style="margin-bottom:0;">
+        <div class="result-item">
+          <div class="result-item-label">Seats</div>
+          <div class="result-item-value" id="result-seats"></div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Doors</div>
+          <div class="result-item-value" id="result-doors"></div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">BHP</div>
+          <div class="result-item-value" id="result-bhp"></div>
+        </div>
+        <div class="result-item" style="grid-column: span 2;">
+          <div class="result-item-label">ACRISS Classification</div>
+          <div class="acriss-code-display" style="border:none;margin:0;padding:0;">
+            <span class="acriss-char" id="acriss-c1"></span>
+            <span class="acriss-char-label" id="acriss-c1-label"></span>
+            <span class="acriss-char" id="acriss-c2"></span>
+            <span class="acriss-char-label" id="acriss-c2-label"></span>
+            <span class="acriss-char" id="acriss-c3"></span>
+            <span class="acriss-char-label" id="acriss-c3-label"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATCHING VEHICLES -->
+    <div class="match-section" id="match-section">
+      <div class="match-header">
+        <h2 id="match-title">Equivalent Rental Vehicles</h2>
+        <span class="match-count" id="match-count"></span>
+      </div>
+      <p class="match-hint" id="match-hint">
+        These are all vehicles classified in the same ACRISS group. A mainstream rental provider offering a vehicle
+        in this category would supply one of the models below. If the BHR evidence cites a vehicle from a different
+        ACRISS group, the comparator is not like-for-like.
+      </p>
+      <div class="match-filters">
+        <select id="match-filter-mfr" onchange="filterMatchTable()">
+          <option value="">All manufacturers</option>
+        </select>
+        <select id="match-filter-fuel" onchange="filterMatchTable()">
+          <option value="">All fuel types</option>
+        </select>
+        <select id="match-filter-year" onchange="filterMatchTable()">
+          <option value="">All years</option>
+        </select>
+      </div>
+      <div class="match-table-wrap">
+        <table class="match-table" id="match-table">
+          <thead>
+            <tr>
+              <th>Manufacturer</th>
+              <th>Model</th>
+              <th>Year</th>
+              <th>Trim</th>
+              <th>Fuel Type</th>
+              <th>Body Type</th>
+              <th class="price-col">List Price</th>
+              <th>BHP</th>
+              <th>ACRISS</th>
+            </tr>
+          </thead>
+          <tbody id="match-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="data-info">
+      ACRISS vehicle classification data © ACRISS. Database contains <span id="total-count">—</span> vehicle records.
+      Data current as at April 2026 and is updated monthly.
+    </p>
+  </div>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+// ACRISS VEHICLE LOOKUP — Ask the Oracle
+// ════════════════════════════════════════════════════════════════
+
+const SB_URL = typeof SUPABASE_URL !== 'undefined' ? SUPABASE_URL : '';
+const SB_KEY = typeof SUPABASE_ANON_KEY !== 'undefined' ? SUPABASE_ANON_KEY : '';
+let sb;
+
+// Full dataset cached in memory after initial load
+let ALL_VEHICLES = [];
+let selectedVehicle1 = null;
+let selectedVehicle2 = null;
+
+// ACRISS code decode maps
+const ACRISS_CATEGORY_MAP = {
+  'M': 'Mini', 'N': 'Mini Elite', 'E': 'Economy', 'H': 'Economy Elite',
+  'C': 'Compact', 'D': 'Compact Elite', 'I': 'Intermediate', 'J': 'Intermediate Elite',
+  'S': 'Standard', 'R': 'Standard Elite', 'F': 'Full Size', 'G': 'Full Size Elite',
+  'P': 'Premium', 'U': 'Premium Elite', 'L': 'Luxury', 'W': 'Luxury Elite',
+  'O': 'Oversize', 'X': 'Special'
+};
+const ACRISS_TYPE_MAP = {
+  'B': '2-3 Door', 'C': '2/4 Door', 'D': '4-5 Door', 'W': 'Wagon/Estate',
+  'V': 'Van/SUV', 'F': 'SUV', 'J': 'Open-Air/Convertible', 'T': 'Convertible',
+  'L': 'Limousine', 'S': 'Sport', 'E': 'Coupe', 'M': 'Monospace',
+  'R': 'Motor Home', 'H': 'Motor Home', 'Y': '2-Wheel', 'N': 'Roadster',
+  'G': 'Crossover', 'K': 'Commercial Van/Truck', 'P': 'Pick-Up', 'Q': 'Pick-Up',
+  'X': 'Special'
+};
+const ACRISS_FUEL_MAP = {
+  'R': 'Unspecified', 'N': 'Unspecified', 'D': 'Diesel', 'Q': 'Diesel',
+  'H': 'Hybrid', 'I': 'Hybrid Plug-in', 'E': 'Electric', 'C': 'Electric',
+  'L': 'LPG/CNG', 'S': 'LPG/CNG', 'A': 'Hydrogen', 'B': 'Hydrogen',
+  'P': 'Petrol', 'V': 'Petrol',
+  'BEV': 'Battery Electric', 'HEV': 'Hybrid Electric', 'PHEV': 'Plug-in Hybrid',
+  'MHEV': 'Mild Hybrid'
+};
+
+// ── INITIALISE ──
+async function init() {
+  // Wait for Supabase SDK to load (async script)
+  let waited = 0;
+  while (typeof supabase === 'undefined' && waited < 5000) {
+    await new Promise(r => setTimeout(r, 100));
+    waited += 100;
+  }
+  if (typeof supabase !== 'undefined' && SB_URL && SB_KEY) {
+    sb = supabase.createClient(SB_URL, SB_KEY);
+    console.log('Supabase client initialised');
+  } else {
+    console.error('Supabase SDK not available. SB_URL:', SB_URL, 'SB_KEY:', SB_KEY ? 'set' : 'missing');
+  }
+  document.getElementById('loading').classList.add('visible');
+  await loadAllVehicles();
+  document.getElementById('loading').classList.remove('visible');
+  populateManufacturers();
+}
+
+async function loadAllVehicles() {
+  if (!sb) { console.warn('Supabase not available'); return; }
+  try {
+    // Paginate — Supabase default limit is 1000
+    let all = [];
+    let from = 0;
+    const pageSize = 1000;
+    while (true) {
+      const { data, error } = await sb
+        .from('acriss_vehicles')
+        .select('manufacturer,model,year,trim,descriptor,category,fuel_type,list_price,acriss_category,acriss_type,acriss_fuel,acriss_code,seats,doors,bhp')
+        .order('manufacturer', { ascending: true })
+        .order('model', { ascending: true })
+        .range(from, from + pageSize - 1);
+      if (error) { console.error('Supabase error:', error); break; }
+      if (!data || data.length === 0) break;
+      all = all.concat(data);
+      if (data.length < pageSize) break;
+      from += pageSize;
+    }
+    ALL_VEHICLES = all;
+    document.getElementById('total-count').textContent = ALL_VEHICLES.length.toLocaleString();
+    console.log(`Loaded ${ALL_VEHICLES.length} ACRISS vehicle records`);
+  } catch (err) {
+    console.error('Failed to load ACRISS data:', err);
+  }
+}
+
+// ── DROPDOWN HELPERS ──
+function populateSelect(el, values, placeholder, autoFocus) {
+  el.innerHTML = `<option value="">${placeholder}</option>`;
+  values.forEach(v => {
+    const opt = document.createElement('option');
+    opt.value = v;
+    opt.textContent = v;
+    el.appendChild(opt);
+  });
+  el.disabled = false;
+  // Briefly highlight the next dropdown so user knows it's ready
+  el.style.borderColor = 'var(--gold)';
+  el.style.boxShadow = '0 0 0 2px rgba(201,168,76,0.25)';
+  setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 1500);
+  if (autoFocus) {
+    setTimeout(() => el.focus(), 50);
+  }
+}
+
+function disableSelect(el, placeholder) {
+  el.innerHTML = `<option value="">${placeholder}</option>`;
+  el.disabled = true;
+}
+
+function unique(arr) {
+  return [...new Set(arr)].filter(Boolean).sort();
+}
+
+// ── MANUFACTURER GRID ──
+let allManufacturers = [];
+let selectedManufacturer = '';
+
+function populateManufacturers() {
+  allManufacturers = unique(ALL_VEHICLES.map(v => v.manufacturer));
+  renderManufacturerGrid(allManufacturers);
+}
+
+function renderManufacturerGrid(mfrs) {
+  const grid = document.getElementById('mfr-grid');
+  grid.innerHTML = mfrs.map(m =>
+    `<button class="mfr-btn${m === selectedManufacturer ? ' selected' : ''}" onclick="selectManufacturer('${m.replace(/'/g, "\\'")}')">${m}</button>`
+  ).join('');
+}
+
+function filterManufacturers() {
+  const q = document.getElementById('mfr-search').value.toLowerCase();
+  const filtered = q ? allManufacturers.filter(m => m.toLowerCase().includes(q)) : allManufacturers;
+  renderManufacturerGrid(filtered);
+}
+
+function selectManufacturer(mfr) {
+  selectedManufacturer = mfr;
+  document.getElementById('mfr-search').value = '';
+  renderManufacturerGrid(allManufacturers);
+  disableSelect(document.getElementById('sel-year'), 'Select year…');
+  disableSelect(document.getElementById('sel-trim'), 'Select trim…');
+  hideResult();
+  const models = unique(ALL_VEHICLES.filter(v => v.manufacturer === mfr).map(v => v.model));
+  populateSelect(document.getElementById('sel-model'), models, 'Select model…', true);
+}
+
+function onModelChange() {
+  const mfr = selectedManufacturer;
+  const model = document.getElementById('sel-model').value;
+  disableSelect(document.getElementById('sel-trim'), 'Select trim…');
+  hideResult();
+  if (!model) { disableSelect(document.getElementById('sel-year'), 'Select year…'); return; }
+  const years = unique(ALL_VEHICLES.filter(v => v.manufacturer === mfr && v.model === model).map(v => v.year));
+  // Sort years descending (newest first)
+  years.sort((a, b) => (parseInt(b) || 0) - (parseInt(a) || 0));
+  populateSelect(document.getElementById('sel-year'), years, 'Select year…', true);
+}
+
+function onYearChange() {
+  const mfr = selectedManufacturer;
+  const model = document.getElementById('sel-model').value;
+  const year = document.getElementById('sel-year').value;
+  hideResult();
+  if (!year) { disableSelect(document.getElementById('sel-trim'), 'Select trim…'); return; }
+  const trims = unique(ALL_VEHICLES.filter(v => v.manufacturer === mfr && v.model === model && String(v.year) === String(year)).map(v => v.trim));
+  populateSelect(document.getElementById('sel-trim'), trims, 'Select trim…', true);
+}
+
+function onTrimChange() {
+  const mfr = selectedManufacturer;
+  const model = document.getElementById('sel-model').value;
+  const year = document.getElementById('sel-year').value;
+  const trim = document.getElementById('sel-trim').value;
+  if (!trim) { hideResult(); return; }
+  const match = ALL_VEHICLES.find(v => v.manufacturer === mfr && v.model === model && String(v.year) === String(year) && v.trim === trim);
+  if (match) {
+    selectedVehicle1 = match;
+    showResult(match);
+  }
+}
+
+function resetLookup() {
+  selectedManufacturer = '';
+  document.getElementById('mfr-search').value = '';
+  renderManufacturerGrid(allManufacturers);
+  disableSelect(document.getElementById('sel-model'), 'Select model…');
+  disableSelect(document.getElementById('sel-year'), 'Select year…');
+  disableSelect(document.getElementById('sel-trim'), 'Select trim…');
+  hideResult();
+  selectedVehicle1 = null;
+}
+
+// ── DISPLAY RESULT ──
+function decodeAcrissChar(char, map) {
+  return map[char] || char || '—';
+}
+
+let matchingVehicles = []; // cached for filtering
+
+function showResult(v) {
+  document.getElementById('result-name').textContent = `${v.year} ${v.manufacturer} ${v.model}`;
+  document.getElementById('result-trim').textContent = v.trim;
+  document.getElementById('result-descriptor').textContent = v.descriptor || '—';
+  document.getElementById('result-category').textContent = v.category || '—';
+  document.getElementById('result-fuel').textContent = v.fuel_type || '—';
+  document.getElementById('result-price').textContent = v.list_price ? `£${v.list_price}` : '—';
+  document.getElementById('result-seats').textContent = v.seats || '—';
+  document.getElementById('result-doors').textContent = v.doors || '—';
+  document.getElementById('result-bhp').textContent = v.bhp || '—';
+
+  const c1 = v.acriss_category || '';
+  const c2 = v.acriss_type || '';
+  const c3 = v.acriss_fuel || '';
+
+  document.getElementById('acriss-c1').textContent = c1 || '—';
+  document.getElementById('acriss-c1-label').textContent = decodeAcrissChar(c1, ACRISS_CATEGORY_MAP);
+  document.getElementById('acriss-c2').textContent = c2 || '—';
+  document.getElementById('acriss-c2-label').textContent = decodeAcrissChar(c2, ACRISS_TYPE_MAP);
+  document.getElementById('acriss-c3').textContent = c3 || '—';
+  document.getElementById('acriss-c3-label').textContent = decodeAcrissChar(c3, ACRISS_FUEL_MAP);
+
+  document.getElementById('result-card').classList.add('visible');
+
+  // Build matching vehicles table
+  showMatchingVehicles(v);
+}
+
+function hideResult() {
+  document.getElementById('result-card').classList.remove('visible');
+  document.getElementById('match-section').classList.remove('visible');
+  matchingVehicles = [];
+}
+
+// ── MATCHING VEHICLES TABLE ──
+function showMatchingVehicles(v) {
+  // Match on ACRISS category + type (size class + body type)
+  const cat = v.acriss_category;
+  const type = v.acriss_type;
+  if (!cat || !type) {
+    document.getElementById('match-section').classList.remove('visible');
+    return;
+  }
+
+  // Find all vehicles with same category + type, excluding the selected vehicle itself
+  matchingVehicles = ALL_VEHICLES.filter(m =>
+    m.acriss_category === cat && m.acriss_type === type &&
+    !(m.manufacturer === v.manufacturer && m.model === v.model && String(m.year) === String(v.year) && m.trim === v.trim)
+  );
+
+  // Sort by manufacturer then model
+  matchingVehicles.sort((a, b) => {
+    if (a.manufacturer !== b.manufacturer) return a.manufacturer.localeCompare(b.manufacturer);
+    if (a.model !== b.model) return a.model.localeCompare(b.model);
+    return (parseInt(b.year) || 0) - (parseInt(a.year) || 0);
+  });
+
+  const descLabel = decodeAcrissChar(cat, ACRISS_CATEGORY_MAP);
+  const typeLabel = decodeAcrissChar(type, ACRISS_TYPE_MAP);
+
+  document.getElementById('match-title').textContent = `Equivalent Rental Vehicles — ${descLabel} ${typeLabel}`;
+  document.getElementById('match-hint').innerHTML =
+    `A mainstream rental provider offering a replacement for a <strong>${v.descriptor} ${v.category}</strong> vehicle would supply one of the models below. ` +
+    `All ${matchingVehicles.length + 1} vehicles in ACRISS group <strong>${cat}${type}</strong> (${descLabel} ${typeLabel}) are shown. ` +
+    `If the BHR evidence cites a vehicle from a different ACRISS group, the comparator is not like-for-like under Stevens v Equity Syndicate Management [2015] EWCA Civ 93.`;
+
+  // Populate filter dropdowns
+  const mfrs = unique(matchingVehicles.map(m => m.manufacturer));
+  const fuels = unique(matchingVehicles.map(m => m.fuel_type).filter(Boolean));
+  const years = unique(matchingVehicles.map(m => String(m.year)).filter(Boolean));
+  years.sort((a, b) => (parseInt(b) || 0) - (parseInt(a) || 0));
+
+  const mfrSel = document.getElementById('match-filter-mfr');
+  mfrSel.innerHTML = '<option value="">All manufacturers</option>';
+  mfrs.forEach(m => { const o = document.createElement('option'); o.value = m; o.textContent = m; mfrSel.appendChild(o); });
+
+  const fuelSel = document.getElementById('match-filter-fuel');
+  fuelSel.innerHTML = '<option value="">All fuel types</option>';
+  fuels.forEach(f => { const o = document.createElement('option'); o.value = f; o.textContent = f; fuelSel.appendChild(o); });
+
+  const yearSel = document.getElementById('match-filter-year');
+  yearSel.innerHTML = '<option value="">All years</option>';
+  years.forEach(y => { const o = document.createElement('option'); o.value = y; o.textContent = y; yearSel.appendChild(o); });
+
+  document.getElementById('match-section').classList.add('visible');
+  filterMatchTable();
+}
+
+function filterMatchTable() {
+  const mfrFilter = document.getElementById('match-filter-mfr').value;
+  const fuelFilter = document.getElementById('match-filter-fuel').value;
+  const yearFilter = document.getElementById('match-filter-year').value;
+
+  let filtered = matchingVehicles;
+  if (mfrFilter) filtered = filtered.filter(v => v.manufacturer === mfrFilter);
+  if (fuelFilter) filtered = filtered.filter(v => v.fuel_type === fuelFilter);
+  if (yearFilter) filtered = filtered.filter(v => String(v.year) === yearFilter);
+
+  document.getElementById('match-count').textContent = `${filtered.length} vehicle${filtered.length !== 1 ? 's' : ''}`;
+
+  const tbody = document.getElementById('match-tbody');
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--text-light);padding:2rem;">No matching vehicles found with current filters.</td></tr>';
+    return;
+  }
+
+  // Limit display to 200 rows for performance, show note if truncated
+  const display = filtered.slice(0, 200);
+  const esc = s => s ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;') : '—';
+
+  tbody.innerHTML = display.map(v => `<tr>
+    <td>${esc(v.manufacturer)}</td>
+    <td>${esc(v.model)}</td>
+    <td>${esc(String(v.year))}</td>
+    <td>${esc(v.trim)}</td>
+    <td>${esc(v.fuel_type)}</td>
+    <td>${esc(v.category)}</td>
+    <td class="price-col">${v.list_price ? '£' + esc(v.list_price) : '—'}</td>
+    <td>${esc(v.bhp)}</td>
+    <td class="code-col">${esc(v.acriss_code)}</td>
+  </tr>`).join('');
+
+  if (filtered.length > 200) {
+    tbody.innerHTML += `<tr><td colspan="9" style="text-align:center;color:var(--text-light);padding:0.75rem;font-size:0.78rem;">Showing 200 of ${filtered.length} vehicles. Use filters to narrow results.</td></tr>`;
+  }
+}
+
+// ── KICK OFF ──
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
