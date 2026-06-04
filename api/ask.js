@@ -273,7 +273,24 @@ function buildNiHighwayCodeContext(question) {
     }
     ctx += '\n';
   }
-  ctx += 'Where a point matches, cite the NI rule and NI legislation above in preference to the GB Highway Code.\n';
+
+  // Numbered NI rules verified present in the NI 2020 code — cite these BY NUMBER.
+  const lr = (hc.liability_rules || []).map(r => {
+    const hay = ((r.title || '') + ' ' + (r.liability_relevance || '') + ' ' + (r.ni_text_excerpt || '')).toLowerCase();
+    let s = 0; for (const w of words) if (hay.includes(w)) s++;
+    return { r, s };
+  }).filter(x => x.s > 0).sort((a, b) => b.s - a.s).slice(0, 12).map(x => x.r);
+  if (lr.length) {
+    ctx += 'RELEVANT NI HIGHWAY CODE RULES (cite by NI rule number):\n';
+    for (const r of lr) {
+      ctx += `  NI Highway Code Rule ${r.ni_rule_number} — ${r.title} [${r.legal_status}]\n`;
+      if (r.liability_relevance) ctx += `    Relevance: ${r.liability_relevance}\n`;
+      if (r.legislation) ctx += `    Law: ${r.legislation}\n`;
+    }
+    ctx += '\n';
+  }
+
+  ctx += 'Where a point matches, cite the specific NI Highway Code rule BY NUMBER and the NI legislation above, in preference to the GB Highway Code.\n';
   ctx += '--- END NORTHERN IRELAND HIGHWAY CODE ---\n';
   return ctx;
 }
