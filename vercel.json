@@ -10,6 +10,7 @@
           "case_database.json",
           "liability_database.json",
           "highway_code.json",
+          "highway_code_ni.json",
           "gta_rates.json",
           "bhr_terms_db.json"
         ]

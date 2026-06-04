@@ -1,0 +1,1442 @@
+{
+ "version": 1,
+ "jurisdiction": "Northern Ireland",
+ "source": "The Official Highway Code for Northern Ireland (Department for Infrastructure, 20th impression 2020)",
+ "based_on_gb_note": "The Highway Code for Northern Ireland is based on the Great Britain version. Although Northern Ireland road safety legislation continues to be brought into line with that in Great Britain, there are some differences which it has been necessary to reflect. The rules and guidance largely correspond to the GB Highway Code, but the enabling legislation is Northern Irish (see ni_legislation_key). For accidents occurring in Northern Ireland, this code and the NI legislation apply and take precedence over the GB Highway Code.",
+ "precedence_guidance": "When the accident or event occurred in Northern Ireland, apply this NI Highway Code and the cited Northern Ireland legislation in preference to the Great Britain Highway Code. Rule numbering and wording largely mirror GB; where they differ, the NI position prevails. MUST / MUST NOT rules are legal requirements backed by the NI statutes cited (breach is an offence and may also be evidence of negligence); 'should/should not' rules are advisory but may be relied on as evidence of negligence or contributory negligence in civil proceedings.",
+ "legal_framework": {
+  "must_rules": "Rules using MUST / MUST NOT are legal requirements backed by Northern Ireland Orders and Regulations (see ni_legislation_key). Breach is a criminal offence.",
+  "should_rules": "Rules using should / should not are advisory; failure to follow them is not an offence but may be used as evidence of negligence or contributory negligence in civil proceedings."
+ },
+ "ni_legislation_key": {
+  "CSPDA": "Chronically Sick & Disabled Persons (NI) Act 1978",
+  "CJO": "Criminal Justice (NI) Order 1994",
+  "H(PHYR)O": "Horses (Protective Headgear for Young Riders) (NI) Order 1990",
+  "H(PHYR)R": "Horses (Protective Headgear for Young Riders) Regulations (NI) 1992",
+  "LO": "Litter (NI) Order 1994",
+  "MC(EP)R": "Motor Cycles (Eye Protectors) Regulations (NI) 2004",
+  "MC(PH)R": "Motor Cycles (Protective Headgear) Regulations (NI) 1999",
+  "CUR": "Motor Vehicles (Construction & Use) Regulations (NI) 1999",
+  "CU(A)R": "Motor Vehicles (Construction & Use) (Amendment) Regulations (NI)",
+  "MV(DL)R": "Motor Vehicles (Driving Licences) Regulations (NI) 1996",
+  "MVDL(A)R": "Motor Vehicles (Driving Licences) (Amendment) Regulations (NI) 2003",
+  "MV(IC)R": "Motor Vehicles (Invalid Carriages) Regulations (NI) 1999",
+  "MV(PR)R": "Motor Vehicles (Prescribed Restrictions) Regulations (NI) 1996",
+  "MV(SL)R": "Motor Vehicles (Speed Limits) Regulations (NI) 1989",
+  "MV(SLRE)R": "Motor Vehicles (Speed Limit Restriction) (Exemption) Regulations (NI) 1998",
+  "MV(WSB)R": "Motor Vehicles (Wearing of Seat Belts) Regulations (NI) 1993",
+  "MV(WSBCFS)R": "Motor Vehicles (Wearing of Seat Belts by Children in Front Seats) Regulations (NI) 1993 and 2007",
+  "MV(WSB)(A)R": "Motor Vehicles (Wearing of Seat Belts) (Amendment) Regulations (NI) 2007 and 2008",
+  "MTR": "Motorways Traffic Regulations (NI) 2008",
+  "RTA": "Road Traffic Act 1984, 1988 or 1991 (as indicated)",
+  "RT(ND)O": "Road Traffic (New Drivers) (NI) Order 1998",
+  "RTO": "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+  "RTOO": "Road Traffic Offenders (NI) Order 1996",
+  "RTRO": "Road Traffic Regulation (NI) Order 1997",
+  "RVLR": "Road Vehicles Lighting Regulations (NI) 2000",
+  "TSR": "Traffic Signs Regulations (NI)",
+  "PCR": "Pedestrian Crossings Regulations (NI)",
+  "RO": "Roads (NI) Order 1993"
+ },
+ "must_rules": [
+  {
+   "requirement": "Motorways. Pedestrians MUST NOT be on motorways or slip roads except in an emergency (see Rules 271 and 275).",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RO Art 20 & MTR reg 13(1)(b)",
+   "ni_statutes": [
+    "Motorways Traffic Regulations (NI) 2008",
+    "Roads (NI) Order 1993"
+   ]
+  },
+  {
+   "requirement": "Moving vehicles. You MUST NOT get on to or hold on to a moving vehicle.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTO 1995 Art 37",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT loiter on any type of crossing.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTRO Art 59(4) & PCR reg 17",
+   "ni_statutes": [
+    "Pedestrian Crossings Regulations (NI)",
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "Railway level crossings. You MUST NOT cross or pass a stop line when the red lights show, (including a red pedestrian figure). Also do not cross if an alarm is sounding or the barriers are being lowered. The tone of the alarm may change if another train is approaching. If there are no lights, alarms or barriers, stop, look both ways and listen before crossing. A tactile surface comprising rounded bars running across the direction of pedestrian travel may be installed on the footway or footpath approaching a level crossing to warn visually impaired people of its presence. The tactile surface sh",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "Powered wheelchairs and scooters MUST NOT travel faster than 4 mph (6 km/h) on footways or footpaths or in pedestrian areas. You may need to reduce your speed to adjust to other footway or footpath users who may not be able to move out of your way quickly enough or where the footway or footpath is too narrow.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law MV(IC)R reg 4",
+   "ni_statutes": [
+    "Motor Vehicles (Invalid Carriages) Regulations (NI) 1999"
+   ]
+  },
+  {
+   "requirement": "travelling at night, when lights MUST be used, you should travel in the direction of the traffic to avoid confusing other road users.",
+   "legal_status": "must",
+   "legislation_cited": "Law MV(IC)R reg 9",
+   "ni_statutes": [
+    "Motor Vehicles (Invalid Carriages) Regulations (NI) 1999"
+   ]
+  },
+  {
+   "requirement": "You MUST follow the same rules about using lights, indicators and horns as for other road vehicles if your",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "vehicle is fitted with them. At night lights MUST be used. Be aware that other road users may not be able to see you and you should make yourself more visible – even in the daytime and also at dusk – by, for instance, wearing a reflective jacket or reflective strips on the back of the vehicle.",
+   "legal_status": "must",
+   "legislation_cited": "Law MV(IC)R reg 9",
+   "ni_statutes": [
+    "Motor Vehicles (Invalid Carriages) Regulations (NI) 1999"
+   ]
+  },
+  {
+   "requirement": "These vehicles MUST NOT be used on motorways (see Rule 253). They should not be used on unrestricted dual carriageways where the speed limit exceeds 50 mph (80 km/h) but if they are used on these dual carriageways,",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "they MUST have a flashing amber beacon. A flashing amber beacon should be used on other dual carriageways (see Rule 220).",
+   "legal_status": "must",
+   "legislation_cited": "Laws RO Art 20(1), (3) & (4), & RVLR regs 20(1) & 29",
+   "ni_statutes": [
+    "Roads (NI) Order 1993",
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "front and red to the rear MUST be fitted.",
+   "legal_status": "must",
+   "legislation_cited": "Law RVLR reg 4",
+   "ni_statutes": [
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "Safety equipment. Children under the age of 14 MUST wear a helmet which complies with the Regulations. It",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "MUST be fastened securely. Other riders should also follow these requirements. These requirements do not apply to a child who is a follower of the Sikh religion while wearing a turban.",
+   "legal_status": "must",
+   "legislation_cited": "Laws H(PHYR)O Art 3 & H(PHYR)R",
+   "ni_statutes": [
+    "Horses (Protective Headgear for Young Riders) (NI) Order 1990",
+    "Horses (Protective Headgear for Young Riders) Regulations (NI) 1992"
+   ]
+  },
+  {
+   "requirement": "Between sunset and sunrise your cycle MUST have",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "white front and red rear lights lit. It MUST also be fitted with a red rear reflector (and amber pedal reflectors, if manufactured after 24/1/96). White front reflectors and spoke reflectors will also help you to be seen. Flashing lights are permitted but it is recommended that cyclists who are riding in areas without street lighting use a steady front lamp.",
+   "legal_status": "must",
+   "legislation_cited": "Law RVLR regs 13, 15, 21 & 27 (as amended by RVL(A)R)",
+   "ni_statutes": [
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "using segregated tracks you MUST keep to the side intended for cyclists as the pedestrian side remains a footway or footpath. Take care when passing pedestrians, especially children, older or disabled people, and allow them plenty of room. Always be prepared to slow down and stop if necessary. Take care near road junctions as you may have difficulty seeing other road users, who might not notice you.",
+   "legal_status": "must",
+   "legislation_cited": "Law RTRO Arts 3 & 4(5)",
+   "ni_statutes": [
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT cycle on a footway or footpath unless on a cycle track where one has been provided.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTRO Art 3",
+   "ni_statutes": [
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT • carry a passenger unless your cycle has been built or adapted to carry one • hold on to a moving vehicle or trailer • ride in a dangerous, careless or inconsiderate manner • ride when under the influence of drink or drugs including medicine.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTO 1995 Arts 35, 37, 42, 43 & 44",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "You MUST obey all traffic signs and traffic light signals.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR reg 8",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT cross the stop line when the traffic lights are red. Some junctions have an advanced stop line to enable you to wait and position yourself ahead of other traffic (see Rule 178).",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR reg 33(1)",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "ride across but you MUST NOT cross until the green cycle symbol is showing.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law TSR reg 33(1)",
+   "ni_statutes": [
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "called quadbike, MUST wear a protective helmet. This does not apply to a follower of the Sikh religion while",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "wearing a turban. Helmets MUST comply with the 26 Rules﻿for﻿motorcyclists",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "regulations and they MUST be fastened securely. Riders and passengers of motor tricycles should also wear a protective helmet. Before each journey check that your helmet visor is clean and in good condition.",
+   "legal_status": "must",
+   "legislation_cited": "Laws MC(PH)R (as amended) reg 2 & RTO 1995 Arts 27 & 28",
+   "ni_statutes": [
+    "Motor Cycles (Protective Headgear) Regulations (NI) 1999",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "It is also advisable to wear eye protectors, which MUST comply with the Regulations. Scratched or poorly fitting eye protectors can limit your view when riding, particularly in bright sunshine and the hours of darkness. Consider wearing ear protectors. Strong boots, gloves and suitable clothing may help to protect you if you are involved in a collision.",
+   "legal_status": "must",
+   "legislation_cited": "Laws MC(EP)R (as amended) reg 2 & RTO 1995 Art 29",
+   "ni_statutes": [
+    "Motor Cycles (Eye Protectors) Regulations (NI) 2004",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT carry more than one pillion passenger,",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "who MUST sit astride the machine on a proper seat. They should face forward with both feet on the footrests.",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "You MUST NOT carry a pillion passenger unless your motorcycle is designed to do so. Provisional licence",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "holders MUST NOT carry a pillion passenger.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Art 34, MV(DL)R reg 12(5) & CUR reg 118",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999",
+    "Motor Vehicles (Driving Licences) Regulations (NI) 1996",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "Vehicle condition. You MUST ensure your vehicle and trailer comply with the full requirements of the Motor Vehicles (Construction and Use) Regulations (NI) and the Road Vehicles Lighting Regulations (NI) (see page 124).",
+   "legal_status": "must",
+   "legislation_cited": "Laws CUR, RVLR",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999",
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "Make sure that you are fit to drive. You MUST report to the Driver and Vehicle Agency any health condition likely to affect your driving.",
+   "legal_status": "must",
+   "legislation_cited": "Law RTO 1981 Art 11",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "Vision. You MUST be able to read a vehicle number plate, in good daylight, from a distance of 20 metres (or 20.5 metres where the old style number plate is used). If you need to wear glasses (or contact lenses) to do",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "this, you MUST wear them at all times while driving. The police have the power to require a driver to undertake an eyesight test.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1981 Art 154, MV(DL)R reg 29 & sch 7, & MVDL(A)R",
+   "ni_statutes": [
+    "Motor Vehicles (Driving Licences) Regulations (NI) 1996",
+    "Motor Vehicles (Driving Licences) (Amendment) Regulations (NI) 2003",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "judgement and abilities. You MUST NOT drive with a breath alcohol level higher than 35 microgrammes/100 millilitres of breath or a blood alcohol level of more than 80 milligrammes/100 millilitres of blood. Alcohol will • give a false sense of confidence • reduce co-ordination and slow down reactions • affect judgement of speed, distance and risk • reduce your driving ability, even if you’re below the legal limit • take time to leave your body; you may be unfit to drive in the evening after drinking at lunchtime, or in the morning after drinking the previous evening. 29",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "You MUST NOT drive under the influence of drugs or medicine. Check the instructions or ask your doctor or pharmacist. Using illegal drugs is highly dangerous. Never take them if you intend to drive; the effects are unpredictable but can be even more severe than alcohol and may result in fatal or serious road crashes.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTO 1995 Art 15",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "• you MUST NOT tow more than your licence permits. If you passed a car test after 1 January 1997 you are restricted on the weight of trailer you can tow",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "• you MUST NOT overload your vehicle or trailer. You should not tow a weight greater than that recommended by the manufacturer of your vehicle",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "• you MUST secure your load and it MUST NOT stick out dangerously. Make sure any heavy or sharp objects and any animals are secured safely. If there is a collision, they might hit someone inside the vehicle and cause serious injury • you should properly distribute the weight in your caravan or trailer, with heavy items mainly over the axle(s) and ensure a downward load on the tow ball. Manufacturers’ recommended weight and tow ball load should not be exceeded. This should avoid the possibility of swerving or snaking and going out of control. If this does happen, ease off the accelerator and re",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "You MUST wear a seat belt in cars, vans and other goods vehicles if one is fitted (see table below). Adults",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "and children aged 14 years and over MUST use a seatbelt where fitted, when seated in minibuses, buses and coaches. Exemptions are allowed for the holders of medical exemption certificates and those making deliveries and collections in goods vehicles when travelling less than 50 metres (approx. 162 feet).",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Arts 23 & 24, RTO 2007 Art 26, MV(WSB)R,",
+   "ni_statutes": [
+    "Motor Vehicles (Wearing of Seat Belts) Regulations (NI) 1993",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "MUST be worn if fitted Child under 3 years of age Correct child restraint",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "MUST be used Correct child restraint",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "MUST be used. If one is not available in a taxi the child may travel unrestrained Driver Child from 3rd birthday up to 1.35 metres (approx 4ft 5 inches) in height",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "seat belts fitted. MUST use adult belt if correct child restraint is not available in a licensed taxi or private hire vehicle, or for reasons of unexpected necessity over a short distance, or if two occupied restraints prevent fitment of a third Driver Child over",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "MUST be worn if available",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "Seat belt MUST be worn if available Driver Adult passengers aged 14 and over Seat belt",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "Seat belt MUST be worn if available Passenger Driver",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "The driver MUST ensure that all children under 14 years 100 of age in cars, vans and other goods vehicles wear seat belts or sit in an approved child restraint where required (see table above). If a child is under 1.35 metres (approx 4 feet 5 inches) tall, a baby seat, child seat, booster seat or booster cushion suitable for the child’s weight and fitted",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "to the manufacturer’s instructions MUST be used.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Arts 23 & 24, MV(WSB)R, MV(WSBCFS)R &",
+   "ni_statutes": [
+    "Motor Vehicles (Wearing of Seat Belts) Regulations (NI) 1993",
+    "Motor Vehicles (Wearing of Seat Belts by Children in Front Seats) Regulations (NI) 1993 and 2007",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "A rear-facing baby seat MUST NOT be fitted into a seat 101 protected by an active frontal airbag, as in a crash it can cause serious injury or death to the child.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Arts 23 & 24, MV(WSB)R, MV(WSBCFS)R &",
+   "ni_statutes": [
+    "Motor Vehicles (Wearing of Seat Belts) Regulations (NI) 1993",
+    "Motor Vehicles (Wearing of Seat Belts by Children in Front Seats) Regulations (NI) 1993 and 2007",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "You MUST obey signals given by police officers and 105 Driver and Vehicle Agency Enforcement Officers (see pages 104–105) and signs used by school crossing patrols.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTRO Art 60, RTO 1995 Arts 49, 75 & 76, & RTO 1981 Arts 180",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "You MUST then pull over and stop as soon as it is safe to do so. Then switch off your engine.",
+   "legal_status": "must",
+   "legislation_cited": "Law RTO 1981 Art 180",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "MUST obey any signals given (see page 105).",
+   "legal_status": "must",
+   "legislation_cited": "Law RTO 1981 Art 180A",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "Traffic light signals and traffic signs. You MUST 109 obey all traffic light signals (see page 102) and traffic signs giving orders, including temporary signals and signs (see pages 106–111). Make sure you know, understand and act on all other traffic and information signs and road markings (see pages 106–117)",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR regs 8, 13, 14, 24, 25, 25A, 25B, 26 & 33",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "sound your horn aggressively. You MUST NOT use your horn • while stationary on the road • when driving in a built-up area between the hours of 11.30 pm and 7.00 am except when another road user poses a danger.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law CUR reg 114",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999"
+   ]
+  },
+  {
+   "requirement": "You MUST • ensure all sidelights and rear registration plate lights are lit between sunset and sunrise • use headlights at night • use headlights when visibility is seriously reduced (see Rule 226). Night (the hours of darkness) is defined as the period between half an hour after sunset and half an hour before sunrise.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RVLR regs 2, 27 & 28, & RV(DRM)R reg 9",
+   "ni_statutes": [
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT • use any lights in a way that would dazzle or cause discomfort to other road users, including pedestrians, cyclists and horse riders • use front or rear fog lights unless visibility is seriously",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "reduced. You MUST switch them off when visibility improves to avoid dazzling other road users (see Rule 226). In stationary queues of traffic, drivers should apply the parking brake and, once the following traffic has stopped, take their foot off the footbrake to deactivate the vehicle brake lights. This will minimise glare to road users behind until the traffic moves again.",
+   "legal_status": "must",
+   "legislation_cited": "Law RVLR reg 30",
+   "ni_statutes": [
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "dangerous or illegal parking. You MUST NOT use hazard warning lights while driving or being towed unless you are on a motorway or unrestricted dual carriageway and you need to warn drivers behind you of a hazard or obstruction ahead. Only use them for long enough to ensure that your warning has been observed.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RVLR reg 30",
+   "ni_statutes": [
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "The Driver and the Environment. You MUST NOT 123 leave a parked vehicle unattended with the engine running or leave a vehicle engine running unnecessarily while that vehicle is stationary on a public road. Generally, if the vehicle is stationary and likely to remain so for more than a couple of minutes you should apply the parking brake and switch off the engine to reduce emissions and noise pollution. However, it is permissible to leave the engine running if the vehicle is stationary in traffic or for diagnosing faults.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law CUR regs 113 & 123",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT exceed the maximum speed limits 124 for the road and for your vehicle (see the table on page 40). The presence of street lights generally means that there is a 30 mph (48 km/h) speed limit unless otherwise specified.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTRO Arts 36, 39 & 43, & MV(SL)R",
+   "ni_statutes": [
+    "Motor Vehicles (Speed Limits) Regulations (NI) 1989",
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "129 solid. This means you MUST NOT cross or straddle it unless it is safe and you need to enter adjoining premises or a side road. You may cross the line if necessary, provided the road is clear, to pass a stationary vehicle, or overtake a pedal cycle, horse or road maintenance vehicle, if they are travelling at 10 mph (16 km/h) or less.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR reg 25",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "solid white lines, you MUST NOT enter it, except in an emergency",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR reg 8",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "140 signs. You MUST NOT drive or park in a cycle lane marked by a solid white line during its time of operation. Do not drive or park in a cycle lane marked by a broken",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "white line unless it is unavoidable. You MUST NOT park in any cycle lane whilst waiting restrictions apply.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTRO Art 4(5)",
+   "ni_statutes": [
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "otherwise indicated, you MUST NOT drive or ride in a bus lane during its period of operation.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTRO Art 4(1, 2 & 3)",
+   "ni_statutes": [
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "the accompanying traffic signs. You MUST NOT drive in such lanes during their times of operation unless signs indicate your vehicle is permitted. (see page 112). Vehicles permitted to use designated lanes may or may not include cycles, buses, taxis, licensed private hire vehicles, motorcycles, heavy goods vehicles (HGVs), and high occupancy vehicles (HOVs). 46 General﻿rules,﻿techniques﻿and﻿advice﻿for﻿all﻿drivers﻿and﻿riders",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "Where HOV lanes are in operation, they MUST only be used by • vehicles containing at least the minimum number of people indicated on the traffic signs • any other vehicles, such as buses and motorcycles, as indicated on signs prior to the start of the lane, irrespective of the number of occupants.",
+   "legal_status": "must",
+   "legislation_cited": "Law RTRO Art 4(5)",
+   "ni_statutes": [
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "One-way streets. Traffic MUST travel in the direction 143 indicated by signs. Buses and/or cycles may have a contraflow lane. Choose the correct lane for your exit as soon as you can. Do not change lanes suddenly. Unless road signs or markings indicate otherwise, you should use • the left-hand lane when going left • the right-hand lane when going right • the most appropriate lane when going straight ahead. Remember, traffic could be passing on both sides.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 50 & RTRO Arts 4(5) & 5(9)",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT • drive dangerously • drive without due care and attention • drive without reasonable consideration for other road users.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTO 1995 Arts 10 & 12",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT drive on or over a footway or footpath 145 except to gain lawful access to property, or in the case of an emergency.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTRO Art 3",
+   "ni_statutes": [
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "• You MUST NOT throw anything out of a vehicle; for example, food or food packaging, cigarette ends, cans, paper or carrier bags. This can endanger other road users, particularly motorcyclists and cyclists. • Try to be understanding if other road users cause problems; they may be inexperienced or not know the area well. • Be patient; remember that anyone can make a mistake. • Do not allow yourself to become agitated or involved if someone is behaving badly on the road. This will only make the situation worse. Pull over, calm down and, when you feel relaxed, continue your journey. • Slow down a",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "You MUST NOT smoke in public transport vehicles or in vehicles used for work purposes in certain prescribed circumstances.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws SO & SF(EVPDA)R reg 12(1)",
+   "ni_statutes": []
+  },
+  {
+   "requirement": "You MUST exercise proper control of your vehicle at all",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "149 times. You MUST NOT use a hand-held mobile phone, or similar device, when driving or when supervising a learner driver, except to call 999 or 112 in a genuine emergency when it is unsafe or impractical to stop. Never use a hand-held microphone when driving. Using hands-free equipment is also likely to distract your attention from the road. It is far safer not to use any telephone while you are driving or riding - find a safe place to stop first or use the voicemail facility and listen to messages later.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Arts 10, 12 & 56A, & CUR regs 120 & 125A",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "MUST exercise proper control of your vehicle at all times. Do not rely on driver assistance programs such as cruise control or lane departure warnings. They are available to assist but you should not reduce your concentration levels. Do not be distracted by maps or screen-based information (such as navigation or vehicle management systems) while driving or riding. If necessary find a safe place to stop.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Arts 10 & 12, & CUR reg 120",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "These types of vehicles MUST NOT be used on roads, footways or footpaths.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTO 1995 Arts 48, 56, 58, 63 & 72",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "MUST NOT be used on roads. They MUST NOT be used on footways, footpaths or cycle paths either. You",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "MUST make sure that any motorcycle, motor tricycle, quadricycles or any other motor vehicle meets legal standards and is properly registered, taxed and insured before using it on the roads. Even when registered, taxed",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "and insured for the road, vehicles MUST NOT be used on footways or footpaths.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Arts 48, 56, 63 & 72, & VERA sects 1, 29, 31A & 43A",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT overtake • if you have to cross or straddle double white lines with a solid line nearest to you (but see Rule 129) • if you would have to enter an area designed to divide traffic, if it is surrounded by a solid white line • the nearest vehicle to a signal-controlled crossing facility, especially when it has stopped to let pedestrians, equestrian traffic or cyclists to cross 56 Using﻿the﻿road • if you would have to enter a lane reserved for buses,",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "You MUST stop behind a line at a junction with a ‘Stop’ 171 sign and a solid white line across the road. Wait for a safe gap in the traffic before you move off.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR regs 8 & 14",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "172 or a triangle marked on the road. You MUST give way to traffic on the main road when emerging from a junction with broken white lines across the road.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR regs 8, 14 & 24",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "174 painted on the road (see page 116). You MUST NOT enter the box until your exit road or lane is clear. However, you may enter the box and wait when you want to turn right, and are only stopped from doing so by oncoming traffic, or by other vehicles waiting to turn right. At",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "signalled roundabouts you MUST NOT enter the box unless you can cross over it completely without stopping.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR regs 8 & 26",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "You MUST stop behind the white ‘Stop’ line across your 175 side of the road unless the light is green. If the amber light appears you may go on only if you have already crossed the stop line or are so close to it that to stop might cause a collision.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR regs 8 & 33",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT move forward over the white line when 176 the red light is showing. Only go forward when the traffic lights are green if there is room for you to clear the junction safely or you are taking up a position to turn right. If the traffic lights are not working, treat the situation as you would an unmarked junction and proceed with great care.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR regs 8 & 33",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "MUST stop at the first white line reached, and should avoid blocking the way or encroaching on the marked area at other times e.g. if the junction ahead is blocked. If your vehicle has proceeded over the first white line at",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "the time that the signal goes red, you MUST stop at the second white line, even if your vehicle is in the marked area. Allow cyclists time and space to move off when the green signal shows.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 50(1) & TSR reg 33(6)",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "188 normal roundabouts. All vehicles MUST pass round the central markings except large vehicles which are physically incapable of doing so. Remember, there is less space to manoeuvre and less time to signal. Avoid making U-turns at mini-roundabouts. Beware of others doing this.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR regs 8 & 14",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT park on a crossing or in the area covered",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "191 by the zigzag lines. You MUST NOT overtake the moving vehicle nearest the crossing or the vehicle nearest the crossing which has stopped to give way to pedestrians.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTRO Art 59(4) & PCR regs 16, 18 & 20",
+   "ni_statutes": [
+    "Pedestrian Crossings Regulations (NI)",
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "• you MUST give way when a pedestrian has moved onto a crossing • allow more time for stopping on wet or icy roads • do not wave or use your horn to invite pedestrians across; this could be dangerous if another vehicle is approaching • be aware of pedestrians approaching from the side of the crossing. A zebra crossing with a central island is two separate crossings (see picture on page 10).",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTRO Art 59(4) & PCR reg 21",
+   "ni_statutes": [
+    "Pedestrian Crossings Regulations (NI)",
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "light. You MUST stop when the red light shows. When",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "the amber light is flashing, you MUST give way to any pedestrians on the crossing. If the amber light is flashing and there are no pedestrians on the crossing, you may proceed with caution.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTRO Art 59(4) & PCR regs 10, 19 & 22",
+   "ni_statutes": [
+    "Pedestrian Crossings Regulations (NI)",
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "MUST wait for pedestrians who are crossing from the other side of the island.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTRO Art 59(4) & PCR reg 22",
+   "ni_statutes": [
+    "Pedestrian Crossings Regulations (NI)",
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT reverse your vehicle further than 203 necessary.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law CUR reg 122",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999"
+   ]
+  },
+  {
+   "requirement": "You MUST stop when a school crossing patrol shows a 210 ‘Stop for children’ sign (see pages 105 and 106).",
+   "legal_status": "must",
+   "legislation_cited": "Law RTRO Art 60",
+   "ni_statutes": [
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "exceeds 50 mph (80 km/h) they MUST have a flashing amber beacon, but on other roads you may not have that advance warning (see Rules 36 – 46 inclusive)",
+   "legal_status": "must",
+   "legislation_cited": "Law RVLR regs 20(1) & 29",
+   "ni_statutes": [
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "MUST use a flashing amber beacon. (Also see Rule 220.)",
+   "legal_status": "must",
+   "legislation_cited": "Law RVLR reg 20",
+   "ni_statutes": [
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "You MUST use headlights when visibility is seriously 226 reduced, generally when you cannot see for more than 100 metres (328 feet). You may also use front or rear",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "fog lights but you MUST switch them off when visibility improves (see Rule 236).",
+   "legal_status": "must",
+   "legislation_cited": "Law RVLR regs 28 & 30",
+   "ni_statutes": [
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "• you MUST be able to see, so clear all snow and ice from your windows",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "• you MUST ensure that lights are clean and number plates are clearly visible and legible • make sure the mirrors are clear and windows are demisted thoroughly • remove all snow that might fall into the path of other road users • check your planned route is clear of delays and that no further snowfall or severe weather are predicted.",
+   "legal_status": "must",
+   "legislation_cited": "Laws CUR reg 35, RVLR reg 26, VERA sect 43 & RV(DRM)R reg 11",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999",
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT use front or rear fog lights unless visibility 236 is seriously reduced (see Rule 226), as they dazzle other",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "road users and can obscure your brake lights. You MUST switch them off when visibility improves.",
+   "legal_status": "must",
+   "legislation_cited": "Law RVLR regs 28 & 30",
+   "ni_statutes": [
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT wait or park on yellow lines, during the 238 times of operation shown on the nearby time plates (or zone entry sign if in a Controlled Parking Zone see pages 112 and 115). Double yellow lines indicate a prohibition of waiting at any time even if there are no upright signs. You",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "MUST NOT wait or park, or stop to set down and pick up passengers, on school entrance markings (see page 116) when upright signs indicate a prohibition of stopping.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTRO Art 4(5) & R(RW)O",
+   "ni_statutes": [
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "• you MUST switch off the engine, headlights and fog lights",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "• you MUST apply the handbrake before leaving the vehicle 80 Waiting﻿and﻿parking",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "• you MUST ensure you do not hit anyone when you open your door. Check for cyclists or other traffic • it is safer for your passengers (especially children) to get out of the vehicle on the side next to the kerb • lock your vehicle.",
+   "legal_status": "must",
+   "legislation_cited": "Laws CUR regs 113, 121 & 123, RVLR reg 30, RTO 1995 Art 58 &",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT stop or park on • the carriageway or the hard shoulder of a motorway except in an emergency (see Rule 270) • a pedestrian crossing, including the area marked by the zigzag lines (see Rule 191) • within 15 metres (50 feet) of any junction, except in a lay-by in specified circumstances or in a designated parking area (see page 107) • a clearway (see page 107) • taxi bays as indicated by upright signs and markings • an urban clearway within its hours of operation, except to pick up or set down passengers • a road marked with double white lines, even when a broken white line is on you",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "You MUST NOT park in parking spaces reserved for 241 specific users, such as Blue Badge holders, residents or motorcycles, unless entitled to do so.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTRO Arts 14(1) & 19(1), & CSDPA sect 14B",
+   "ni_statutes": [
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT leave your vehicle or trailer in a 242 dangerous position or where it causes any unnecessary obstruction of the road.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Art 32, RO Art 88 & CUR reg 119",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999",
+    "Roads (NI) Order 1993",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "246 weight of over 7.5 tonnes (including any trailer) MUST NOT be parked on a verge, footway or footpath or any land situated between carriageways, without police permission. The only exception is when parking is essential for loading and unloading, in which case the",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "vehicle MUST NOT be left unattended.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTO 1995 Art 30(1)",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT park on a road at night facing against 248 the direction of the traffic flow unless in a recognised parking space.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws CUR reg 117 & RVLR reg 27",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999",
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "All vehicles MUST display parking lights when parked 249 on a road or a lay-by on a road with a speed limit greater than 30 mph (48 km/h).",
+   "legal_status": "must",
+   "legislation_cited": "Law RVLR reg 27",
+   "ni_statutes": [
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "loads, MUST NOT be left on a road at night without lights.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RVLR reg 27, R(RW)O & CUR reg 94(9)",
+   "ni_statutes": [
+    "Motor Vehicles (Construction & Use) Regulations (NI) 1999",
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "Prohibited vehicles. Motorways MUST NOT be used 253 by pedestrians, holders of provisional motorcycle or car licences, riders of motorcycles under 50cc, cyclists, horse riders, certain slow-moving vehicles and those carrying oversized loads (except by special permission), agricultural vehicles, and powered wheelchairs/powered mobility scooters (see Rules 34–46 incl.).",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RO Art 16 & sch 1, & MTR reg 2",
+   "ni_statutes": [
+    "Motorways Traffic Regulations (NI) 2008",
+    "Roads (NI) Order 1993"
+   ]
+  },
+  {
+   "requirement": "MUST NOT go beyond the signal in that lane. If red lights flash on a signal in the central reservation or at the side of",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "the road, you MUST NOT go beyond the signal in any lane.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR regs 8 & 33(3)",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT exceed 70 mph (112 km/h), or the 261 maximum speed limit permitted for your vehicle (see page 40). If a lower speed limit is in force, either permanently or",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "temporarily, at road works for example, you MUST NOT exceed the lower limit. On some motorways, mandatory motorway signals (which display the speed within a red ring) are used to vary the speed limit to improve traffic",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "flow. You MUST NOT exceed this speed limit.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RO Art 20, RTRO Art 39 & MV(SL)R",
+   "ni_statutes": [
+    "Motor Vehicles (Speed Limits) Regulations (NI) 1989",
+    "Roads (NI) Order 1993",
+    "Road Traffic Regulation (NI) Order 1997"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT reverse, cross the central reservation, or 263 drive against the traffic flow. If you have missed your exit, or have taken the wrong route, carry on to the next exit.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law MTR regs 4, 7 & 10",
+   "ni_statutes": [
+    "Motorways Traffic Regulations (NI) 2008"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT drive on the hard shoulder except in an emergency or if directed to do so by the police or signs.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law MTR regs 3 & 8",
+   "ni_statutes": [
+    "Motorways Traffic Regulations (NI) 2008"
+   ]
+  },
+  {
+   "requirement": "Hard shoulder. You MUST NOT use the hard 269 shoulder for overtaking. In areas where an Active Traffic Management (ATM) scheme is in force, the hard shoulder may be used as a running lane. You will know when you can use this because a speed limit sign will be shown above all open lanes, including the hard shoulder. A red cross or blank sign above the hard shoulder means that",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "you MUST NOT drive on the hard shoulder except in an emergency or breakdown. Emergency refuge areas have also been built into these areas for use in cases of emergency or breakdown. Hard shoulder bus lanes. On some stretches of motorway, hard shoulders are used as bus lanes during specified times of the day. The operation of these bus lanes is controlled using variable message signing. In the event of an emergency or incident the bus lane reverts to",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "being a hard shoulder. You MUST NOT use the bus lane for any purpose other than an emergency or breakdown.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law MTR regs 3 & 8",
+   "ni_statutes": [
+    "Motorways Traffic Regulations (NI) 2008"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT stop on the carriageway, hard shoulder, 270 slip road, central reservation or verge except in an emergency, or when told to do so by the police, an emergency sign or by flashing red light signals. Do not stop on the hard shoulder to either make or receive mobile phone calls.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law MTR regs 5, 8 & 10",
+   "ni_statutes": [
+    "Motorways Traffic Regulations (NI) 2008"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT pick up or set down anyone, or walk on 271 a motorway, except in an emergency.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RO Art 20 & MTR reg 13",
+   "ni_statutes": [
+    "Motorways Traffic Regulations (NI) 2008",
+    "Roads (NI) Order 1993"
+   ]
+  },
+  {
+   "requirement": "passengers do the same. You MUST leave any animals in the vehicle or, in an emergency, keep them under proper control on the verge. Never attempt to place a warning triangle on a motorway 91 • not put yourself in danger by attempting even simple repairs • ensure that passengers keep away from the carriageway and hard shoulder, and that children are kept under control Rule 275 Keep well",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "and be prepared to stop. You MUST follow any directions given by police officers as to whether you can safely pass the incident or blockage.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 49 & RTO 1981 Art 180",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "you MUST • stop • give your own and the vehicle owner’s name and address, and the registration number of the vehicle, to anyone having reasonable grounds for requiring them • if you do not give your name and address at the time of the collision, report the collision to the police immediately.",
+   "legal_status": "must",
+   "legislation_cited": "Law RTO 1981 Arts 175 & 176",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "requesting it, you MUST • report the collision to the police immediately • produce your insurance certificate for the police as soon as reasonably practicable.",
+   "legal_status": "must",
+   "legislation_cited": "Law RTO 1981 Art 175",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "• You MUST NOT exceed any temporary maximum speed limit. • Use your mirrors and get into the correct lane for your vehicle in good time and as signs direct. • Do not switch lanes to overtake queuing traffic. • Take extra care near cyclists and motorcyclists as they are vulnerable to skidding on grit, mud and other debris at road works. • Where lanes are restricted due to road works, merge in turn (see Rule 134). • Do not drive through an area marked off by traffic cones. • Watch out for traffic entering or leaving the works area,",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "292 overhead electric lines. You MUST obey the safe height warning road signs and you should not continue forward onto the railway if your vehicle touches any height barrier or bells. The clearance available is usually 5 metres (16 feet 6 inches) but may be lower.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 50(1) & TSR reg 15(2)",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "• You MUST always obey the flashing red stop lights.",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "• You MUST stop behind the white line across the road. 97 Rule 293 Stop when the traffic lights show • Keep going if you have already crossed the white line when the amber light comes on. • Do not reverse onto or over a controlled crossing.",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "• You MUST wait if a train goes by and the red lights continue to flash. This means another train will be passing soon. • Only cross when the lights go off, and the barriers open. • Never zigzag around half-barriers; they lower automatically because a train is approaching. • At crossings where there are no barriers, a train is approaching when the lights show.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR regs 8 & 33",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "you are clear of the crossing. You MUST obey any sign instructing you to use the railway telephone to obtain",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "permission to cross. You MUST also telephone when clear of the crossing if requested to do so.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR regs 8 & 14",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "MUST NOT cross when the red light is showing; only cross if the green light is on. If crossing with a vehicle you should • open the gates or barriers on both sides of the crossing • check that the green light is still on and cross quickly • close the gates or barriers when you are clear of the crossing.",
+   "legal_status": "must_not",
+   "legislation_cited": "Laws RTO 1995 Art 50 & TSR reg 8",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)",
+    "Traffic Signs Regulations (NI)"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT enter a road, lane or other route reserved 300 for trams. Take extra care where trams run along the road. You should avoid driving directly on top of the rails and should take care where trams leave the main carriageway to enter the reserved route, to ensure you do not follow them. The width taken up by trams is often shown by tram lanes marked by white lines, yellow dots, or by a different type of road surface. Diamond-shaped signs and white light signals give instructions to tram drivers only.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTRA sects 5 & 8",
+   "ni_statutes": []
+  },
+  {
+   "requirement": "You MUST NOT park your vehicle where it would get in 302 the way of trams or where it would force other drivers to do so. Do not stop on any part of a tram track except in a designated bay where this has been provided alongside and clear of the track. When doing so, ensure that all parts of your vehicle are outside the delineated tram path. Remember that a train cannot steer round an obstruction.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTRA sects 5 & 8",
+   "ni_statutes": []
+  },
+  {
+   "requirement": "303 in the middle or at the side of the road, you MUST follow the route shown by the road signs and markings. At stops",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "without platforms you MUST NOT drive between a tram and the left-hand kerb when a tram has stopped to pick up passengers. If there is no alternative route signed do not overtake the tram - wait until it moves off.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTRA sects 5 & 8",
+   "ni_statutes": []
+  },
+  {
+   "requirement": "YOU MUST STOP At level crossings, lifting bridges, airfields, fire stations, etc. Motorway signals",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "You MUST NOT proceed further in this lane Change lane Reduced Lane ahead visibility ahead closed COLLISION AHEAD Temporary maximum speed",
+   "legal_status": "must_not",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "similar to those used by police. You MUST obey any signals given (see Rule 107). School crossing patrols Not ready to cross children Barrier to stop children crossing Ready to cross children, vehicles must be prepared to stop All vehicles must stop 105",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "CONTROLS IN FORCE AND SIGNS, NEARBY OR AT A ZONE ENTRY, MUST BE CONSULTED. No stopping at any time No stopping during times shown on sign Parking is limited to the duration specified during the days and times shown 115",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "You MUST • ensure your brakes are efficient • ensure a working bell or horn is fitted • at night, use lit front and rear lights and have a red rear reflector.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RV(T)R reg 7 & RVLR reg 21",
+   "ni_statutes": [
+    "Road Vehicles Lighting Regulations (NI) 2000"
+   ]
+  },
+  {
+   "requirement": "If you have a provisional motorcycle licence, you MUST satisfactorily complete a compulsory basic training (CBT) course. You can then ride unaccompanied on the public road a motorcycle up to 125 cc with a power output not exceeding 11 kW, with L plates, for up to two years.",
+   "legal_status": "must",
+   "legislation_cited": "Law RTO 1981 Art 13",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "To ride a moped, learners MUST • be 16 or over • have a provisional moped licence • complete CBT training.",
+   "legal_status": "must",
+   "legislation_cited": "Law RTO 1981 Arts 13 & 17",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "You MUST first pass the theory test for motorcycles, the manoeuvres test and then the moped practical test to obtain your full moped licence.",
+   "legal_status": "must",
+   "legislation_cited": "Law MV(DL)R regs 27 & 32",
+   "ni_statutes": [
+    "Motor Vehicles (Driving Licences) Regulations (NI) 1996"
+   ]
+  },
+  {
+   "requirement": "If you passed your car driving test after this date you MUST complete CBT before riding a moped on the road.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1981 Arts 13 & 17, & MV(DL)R regs 27 & 32",
+   "ni_statutes": [
+    "Motor Vehicles (Driving Licences) Regulations (NI) 1996",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "with a power output over 11 kW, you MUST meet the minimum age requirements, satisfactorily complete a CBT course and be accompanied by an approved instructor on another motorcycle in radio contact.",
+   "legal_status": "must",
+   "legislation_cited": "Laws MV(DL)R regs 6 & 12, & RTO 1981 Art 13",
+   "ni_statutes": [
+    "Motor Vehicles (Driving Licences) Regulations (NI) 1996",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "To obtain your full moped or motorcycle licence you MUST pass a motorcycle theory test, manoeuvres test and practical motorcycle test on a two-wheeled motorcycle.",
+   "legal_status": "must",
+   "legislation_cited": "Law MV(DL)R reg 27",
+   "ni_statutes": [
+    "Motor Vehicles (Driving Licences) Regulations (NI) 1996"
+   ]
+  },
+  {
+   "requirement": "You MUST NOT carry a pillion passenger or pull a trailer until you have passed your test. Also see Rule 253 covering vehicles prohibited from motorways.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law MV(DL)R reg 12",
+   "ni_statutes": [
+    "Motor Vehicles (Driving Licences) Regulations (NI) 1996"
+   ]
+  },
+  {
+   "requirement": "Driving licence. You MUST have a valid signed driving licence",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "for the category of vehicle you are driving. You MUST inform the Driver and Vehicle Agency (DVA) if you change your name and address.",
+   "legal_status": "must",
+   "legislation_cited": "Law RTO 1981 Art 3",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "MOT. Cars and motorcycles MUST normally pass an MOT test (vehicle test) four years from the date of the first registration",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "and every year after that. You MUST NOT drive a motor vehicle without an MOT certificate when it should have one. Exceptionally, you may drive to a pre-arranged test appointment or to a garage for repairs required for the test. Driving an unroadworthy motor vehicle may invalidate your insurance. From 30 September 2013, motor vehicles manufactured before 1960 will be exempted from an MOT requirement, although they can still be submitted for a test voluntarily. Owners are still legally required to ensure their vehicle is safe and roadworthy.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTO 1995 Arts 61, 63, 65 & 69",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "Insurance. To use a motor vehicle on the road, you MUST have",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "a valid insurance policy. This MUST at least cover you for injury or damage to a third party while using that motor vehicle. Before driving any motor vehicle, make sure that it has this cover for your use, or that your own insurance provides adequate cover.",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "You MUST NOT drive a motor vehicle without insurance. Also, be aware that even if a road traffic collision is not your fault, you may still be held liable by insurance companies.",
+   "legal_status": "must_not",
+   "legislation_cited": "Law RTO 1981 Art 90",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "details of the registered keeper. You MUST notify the Driver and Vehicle Licensing Agency in Swansea as soon as possible when you buy or sell a motor vehicle, or if you change your name or address. The seller is responsible for advising DVLA there has been a change of registered keeper. The procedures are explained on the back of the registration certificates and at www.gov.uk (‘Tell DVLA you’ve sold, transferred or bought a vehicle’).",
+   "legal_status": "must",
+   "legislation_cited": "Law RV(R&L)R Part IV",
+   "ni_statutes": []
+  },
+  {
+   "requirement": "Vehicle tax. Vehicle tax MUST be paid on all motor vehicles used or kept on public roads.",
+   "legal_status": "must",
+   "legislation_cited": "Law VERA sects 29 & 33",
+   "ni_statutes": []
+  },
+  {
+   "requirement": "untaxed and off the public road you MUST declare SORN – it is an offence not to do so. A SORN will remain in force until the vehicle is taxed, sold or scrapped. If your vehicle is unused or off",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "the road, it MUST either have a SORN declaration or be taxed.",
+   "legal_status": "must",
+   "legislation_cited": "Law RV(R&L)R reg 26 sch 4",
+   "ni_statutes": []
+  },
+  {
+   "requirement": "Production of documents. You MUST be able to produce your driving licence and counterpart, a valid insurance certificate and (if appropriate) a valid MOT certificate, when requested by a police officer. If you cannot do this you may be asked to take them to a police station within seven days.",
+   "legal_status": "must",
+   "legislation_cited": "Law RTO 1981 Arts 180 & 180A",
+   "ni_statutes": [
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "Learners driving a car MUST hold a valid provisional licence.",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "They MUST be supervised by someone at least 21 years old who holds a full EC/EEA licence for that type of car (automatic or manual) and has held one for at least three years.",
+   "legal_status": "must",
+   "legislation_cited": "Laws MV(DL)R reg 12 & RTO 1981 Art 3",
+   "ni_statutes": [
+    "Motor Vehicles (Driving Licences) Regulations (NI) 1996",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "Vehicles. Any vehicle driven by a learner MUST display red",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "L plates. Plates MUST conform to legal specifications and",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "MUST be clearly visible to others from in front of the vehicle and from behind. Plates should be removed or covered when not being driven by a learner (except on driving school vehicles.) The speed limit for vehicles displaying L plates is 45 mph (72km/h), except goods vehicles, buses and coaches on a motorway.",
+   "legal_status": "must",
+   "legislation_cited": "Laws MV(DL)R reg 12, RTO 1981 Art 19 & MV(SLRE)R reg 2",
+   "ni_statutes": [
+    "Motor Vehicles (Driving Licences) Regulations (NI) 1996",
+    "Motor Vehicles (Speed Limit Restriction) (Exemption) Regulations (NI) 1998",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  },
+  {
+   "requirement": "You MUST pass the theory test (if one is required) and then a practical driving test for the category of vehicle you wish to drive before driving unaccompanied.",
+   "legal_status": "must",
+   "legislation_cited": "Law MV(DL)R reg 30",
+   "ni_statutes": [
+    "Motor Vehicles (Driving Licences) Regulations (NI) 1996"
+   ]
+  },
+  {
+   "requirement": "of passing the test. The plates MUST conform to legal specifications",
+   "legal_status": "must",
+   "legislation_cited": null,
+   "ni_statutes": []
+  },
+  {
+   "requirement": "and MUST be clearly visible to others from in front of the vehicle and from behind. Plates should be removed or covered when not being driven by a restricted driver. The maximum permitted speed for a motor car or category A1 motorcycle displaying R plates is 45 mph (72km/h), whether or not the vehicle is being driven by a restricted driver. The speed restriction does not apply to A2 or A motorcycles, although R plates must be displayed for the first year after passing the test.",
+   "legal_status": "must",
+   "legislation_cited": "Laws RTO 1981 Art 19A & MV(PR)R",
+   "ni_statutes": [
+    "Motor Vehicles (Prescribed Restrictions) Regulations (NI) 1996",
+    "Road Traffic (NI) Order 1981, 1995 or 2007 (as indicated)"
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "section": "Rules for pedestrians",
+   "text": "Rules for pedestrians 5 Rules for powered wheelchairs and powered scooters 15"
+  },
+  {
+   "section": "Rules about animals",
+   "text": "Rules about animals 18"
+  },
+  {
+   "section": "Rules for cyclists",
+   "text": "Rules for cyclists 21"
+  },
+  {
+   "section": "Rules for motorcyclists",
+   "text": "Rules for motorcyclists 26"
+  },
+  {
+   "section": "Rules for drivers and motorcyclists",
+   "text": "Rules for drivers and motorcyclists 28"
+  },
+  {
+   "section": "General rules, techniques and advice for all drivers and riders",
+   "text": "General rules, techniques and advice for all drivers and riders 34"
+  },
+  {
+   "section": "Using the road",
+   "text": "Using the road 53"
+  },
+  {
+   "section": "Road users requiring extra care",
+   "text": "Road users requiring extra care 70"
+  },
+  {
+   "section": "Driving in adverse weather conditions",
+   "text": "Driving in adverse weather conditions 76"
+  },
+  {
+   "section": "Waiting and parking",
+   "text": "Waiting and parking 80"
+  },
+  {
+   "section": "Motorways",
+   "text": "Motorways 85"
+  },
+  {
+   "section": "Breakdowns and incidents",
+   "text": "Breakdowns and incidents 91 Road works 96 Level crossings 97 Tramways 100 Light signals controlling traffic 102 Signals to other road users 103 Signals by authorised persons 104 Traffic signs 106 Road markings 114 Vehicle markings 117 Annexes 1. You and your bicycle 118 2. Motorcycle licence requirements 118 3. Motor vehicle documentation, learner and restricted driver requirements 120 4. The road user and the law 123 5. Penalties 125 6. Vehicle maintenance, safety and security 128 7. First aid on the road 131 8. Safety code for new drivers 133 Other information 135 Appendix 136 Index 141 1 2 Introduction Introduction The Highway Code for Northern Ireland (hereafter referred to as The Highway Code or the Code) is essential reading for everyone. The most vulnerable road users are pedestrians, particularly children, older or disabled people, cyclists, motorcyclists and horse riders. It is important that all road users are aware of the Code and are considerate towards each other. This applies to pedestrians as much as to drivers and riders. Many of the rules in the Code are legal requirements, and if you disobey these rules you are committing a criminal offence. You may be fined, given penalty points on your licence or be disqualified from driving. In the most serious cases you may be sent to prison. Such rules are identified by the use of the words ‘MUST/MUST NOT.’ In addition, each rule includes an abbreviated reference to the legislation which creates the offence. An explanation of the abbreviations is on page 124. Although failure to comply with the other rules of the Code will not, in itself, cause a person to be prosecuted, The Highway Code may be used in evidence in any court proceedings under the Traffic Legislation (see page 124) to establish liability. This includes rules that use advisory wording such as ‘should/should not’ or ‘do/do not’. Knowing and applying the rules contained in The Highway Code could significantly reduce road casualties. Cutting the number of deaths and injuries that occur on our roads every day is a responsibility we all share. The Highway Code can help us discharge that responsibility. Further information on driving/riding techniques can be found in The Official DVSA Guide to Driving – the essential skills, and The Official DVSA Guide to Riding – the essential skills. 3 The Highway Code is based on the Great Britain version. Although Northern Ireland road safety legislation continues to be brought into line with that in Great Britain, there are some differences which it has been necessary to reflect in this issue. For example, many Northern Ireland road users may not be familiar with equestrian crossings or trams. References to these issues have however been included as Northern Ireland residents who plan to visit Great Britain might find them helpful. It is recommended that anyone, especially drivers, intending to visit Great Britain should also purchase the Great Britain version of The Highway Code. It is also recommended that anyone intending to visit the Republic of Ireland should purchase a copy of ‘Rules of the Road’ and note particularly that all speed limit signs in the Republic of Ireland relate to kilometres per hour. The Great Britain Highway Code is available online at www.gov.uk under Driving and transport. The Republic of Ireland Rules of the Road is available at www.rsa.ie/Documents/Learner%20Drivers/Rules_of_ the_road.pdf 4 Rules﻿for﻿pedestrians Rules for pedestrians General guidance 1 2 Footways or footpaths (including any path along the side of a road) should be used if provided. Where possible, avoid being next to the kerb with your back to the traffic. If you have to step into the road, look both ways first. Always show due care and consideration for others. If there is no footway or footpath, walk on the righthand side of the road so you can see oncoming traffic. You should take extra care and • be prepared to walk in single file, especially on narrow roads or in poor light • keep close to the side of the road. It may be safer to cross the road well before a sharp righthand bend so that oncoming traffic has a better chance of seeing you. Cross back after the bend. 3 Help other road users to see you. Wear or carry something light-coloured, bright or fluorescent in poor daylight conditions. When it is dark, use reflective materials (e.g. armbands, sashes, waistcoats, jackets, footwear), which can be seen by drivers using headlights up to three times as far away as non-reflective materials. Rule 3 Help yourself to be seen 5 4 5 6 Young children should not be out alone on the footway, footpath or road (see Rule 7). When taking children out, keep between them and the traffic and hold their hands firmly. Strap very young children into push-chairs or use reins. When pushing a young child in a buggy, do not push the buggy into the road when checking to see if it is clear to cross, particularly from between parked vehicles. Organised walks. Large groups of people walking together should use a footway or footpath if available; if one is not, they should keep to the left. Look-outs should be positioned at the front and back of the group and they should wear fluorescent clothes in daylight and reflective clothes in the dark. At night the look-out in front should show a white light and the one at the back a red light. People on the outside of large groups should also carry lights and wear reflective clothing. Motorways. Pedestrians MUST NOT be on motorways or slip roads except in an emergency (see Rules 271 and 275). Laws RO Art 20 & MTR reg 13(1)(b) Crossing the road 7 The Green Cross Code. The advice given below for crossing the road is for all pedestrians. Children should be taught the Code and should not be allowed out alone until they can understand and use it properly. The age when they can do this is different for each child. Many children cannot judge how fast vehicles are going or how far away they are. Children learn by example, so parents and carers should always use the Code in full when out with their children. They are responsible for deciding at what age children can use it safely by themselves. A. First find a safe place to cross and where there is a space to reach the footway or footpath on the other side. Where there is a crossing nearby, use it. It is safer to cross using a subway, a footbridge, an island, a zebra, pelican, toucan or puffin crossing, or where there is a crossing point controlled by a police officer or school 6 Rules﻿for﻿pedestrians crossing patrol. Otherwise choose a place where you can see clearly in all directions. Try to avoid crossing between parked cars (see Rule 14), on a blind bend or close to the brow of a hill. Move to a space where drivers and riders can see you clearly. Do not cross the road diagonally. B. Stop just before you get to the kerb, where you can see if anything is coming. Do not get too close to the traffic. If there’s no footway or footpath keep back from the edge of the road but make sure you can still see approaching traffic. Rule 7 Look all around and listen for traffic before crossing C. Look all around for traffic and listen. Traffic could come from any direction. Listen as well, because you can sometimes hear traffic before you see it. D. If traffic is coming, let it pass. Look all around again and listen. Do not cross until there is a safe gap in the traffic and you are certain that there is plenty of time. Remember, even if traffic is a long way off, it may be approaching very quickly. E. When it is safe go straight across the road – do not run. Keep looking and listening for traffic while you cross, in case there is any traffic you did not see, or in case other traffic appears suddenly. Look out for cyclists and motorcyclists travelling between lanes of traffic. Do not walk diagonally across the road. 7 8 9 10 11 12 13 At a junction. When crossing the road, look out for traffic turning into the road, especially from behind you. If you have started and traffic wants to turn into the road, you have priority and they should give way (see Rule 170). Pedestrian safety barriers. Where there are barriers, cross the road only at the gaps provided for pedestrians. Do not climb over the barriers or walk between them and the road. Tactile paving. Raised surfaces that can be felt underfoot provide warning and guidance to blind or partially sighted people. The most common surfaces are a series of raised studs, which are used at crossing points with a dropped kerb, or a series of rounded raised bars which are used at level crossings, at the top and bottom of steps and at some other hazards. One-way streets. Check which way the traffic is moving. Do not cross until it is safe to do so without stopping. Bus and cycle lanes may operate in the opposite direction to the rest of the traffic. Bus and cycle lanes. Take care when crossing these lanes as traffic may be moving faster than in other lanes, or against the flow of traffic. Routes shared with cyclists. Some cycle tracks run alongside footways or footpaths, using a segregating feature to separate cyclists from people on foot. Segregated routes may also incorporate short lengths of tactile paving to help visually impaired people stay on the correct side. On the pedestrian side this will comprise a series of flat-topped bars running across the direction of travel (ladder pattern). On the cyclist side the same bars are orientated in the direction of travel (tramline pattern). Not all routes which are shared with cyclists are segregated. Take extra care where this is so (see Rule 62). 8 Rules﻿for﻿pedestrians 14 Parked vehicles. If you have to cross between parked vehicles, use the outside edges of the vehicles as if they were the kerb. Stop there and make sure you can see all around and make sure the traffic can see you. Make sure there is a gap between any parked vehicles on the other side so you can reach the footway or footpath. Never cross the road in front of, or behind, any vehicle with its engine running, especially a large vehicle, as the driver may not be able to see you. 15 Reversing vehicles. Never cross behind a vehicle that is reversing, showing white reversing lights or sounding a warning. 16 Moving vehicles. You MUST NOT get on to or hold on to a moving vehicle. Law RTO 1995 Art 37 17 At night. Wear something reflective to make it easier for others to see you (see Rule 3). If there is no pedestrian crossing nearby, cross the road near a street light so that traffic can see you more easily. Crossings 18 At all crossings. When using any type of crossing you should • always check that the traffic has stopped before you start to cross or push a pram onto the crossing • always cross between the studs or over the zebra markings. Do not cross at the side of the crossing or on the zigzag lines, as it can be dangerous. You MUST NOT loiter on any type of crossing. Laws RTRO Art 59(4) & PCR reg 17 9 19 Zebra crossings. Give traffic plenty of time to see you and to stop before you cross. Vehicles will need more time when the road is slippery. Wait until traffic has stopped from both directions or the road is clear before crossing. Remember that traffic does not have to stop until someone has moved onto the crossing. Keep looking both ways, and listening, in case a driver or rider has not seen you and attempts to overtake a vehicle that has stopped. Rule 19 Zebra crossings have flashing beacons 20 Where there is an island in the middle of a zebra crossing, wait on the island and follow Rule 19 before you cross the second half of the road – it is a separate crossing. Rule 20 Zebra crossings with a central island are two separate crossings 21 At traffic lights. There may be special signals for pedestrians. You should only start to cross the road when the green figure shows. If you have started to cross the road and the green figure goes out, you should still 10 Rules﻿for﻿pedestrians have time to reach the other side, but do not delay. If no pedestrian signals have been provided, watch carefully and do not cross until the traffic lights are red and the traffic has stopped. Keep looking and check for traffic that may be turning the corner. Remember that traffic lights may let traffic move in some lanes while traffic in other lanes has stopped. Rule 21 At traffic lights, puffin and pelican crossings * At pelican crossings only Do not cross 22 23 24 Cross with care Do not start to cross* Pelican crossings. These are signal-controlled crossings operated by pedestrians. Push the control button to activate the traffic signals. When the red figure shows, do not cross. When a steady green figure shows, check that traffic has stopped then cross with care. When the green figure begins to flash you should not cross. If you have already started you should have time to finish crossing safely. Puffin crossings differ from pelican crossings as the red and green figures are above the control box on your side of the road and there is no flashing green figure phase. Press the button and wait for the green figure to show. When the road is congested, traffic on your side of the road may be forced to stop even though their lights are green. Traffic may still be moving on the other side of the road, so press the button and wait for the signal to cross. 11 25 Toucan crossings are light-controlled crossings which allow cyclists and pedestrians to share crossing space and cross at the same time. They are push-button operated. Cyclists are permitted to ride across. Rule 25 Toucan crossings can be used by both cyclists and pedestrians 26 27 At some crossings there is a bleeping sound or voice signal to indicate to blind or partially sighted people when the steady green figure is showing, and there may be a tactile signal to help deafblind people. Equestrian crossings are for horse riders. They have pavement barriers, wider crossing spaces, horse and rider figures in the light panels and either two sets of controls (one higher), or just one higher control panel. Rule 27 Equestrian crossings are used by horse riders. There is often a parallel crossing 12 Rules﻿for﻿pedestrians 28 ‘Staggered’ pelican or puffin crossings. When the crossings on each side of the central refuge are not in line they are two separate crossings. On reaching the central island press the button again and wait for a steady green figure. Rule 28 Staggered crossings (with an island in the middle) are two separate crossings 29 30 Crossings controlled by an authorised person. Do not cross the road unless you are signalled to do so by a police officer or school crossing patrol. Always cross in front of them. Where there are no controlled crossing points available it is advisable to cross where there is an island in the middle of the road. Use the Green Cross Code (see Rule 7) to cross to the island then stop and use it again to cross the second half of the road. Situations needing extra care 31 32 Emergency vehicles. If an ambulance, fire engine, police or any other emergency vehicle approaches using flashing blue lights, headlights and/or sirens, keep off the road. Buses. Get on or off a bus only when it has stopped to allow you to do so. Watch out for cyclists when you are getting off. Never cross the road directly behind or in front of a bus. Wait until it has moved off and you can see the road clearly in both directions. 13 33 34 Tramways. These may run through pedestrian areas. Their path will be marked out by shallow kerbs, changes in the paving or other road surface, white lines or yellow dots. Cross at designated crossings where provided. Elsewhere treat trams as you would other vehicles and look both ways along the track before crossing. Do not walk along the track as trams may come up behind you. Trams move quietly and cannot steer to avoid you. Railway level crossings. You MUST NOT cross or pass a stop line when the red lights show, (including a red pedestrian figure). Also do not cross if an alarm is sounding or the barriers are being lowered. The tone of the alarm may change if another train is approaching. If there are no lights, alarms or barriers, stop, look both ways and listen before crossing. A tactile surface comprising rounded bars running across the direction of pedestrian travel may be installed on the footway or footpath approaching a level crossing to warn visually impaired people of its presence. The tactile surface should extend across the full width of the footway or footpath and should be located at an appropriate distance from the barrier or projected line of the barrier. Law TSR reg 39 35 Street, footway and footpath repairs. A footway or footpath may be closed temporarily because it is not safe to use. Take extra care if you are directed to walk on or to cross the road. Where should horse riders be when using roundabouts? Turn to rule 187 (page 65) 14 Rules﻿for﻿users﻿of﻿powered﻿wheelchairs﻿and﻿powered﻿mobility﻿scooters Rules for users of powered wheelchairs and powered mobility scooters (Called Invalid Carriages in law) 36 37 There is one class of manual wheelchair (called a Class 1 Invalid Carriage) and two classes of powered wheelchairs and powered mobility scooters. Manual wheelchairs and Class 2 vehicles are those with an upper speed limit of 4 mph (6 km/h) and are designed to be used on footways or footpaths. Class 3 vehicles are those with an upper speed limit of 8mph (12 km/h) and are equipped to be used on the road as well as footways or footpaths. When you are on the road you should obey the guidance and rules for other vehicles; when on the footway or footpath you should follow the guidance and rules for pedestrians. On footways or footpaths 38 39 Footways or footpaths are safer than roads and should be used when available. You should give pedestrians priority and show consideration for other footway or footpath users, particularly those with a hearing or visual impairment who may not be aware that you are there. Powered wheelchairs and scooters MUST NOT travel faster than 4 mph (6 km/h) on footways or footpaths or in pedestrian areas. You may need to reduce your speed to adjust to other footway or footpath users who may not be able to move out of your way quickly enough or where the footway or footpath is too narrow. Law MV(IC)R reg 4 40 When moving off the footway or footpath onto the road you should take special care. Before moving off, always look round and make sure it’s safe to join the traffic. Always try to use dropped kerbs when moving 15 off the footway or footpath, even if this means travelling further to locate one. If you have to climb or descend a kerb, always approach it at right angles and don’t try to negotiate a kerb higher than the vehicle manufacturer’s recommendations. On the road 41 42 You should take care when travelling on the road as you may be travelling more slowly than other traffic (your machine is restricted to 8 mph (12 km/h) and may be less visible). When on the road, Class 3 vehicles should travel in the direction of the traffic. Class 2 users should always use the footway or footpath when it is available. When there is no footway or footpath, you should use caution when on the road. Class 2 users should, where possible, travel in the direction of the traffic as this is safer. If you are travelling at night, when lights MUST be used, you should travel in the direction of the traffic to avoid confusing other road users. Law MV(IC)R reg 9 43 You MUST follow the same rules about using lights, indicators and horns as for other road vehicles if your vehicle is fitted with them. At night lights MUST be used. Be aware that other road users may not be able to see you and you should make yourself more visible – even in the daytime and also at dusk – by, for instance, wearing a reflective jacket or reflective strips on the back of the vehicle. Law MV(IC)R reg 9 What should you do if the traffic lights are not working? Turn to rule 176 (page 61) 16 Rules﻿for﻿users﻿of﻿powere"
+  }
+ ]
+}

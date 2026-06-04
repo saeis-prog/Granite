@@ -213,6 +213,71 @@ function getHighwayCode() {
   return highwayCode;
 }
 
+// ── Northern Ireland Highway Code (cached between warm invocations) ──
+let highwayCodeNi = null;
+function getHighwayCodeNi() {
+  if (!highwayCodeNi) {
+    try {
+      highwayCodeNi = JSON.parse(readFileSync(join(process.cwd(), 'highway_code_ni.json'), 'utf-8'));
+    } catch (e) { highwayCodeNi = null; }
+  }
+  return highwayCodeNi;
+}
+
+// Detect that the accident / event occurred in Northern Ireland.
+function isNorthernIrelandQuery(question) {
+  const q = ' ' + question.toLowerCase() + ' ';
+  if (/\bnorthern ireland\b|\bpsni\b|\bulster\b/.test(q)) return true;
+  if (/\bbt\d{1,2}\b/i.test(question)) return true; // BT postcode
+  const places = ['belfast','lisburn','newry','armagh','ballymena','coleraine','craigavon',
+    'bangor','omagh','enniskillen','newtownabbey','carrickfergus','larne','downpatrick',
+    'derry','londonderry','dungannon','cookstown','magherafelt','strabane','limavady','ballymoney',
+    'county antrim','county armagh','county down','county fermanagh','county tyrone','county londonderry'];
+  return places.some(p => q.includes(' ' + p + ' ') || q.includes(' ' + p + ',') || q.includes(' ' + p + '.'));
+}
+
+// Build a Northern Ireland Highway Code context block. Returns null unless this
+// is a liability / negligence question (same trigger as the GB builder).
+function buildNiHighwayCodeContext(question) {
+  const q = question.toLowerCase();
+  const liabilityTerms = ['negligence','negligent','liability','liable','fault','at fault','contributory',
+    'apportionment','blame','highway code','road traffic','careless driving','dangerous driving','due care',
+    'speed','speeding','tailgating','following too close','rear end','rear-end','shunt','red light','traffic light',
+    'pedestrian','zebra','pelican','crossing','phone','drink driv','drunk driv','alcohol','seat belt','seatbelt',
+    'overtaking','overtook','junction','give way','stop sign','cyclist','motorcyclist','horse','stopping distance',
+    'wet road','icy','ice','snow','fog','adverse weather','double white line','reversing','door','motorway',
+    'hard shoulder','hierarchy','whose fault','split liability'];
+  if (!liabilityTerms.some(t => q.includes(t))) return null;
+  const hc = getHighwayCodeNi();
+  if (!hc) return null;
+
+  // Select operative NI MUST / MUST NOT rules most relevant to the query.
+  const words = q.split(/[^a-z]+/).filter(w => w.length > 3);
+  const scored = (hc.must_rules || []).map(r => {
+    const txt = (r.requirement || '').toLowerCase();
+    let s = 0; for (const w of words) if (txt.includes(w)) s++;
+    return { r, s };
+  }).filter(x => x.s > 0).sort((a, b) => b.s - a.s).slice(0, 18).map(x => x.r);
+
+  let ctx = '\n\n--- NORTHERN IRELAND HIGHWAY CODE (TAKES PRECEDENCE FOR NI ACCIDENTS) ---\n';
+  ctx += (hc.precedence_guidance || '') + '\n';
+  ctx += 'Source: ' + (hc.source || 'Official Highway Code for Northern Ireland') + '\n\n';
+  if (scored.length) {
+    ctx += 'RELEVANT NI MUST / MUST NOT RULES (with Northern Ireland legislation):\n';
+    for (const r of scored) {
+      ctx += `  [${r.legal_status === 'must_not' ? 'MUST NOT' : 'MUST'} — NI legal requirement] ${r.requirement}\n`;
+      if (r.legislation_cited) {
+        ctx += `    Law: ${r.legislation_cited}` +
+               (r.ni_statutes && r.ni_statutes.length ? ` (${r.ni_statutes.join('; ')})` : '') + '\n';
+      }
+    }
+    ctx += '\n';
+  }
+  ctx += 'Where a point matches, cite the NI rule and NI legislation above in preference to the GB Highway Code.\n';
+  ctx += '--- END NORTHERN IRELAND HIGHWAY CODE ---\n';
+  return ctx;
+}
+
 /**
  * Detect if query relates to negligence/liability and build Highway Code context.
  * Returns a string to inject into the AI prompt, or null.
@@ -1059,7 +1124,10 @@ function buildPrompt(question, cases, scope = 'credit_hire', articles = [], loca
   const gtaRateContext = buildGtaRateContext(question) || '';
 
   // Inject Highway Code rules if this is a liability/negligence query
-  const highwayCodeContext = buildHighwayCodeContext(question) || '';
+  // Granite: the Northern Ireland Highway Code is the default for road-user
+  // liability, taking precedence over the GB version (GB retained as fallback).
+  const niHighwayCodeContext = buildNiHighwayCodeContext(question) || '';
+  const highwayCodeContext = niHighwayCodeContext + (buildHighwayCodeContext(question) || '');
 
   // Inject rental company T&C data if query mentions a specific supplier
   const termsContext = buildTermsContext(question) || '';
